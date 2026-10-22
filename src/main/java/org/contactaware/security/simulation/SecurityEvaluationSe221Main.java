@@ -34,6 +34,15 @@ public final class SecurityEvaluationSe221Main {
             JsonFiles.write(out.resolve("observation.json"),observation);
             var result=planner.plan(observation);
             JsonFiles.write(out.resolve("result.json"),result);
+            if(result.score()!=null) {
+                var engine=new BranchEngine(); var branch=engine.create(observation);
+                for(var action:result.bestPlan()) branch=engine.execute(branch,action);
+                var score=new ContinuationEvaluator().evaluate(branch).evaluation();
+                if(!branch.snapshot().at().equals(observation.evaluationEnd()) || !score.equals(result.score()))
+                    throw new IllegalStateException("Representative plan replay differs");
+                JsonFiles.write(out.resolve("plan-replay.json"),Map.of("status","PASS","score",score,
+                    "at",branch.snapshot().at(),"searchStatus",result.status(),"doesNotProveIncompleteOptimality",true));
+            }
             System.out.println(result.status()+" nodes="+result.exploredNodes()+" elapsed="+result.elapsedNanos());
         } else if("controller".equals(flags.get("mode"))) {
             try { controller(flags.get("case"),rule,options,planner,out); }

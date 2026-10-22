@@ -24,6 +24,14 @@ public record PlannerOptions(boolean collapseEquivalentWaits, boolean memoize,
     public static PlannerOptions accelerated() {
         return new PlannerOptions(true, true, TraversalOrder.RENEWAL_FIRST, 50_000, true, true, true);
     }
+    /**
+     * SE2.2.1 opt-in: visit payload/service continuations before new preparation.
+     * Only traversal changes; the selected full-plan comparator and exact reductions do not.
+     * Existing constructors/defaults deliberately retain the frozen renewal-first order.
+     */
+    public static PlannerOptions acceleratedServiceFirst() {
+        return new PlannerOptions(true, true, TraversalOrder.SERVICE_FIRST, 50_000, true, true, true);
+    }
     public static PlannerOptions reuseOnly() {
         return new PlannerOptions(true, true, TraversalOrder.SERVICE_FIRST, 50_000, false);
     }
