@@ -127,3 +127,7 @@ id_ed25519
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Separate SE2.2.1 export archives; source manifests and small tables remain tracked.
+/docs/security-evaluation-se221/*.zip
+/docs/security-evaluation-se221/evidence-file-hashes.json
