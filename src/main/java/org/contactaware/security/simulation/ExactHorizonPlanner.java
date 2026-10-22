@@ -14,7 +14,9 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
     private final BranchEngine engine = new BranchEngine();
     private final SecurityActionGenerator generator = new SecurityActionGenerator();
     private final ContinuationEvaluator evaluator = new ContinuationEvaluator();
-    private final PlanningResultComparator comparator = new PlanningResultComparator();
+    private final PlanningResultComparator comparator;
+    // Traversal is deliberately independent of the tie-break treatment in SE2.2.
+    private final PlanningResultComparator traversalComparator = new PlanningResultComparator();
 
     public ExactHorizonPlanner() { this(SearchLimits.unlimited()); }
     public ExactHorizonPlanner(SearchLimits limits) { this(limits, PlannerOptions.accelerated()); }
@@ -42,19 +44,42 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
     private ExactHorizonPlanner(SearchLimits limits, PlannerOptions options,
                                 UnaryOperator<List<PlanningAction>> candidateOrder, LongSupplier clock,
                                 DecisionTimeModel decisionTimeModel) {
+        this(limits, options, candidateOrder, clock, decisionTimeModel, PlanTieBreak.CANONICAL);
+    }
+
+    public ExactHorizonPlanner(SearchLimits limits, PlannerOptions options, DecisionTimeModel timing,
+                               PlanTieBreak tieBreak) {
+        this(limits, options, UnaryOperator.identity(), System::nanoTime, timing, tieBreak);
+    }
+
+    public ExactHorizonPlanner(SearchLimits limits, PlannerOptions options, DecisionTimeModel timing,
+                               PlanTieBreak tieBreak, UnaryOperator<List<PlanningAction>> candidateOrder) {
+        this(limits, options, candidateOrder, System::nanoTime, timing, tieBreak);
+    }
+
+    private ExactHorizonPlanner(SearchLimits limits, PlannerOptions options,
+                                UnaryOperator<List<PlanningAction>> candidateOrder, LongSupplier clock,
+                                DecisionTimeModel decisionTimeModel, PlanTieBreak tieBreak) {
         this.limits = Objects.requireNonNull(limits);
         this.options = Objects.requireNonNull(options);
         this.candidateOrder = Objects.requireNonNull(candidateOrder);
         this.clock = Objects.requireNonNull(clock);
         this.decisionTimeModel = Objects.requireNonNull(decisionTimeModel);
+        this.comparator = new PlanningResultComparator(tieBreak);
     }
 
     public HorizonPlanResult plan(PlanningObservation observation) {
-        return new Search(Objects.requireNonNull(observation)).run();
+        return new Search(Objects.requireNonNull(observation), null).run();
+    }
+
+    /** Diagnostic constrained optimum, retaining the original root, horizon and score origin. */
+    public HorizonPlanResult planWithFirstAction(PlanningObservation observation, PlanningAction firstAction) {
+        return new Search(Objects.requireNonNull(observation), Objects.requireNonNull(firstAction)).run();
     }
 
     private final class Search {
         final PlanningObservation origin;
+        final PlanningAction fixedFirstAction;
         PlanningOptimisticBound bound;
         SearchControl.Scope control;
         SearchRuntimeTelemetry.Recorder runtime;
@@ -65,7 +90,9 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
         long explored;
         PlanningResult best;
 
-        Search(PlanningObservation origin) { this.origin = origin; }
+        Search(PlanningObservation origin, PlanningAction fixedFirstAction) {
+            this.origin = origin; this.fixedFirstAction = fixedFirstAction;
+        }
 
         HorizonPlanResult run() {
             try (var scope = SearchControl.open(limits.maxElapsed(), SearchDiagnostics.StopReason.TIME_LIMIT,
@@ -132,7 +159,7 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
                         } finally { stats.boundNanos += System.nanoTime() - beforeBound; }
                         int metricOrder = comparator.compareMetrics(optimistic, best.evaluation());
                         boolean canonicalLoser = options.canonicalBoundPruning() && metricOrder == 0
-                                && PlanningActionReduction.prefixAlreadyWorse(visit.branch.plan(), best.plan());
+                                && PlanningActionReduction.prefixAlreadyWorse(visit.branch.plan(), best.plan(), comparator);
                         // A proven equal metric bound permits pruning only after a strictly
                         // worse first differing committed action; proper prefixes are inconclusive.
                         if (metricOrder > 0 || canonicalLoser) {
@@ -160,8 +187,13 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
                         SearchControl.checkpoint("candidateProcessing.begin");
                         // Validate the ordering hook against ALL candidates, before exact reduction.
                         var ordered = ordered(generated, visit.observation);
+                        if (stack.size() == 1 && fixedFirstAction != null) {
+                            if (!generated.contains(fixedFirstAction))
+                                throw new IllegalArgumentException("Fixed first action is not a root candidate");
+                            ordered = List.of(fixedFirstAction);
+                        }
                         if (options.preExecutionWaitReduction()) {
-                            var reduced = PlanningActionReduction.coalesceWaits(visit.observation, ordered);
+                            var reduced = PlanningActionReduction.coalesceWaits(visit.observation, ordered, comparator);
                             stats.preExecutionWaitSkips += ordered.size() - reduced.size();
                             ordered = reduced;
                         }
@@ -264,10 +296,10 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
         var initial = new ArrayList<>(candidates);
         if (options.traversalOrder() == PlannerOptions.TraversalOrder.SERVICE_FIRST)
             initial.sort(Comparator.comparingInt((PlanningAction a) -> serviceRank(a.kind()))
-                    .thenComparing(comparator::compareActions));
+                    .thenComparing(traversalComparator::compareActions));
         else if (options.traversalOrder() == PlannerOptions.TraversalOrder.RENEWAL_FIRST)
             initial.sort(Comparator.comparingInt((PlanningAction a) -> renewalRank(a, observation))
-                    .thenComparing(comparator::compareActions));
+                    .thenComparing(traversalComparator::compareActions));
         SearchControl.checkpoint("candidateProcessing.order.before");
         var ordered = List.copyOf(Objects.requireNonNull(candidateOrder.apply(initial)));
         SearchControl.checkpoint("candidateProcessing.order.after");

@@ -15,8 +15,13 @@ final class PlanningActionReduction {
      * The input must be candidates generated for this same observation.
      */
     static List<PlanningAction> coalesceWaits(PlanningObservation observation, List<PlanningAction> orderedCandidates) {
+        return coalesceWaits(observation, orderedCandidates, new PlanningResultComparator());
+    }
+
+    static List<PlanningAction> coalesceWaits(PlanningObservation observation, List<PlanningAction> orderedCandidates,
+                                            PlanningResultComparator comparator) {
         Objects.requireNonNull(observation); Objects.requireNonNull(orderedCandidates);
-        var comparator = new PlanningResultComparator();
+        Objects.requireNonNull(comparator);
         var representatives = new HashMap<Instant, PlanningAction>();
         for (var action : orderedCandidates) {
             SearchControl.checkpoint("candidateProcessing.waitReduction");
@@ -35,8 +40,13 @@ final class PlanningActionReduction {
      * can introduce the decisive difference. No operation/key identifiers are renamed.
      */
     static boolean prefixAlreadyWorse(List<PlanningAction> prefix, List<PlanningAction> incumbent) {
+        return prefixAlreadyWorse(prefix, incumbent, new PlanningResultComparator());
+    }
+
+    static boolean prefixAlreadyWorse(List<PlanningAction> prefix, List<PlanningAction> incumbent,
+                                       PlanningResultComparator comparator) {
         Objects.requireNonNull(prefix); Objects.requireNonNull(incumbent);
-        var comparator = new PlanningResultComparator();
+        Objects.requireNonNull(comparator);
         for (int index = 0; index < Math.min(prefix.size(), incumbent.size()); index++) {
             SearchControl.checkpoint("bound.canonicalPrefix");
             int order = comparator.compareActions(prefix.get(index), incumbent.get(index));

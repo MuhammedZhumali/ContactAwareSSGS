@@ -8,6 +8,9 @@ import java.util.List;
  * Duration/Instant comparisons retain exact nanoseconds without converting to overflowing long totals.
  */
 public final class PlanningResultComparator implements Comparator<PlanningResult> {
+    private final PlanTieBreak tieBreak;
+    public PlanningResultComparator() { this(PlanTieBreak.CANONICAL); }
+    public PlanningResultComparator(PlanTieBreak tieBreak) { this.tieBreak = java.util.Objects.requireNonNull(tieBreak); }
     public enum Criterion {
         SERVED_CONTACTS, USEFUL_TIME, CONTROL_CPU, MANAGEMENT_BYTES, NEW_KEYS, CANONICAL_PLAN, EQUAL
     }
@@ -42,6 +45,12 @@ public final class PlanningResultComparator implements Comparator<PlanningResult
     }
 
     public int compareActions(PlanningAction first, PlanningAction second) {
+        if (tieBreak == PlanTieBreak.CONTINUE_WAIT) {
+            int group = Integer.compare(group(first.kind()), group(second.kind()));
+            if (group != 0) return group;
+            int until = first.until().compareTo(second.until());
+            if (until != 0) return until;
+        }
         int order = Integer.compare(rank(first.kind()), rank(second.kind()));
         if (order != 0) return order;
         order = first.at().compareTo(second.at());
@@ -80,6 +89,10 @@ public final class PlanningResultComparator implements Comparator<PlanningResult
             case CONTINUE -> 5;
             case WAIT -> 6;
         };
+    }
+
+    private static int group(PlanningAction.Kind kind) {
+        return switch (kind) { case CONTINUE -> 0; case WAIT -> 1; default -> 2; };
     }
 
     private static <T extends Comparable<? super T>> int nullable(T first, T second) {

@@ -48,6 +48,10 @@ __pycache__/
 /docs/security-evaluation-se21/tables/
 /docs/security-evaluation-se21/*.zip
 /docs/security-evaluation-se21/evidence-file-hashes.json
+/docs/security-evaluation-se22/tables/
+/docs/security-evaluation-se22/figures/
+/docs/security-evaluation-se22/*.zip
+/docs/security-evaluation-se22/evidence-file-hashes.json
 
 # LaTeX build intermediates (keep .tex sources and reference documents)
 *.aux
