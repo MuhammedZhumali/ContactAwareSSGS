@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "frozenOldFilesVerified": 2441,
+  "builds": [
+    {
+      "stage": "a",
+      "commit": "07defaf57513e1a2ad423d6d99d17f93befeee88",
+      "tests": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "jar": "target/security-evaluation-se221-build/se221-a-07defaf57513.jar",
+      "sha256": "24428d316e55073ca3d0947ef5918b5a9f495d9c2cfbe664d179bf327a4c36b3"
+    },
+    {
+      "stage": "b",
+      "commit": "97cbe1168e7437ca6c7ea5c856665c22aaef1320",
+      "tests": {
+        "tests": 374,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "jar": "target/security-evaluation-se221-build/se221-b-97cbe1168e74.jar",
+      "sha256": "74c2a89d0b4eaa8e0715f80d0480dd937630712525af4b646de272a9fc05385f"
+    }
+  ],
+  "pythonTests": 14,
+  "controllerAttempts": 12,
+  "representativeSearches": 2,
+  "checkpointFinalStates": 12,
+  "completeCanonicalRegressions": 5,
+  "newControllerCoverage": {
+    "FINISHED": 7,
+    "CONTROLLER_TIME_LIMIT": 5
+  },
+  "combinedCoverage": {
+    "FINISHED": 47,
+    "CONTROLLER_TIME_LIMIT": 5
+  },
+  "scope": "Two registrations, twelve new controller attempts, one observation/two traversal searches; no wider grid.",
+  "testLogs": {
+    "target/security-evaluation-se221/build-a.log": "555f18bde40c3876464911aa513724f380d043ff7c257c18e8a03ed608c059e7",
+    "target/security-evaluation-se221/build-b.log": "3f96b81c0d8d7671512867efc3b0a4e39739b8bb60b1f85ef53474e7063e7a74",
+    "target/security-evaluation-se221/python-tests.log": "f51c122f07be5934c039ae972729fc719ced29c83fe57fe83a4c0eba2cb807bc"
+  }
+}

@@ -1,0 +1,13 @@
+case,status,observedUntil,decisions,searchStatuses,controllerElapsedSeconds,controllerThreadCpuSeconds,gcMillis,servedSoFar,usefulTimeSoFar,controlCpuSoFar,managementBytesSoFar,newKeysSoFar,lastSearchStatus,lastStopReason,lastActionExecuted
+X-next-none-canonical,FINISHED,2026-01-01T00:01:25Z,163,"{""COMPLETE"": 163}",6.8346053,6.5625,51,,,,,,COMPLETE,NONE,True
+X-multi-none-canonical,FINISHED,2026-01-01T00:01:25Z,165,"{""COMPLETE"": 165}",5.8637039,5.53125,46,,,,,,COMPLETE,NONE,True
+X-multi-none-continue_wait,CONTROLLER_TIME_LIMIT,2026-01-01T00:00:01.750Z,7,"{""COMPLETE"": 6, ""INCOMPLETE"": 1}",60.0035578,58.125,356,0,0.75,0.06,80,0,INCOMPLETE,CONTROLLER_TIME_LIMIT,False
+X-next-original-detected-canonical,FINISHED,2026-01-01T00:01:25Z,156,"{""COMPLETE"": 151}",5.3354896,5.125,37,,,,,,COMPLETE,NONE,True
+X-next-original-detected-continue_wait,FINISHED,2026-01-01T00:01:25Z,156,"{""COMPLETE"": 151}",5.2837474,4.9375,40,,,,,,COMPLETE,NONE,True
+X-multi-original-detected-continue_wait,CONTROLLER_TIME_LIMIT,2026-01-01T00:00:01.750Z,7,"{""COMPLETE"": 6, ""INCOMPLETE"": 1}",60.0026453,58.625,362,0,0.75,0.06,80,0,INCOMPLETE,CONTROLLER_TIME_LIMIT,False
+X-multi-p70-detected-canonical,FINISHED,2026-01-01T00:01:25Z,163,"{""COMPLETE"": 160}",6.3914989,6.140625,47,,,,,,COMPLETE,NONE,True
+X-multi-p70-detected-continue_wait,CONTROLLER_TIME_LIMIT,2026-01-01T00:00:01.750Z,7,"{""COMPLETE"": 6, ""INCOMPLETE"": 1}",60.0026746,58.34375,357,0,0.75,0.06,80,0,INCOMPLETE,CONTROLLER_TIME_LIMIT,False
+X-multi-p90-detected-continue_wait,CONTROLLER_TIME_LIMIT,2026-01-01T00:00:02Z,8,"{""COMPLETE"": 7, ""INCOMPLETE"": 1}",60.0023609,57.84375,384,0,1.0,0.06,80,0,INCOMPLETE,CONTROLLER_TIME_LIMIT,False
+X-multi-gap-midpoint-detected-continue_wait,CONTROLLER_TIME_LIMIT,2026-01-01T00:00:02Z,8,"{""COMPLETE"": 7, ""INCOMPLETE"": 1}",60.0028208,57.6875,390,0,1.0,0.06,80,0,INCOMPLETE,CONTROLLER_TIME_LIMIT,False
+Y-multi-original-detected-canonical,FINISHED,2026-01-01T00:01:25Z,156,"{""COMPLETE"": 151}",5.8315231,5.59375,48,,,,,,COMPLETE,NONE,True
+iss3-cp7200-multi-none-continue_wait,FINISHED,2026-10-10T01:49:34.350128174Z,32,"{""COMPLETE"": 32}",1.1699809,1.140625,10,,,,,,COMPLETE,NONE,True

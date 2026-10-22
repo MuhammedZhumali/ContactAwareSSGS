@@ -1,0 +1,122 @@
+{
+  "status": "PASS",
+  "coverage": {
+    "FINISHED": 7,
+    "CONTROLLER_TIME_LIMIT": 5
+  },
+  "combinedCoverage": {
+    "FINISHED": 47,
+    "CONTROLLER_TIME_LIMIT": 5
+  },
+  "canonicalChecks": [
+    {
+      "case": "X-next-none-canonical",
+      "eventsEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "X-multi-none-canonical",
+      "eventsEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "X-next-original-detected-canonical",
+      "eventsEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "X-multi-p70-detected-canonical",
+      "eventsEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "Y-multi-original-detected-canonical",
+      "eventsEqual": true,
+      "metricsEqual": true
+    }
+  ],
+  "checkpointChecks": [
+    {
+      "case": "X-next-none-canonical",
+      "lastCheckpointMatchesActualStateAndJournal": true
+    },
+    {
+      "case": "X-multi-none-canonical",
+      "lastCheckpointMatchesActualStateAndJournal": true
+    },
+    {
+      "case": "X-multi-none-continue_wait",
+      "lastCheckpointMatchesActualStateAndJournal": true
+    },
+    {
+      "case": "X-next-original-detected-canonical",
+      "lastCheckpointMatchesActualStateAndJournal": true
+    },
+    {
+      "case": "X-next-original-detected-continue_wait",
+      "lastCheckpointMatchesActualStateAndJournal": true
+    },
+    {
+      "case": "X-multi-original-detected-continue_wait",
+      "lastCheckpointMatchesActualStateAndJournal": true
+    },
+    {
+      "case": "X-multi-p70-detected-canonical",
+      "lastCheckpointMatchesActualStateAndJournal": true
+    },
+    {
+      "case": "X-multi-p70-detected-continue_wait",
+      "lastCheckpointMatchesActualStateAndJournal": true
+    },
+    {
+      "case": "X-multi-p90-detected-continue_wait",
+      "lastCheckpointMatchesActualStateAndJournal": true
+    },
+    {
+      "case": "X-multi-gap-midpoint-detected-continue_wait",
+      "lastCheckpointMatchesActualStateAndJournal": true
+    },
+    {
+      "case": "Y-multi-original-detected-canonical",
+      "lastCheckpointMatchesActualStateAndJournal": true
+    },
+    {
+      "case": "iss3-cp7200-multi-none-continue_wait",
+      "lastCheckpointMatchesActualStateAndJournal": true
+    }
+  ],
+  "claudeOriginalChecks": [
+    {
+      "case": "X-next-original-detected-canonical",
+      "comparable": true,
+      "metricsEqual": true,
+      "actionsEqual": true,
+      "caveat": "Original Claude tied-child helper did not reject all nonnull INCOMPLETE scores."
+    },
+    {
+      "case": "X-next-original-detected-continue_wait",
+      "comparable": true,
+      "metricsEqual": true,
+      "actionsEqual": true,
+      "caveat": "Original Claude tied-child helper did not reject all nonnull INCOMPLETE scores."
+    },
+    {
+      "case": "X-multi-original-detected-canonical",
+      "comparable": true,
+      "metricsEqual": true,
+      "actionsEqual": true,
+      "caveat": "Original Claude tied-child helper did not reject all nonnull INCOMPLETE scores."
+    },
+    {
+      "case": "X-multi-original-detected-continue_wait",
+      "comparable": false,
+      "metricsEqual": null,
+      "actionsEqual": null,
+      "caveat": "Original Claude tied-child helper did not reject all nonnull INCOMPLETE scores."
+    }
+  ],
+  "representativeFullPlanEquivalence": null,
+  "observationEquivalence": "PASS",
+  "summarySha256": "9c7cea186f3c6ae3a9ccab27f398e076529d1fc816143388476681f8a76bd006",
+  "analysisSha256": "ac59ec043ec4124d1c7e39853884564d8c997c5c4b6660b61874096ed1631222"
+}
