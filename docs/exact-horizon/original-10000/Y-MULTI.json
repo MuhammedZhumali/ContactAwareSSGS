@@ -1,0 +1,1126 @@
+{
+  "provenance" : "SYNTHETIC_ASSUMPTION: original HorizonWitness contacts/costs; common warmup only",
+  "accounting" : "Score is incremental from t=0 to this observation's evaluationEnd; totals add past warmup once. H=1 and H=2 scores cover different intervals and are not full-run policy comparisons. INCOMPLETE is not an optimality certificate; elapsedNanos measures the search only.",
+  "limits" : {
+    "maxNodes" : 10000,
+    "maxElapsed" : 0.0
+  },
+  "root" : {
+    "at" : "2026-01-01T00:00:00Z",
+    "horizon" : 2,
+    "currentContact" : {
+      "window" : {
+        "id" : "C1",
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "A",
+        "start" : "2026-01-01T00:00:00Z",
+        "end" : "2026-01-01T00:00:20Z",
+        "linkRateBps" : null,
+        "expectedDataBytes" : null,
+        "sourceRecordIds" : [ ]
+      },
+      "payload" : {
+        "bytesPerSecond" : 400,
+        "frameBytes" : 100,
+        "offeredUplinkBytes" : 9223372036854775807,
+        "offeredDownlinkBytes" : 9223372036854775807,
+        "minimumUplinkBytes" : 400,
+        "minimumDownlinkBytes" : 400
+      }
+    },
+    "visibleContacts" : [ {
+      "window" : {
+        "id" : "C1",
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "A",
+        "start" : "2026-01-01T00:00:00Z",
+        "end" : "2026-01-01T00:00:20Z",
+        "linkRateBps" : null,
+        "expectedDataBytes" : null,
+        "sourceRecordIds" : [ ]
+      },
+      "payload" : {
+        "bytesPerSecond" : 400,
+        "frameBytes" : 100,
+        "offeredUplinkBytes" : 9223372036854775807,
+        "offeredDownlinkBytes" : 9223372036854775807,
+        "minimumUplinkBytes" : 400,
+        "minimumDownlinkBytes" : 400
+      }
+    }, {
+      "window" : {
+        "id" : "C2",
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B",
+        "start" : "2026-01-01T00:00:30Z",
+        "end" : "2026-01-01T00:00:50Z",
+        "linkRateBps" : null,
+        "expectedDataBytes" : null,
+        "sourceRecordIds" : [ ]
+      },
+      "payload" : {
+        "bytesPerSecond" : 400,
+        "frameBytes" : 100,
+        "offeredUplinkBytes" : 9223372036854775807,
+        "offeredDownlinkBytes" : 9223372036854775807,
+        "minimumUplinkBytes" : 400,
+        "minimumDownlinkBytes" : 400
+      }
+    }, {
+      "window" : {
+        "id" : "C3",
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B",
+        "start" : "2026-01-01T00:01:20Z",
+        "end" : "2026-01-01T00:01:25Z",
+        "linkRateBps" : null,
+        "expectedDataBytes" : null,
+        "sourceRecordIds" : [ ]
+      },
+      "payload" : {
+        "bytesPerSecond" : 400,
+        "frameBytes" : 100,
+        "offeredUplinkBytes" : 9223372036854775807,
+        "offeredDownlinkBytes" : 9223372036854775807,
+        "minimumUplinkBytes" : 400,
+        "minimumDownlinkBytes" : 400
+      }
+    } ],
+    "evaluationEnd" : "2026-01-01T00:01:25Z",
+    "securityState" : {
+      "satelliteId" : "WITNESS-SC",
+      "asOf" : "2026-01-01T00:00:00Z",
+      "contexts" : {
+        "ContextId[satelliteId=WITNESS-SC, groundStationId=A]" : {
+          "id" : {
+            "satelliteId" : "WITNESS-SC",
+            "groundStationId" : "A"
+          },
+          "uplink" : {
+            "id" : "A-SA-up",
+            "contextId" : {
+              "satelliteId" : "WITNESS-SC",
+              "groundStationId" : "A"
+            },
+            "direction" : "UPLINK",
+            "status" : "KEYED",
+            "keyId" : "A-old-up",
+            "generation" : 1,
+            "nextSequenceNumber" : 1,
+            "peerSynchronized" : true
+          },
+          "downlink" : {
+            "id" : "A-SA-down",
+            "contextId" : {
+              "satelliteId" : "WITNESS-SC",
+              "groundStationId" : "A"
+            },
+            "direction" : "DOWNLINK",
+            "status" : "KEYED",
+            "keyId" : "A-old-down",
+            "generation" : 1,
+            "nextSequenceNumber" : 1,
+            "peerSynchronized" : true
+          },
+          "activeContact" : null,
+          "openedAt" : null,
+          "uplinkFramesInSession" : 0,
+          "downlinkFramesInSession" : 0
+        },
+        "ContextId[satelliteId=WITNESS-SC, groundStationId=B]" : {
+          "id" : {
+            "satelliteId" : "WITNESS-SC",
+            "groundStationId" : "B"
+          },
+          "uplink" : {
+            "id" : "B-SA-up",
+            "contextId" : {
+              "satelliteId" : "WITNESS-SC",
+              "groundStationId" : "B"
+            },
+            "direction" : "UPLINK",
+            "status" : "KEYED",
+            "keyId" : "B-old-up",
+            "generation" : 1,
+            "nextSequenceNumber" : 1,
+            "peerSynchronized" : true
+          },
+          "downlink" : {
+            "id" : "B-SA-down",
+            "contextId" : {
+              "satelliteId" : "WITNESS-SC",
+              "groundStationId" : "B"
+            },
+            "direction" : "DOWNLINK",
+            "status" : "KEYED",
+            "keyId" : "B-old-down",
+            "generation" : 1,
+            "nextSequenceNumber" : 1,
+            "peerSynchronized" : true
+          },
+          "activeContact" : null,
+          "openedAt" : null,
+          "uplinkFramesInSession" : 0,
+          "downlinkFramesInSession" : 0
+        }
+      },
+      "keys" : {
+        "A-new-down" : {
+          "id" : "A-new-down",
+          "contextId" : {
+            "satelliteId" : "WITNESS-SC",
+            "groundStationId" : "A"
+          },
+          "direction" : "DOWNLINK",
+          "createdAt" : "2026-01-01T00:00:00Z",
+          "notAfter" : "2026-01-01T00:06:40Z",
+          "activatedAt" : null,
+          "status" : "PRE_ACTIVE",
+          "installedOnSpacecraft" : false,
+          "deactivatedAt" : null,
+          "deactivationReason" : null,
+          "destroyedAt" : null,
+          "nextNonceCounter" : 0,
+          "lastSuccessfulContactEnd" : null
+        },
+        "A-new-up" : {
+          "id" : "A-new-up",
+          "contextId" : {
+            "satelliteId" : "WITNESS-SC",
+            "groundStationId" : "A"
+          },
+          "direction" : "UPLINK",
+          "createdAt" : "2026-01-01T00:00:00Z",
+          "notAfter" : "2026-01-01T00:06:40Z",
+          "activatedAt" : null,
+          "status" : "PRE_ACTIVE",
+          "installedOnSpacecraft" : false,
+          "deactivatedAt" : null,
+          "deactivationReason" : null,
+          "destroyedAt" : null,
+          "nextNonceCounter" : 0,
+          "lastSuccessfulContactEnd" : null
+        },
+        "A-old-down" : {
+          "id" : "A-old-down",
+          "contextId" : {
+            "satelliteId" : "WITNESS-SC",
+            "groundStationId" : "A"
+          },
+          "direction" : "DOWNLINK",
+          "createdAt" : "2025-12-31T23:58:30Z",
+          "notAfter" : "2026-01-01T00:01:10Z",
+          "activatedAt" : "2025-12-31T23:58:40Z",
+          "status" : "ACTIVE",
+          "installedOnSpacecraft" : true,
+          "deactivatedAt" : null,
+          "deactivationReason" : null,
+          "destroyedAt" : null,
+          "nextNonceCounter" : 1,
+          "lastSuccessfulContactEnd" : "2025-12-31T23:59:00Z"
+        },
+        "A-old-up" : {
+          "id" : "A-old-up",
+          "contextId" : {
+            "satelliteId" : "WITNESS-SC",
+            "groundStationId" : "A"
+          },
+          "direction" : "UPLINK",
+          "createdAt" : "2025-12-31T23:58:30Z",
+          "notAfter" : "2026-01-01T00:01:10Z",
+          "activatedAt" : "2025-12-31T23:58:40Z",
+          "status" : "ACTIVE",
+          "installedOnSpacecraft" : true,
+          "deactivatedAt" : null,
+          "deactivationReason" : null,
+          "destroyedAt" : null,
+          "nextNonceCounter" : 1,
+          "lastSuccessfulContactEnd" : "2025-12-31T23:59:00Z"
+        },
+        "B-old-down" : {
+          "id" : "B-old-down",
+          "contextId" : {
+            "satelliteId" : "WITNESS-SC",
+            "groundStationId" : "B"
+          },
+          "direction" : "DOWNLINK",
+          "createdAt" : "2025-12-31T23:59:20Z",
+          "notAfter" : "2026-01-01T00:02:00Z",
+          "activatedAt" : "2025-12-31T23:59:30Z",
+          "status" : "ACTIVE",
+          "installedOnSpacecraft" : true,
+          "deactivatedAt" : null,
+          "deactivationReason" : null,
+          "destroyedAt" : null,
+          "nextNonceCounter" : 1,
+          "lastSuccessfulContactEnd" : "2025-12-31T23:59:40Z"
+        },
+        "B-old-up" : {
+          "id" : "B-old-up",
+          "contextId" : {
+            "satelliteId" : "WITNESS-SC",
+            "groundStationId" : "B"
+          },
+          "direction" : "UPLINK",
+          "createdAt" : "2025-12-31T23:59:20Z",
+          "notAfter" : "2026-01-01T00:02:00Z",
+          "activatedAt" : "2025-12-31T23:59:30Z",
+          "status" : "ACTIVE",
+          "installedOnSpacecraft" : true,
+          "deactivatedAt" : null,
+          "deactivationReason" : null,
+          "destroyedAt" : null,
+          "nextNonceCounter" : 1,
+          "lastSuccessfulContactEnd" : "2025-12-31T23:59:40Z"
+        }
+      }
+    },
+    "constraints" : {
+      "cryptoperiod" : 150.000000000,
+      "maxMaterialAge" : 400.000000000,
+      "maxReuseGap" : 200.000000000,
+      "authorizedContexts" : [ {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "A"
+      }, {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      } ],
+      "blockedKeyIds" : [ ]
+    },
+    "costs" : {
+      "name" : "synthetic-horizon-witness-v1",
+      "provenance" : "SYNTHETIC_ASSUMPTION",
+      "source" : "docs/formal-cost-model-and-horizon/main.tex; assumed 400 B/s management channel, not hardware measurements",
+      "operations" : {
+        "PREPARE" : {
+          "phases" : [ {
+            "resource" : "GROUND_CPU",
+            "duration" : 0.200000000,
+            "bytes" : 0
+          }, {
+            "resource" : "WAIT",
+            "duration" : 1.800000000,
+            "bytes" : 0
+          } ]
+        },
+        "INSTALL" : {
+          "phases" : [ {
+            "resource" : "GROUND_CPU",
+            "duration" : 0.100000000,
+            "bytes" : 0
+          }, {
+            "resource" : "UPLINK",
+            "duration" : 1.500000000,
+            "bytes" : 600
+          }, {
+            "resource" : "SPACECRAFT_CPU",
+            "duration" : 0.200000000,
+            "bytes" : 0
+          }, {
+            "resource" : "DOWNLINK",
+            "duration" : 0.500000000,
+            "bytes" : 200
+          }, {
+            "resource" : "WAIT",
+            "duration" : 1.700000000,
+            "bytes" : 0
+          } ]
+        },
+        "SWITCH" : {
+          "phases" : [ {
+            "resource" : "GROUND_CPU",
+            "duration" : 0.050000000,
+            "bytes" : 0
+          }, {
+            "resource" : "UPLINK",
+            "duration" : 0.250000000,
+            "bytes" : 100
+          }, {
+            "resource" : "SPACECRAFT_CPU",
+            "duration" : 0.100000000,
+            "bytes" : 0
+          }, {
+            "resource" : "DOWNLINK",
+            "duration" : 0.250000000,
+            "bytes" : 100
+          }, {
+            "resource" : "WAIT",
+            "duration" : 0.350000000,
+            "bytes" : 0
+          } ]
+        },
+        "OPEN" : {
+          "phases" : [ {
+            "resource" : "GROUND_CPU",
+            "duration" : 0.020000000,
+            "bytes" : 0
+          }, {
+            "resource" : "UPLINK",
+            "duration" : 0.100000000,
+            "bytes" : 40
+          }, {
+            "resource" : "SPACECRAFT_CPU",
+            "duration" : 0.040000000,
+            "bytes" : 0
+          }, {
+            "resource" : "DOWNLINK",
+            "duration" : 0.100000000,
+            "bytes" : 40
+          }, {
+            "resource" : "WAIT",
+            "duration" : 0.740000000,
+            "bytes" : 0
+          } ]
+        },
+        "REUSE" : {
+          "phases" : [ {
+            "resource" : "GROUND_CPU",
+            "duration" : 0.020000000,
+            "bytes" : 0
+          }, {
+            "resource" : "UPLINK",
+            "duration" : 0.100000000,
+            "bytes" : 40
+          }, {
+            "resource" : "SPACECRAFT_CPU",
+            "duration" : 0.040000000,
+            "bytes" : 0
+          }, {
+            "resource" : "DOWNLINK",
+            "duration" : 0.100000000,
+            "bytes" : 40
+          }, {
+            "resource" : "WAIT",
+            "duration" : 0.740000000,
+            "bytes" : 0
+          } ]
+        },
+        "STOP" : {
+          "phases" : [ ]
+        },
+        "EXPIRE_CONTEXT" : {
+          "phases" : [ ]
+        }
+      }
+    },
+    "ongoingOperations" : [ ],
+    "resourceReservations" : [ ],
+    "uncertainContexts" : [ ],
+    "payloadProgress" : { },
+    "inFlightFrame" : null,
+    "recordedCosts" : {
+      "elapsed" : 2.000000000,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.200000000,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "accruedCosts" : {
+      "elapsed" : 2.000000000,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.200000000,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulSecureTime" : 0.0,
+    "createdKeys" : 2,
+    "wakeUps" : [ "2026-01-01T00:00:20Z", "2026-01-01T00:00:28Z", "2026-01-01T00:00:30Z", "2026-01-01T00:00:50Z", "2026-01-01T00:01:10Z", "2026-01-01T00:01:18Z", "2026-01-01T00:01:20Z", "2026-01-01T00:01:25Z" ],
+    "issuedKeyIds" : [ "A-new-down", "A-new-up", "A-old-down", "A-old-up", "B-old-down", "B-old-up" ],
+    "issuedOperationIds" : [ "warmup" ]
+  },
+  "result" : {
+    "bestPlan" : [ {
+      "kind" : "PREPARE",
+      "at" : "2026-01-01T00:00:00Z",
+      "until" : "2026-01-01T00:00:02Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:B:g1:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:B:g1:down"
+      },
+      "contactId" : null,
+      "securityOperation" : true
+    }, {
+      "kind" : "INSTALL",
+      "at" : "2026-01-01T00:00:00Z",
+      "until" : "2026-01-01T00:00:04Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "A"
+      },
+      "keys" : {
+        "uplink" : "A-new-up",
+        "downlink" : "A-new-down"
+      },
+      "contactId" : "C1",
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:00Z",
+      "until" : "2026-01-01T00:00:02Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:02Z",
+      "until" : "2026-01-01T00:00:04Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "SWITCH",
+      "at" : "2026-01-01T00:00:04Z",
+      "until" : "2026-01-01T00:00:05Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "A"
+      },
+      "keys" : {
+        "uplink" : "A-new-up",
+        "downlink" : "A-new-down"
+      },
+      "contactId" : "C1",
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:04Z",
+      "until" : "2026-01-01T00:00:05Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "PREPARE",
+      "at" : "2026-01-01T00:00:05Z",
+      "until" : "2026-01-01T00:00:07Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "A"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:A:g1:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:A:g1:down"
+      },
+      "contactId" : null,
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:05Z",
+      "until" : "2026-01-01T00:00:07Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "INSTALL",
+      "at" : "2026-01-01T00:00:07Z",
+      "until" : "2026-01-01T00:00:11Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "A"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:A:g1:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:A:g1:down"
+      },
+      "contactId" : "C1",
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:07Z",
+      "until" : "2026-01-01T00:00:11Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "SWITCH",
+      "at" : "2026-01-01T00:00:11Z",
+      "until" : "2026-01-01T00:00:12Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "A"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:A:g1:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:A:g1:down"
+      },
+      "contactId" : "C1",
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:11Z",
+      "until" : "2026-01-01T00:00:12Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "PREPARE",
+      "at" : "2026-01-01T00:00:12Z",
+      "until" : "2026-01-01T00:00:14Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "A"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:A:g2:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:A:g2:down"
+      },
+      "contactId" : null,
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:12Z",
+      "until" : "2026-01-01T00:00:14Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "INSTALL",
+      "at" : "2026-01-01T00:00:14Z",
+      "until" : "2026-01-01T00:00:18Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "A"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:A:g2:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:A:g2:down"
+      },
+      "contactId" : "C1",
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:14Z",
+      "until" : "2026-01-01T00:00:18Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "SWITCH",
+      "at" : "2026-01-01T00:00:18Z",
+      "until" : "2026-01-01T00:00:19Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "A"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:A:g2:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:A:g2:down"
+      },
+      "contactId" : "C1",
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:18Z",
+      "until" : "2026-01-01T00:00:19Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "PREPARE",
+      "at" : "2026-01-01T00:00:19Z",
+      "until" : "2026-01-01T00:00:21Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "A"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:A:g3:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:A:g3:down"
+      },
+      "contactId" : null,
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:19Z",
+      "until" : "2026-01-01T00:00:20Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:20Z",
+      "until" : "2026-01-01T00:00:21Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:21Z",
+      "until" : "2026-01-01T00:00:28Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:28Z",
+      "until" : "2026-01-01T00:00:30Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "INSTALL",
+      "at" : "2026-01-01T00:00:30Z",
+      "until" : "2026-01-01T00:00:34Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:B:g1:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:B:g1:down"
+      },
+      "contactId" : "C2",
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:30Z",
+      "until" : "2026-01-01T00:00:34Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "SWITCH",
+      "at" : "2026-01-01T00:00:34Z",
+      "until" : "2026-01-01T00:00:35Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:B:g1:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:B:g1:down"
+      },
+      "contactId" : "C2",
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:34Z",
+      "until" : "2026-01-01T00:00:35Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "PREPARE",
+      "at" : "2026-01-01T00:00:35Z",
+      "until" : "2026-01-01T00:00:37Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:B:g2:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:B:g2:down"
+      },
+      "contactId" : null,
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:35Z",
+      "until" : "2026-01-01T00:00:37Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "INSTALL",
+      "at" : "2026-01-01T00:00:37Z",
+      "until" : "2026-01-01T00:00:41Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:B:g2:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:B:g2:down"
+      },
+      "contactId" : "C2",
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:37Z",
+      "until" : "2026-01-01T00:00:41Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "SWITCH",
+      "at" : "2026-01-01T00:00:41Z",
+      "until" : "2026-01-01T00:00:42Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:B:g2:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:B:g2:down"
+      },
+      "contactId" : "C2",
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:41Z",
+      "until" : "2026-01-01T00:00:42Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "PREPARE",
+      "at" : "2026-01-01T00:00:42Z",
+      "until" : "2026-01-01T00:00:44Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:B:g3:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:B:g3:down"
+      },
+      "contactId" : null,
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:42Z",
+      "until" : "2026-01-01T00:00:44Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "INSTALL",
+      "at" : "2026-01-01T00:00:44Z",
+      "until" : "2026-01-01T00:00:48Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:B:g3:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:B:g3:down"
+      },
+      "contactId" : "C2",
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:44Z",
+      "until" : "2026-01-01T00:00:48Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "SWITCH",
+      "at" : "2026-01-01T00:00:48Z",
+      "until" : "2026-01-01T00:00:49Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:B:g3:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:B:g3:down"
+      },
+      "contactId" : "C2",
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:48Z",
+      "until" : "2026-01-01T00:00:49Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "PREPARE",
+      "at" : "2026-01-01T00:00:49Z",
+      "until" : "2026-01-01T00:00:51Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:B:g4:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:B:g4:down"
+      },
+      "contactId" : null,
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:49Z",
+      "until" : "2026-01-01T00:00:50Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:50Z",
+      "until" : "2026-01-01T00:00:51Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:00:51Z",
+      "until" : "2026-01-01T00:01:18Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:01:18Z",
+      "until" : "2026-01-01T00:01:20Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "OPEN",
+      "at" : "2026-01-01T00:01:20Z",
+      "until" : "2026-01-01T00:01:21Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : true
+    }, {
+      "kind" : "WAIT",
+      "at" : "2026-01-01T00:01:20Z",
+      "until" : "2026-01-01T00:01:21Z",
+      "contextId" : null,
+      "keys" : null,
+      "contactId" : null,
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:21Z",
+      "until" : "2026-01-01T00:01:21.250Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:21.250Z",
+      "until" : "2026-01-01T00:01:21.500Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:21.500Z",
+      "until" : "2026-01-01T00:01:21.750Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:21.750Z",
+      "until" : "2026-01-01T00:01:22Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:22Z",
+      "until" : "2026-01-01T00:01:22.250Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:22.250Z",
+      "until" : "2026-01-01T00:01:22.500Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:22.500Z",
+      "until" : "2026-01-01T00:01:22.750Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:22.750Z",
+      "until" : "2026-01-01T00:01:23Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:23Z",
+      "until" : "2026-01-01T00:01:23.250Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:23.250Z",
+      "until" : "2026-01-01T00:01:23.500Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:23.500Z",
+      "until" : "2026-01-01T00:01:23.750Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:23.750Z",
+      "until" : "2026-01-01T00:01:24Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:24Z",
+      "until" : "2026-01-01T00:01:24.250Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:24.250Z",
+      "until" : "2026-01-01T00:01:24.500Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:24.500Z",
+      "until" : "2026-01-01T00:01:24.750Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    }, {
+      "kind" : "CONTINUE",
+      "at" : "2026-01-01T00:01:24.750Z",
+      "until" : "2026-01-01T00:01:25Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : null,
+      "contactId" : "C3",
+      "securityOperation" : false
+    } ],
+    "score" : {
+      "servedContacts" : 1,
+      "usefulSecureTime" : 4.000000000,
+      "controlCpu" : 4.160000000,
+      "managementBytes" : 6080,
+      "newKeys" : 14
+    },
+    "firstAction" : {
+      "kind" : "PREPARE",
+      "at" : "2026-01-01T00:00:00Z",
+      "until" : "2026-01-01T00:00:02Z",
+      "contextId" : {
+        "satelliteId" : "WITNESS-SC",
+        "groundStationId" : "B"
+      },
+      "keys" : {
+        "uplink" : "planner-key:10:WITNESS-SC:1:B:g1:up",
+        "downlink" : "planner-key:10:WITNESS-SC:1:B:g1:down"
+      },
+      "contactId" : null,
+      "securityOperation" : true
+    },
+    "status" : "INCOMPLETE",
+    "exploredNodes" : 10000,
+    "elapsedNanos" : 673126700
+  },
+  "cpuIncludingWarmup" : 4.360000000,
+  "bytesIncludingWarmup" : 6080,
+  "keysIncludingWarmup" : 16
+}

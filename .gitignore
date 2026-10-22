@@ -3,6 +3,43 @@
 /.tools/
 *.log
 
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Reproducible publication exports (keep source JSON, captions and validation)
+/docs/simulation-figures/figures/
+/docs/simulation-figures/data/
+/docs/simulation-figures/latex/
+/docs/simulation-figures/manifest.json
+/docs/simulation-figures.zip
+
+# LaTeX build intermediates (keep .tex sources and reference documents)
+*.aux
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+
+# Temporary and editor backup files
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
 # Local datasets, downloaded snapshots and experiment results
 /data/
 

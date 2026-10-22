@@ -1,0 +1,55 @@
+{
+  "figures": [
+    {
+      "figure": "01_outcomes",
+      "vector_pdf_embedded_fonts": true,
+      "editable_svg_text": true,
+      "png_pixels": [
+        4296,
+        3030
+      ],
+      "png_dpi": 600,
+      "byte_identical_regeneration_all_formats": true,
+      "pdf_render_visually_reviewed": true
+    },
+    {
+      "figure": "02_timeline",
+      "vector_pdf_embedded_fonts": true,
+      "editable_svg_text": true,
+      "png_pixels": [
+        4296,
+        2850
+      ],
+      "png_dpi": 600,
+      "byte_identical_regeneration_all_formats": true,
+      "pdf_render_visually_reviewed": true
+    },
+    {
+      "figure": "03_cost_breakdown",
+      "vector_pdf_embedded_fonts": true,
+      "editable_svg_text": true,
+      "png_pixels": [
+        4296,
+        3300
+      ],
+      "png_dpi": 600,
+      "byte_identical_regeneration_all_formats": true,
+      "pdf_render_visually_reviewed": true
+    },
+    {
+      "figure": "04_cumulative",
+      "vector_pdf_embedded_fonts": true,
+      "editable_svg_text": true,
+      "png_pixels": [
+        4296,
+        3000
+      ],
+      "png_dpi": 600,
+      "byte_identical_regeneration_all_formats": true,
+      "pdf_render_visually_reviewed": true
+    }
+  ],
+  "summary_mismatch_rejected": "X-NEXT CPU: actual=0.33, expected=0.32",
+  "source_hashes_verified": true,
+  "csv_and_latex_byte_identical": true
+}

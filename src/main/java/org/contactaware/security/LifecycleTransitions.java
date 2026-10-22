@@ -150,6 +150,15 @@ public final class LifecycleTransitions {
         return state.replace(at, unkeyed(context), keys);
     }
 
+    /** Deadline enforcement for an unbound candidate, independently of any other generation. */
+    public SecurityState expireUnboundKey(SecurityState state, String keyId, Instant at) {
+        var key = state.key(keyId);
+        for (var context : state.contexts().values())
+            require(!Objects.equals(context.uplink().keyId(), keyId) && !Objects.equals(context.downlink().keyId(), keyId),
+                    "Use expireContext for a bound key");
+        return state.replace(at, null, List.of(deactivate(key, DeactivationReason.EXPIRED, at)));
+    }
+
     private KeyState deactivate(KeyState key, DeactivationReason reason, Instant at) {
         Objects.requireNonNull(reason, "reason");
         require(key.status() == KeyStatus.PRE_ACTIVE || key.status() == KeyStatus.ACTIVE, "Key is already retired");

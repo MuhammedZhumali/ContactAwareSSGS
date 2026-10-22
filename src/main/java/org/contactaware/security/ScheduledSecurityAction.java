@@ -11,7 +11,6 @@ public record ScheduledSecurityAction(SecurityAction action, Instant scheduledAt
         Objects.requireNonNull(scheduledAt, "scheduledAt");
         Objects.requireNonNull(contextId, "contextId");
         SecurityChecks.text(reason, "decision reason");
-        boolean needsNewKeys = action == SecurityAction.PREPARE || action == SecurityAction.ESTABLISH || action == SecurityAction.ROTATE;
-        SecurityChecks.require(needsNewKeys == (newKeys != null), "New key IDs must match the action type");
+        SecurityChecks.require(action.needsKeyIds() == (newKeys != null), "New key IDs must match the action type");
     }
 }

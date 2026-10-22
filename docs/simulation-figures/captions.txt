@@ -1,0 +1,11 @@
+Service coverage and resource trade-offs
+Deterministic execution of predefined Next-contact-aware and Multi-contact plans for synthetic sequences X (A--B--A) and Y (A--B--B). Multi serves an additional contact in X while consuming more control CPU and management traffic and yielding slightly less total useful secure time. Both plans coincide in Y. CPU includes common ground preparation; these are model outputs, not measurements or automatically selected policy results.
+
+Executed operations and useful secure transmission
+Execution timelines reconstructed from operation and payload events. All gaps use the same linear time scale. Bars distinguish ground preparation, online security operations and completed secure payload frames. In X, Multi installs, switches and opens A during C1, allowing reuse in C3. Next leaves C3 unserved after the old A key deadline. In Y, both plans reuse B in C3. I denotes INSTALL, S denotes SWITCH, and O/R denotes OPEN or REUSE. The common PREPARE interval is included before C1. Local zero-duration STOP/EXPIRE events do not occupy bars.
+
+Security-management cost decomposition
+Costs reconstructed by summing actual journal entries. Ground CPU is split between common PREPARE and subsequent online operations; spacecraft CPU is reported separately. Management bytes are split by direction. Radio occupancy and the sum of operation elapsed durations are distinct quantities. Elapsed duration includes waiting and is not the total observation horizon. Common PREPARE is charged to every plan, including when the prepared material is unused. Data-plane cryptographic CPU and decision-search CPU are excluded.
+
+Cumulative service and useful secure time
+Cumulative served contacts and useful secure transmission reconstructed from events. For this display, a served contact is credited at contact closure; payload time is credited at each completed frame. Shaded regions are contact windows. Y traces coincide; the dashed Multi trace is overlaid on Next. X illustrates why the primary objective of served-contact count must be reported separately from total useful time. No confidence intervals are shown because each trace is a deterministic execution, not a stochastic sample.

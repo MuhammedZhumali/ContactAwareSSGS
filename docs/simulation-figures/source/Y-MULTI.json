@@ -1,0 +1,6502 @@
+{
+  "scenario" : "Y-MULTI",
+  "endedAt" : "2026-01-01T00:01:25Z",
+  "finalState" : {
+    "satelliteId" : "WITNESS-SC",
+    "asOf" : "2026-01-01T00:01:25Z",
+    "contexts" : {
+      "ContextId[satelliteId=WITNESS-SC, groundStationId=A]" : {
+        "id" : {
+          "satelliteId" : "WITNESS-SC",
+          "groundStationId" : "A"
+        },
+        "uplink" : {
+          "id" : "A-SA-up",
+          "contextId" : {
+            "satelliteId" : "WITNESS-SC",
+            "groundStationId" : "A"
+          },
+          "direction" : "UPLINK",
+          "status" : "UNKEYED",
+          "keyId" : null,
+          "generation" : 1,
+          "nextSequenceNumber" : 39,
+          "peerSynchronized" : false
+        },
+        "downlink" : {
+          "id" : "A-SA-down",
+          "contextId" : {
+            "satelliteId" : "WITNESS-SC",
+            "groundStationId" : "A"
+          },
+          "direction" : "DOWNLINK",
+          "status" : "UNKEYED",
+          "keyId" : null,
+          "generation" : 1,
+          "nextSequenceNumber" : 39,
+          "peerSynchronized" : false
+        },
+        "activeContact" : null,
+        "openedAt" : null,
+        "uplinkFramesInSession" : 0,
+        "downlinkFramesInSession" : 0
+      },
+      "ContextId[satelliteId=WITNESS-SC, groundStationId=B]" : {
+        "id" : {
+          "satelliteId" : "WITNESS-SC",
+          "groundStationId" : "B"
+        },
+        "uplink" : {
+          "id" : "B-SA-up",
+          "contextId" : {
+            "satelliteId" : "WITNESS-SC",
+            "groundStationId" : "B"
+          },
+          "direction" : "UPLINK",
+          "status" : "KEYED",
+          "keyId" : "B-old-up",
+          "generation" : 1,
+          "nextSequenceNumber" : 47,
+          "peerSynchronized" : true
+        },
+        "downlink" : {
+          "id" : "B-SA-down",
+          "contextId" : {
+            "satelliteId" : "WITNESS-SC",
+            "groundStationId" : "B"
+          },
+          "direction" : "DOWNLINK",
+          "status" : "KEYED",
+          "keyId" : "B-old-down",
+          "generation" : 1,
+          "nextSequenceNumber" : 47,
+          "peerSynchronized" : true
+        },
+        "activeContact" : null,
+        "openedAt" : null,
+        "uplinkFramesInSession" : 0,
+        "downlinkFramesInSession" : 0
+      }
+    },
+    "keys" : {
+      "A-new-down" : {
+        "id" : "A-new-down",
+        "contextId" : {
+          "satelliteId" : "WITNESS-SC",
+          "groundStationId" : "A"
+        },
+        "direction" : "DOWNLINK",
+        "createdAt" : "2026-01-01T00:00:00Z",
+        "notAfter" : "2026-01-01T00:06:40Z",
+        "activatedAt" : null,
+        "status" : "PRE_ACTIVE",
+        "installedOnSpacecraft" : false,
+        "deactivatedAt" : null,
+        "deactivationReason" : null,
+        "destroyedAt" : null,
+        "nextNonceCounter" : 0,
+        "lastSuccessfulContactEnd" : null
+      },
+      "A-new-up" : {
+        "id" : "A-new-up",
+        "contextId" : {
+          "satelliteId" : "WITNESS-SC",
+          "groundStationId" : "A"
+        },
+        "direction" : "UPLINK",
+        "createdAt" : "2026-01-01T00:00:00Z",
+        "notAfter" : "2026-01-01T00:06:40Z",
+        "activatedAt" : null,
+        "status" : "PRE_ACTIVE",
+        "installedOnSpacecraft" : false,
+        "deactivatedAt" : null,
+        "deactivationReason" : null,
+        "destroyedAt" : null,
+        "nextNonceCounter" : 0,
+        "lastSuccessfulContactEnd" : null
+      },
+      "A-old-down" : {
+        "id" : "A-old-down",
+        "contextId" : {
+          "satelliteId" : "WITNESS-SC",
+          "groundStationId" : "A"
+        },
+        "direction" : "DOWNLINK",
+        "createdAt" : "2025-12-31T23:58:30Z",
+        "notAfter" : "2026-01-01T00:01:10Z",
+        "activatedAt" : "2025-12-31T23:58:40Z",
+        "status" : "DEACTIVATED",
+        "installedOnSpacecraft" : true,
+        "deactivatedAt" : "2026-01-01T00:01:10Z",
+        "deactivationReason" : "EXPIRED",
+        "destroyedAt" : null,
+        "nextNonceCounter" : 39,
+        "lastSuccessfulContactEnd" : "2026-01-01T00:00:20Z"
+      },
+      "A-old-up" : {
+        "id" : "A-old-up",
+        "contextId" : {
+          "satelliteId" : "WITNESS-SC",
+          "groundStationId" : "A"
+        },
+        "direction" : "UPLINK",
+        "createdAt" : "2025-12-31T23:58:30Z",
+        "notAfter" : "2026-01-01T00:01:10Z",
+        "activatedAt" : "2025-12-31T23:58:40Z",
+        "status" : "DEACTIVATED",
+        "installedOnSpacecraft" : true,
+        "deactivatedAt" : "2026-01-01T00:01:10Z",
+        "deactivationReason" : "EXPIRED",
+        "destroyedAt" : null,
+        "nextNonceCounter" : 39,
+        "lastSuccessfulContactEnd" : "2026-01-01T00:00:20Z"
+      },
+      "B-old-down" : {
+        "id" : "B-old-down",
+        "contextId" : {
+          "satelliteId" : "WITNESS-SC",
+          "groundStationId" : "B"
+        },
+        "direction" : "DOWNLINK",
+        "createdAt" : "2025-12-31T23:59:20Z",
+        "notAfter" : "2026-01-01T00:02:00Z",
+        "activatedAt" : "2025-12-31T23:59:30Z",
+        "status" : "ACTIVE",
+        "installedOnSpacecraft" : true,
+        "deactivatedAt" : null,
+        "deactivationReason" : null,
+        "destroyedAt" : null,
+        "nextNonceCounter" : 47,
+        "lastSuccessfulContactEnd" : "2026-01-01T00:01:25Z"
+      },
+      "B-old-up" : {
+        "id" : "B-old-up",
+        "contextId" : {
+          "satelliteId" : "WITNESS-SC",
+          "groundStationId" : "B"
+        },
+        "direction" : "UPLINK",
+        "createdAt" : "2025-12-31T23:59:20Z",
+        "notAfter" : "2026-01-01T00:02:00Z",
+        "activatedAt" : "2025-12-31T23:59:30Z",
+        "status" : "ACTIVE",
+        "installedOnSpacecraft" : true,
+        "deactivatedAt" : null,
+        "deactivationReason" : null,
+        "destroyedAt" : null,
+        "nextNonceCounter" : 47,
+        "lastSuccessfulContactEnd" : "2026-01-01T00:01:25Z"
+      }
+    }
+  },
+  "events" : [ {
+    "sequence" : 0,
+    "at" : "2025-12-31T23:59:58Z",
+    "type" : "ACTION_STARTED",
+    "operationId" : "warmup",
+    "action" : "PREPARE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : null,
+    "keyIds" : {
+      "uplink" : "A-new-up",
+      "downlink" : "A-new-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Predetermined witness plan"
+  }, {
+    "sequence" : 1,
+    "at" : "2025-12-31T23:59:58Z",
+    "type" : "STEP_STARTED",
+    "operationId" : "warmup",
+    "action" : "PREPARE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : null,
+    "keyIds" : {
+      "uplink" : "A-new-up",
+      "downlink" : "A-new-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Admitted; no state checkpoint yet"
+  }, {
+    "sequence" : 2,
+    "at" : "2026-01-01T00:00:00Z",
+    "type" : "CONTACT_STARTED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : null,
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Contact begins"
+  }, {
+    "sequence" : 3,
+    "at" : "2026-01-01T00:00:00Z",
+    "type" : "STEP_COMPLETED",
+    "operationId" : "warmup",
+    "action" : "PREPARE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : null,
+    "keyIds" : {
+      "uplink" : "A-new-up",
+      "downlink" : "A-new-down"
+    },
+    "usage" : {
+      "elapsed" : 2.000000000,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.200000000,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 2,
+    "failureCode" : null,
+    "detail" : "Confirmed checkpoint"
+  }, {
+    "sequence" : 4,
+    "at" : "2026-01-01T00:00:00Z",
+    "type" : "ACTION_COMPLETED",
+    "operationId" : "warmup",
+    "action" : "PREPARE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : null,
+    "keyIds" : {
+      "uplink" : "A-new-up",
+      "downlink" : "A-new-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "All requested steps confirmed"
+  }, {
+    "sequence" : 5,
+    "at" : "2026-01-01T00:00:00Z",
+    "type" : "ACTION_STARTED",
+    "operationId" : "C1-reuse",
+    "action" : "REUSE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : null,
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Predetermined witness plan"
+  }, {
+    "sequence" : 6,
+    "at" : "2026-01-01T00:00:00Z",
+    "type" : "STEP_STARTED",
+    "operationId" : "C1-reuse",
+    "action" : "REUSE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Admitted; no state checkpoint yet"
+  }, {
+    "sequence" : 7,
+    "at" : "2026-01-01T00:00:01Z",
+    "type" : "STEP_COMPLETED",
+    "operationId" : "C1-reuse",
+    "action" : "REUSE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 1.000000000,
+      "spacecraftCpu" : 0.040000000,
+      "groundCpu" : 0.020000000,
+      "radioOccupancy" : 0.200000000,
+      "uplinkBytes" : 40,
+      "downlinkBytes" : 40
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Confirmed checkpoint"
+  }, {
+    "sequence" : 8,
+    "at" : "2026-01-01T00:00:01Z",
+    "type" : "ACTION_COMPLETED",
+    "operationId" : "C1-reuse",
+    "action" : "REUSE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : null,
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "All requested steps confirmed"
+  }, {
+    "sequence" : 9,
+    "at" : "2026-01-01T00:00:01.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 10,
+    "at" : "2026-01-01T00:00:01.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 11,
+    "at" : "2026-01-01T00:00:01.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 12,
+    "at" : "2026-01-01T00:00:02Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 13,
+    "at" : "2026-01-01T00:00:02.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 14,
+    "at" : "2026-01-01T00:00:02.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 15,
+    "at" : "2026-01-01T00:00:02.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 16,
+    "at" : "2026-01-01T00:00:03Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 17,
+    "at" : "2026-01-01T00:00:03.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 18,
+    "at" : "2026-01-01T00:00:03.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 19,
+    "at" : "2026-01-01T00:00:03.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 20,
+    "at" : "2026-01-01T00:00:04Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 21,
+    "at" : "2026-01-01T00:00:04.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 22,
+    "at" : "2026-01-01T00:00:04.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 23,
+    "at" : "2026-01-01T00:00:04.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 24,
+    "at" : "2026-01-01T00:00:05Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 25,
+    "at" : "2026-01-01T00:00:05.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 26,
+    "at" : "2026-01-01T00:00:05.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 27,
+    "at" : "2026-01-01T00:00:05.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 28,
+    "at" : "2026-01-01T00:00:06Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 29,
+    "at" : "2026-01-01T00:00:06.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 30,
+    "at" : "2026-01-01T00:00:06.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 31,
+    "at" : "2026-01-01T00:00:06.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 32,
+    "at" : "2026-01-01T00:00:07Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 33,
+    "at" : "2026-01-01T00:00:07.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 34,
+    "at" : "2026-01-01T00:00:07.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 35,
+    "at" : "2026-01-01T00:00:07.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 36,
+    "at" : "2026-01-01T00:00:08Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 37,
+    "at" : "2026-01-01T00:00:08.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 38,
+    "at" : "2026-01-01T00:00:08.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 39,
+    "at" : "2026-01-01T00:00:08.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 40,
+    "at" : "2026-01-01T00:00:09Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 41,
+    "at" : "2026-01-01T00:00:09.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 42,
+    "at" : "2026-01-01T00:00:09.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 43,
+    "at" : "2026-01-01T00:00:09.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 44,
+    "at" : "2026-01-01T00:00:10Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 45,
+    "at" : "2026-01-01T00:00:10.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 46,
+    "at" : "2026-01-01T00:00:10.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 47,
+    "at" : "2026-01-01T00:00:10.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 48,
+    "at" : "2026-01-01T00:00:11Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 49,
+    "at" : "2026-01-01T00:00:11.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 50,
+    "at" : "2026-01-01T00:00:11.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 51,
+    "at" : "2026-01-01T00:00:11.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 52,
+    "at" : "2026-01-01T00:00:12Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 53,
+    "at" : "2026-01-01T00:00:12.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 54,
+    "at" : "2026-01-01T00:00:12.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 55,
+    "at" : "2026-01-01T00:00:12.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 56,
+    "at" : "2026-01-01T00:00:13Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 57,
+    "at" : "2026-01-01T00:00:13.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 58,
+    "at" : "2026-01-01T00:00:13.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 59,
+    "at" : "2026-01-01T00:00:13.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 60,
+    "at" : "2026-01-01T00:00:14Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 61,
+    "at" : "2026-01-01T00:00:14.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 62,
+    "at" : "2026-01-01T00:00:14.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 63,
+    "at" : "2026-01-01T00:00:14.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 64,
+    "at" : "2026-01-01T00:00:15Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 65,
+    "at" : "2026-01-01T00:00:15.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 66,
+    "at" : "2026-01-01T00:00:15.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 67,
+    "at" : "2026-01-01T00:00:15.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 68,
+    "at" : "2026-01-01T00:00:16Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 69,
+    "at" : "2026-01-01T00:00:16.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 70,
+    "at" : "2026-01-01T00:00:16.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 71,
+    "at" : "2026-01-01T00:00:16.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 72,
+    "at" : "2026-01-01T00:00:17Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 73,
+    "at" : "2026-01-01T00:00:17.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 74,
+    "at" : "2026-01-01T00:00:17.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 75,
+    "at" : "2026-01-01T00:00:17.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 76,
+    "at" : "2026-01-01T00:00:18Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 77,
+    "at" : "2026-01-01T00:00:18.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 78,
+    "at" : "2026-01-01T00:00:18.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 79,
+    "at" : "2026-01-01T00:00:18.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 80,
+    "at" : "2026-01-01T00:00:19Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 81,
+    "at" : "2026-01-01T00:00:19.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 82,
+    "at" : "2026-01-01T00:00:19.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 83,
+    "at" : "2026-01-01T00:00:19.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 84,
+    "at" : "2026-01-01T00:00:20Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 85,
+    "at" : "2026-01-01T00:00:20Z",
+    "type" : "STEP_STARTED",
+    "operationId" : "auto-stop:C1",
+    "action" : "STOP",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Local stop"
+  }, {
+    "sequence" : 86,
+    "at" : "2026-01-01T00:00:20Z",
+    "type" : "STEP_COMPLETED",
+    "operationId" : "auto-stop:C1",
+    "action" : "STOP",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Counters and successful-use history retained"
+  }, {
+    "sequence" : 87,
+    "at" : "2026-01-01T00:00:20Z",
+    "type" : "CONTEXT_STOPPED",
+    "operationId" : null,
+    "action" : "STOP",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Local session closed"
+  }, {
+    "sequence" : 88,
+    "at" : "2026-01-01T00:00:20Z",
+    "type" : "CONTACT_ENDED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : "C1",
+    "keyIds" : null,
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Contact ends"
+  }, {
+    "sequence" : 89,
+    "at" : "2026-01-01T00:00:30Z",
+    "type" : "CONTACT_STARTED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : null,
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Contact begins"
+  }, {
+    "sequence" : 90,
+    "at" : "2026-01-01T00:00:30Z",
+    "type" : "ACTION_STARTED",
+    "operationId" : "C2-reuse",
+    "action" : "REUSE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : null,
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Predetermined witness plan"
+  }, {
+    "sequence" : 91,
+    "at" : "2026-01-01T00:00:30Z",
+    "type" : "STEP_STARTED",
+    "operationId" : "C2-reuse",
+    "action" : "REUSE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Admitted; no state checkpoint yet"
+  }, {
+    "sequence" : 92,
+    "at" : "2026-01-01T00:00:31Z",
+    "type" : "STEP_COMPLETED",
+    "operationId" : "C2-reuse",
+    "action" : "REUSE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 1.000000000,
+      "spacecraftCpu" : 0.040000000,
+      "groundCpu" : 0.020000000,
+      "radioOccupancy" : 0.200000000,
+      "uplinkBytes" : 40,
+      "downlinkBytes" : 40
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Confirmed checkpoint"
+  }, {
+    "sequence" : 93,
+    "at" : "2026-01-01T00:00:31Z",
+    "type" : "ACTION_COMPLETED",
+    "operationId" : "C2-reuse",
+    "action" : "REUSE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : null,
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "All requested steps confirmed"
+  }, {
+    "sequence" : 94,
+    "at" : "2026-01-01T00:00:31.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 95,
+    "at" : "2026-01-01T00:00:31.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 96,
+    "at" : "2026-01-01T00:00:31.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 97,
+    "at" : "2026-01-01T00:00:32Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 98,
+    "at" : "2026-01-01T00:00:32.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 99,
+    "at" : "2026-01-01T00:00:32.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 100,
+    "at" : "2026-01-01T00:00:32.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 101,
+    "at" : "2026-01-01T00:00:33Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 102,
+    "at" : "2026-01-01T00:00:33.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 103,
+    "at" : "2026-01-01T00:00:33.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 104,
+    "at" : "2026-01-01T00:00:33.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 105,
+    "at" : "2026-01-01T00:00:34Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 106,
+    "at" : "2026-01-01T00:00:34.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 107,
+    "at" : "2026-01-01T00:00:34.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 108,
+    "at" : "2026-01-01T00:00:34.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 109,
+    "at" : "2026-01-01T00:00:35Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 110,
+    "at" : "2026-01-01T00:00:35.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 111,
+    "at" : "2026-01-01T00:00:35.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 112,
+    "at" : "2026-01-01T00:00:35.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 113,
+    "at" : "2026-01-01T00:00:36Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 114,
+    "at" : "2026-01-01T00:00:36.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 115,
+    "at" : "2026-01-01T00:00:36.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 116,
+    "at" : "2026-01-01T00:00:36.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 117,
+    "at" : "2026-01-01T00:00:37Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 118,
+    "at" : "2026-01-01T00:00:37.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 119,
+    "at" : "2026-01-01T00:00:37.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 120,
+    "at" : "2026-01-01T00:00:37.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 121,
+    "at" : "2026-01-01T00:00:38Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 122,
+    "at" : "2026-01-01T00:00:38.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 123,
+    "at" : "2026-01-01T00:00:38.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 124,
+    "at" : "2026-01-01T00:00:38.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 125,
+    "at" : "2026-01-01T00:00:39Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 126,
+    "at" : "2026-01-01T00:00:39.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 127,
+    "at" : "2026-01-01T00:00:39.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 128,
+    "at" : "2026-01-01T00:00:39.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 129,
+    "at" : "2026-01-01T00:00:40Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 130,
+    "at" : "2026-01-01T00:00:40.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 131,
+    "at" : "2026-01-01T00:00:40.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 132,
+    "at" : "2026-01-01T00:00:40.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 133,
+    "at" : "2026-01-01T00:00:41Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 134,
+    "at" : "2026-01-01T00:00:41.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 135,
+    "at" : "2026-01-01T00:00:41.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 136,
+    "at" : "2026-01-01T00:00:41.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 137,
+    "at" : "2026-01-01T00:00:42Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 138,
+    "at" : "2026-01-01T00:00:42.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 139,
+    "at" : "2026-01-01T00:00:42.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 140,
+    "at" : "2026-01-01T00:00:42.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 141,
+    "at" : "2026-01-01T00:00:43Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 142,
+    "at" : "2026-01-01T00:00:43.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 143,
+    "at" : "2026-01-01T00:00:43.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 144,
+    "at" : "2026-01-01T00:00:43.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 145,
+    "at" : "2026-01-01T00:00:44Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 146,
+    "at" : "2026-01-01T00:00:44.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 147,
+    "at" : "2026-01-01T00:00:44.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 148,
+    "at" : "2026-01-01T00:00:44.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 149,
+    "at" : "2026-01-01T00:00:45Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 150,
+    "at" : "2026-01-01T00:00:45.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 151,
+    "at" : "2026-01-01T00:00:45.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 152,
+    "at" : "2026-01-01T00:00:45.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 153,
+    "at" : "2026-01-01T00:00:46Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 154,
+    "at" : "2026-01-01T00:00:46.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 155,
+    "at" : "2026-01-01T00:00:46.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 156,
+    "at" : "2026-01-01T00:00:46.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 157,
+    "at" : "2026-01-01T00:00:47Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 158,
+    "at" : "2026-01-01T00:00:47.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 159,
+    "at" : "2026-01-01T00:00:47.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 160,
+    "at" : "2026-01-01T00:00:47.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 161,
+    "at" : "2026-01-01T00:00:48Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 162,
+    "at" : "2026-01-01T00:00:48.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 163,
+    "at" : "2026-01-01T00:00:48.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 164,
+    "at" : "2026-01-01T00:00:48.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 165,
+    "at" : "2026-01-01T00:00:49Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 166,
+    "at" : "2026-01-01T00:00:49.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 167,
+    "at" : "2026-01-01T00:00:49.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 168,
+    "at" : "2026-01-01T00:00:49.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 169,
+    "at" : "2026-01-01T00:00:50Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 170,
+    "at" : "2026-01-01T00:00:50Z",
+    "type" : "STEP_STARTED",
+    "operationId" : "auto-stop:C2",
+    "action" : "STOP",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Local stop"
+  }, {
+    "sequence" : 171,
+    "at" : "2026-01-01T00:00:50Z",
+    "type" : "STEP_COMPLETED",
+    "operationId" : "auto-stop:C2",
+    "action" : "STOP",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Counters and successful-use history retained"
+  }, {
+    "sequence" : 172,
+    "at" : "2026-01-01T00:00:50Z",
+    "type" : "CONTEXT_STOPPED",
+    "operationId" : null,
+    "action" : "STOP",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Local session closed"
+  }, {
+    "sequence" : 173,
+    "at" : "2026-01-01T00:00:50Z",
+    "type" : "CONTACT_ENDED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C2",
+    "keyIds" : null,
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Contact ends"
+  }, {
+    "sequence" : 174,
+    "at" : "2026-01-01T00:01:10Z",
+    "type" : "STEP_STARTED",
+    "operationId" : "auto-expire:A-old-down",
+    "action" : "EXPIRE_CONTEXT",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : null,
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Mandatory deadline gate"
+  }, {
+    "sequence" : 175,
+    "at" : "2026-01-01T00:01:10Z",
+    "type" : "STEP_COMPLETED",
+    "operationId" : "auto-expire:A-old-down",
+    "action" : "EXPIRE_CONTEXT",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : null,
+    "keyIds" : {
+      "uplink" : "A-old-up",
+      "downlink" : "A-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Bound pair retired; staged material retained"
+  }, {
+    "sequence" : 176,
+    "at" : "2026-01-01T00:01:10Z",
+    "type" : "KEY_EXPIRED",
+    "operationId" : null,
+    "action" : "EXPIRE_CONTEXT",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "A"
+    },
+    "contactId" : null,
+    "keyIds" : null,
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : "KEY_EXPIRED",
+    "detail" : "A-old-down (paired context retired)"
+  }, {
+    "sequence" : 177,
+    "at" : "2026-01-01T00:01:20Z",
+    "type" : "CONTACT_STARTED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : null,
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Contact begins"
+  }, {
+    "sequence" : 178,
+    "at" : "2026-01-01T00:01:20Z",
+    "type" : "ACTION_STARTED",
+    "operationId" : "C3-reuse",
+    "action" : "REUSE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : null,
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Predetermined witness plan"
+  }, {
+    "sequence" : 179,
+    "at" : "2026-01-01T00:01:20Z",
+    "type" : "STEP_STARTED",
+    "operationId" : "C3-reuse",
+    "action" : "REUSE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Admitted; no state checkpoint yet"
+  }, {
+    "sequence" : 180,
+    "at" : "2026-01-01T00:01:21Z",
+    "type" : "STEP_COMPLETED",
+    "operationId" : "C3-reuse",
+    "action" : "REUSE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 1.000000000,
+      "spacecraftCpu" : 0.040000000,
+      "groundCpu" : 0.020000000,
+      "radioOccupancy" : 0.200000000,
+      "uplinkBytes" : 40,
+      "downlinkBytes" : 40
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Confirmed checkpoint"
+  }, {
+    "sequence" : 181,
+    "at" : "2026-01-01T00:01:21Z",
+    "type" : "ACTION_COMPLETED",
+    "operationId" : "C3-reuse",
+    "action" : "REUSE",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : null,
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "All requested steps confirmed"
+  }, {
+    "sequence" : 182,
+    "at" : "2026-01-01T00:01:21.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 183,
+    "at" : "2026-01-01T00:01:21.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 184,
+    "at" : "2026-01-01T00:01:21.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 185,
+    "at" : "2026-01-01T00:01:22Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 186,
+    "at" : "2026-01-01T00:01:22.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 187,
+    "at" : "2026-01-01T00:01:22.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 188,
+    "at" : "2026-01-01T00:01:22.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 189,
+    "at" : "2026-01-01T00:01:23Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 190,
+    "at" : "2026-01-01T00:01:23.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 191,
+    "at" : "2026-01-01T00:01:23.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 192,
+    "at" : "2026-01-01T00:01:23.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 193,
+    "at" : "2026-01-01T00:01:24Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 194,
+    "at" : "2026-01-01T00:01:24.250Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 195,
+    "at" : "2026-01-01T00:01:24.500Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 196,
+    "at" : "2026-01-01T00:01:24.750Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 100,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 1,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 197,
+    "at" : "2026-01-01T00:01:25Z",
+    "type" : "PAYLOAD_TRANSFERRED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.250000000,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 100,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 1,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Complete protected frame"
+  }, {
+    "sequence" : 198,
+    "at" : "2026-01-01T00:01:25Z",
+    "type" : "STEP_STARTED",
+    "operationId" : "auto-stop:C3",
+    "action" : "STOP",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Local stop"
+  }, {
+    "sequence" : 199,
+    "at" : "2026-01-01T00:01:25Z",
+    "type" : "STEP_COMPLETED",
+    "operationId" : "auto-stop:C3",
+    "action" : "STOP",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Counters and successful-use history retained"
+  }, {
+    "sequence" : 200,
+    "at" : "2026-01-01T00:01:25Z",
+    "type" : "CONTEXT_STOPPED",
+    "operationId" : null,
+    "action" : "STOP",
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : {
+      "uplink" : "B-old-up",
+      "downlink" : "B-old-down"
+    },
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Local session closed"
+  }, {
+    "sequence" : 201,
+    "at" : "2026-01-01T00:01:25Z",
+    "type" : "CONTACT_ENDED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : {
+      "satelliteId" : "WITNESS-SC",
+      "groundStationId" : "B"
+    },
+    "contactId" : "C3",
+    "keyIds" : null,
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "Contact ends"
+  }, {
+    "sequence" : 202,
+    "at" : "2026-01-01T00:01:25Z",
+    "type" : "SIMULATION_ENDED",
+    "operationId" : null,
+    "action" : null,
+    "contextId" : null,
+    "contactId" : null,
+    "keyIds" : null,
+    "usage" : {
+      "elapsed" : 0.0,
+      "spacecraftCpu" : 0.0,
+      "groundCpu" : 0.0,
+      "radioOccupancy" : 0.0,
+      "uplinkBytes" : 0,
+      "downlinkBytes" : 0
+    },
+    "usefulTime" : 0.0,
+    "uplinkPayloadBytes" : 0,
+    "downlinkPayloadBytes" : 0,
+    "uplinkFrames" : 0,
+    "downlinkFrames" : 0,
+    "createdKeys" : 0,
+    "failureCode" : null,
+    "detail" : "No fabricated cleanup after horizon"
+  } ],
+  "metrics" : {
+    "servedContacts" : 3,
+    "usefulSecureTime" : 42.000000000,
+    "controlCosts" : {
+      "elapsed" : 5.000000000,
+      "spacecraftCpu" : 0.120000000,
+      "groundCpu" : 0.260000000,
+      "radioOccupancy" : 0.600000000,
+      "uplinkBytes" : 120,
+      "downlinkBytes" : 120
+    },
+    "createdKeys" : 2,
+    "startedOperations" : {
+      "PREPARE" : 1,
+      "REUSE" : 3,
+      "STOP" : 3,
+      "EXPIRE_CONTEXT" : 1
+    },
+    "completedOperations" : {
+      "PREPARE" : 1,
+      "REUSE" : 3,
+      "STOP" : 3,
+      "EXPIRE_CONTEXT" : 1
+    },
+    "completedActions" : {
+      "PREPARE" : 1,
+      "REUSE" : 3
+    },
+    "operationFailures" : { },
+    "contacts" : [ {
+      "contactId" : "C1",
+      "served" : true,
+      "usefulTime" : 19.000000000,
+      "uplinkBytes" : 3800,
+      "downlinkBytes" : 3800,
+      "uplinkFrames" : 38,
+      "downlinkFrames" : 38,
+      "failureReasons" : [ ]
+    }, {
+      "contactId" : "C2",
+      "served" : true,
+      "usefulTime" : 19.000000000,
+      "uplinkBytes" : 3800,
+      "downlinkBytes" : 3800,
+      "uplinkFrames" : 38,
+      "downlinkFrames" : 38,
+      "failureReasons" : [ ]
+    }, {
+      "contactId" : "C3",
+      "served" : true,
+      "usefulTime" : 4.000000000,
+      "uplinkBytes" : 800,
+      "downlinkBytes" : 800,
+      "uplinkFrames" : 8,
+      "downlinkFrames" : 8,
+      "failureReasons" : [ ]
+    } ]
+  },
+  "uncertainContexts" : [ ],
+  "costProfile" : "synthetic-horizon-witness-v1",
+  "provenance" : "SYNTHETIC_ASSUMPTION"
+}

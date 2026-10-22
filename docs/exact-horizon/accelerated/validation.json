@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-22",
+  "javaHome": "C:\\Program Files\\Java\\jdk-21.0.10",
+  "mode": "accelerated",
+  "heap": "1024m",
+  "maxNodesPerObservation": 2000000,
+  "maxElapsedMillisPerObservation": 60000,
+  "command": "java -Xmx1024m -cp target/contact-aware-contacts.jar org.contactaware.security.simulation.HorizonPlannerMain target/exact-accelerated-release-20261022 2000000 60000",
+  "jarSha256": "9B8B3D8437400C30FC6E143CA5920750EE90636FD5A64488BE4B65671D6E56E5",
+  "validation": {
+    "mavenGoal": "verify",
+    "tests": 219,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "allFourComplete": true,
+    "allFourReplayedByCli": true,
+    "nextXYPlansAndScoresEqual": true,
+    "multiXInstallsAInC1": true,
+    "multiYHasNoInstall": true,
+    "sameCanonicalPlansAndScoresAsEarlierCompleteWeakerBoundRun": true
+  },
+  "caveats": [
+    "Single invocation on each fixed visible horizon; not receding-horizon policies.",
+    "Single sequential timing sample in one JVM; includes warmup effects.",
+    "Score excludes the common root preparation: CPU 0.20 s and 2 created keys; experiment files separately include it.",
+    "Costs are synthetic. Completeness applies to finite allowed actions and start times with nominal future outcomes."
+  ],
+  "resultSha256": [
+    {
+      "file": "summary.json",
+      "sha256": "06AA97B19914EC9505168653660B083AEA945CDF1D0C866EA94571D2A4DC5431"
+    },
+    {
+      "file": "X-MULTI.json",
+      "sha256": "D0323167CD2961768A731670143F94E8A5C48FFEF5BFA480B4CFE24C5B1CD97E"
+    },
+    {
+      "file": "X-NEXT.json",
+      "sha256": "9D3E918AD7433E100B1B8B2B6267D31F86E0BC2944863AFBC7E1B2AB9EF67C58"
+    },
+    {
+      "file": "Y-MULTI.json",
+      "sha256": "4117F7C17F8DD382007FAE5624D4DD9837C9B5E71EF506722A74D8E85656957F"
+    },
+    {
+      "file": "Y-NEXT.json",
+      "sha256": "696A1F1A34BD37949346939DE5F3DF0EB6132A360BA66587C73F9C5D2702C383"
+    }
+  ]
+}

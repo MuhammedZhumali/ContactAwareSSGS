@@ -1,0 +1,58 @@
+{
+  "accounting" : "Includes common PREPARE warmup; excludes earlier common provisioning, data-plane CPU and planner CPU",
+  "plans" : "Predefined operations, not implemented policies or optimizer",
+  "provenance" : "SYNTHETIC_ASSUMPTION",
+  "results" : [ {
+    "scenario" : "X-NEXT",
+    "served" : 2,
+    "usefulSeconds" : 38.0,
+    "groundCpuSeconds" : 0.24,
+    "spacecraftCpuSeconds" : 0.08,
+    "cpuSeconds" : 0.32,
+    "managementRadioSeconds" : 0.4,
+    "operationElapsedSeconds" : 4.0,
+    "uplinkManagementBytes" : 80,
+    "downlinkManagementBytes" : 80,
+    "managementBytes" : 160,
+    "createdKeys" : 2
+  }, {
+    "scenario" : "X-MULTI",
+    "served" : 3,
+    "usefulSeconds" : 37.0,
+    "groundCpuSeconds" : 0.41,
+    "spacecraftCpuSeconds" : 0.42,
+    "cpuSeconds" : 0.83,
+    "managementRadioSeconds" : 3.1,
+    "operationElapsedSeconds" : 10.0,
+    "uplinkManagementBytes" : 820,
+    "downlinkManagementBytes" : 420,
+    "managementBytes" : 1240,
+    "createdKeys" : 2
+  }, {
+    "scenario" : "Y-NEXT",
+    "served" : 3,
+    "usefulSeconds" : 42.0,
+    "groundCpuSeconds" : 0.26,
+    "spacecraftCpuSeconds" : 0.12,
+    "cpuSeconds" : 0.38,
+    "managementRadioSeconds" : 0.6,
+    "operationElapsedSeconds" : 5.0,
+    "uplinkManagementBytes" : 120,
+    "downlinkManagementBytes" : 120,
+    "managementBytes" : 240,
+    "createdKeys" : 2
+  }, {
+    "scenario" : "Y-MULTI",
+    "served" : 3,
+    "usefulSeconds" : 42.0,
+    "groundCpuSeconds" : 0.26,
+    "spacecraftCpuSeconds" : 0.12,
+    "cpuSeconds" : 0.38,
+    "managementRadioSeconds" : 0.6,
+    "operationElapsedSeconds" : 5.0,
+    "uplinkManagementBytes" : 120,
+    "downlinkManagementBytes" : 120,
+    "managementBytes" : 240,
+    "createdKeys" : 2
+  } ]
+}

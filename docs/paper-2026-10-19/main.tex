@@ -1,0 +1,302 @@
+\documentclass[conference]{IEEEtran}
+% Draft for research supervision; remove TODO notes and verify results before submission.
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+% Supervisor draft: preserves the original title, author and reference keys.
+% Updated to the implemented lifecycle model; policy experiments remain planned.
+% Bibliographic entries retained from the supplied draft; final metadata audit pending.
+\newcommand{\drafttodo}[1]{\par\smallskip\noindent{\color{blue!65!black}\footnotesize\textbf{[TODO -- next phase:} #1\textbf{]}}\par\smallskip}
+\begin{document}
+\title{Predictive Multi-Contact Security Lifecycle Management for LEO Spacecraft--Ground Communications}
+% TODO: Replace the placeholders with exact author/affiliation information.
+\author{\IEEEauthorblockN{Mukhammed Zhumali}\IEEEauthorblockA{262937@astanait.edu.kz}}
+\maketitle
+
+\begin{abstract}
+This paper investigates cryptographic-key and security-association lifecycle planning over predicted spacecraft--ground station contact sequences. Two foundational components have been implemented: a reproducible contact-data and scheduling pipeline, and an immutable lifecycle model with explicit admission checks. For the International Space Station (NORAD 25544) over a 24-hour interval, 67 normalized SatNOGS observation intervals were retained and 146 geometric contact opportunities were computed for the same 32 ground stations. A deterministic selector produced 46 nonoverlapping contacts; among 29 same-station recurrence pairs, none occurred within one hour and 16 occurred within two hours. The lifecycle model separates key validity from association state, preserves station-specific contexts and counter progress, and rejects prohibited reuse. A recorded build passed 69 automated tests, including 31 security-model tests. A matched four-policy experiment and a test isolating the value of additional future contacts are specified as planned work. The event simulator, cost calibration, decision policies, and adversarial evaluation remain unimplemented; no efficiency gain, reduced compromise impact, or global lifecycle optimum is claimed.
+\end{abstract}
+
+\begin{IEEEkeywords}
+LEO satellite communications, contact-window prediction, security association, key lifecycle management, secure session establishment, ground stations, Orekit
+\end{IEEEkeywords}
+
+\section{Introduction}
+Low Earth Orbit (LEO) spacecraft communicate with ground stations during time-limited contact opportunities. Authentication and key management are necessary to protect these exchanges, but establishing or renewing security state can consume computing resources, signaling capacity, and time that could otherwise be used for mission data. Satellite-security surveys describe existing mechanisms and the challenges of intermittently connected space systems \cite{ref1}. This motivates studying how the management of security state may depend on a sequence of spacecraft--ground contacts.
+
+The research question is whether a time-ordered prediction of multiple future contacts can improve security-lifecycle decisions compared with policies that use fixed cryptoperiods, establish new state for each contact, or inspect only the next contact. The proposed direction is to use the predicted contact times, gaps, station identities, and existing security state to choose when to prepare, reuse, rotate, or expire keys and security associations. This decision policy must obey the same authentication, authorization, and cryptoperiod constraints as its baselines; favorable performance is not assumed.
+
+This paper reports \emph{contact-data preparation and lifecycle-model implementation}. The completed work comprises publicly sourced contact inputs, deterministic single-link schedule selection, gap analysis, and a tested model of key and Security Association (SA) states and transitions. The model is an implementation foundation for the proposed decision method; it is not a deployed security protocol or a completed policy comparison. Public observations are not evidence of cryptographically protected ISS communications.
+\drafttodo{Complete the operational/cost specification, implement the event simulator and decision policies, and evaluate whether a longer planning horizon yields a measurable benefit.}
+
+\section{Literature Review}
+\subsection{LEO Communication Security and Authentication}
+Satellite communication systems are exposed to cybersecurity threats originating from both external attackers and malicious or compromised legitimate network participants \cite{ref1}. Existing protection mechanisms can broadly be divided into physical-layer security and cryptography-based security \cite{ref1,ref2}. Physical-layer approaches include anti-spoofing, physical authentication, cooperative jamming, and techniques based on radio-channel characteristics, whereas cryptographic approaches focus on authentication, confidentiality, key agreement, and key management. Security requirements can additionally be considered through the principles of confidentiality, integrity, and availability \cite{ref3}. Recent surveys show that authentication remains an important challenge in dynamic LEO and satellite-terrestrial networks because security mechanisms must operate under intermittent connectivity, limited communication opportunities, and constrained computational resources \cite{ref4,ref5}. 
+A substantial body of research therefore focuses on efficient authentication and handover mechanisms. Existing approaches include ECC-based access and handover authentication \cite{ref6}, certificateless authentication \cite{ref7}, anonymous access and roaming \cite{ref8}, batch verification \cite{ref9}, edge-assisted handover authentication \cite{ref10}, multiuser three-party authentication \cite{ref11}, and more recent certificateless schemes \cite{ref12}. Blockchain-based authentication has also been proposed for maintaining authentication across frequent LEO switching events \cite{ref13}. These approaches primarily attempt to reduce authentication delay, signalling overhead, computational cost, or certificate-management complexity. Proactive and pre-handover mechanisms additionally prepare authentication information before an anticipated handover \cite{ref14}, showing that advance preparation itself cannot be considered a new contribution.
+\subsection{Session, Key, and Operational Context Management}
+Authentication alone does not define the complete lifecycle of a secure communication session. Cryptographic keys and security associations must also be established, maintained, updated, and eventually terminated. Existing satellite-terrestrial schemes already address session-key establishment and key updates \cite{ref15}, while other access and handover protocols incorporate key negotiation into their authentication procedures \cite{ref9,ref11,ref12}. CCSDS standards further define mechanisms for protecting space-data links and provide procedures for key management and Security Association management \cite{ref16,ref17}. Thus, the problem is not the absence of mechanisms for authentication or key management, but how their lifecycle decisions should be coordinated with the operational characteristics of LEO communication. 
+Satellite-specific operational information has also been incorporated into existing security approaches. Orbit-based authentication uses expected satellite trajectories as additional authentication context \cite{ref18}, while LK-AKA incorporates satellite location and orbital information into authentication and key agreement \cite{ref19}. IOTA-based work is a closer connectivity-aware precedent: its architecture refreshes an onboard authorization allowlist during ground contacts, handles revocation under intermittent connectivity, and introduces short-lived capability tokens. It also models how waiting for contact can delay authorization changes \cite{ref20}. Thus, contact windows already influence some security-state management. Its primary object is IoT-device identity and access authorization, whereas the present study investigates channel traffic-key and SA lifecycle decisions over multiple spacecraft--ground contacts. Multi-layer security frameworks also demonstrate that conventional cryptographic mechanisms can be combined with additional contextual information \cite{ref21}. These studies establish that neither orbital information nor prediction alone constitutes sufficient novelty. However, they also suggest that mission-specific information can provide useful input to security mechanisms. 
+\subsection{Research Gap}
+The reviewed literature demonstrates substantial progress in lightweight authentication, handover and roaming security, proactive authentication, session-key management, orbit- and location-aware authentication, and connectivity-aware evaluation. Nevertheless, the reviewed approaches mainly focus on how authentication, key establishment, or handover protection should be performed.
+The present research addresses a related but different problem: how predicted spacecraft--ground station contact opportunities can influence when security sessions and cryptographic keys should be prepared and managed.
+A spacecraft--ground station contact can often be predicted before communication begins. Such predictions provide information about contact start and end times, contact duration, the interval until the next contact, changes of ground station, and expected communication demand. These parameters could be used to decide whether security state should be prepared in advance, whether new key material should be established or an existing context reused, when a key or Security Association should expire, and whether security material for the next ground station should be prepared before the subsequent contact. 
+To the best of our knowledge, the reviewed research does not jointly optimize cryptographic key and Security Association lifecycle decisions across a sequence of predicted spacecraft--ground station contacts, while accounting for contact timing, station transitions, cryptoperiod constraints, and security-management overhead.
+Such contact-aware planning may reduce the portion of short contact windows consumed by session establishment, avoid unnecessary key-management operations between closely spaced contacts, reduce unnecessary key-exposure time during long communication gaps, and enable advance preparation for a change of ground station. These potential advantages remain research hypotheses and require experimental validation. 
+This is a bounded statement about the reviewed work, not proof that no related method exists. It motivates predictive multi-contact lifecycle planning under an explicit objective and common constraints. The data pipeline and lifecycle model are implemented; the optimization algorithm, policies, and comparative evaluation remain to be developed.
+
+
+\section{Methodology}
+\subsection{Public Data and Contact Generation}
+The initial scenario uses the International Space Station (ISS; NORAD 25544) from Oct. 10, 2026, 00:00 UTC to Oct. 11, 2026, 00:00 UTC. Public SatNOGS observation records supplied the coordinates (latitude, longitude, and altitude) of 32 ground stations. From 81 retrieved records, 67 with the selected completed observation statuses were retained and normalized; the other 14 records were excluded by the stated selection rules. Observations are published reception activities, not evidence of successful secure spacecraft--ground sessions \cite{ref22}.
+
+For the same spacecraft, period, and 32 stations, the prototype used a CelesTrak general-perturbations (GP) orbital-element snapshot with epoch Oct. 10, 2026, 18:56:31 UTC \cite{ref23}. Orekit 13.1.9 propagated the orbit with SGP4/SDP4 and evaluated topocentric elevation with a constant 10$^\circ$ mask and WGS84 station coordinates \cite{ref24}. Elevation-mask crossings defined geometric contact windows. UTC/TAI information and IERS Earth-orientation inputs were retained in the archived inputs. Neither radio link budget nor antenna availability, local obstructions, weather, or permission to establish an uplink was modeled.
+
+The normalized datasets, raw API responses, orbital elements, configuration, and provenance information are stored with SHA-256 checksums. A local reproduction script is provided for rebuilding the data and reports from saved snapshots without new API queries.
+
+\subsection{Feasible Single-Link Contact Schedule}
+The geometry may allow the spacecraft to be visible to multiple stations simultaneously. To produce a consistent scenario for the subsequent experiment, the current model assumes one active ground link at a time and selects entire, nonoverlapping candidate windows. The contact selector optimizes, in lexicographic order, (i) maximum total scheduled contact duration, (ii) minimum ground-station changes at equal duration, and (iii) a deterministic ordering of otherwise equivalent schedules. A dynamic-programming procedure checks compatible predecessors and uses a station-switch guard of 0~s in this initial run. Candidate selection is independent of any security lifecycle policy.
+
+The selected schedule and its configuration, source hashes, and validation results are exported as structured JSON reports. The analyzer calculates adjacent gaps, repeated contacts with the same station, and time-based recurrence eligibility at thresholds of 30 minutes, 1 hour, 2 hours, and 6 hours. Temporal eligibility only identifies possible opportunities for retaining state; it is not authorization to reuse any key or security association.
+
+\section{Implemented Security-Lifecycle Model}
+\label{sec:lifecycle}
+\subsection{Scope and State Representation}
+The Java model stores traffic-key metadata, directional SAs, and one independent security context per spacecraft--ground-station pair. Each context contains distinct uplink and downlink keys and SAs. The two SAs transition together in the first version; at most one context may be operational at a time. Ground-station authorization is an explicit model input and is not inferred from the availability of a SatNOGS receiver.
+
+Each operation returns an immutable snapshot. Checks validate time, scope, authorization, key validity, peer synchronization, and counters before a transition is committed; a rejected operation does not partially update one direction. All timestamps are supplied explicitly. The model does not generate secret bytes, implement a cipher or a network handshake, or establish CCSDS SDLS conformance. A trusted management mechanism for provisioning and confirming installation is assumed; its message flow and costs must be specified before simulation.
+
+\subsection{Separate Key and SA Lifecycles}
+Keys progress through prepared, active, deactivated, and destroyed states. A cancelled, revoked, or expired preparation may also be deactivated before activation. Deactivation and destruction are terminal with respect to future use of that key identity. The SA states and their relationship to key use are summarized in Table~\ref{tab:states}.
+
+\begin{table}[t]
+\caption{Implemented SA states (both directions managed together)}
+\label{tab:states}
+\centering
+\footnotesize
+\begin{tabular}{@{}p{0.29\columnwidth}p{0.65\columnwidth}@{}}
+\toprule
+\textbf{State} & \textbf{Meaning} \\
+\midrule
+\texttt{ABSENT} & Association is not available for use. \\
+\texttt{UNKEYED} & Association exists without a bound traffic key. \\
+\texttt{KEYED} & An active key is bound; no traffic session is open. \\
+\texttt{OPERATIONAL} & A synchronized association is open for the current contact. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Local preparation does not activate a key or authenticate a peer. Installation must first be confirmed during a matching contact; activation, binding, and session start are separate checked transitions. Stopping a session changes the SAs from operational to keyed and retains active keys. Unbinding changes keyed SAs to unkeyed without deactivating their keys. Context expiration unbinds and deactivates the associated material. If only one directional key has reached its deadline, the paired context still stops and the other key is retired by policy. Independent material prepared for a later rotation is preserved.
+
+Key identifiers and metadata remain in the snapshot after destruction; identifiers cannot be recycled. This is an auditable model state, not evidence of physical erasure on remote hardware. Likewise, a local expiration transition does not imply receipt of a remote deletion acknowledgement.
+
+\subsection{Time, Reuse, and Counter Constraints}
+Let $t_k^c$ be key creation time, $t_k^a$ activation time, $A_{\max}$ maximum material age, and $C_{\max}$ the activation-based cryptoperiod. With fixed experiment constraints, the validity deadline after activation is
+\begin{equation}
+d_k = \min\{t_k^c+A_{\max},\ t_k^a+C_{\max}\}.
+\label{eq:deadline}
+\end{equation}
+Before activation, only the creation-based bound applies. The stored deadline is frozen at preparation and can be shortened at activation; reuse and SA rebinding cannot extend it. A check under stricter constraints may shorten current admissibility further, while relaxed settings cannot extend the stored bound.
+
+For contact $C_i=(s_i,e_i,g_i)$, an online completion must lie in $[s_i,e_i)$ and precede the key deadline. A protected interval $[u,v)$ may end exactly at $e_i$ or $d_k$, but cannot extend beyond either. Reaching a deadline prevents use even if a snapshot has not yet been explicitly transitioned to deactivated; automatic event scheduling remains future work.
+
+For a previously used directional key, let $\ell_k$ be the end time of its last successful session. Reuse requires
+\begin{equation}
+0 \leq s_i-\ell_k \leq G_{\max},
+\label{eq:gap}
+\end{equation}
+where $G_{\max}$ is the shared reuse-gap bound. Scope, authorization, active status, confirmed installation, synchronization, validity, link availability, and counter capacity are additional requirements. A first start has no previous-success gap. For classifying a context start as reuse, at least one direction must have previous successful use; Eq.~\eqref{eq:gap} is checked separately for every direction with such history.
+
+Successful use currently means that at least one confirmed protected frame was registered in that direction. Its history is updated at the actual session stop; an empty session does not refresh it. The key owns a persistent monotonic counter, mirrored by the bound SA. Unbinding and recreating an SA cannot reset progress for the same key. This abstract counter does not implement a concrete nonce format or replay-window protocol.
+
+\subsection{Synthetic Return-to-Station Check}
+A unit-test fixture uses contacts A at 10--40~s, B at 50--70~s, and A again at 100--130~s. The first A keys are created at 0~s and activated at 10~s; $A_{\max}=2000$~s, $C_{\max}=1000$~s, and $G_{\max}=100$~s. Their deadline is therefore 1010~s. Serving B leaves A's stored context unchanged. The return to A has a 60~s gap and may reuse the still-valid material. Uplink/downlink counters of 2/3 continue to 6/8 after four/five additional frames. These synthetic values verify state behavior; they are neither ISS security measurements nor evidence that a multi-contact policy outperforms another policy.
+
+The first version does not implement same-window recovery after an interrupted successful session: the recurrence rule is defined between contact windows. Such recovery needs a separate transition specification before interruption experiments.
+
+\section{Planned Decision Method and Evaluation}
+\label{sec:planned}
+Everything in this section is an experimental design to be implemented and checked, rather than a report of an implemented policy.
+
+\subsection{Operational and Cost Contract}
+Before assigning costs, the experiment must specify the key-generation actor, management trust assumptions, ground coordination, message routes, installation confirmations, and spacecraft/ground CPU budgets. In particular, preparing material for station B while communicating with A does not by itself install B's keys onboard. A valid delivery route and its cost are required.
+
+Each operation will have explicit local CPU work, online message sizes and directions, waiting/round-trip requirements, and commit conditions. Offline preparation and discarded work must be counted. Interrupted operations may consume work without completing activation. Elapsed time, CPU time, and radio occupancy will be accounted for separately to avoid charging the same interval twice. Payload demand, link rate, and the definition of a served contact will be common inputs; visibility windows do not provide those quantities.
+
+Operation costs will either be measured on a documented test platform or identified as assumptions with sensitivity ranges. Desktop measurements will not be presented as onboard measurements. Policy-search runtime and memory will be reported separately from cryptographic work.
+\drafttodo{Freeze the operation table, acknowledgment rules, resource limits, event ordering at equal timestamps, payload model, and provenance of every cost parameter before comparative runs.}
+
+\subsection{Decision Space and Objective}
+Candidate intentions include preparing material, establishing a context, reusing it, rotating keys, and expiring a context, with stop/bind/unbind operations executed through common lifecycle primitives. Decision epochs and allowed preparation times must be enumerated explicitly; they determine the search space.
+
+A proposed initial objective, subject to all security constraints, is lexicographic maximization of
+\begin{equation}
+\left(N_{\mathrm{served}},\ T_{\mathrm{useful}},
+-C_{\mathrm{CPU}},\ -B_{\mathrm{mgmt}},\ -N_{\mathrm{new}}\right).
+\label{eq:objective}
+\end{equation}
+Here $N_{\mathrm{served}}$ uses a prespecified payload-service requirement, $T_{\mathrm{useful}}$ is useful protected payload time, $C_{\mathrm{CPU}}$ counts modeled security-management CPU work, $B_{\mathrm{mgmt}}$ management bytes, and $N_{\mathrm{new}}$ newly prepared directional keys, including discarded preparation. Separate spacecraft/ground CPU totals will also be retained. Service thresholds, units, endpoint accounting, and deterministic tie breaking must be frozen before evaluating policies.
+
+Equation~\eqref{eq:objective} is an efficiency objective. It does not minimize compromise probability or prove that retaining keys longer is safer. Key residence time, permitted-use lifetime, and rule violations will be reported separately.
+
+Exact enumeration or memoization will first provide a reference on small finite decision models. The solver will be checked against independent enumeration before evaluating its feasibility on the 46-contact sequence. An exact solution is optimal only for the specified state/action/time model. If bounded search or a heuristic is needed, its runtime and gap to the small-instance reference will be reported without claiming a global optimum.
+
+\subsection{Matched Policies and Information Horizons}
+The planned baselines are fixed-period renewal with an explicit reference epoch and renewal interval, and fresh traffic keys for each contact. Fixed-period renewal cannot activate keys outside a confirmed management opportunity; expired material cannot remain usable while renewal is pending. Missed periods, material preparation, and carry-over behavior must be specified without charging fictitious renewals during disconnected periods.
+
+The next-contact and predictive multi-contact variants will share the same solver, objective, executor, constraints, and tie breaking. At a decision associated with $C_i$, define $H$ as the number of \emph{additional future contacts} made visible:
+\begin{equation}
+\mathcal{W}_i^H =
+(C_i,C_{i+1},\ldots,C_{\min(n,i+H)}).
+\end{equation}
+Next-contact uses $H=1$; multi-contact uses $H\geq2$. Only the first committed action is executed before replanning. The policy interface must prevent access to contacts beyond this horizon. All policies receive the same retained past state, initial conditions, channel/traffic assumptions, cost mechanisms, and applicable security constraints. Preparation permissions and end-of-horizon treatment must be documented explicitly.
+
+\subsection{Required Test of a Genuine Multi-Contact Effect}
+Two synthetic sequences will share $C_1$, $C_2$, the initial state, costs, and constraints, but differ in $C_3$. At the decision for $C_1$, next-contact must return the same action in both sequences. The multi-contact solver will be tested on a constructed, justified case in which the changed $C_3$ changes the optimal first action; independent enumeration must confirm the alternatives.
+
+This witness remains to be constructed. It requires a real coupling between decisions, such as limited preparation resources or material-age constraints. If the operational model makes every preparation independently available without a relevant trade-off, a longer horizon may offer no advantage. Arbitrary penalties will not be introduced merely to force a favorable result. A changed decision alone also does not establish improved aggregate performance.
+
+\subsection{Experiment Sequence and Reporting}
+The first comparison will use the same saved 46-contact ISS schedule for every policy. Subsequent runs will vary the day, spacecraft or station cohort, cryptoperiod, material-age/reuse limits, operation costs, offered traffic, and horizon. Each scenario will have one security-independent selected schedule shared by all policies. Ideal known schedules will be distinguished from experiments with contact-prediction errors or missed contacts; a policy must not see future realized disruptions.
+
+Planned outputs include per-contact decisions, state changes, rejection reasons, completed and wasted work, payload service, and aggregate metrics. Tables will state parameter provenance and paired policy results. Figures will show a lifecycle timeline, efficiency versus horizon, sensitivity to cryptoperiod and costs, and key residence/use durations. For stochastic inputs, policies will use paired seeds and variability will be reported across independent runs or scenarios. Repeating one deterministic schedule is not an independent statistical sample. Equal-performance and unfavorable cases will be retained.
+
+\subsection{Later Compromise and Interruption Scenarios}
+After normal-operation results, controlled experiments will introduce a compromised traffic key or an unexpected contact interruption. The specification must separate attack occurrence from detection and policy-visible revocation. Hidden compromise will not appear automatically in policy observations. Threat assumptions must define affected directions, attacker capabilities, discovery delay, and whether newly issued material remains independent of the compromise.
+
+Candidate outcome metrics include use or traffic exposure after compromise, time from detection to effective retirement, wasted work, failed service, and recovery delay. Key lifetime alone is not a measured compromise consequence. Recovery within a contact will require an extension to the first-stage model; physical jamming waveforms and flight hardware measurements remain outside scope.
+\drafttodo{Implement the simulator and matched policies only after the operational contract and small-instance reference are agreed; then run normal-operation, robustness, and controlled security experiments.}
+
+\section{Results}
+\subsection{Observed and Computed Contact Datasets}
+For the single-day ISS scenario, SatNOGS provided 67 normalized intervals from the selected completed records; the geometry calculation produced 146 potential contact windows for the same 32 stations. These are different populations: the first consists of chosen observation activities, whereas the second represents geometric visibility at a common elevation threshold. Consequently, their counts are not measures of orbital prediction accuracy.
+
+\begin{table}[t]
+\caption{Preliminary contact dataset and schedule (ISS, Oct. 10, 2026)}
+\label{tab:contact_results}
+\centering
+\footnotesize
+\begin{tabular}{@{}p{0.53\columnwidth}rr@{}}
+\toprule
+\textbf{Measure} & \textbf{Candidates} & \textbf{Selected} \\
+\midrule
+Contact windows & 146 & 46 \\
+Ground stations used & 32 & 17 \\
+Summed duration (s) & 48,164.30 & 14,856.83 \\
+Union of intervals (s) & 16,341.99 & 14,856.83 \\
+Short contacts ($< 300$ s) & 32 & 10 \\
+Same-station recurrence pairs & 114 & 29 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Selection and Inter-Contact Characteristics}
+The deterministic scheduler selected 46 of 146 candidate windows, leaving 100 unused alternatives. The input contained 565 overlapping candidate pairs; no selected pair violated the nonoverlap constraint. The selected windows account for 14,856.83 s of scheduled contact time and involve 17 ground stations. The selected schedule has 45 station changes across 45 adjacent contact pairs, although a later return to a previously used station is possible.
+
+Among the 29 repeated-contact pairs for the same station in the selected schedule, none had a gap of one hour or less. Sixteen pairs had gaps of more than one and at most two hours, four had gaps of more than two and at most six hours, and nine had gaps exceeding six hours. Hence, the number of temporally eligible recurrence pairs is 0 of 29 at one hour, 16 of 29 at two hours, and 20 of 29 at six hours. Eligibility here is based solely on elapsed time, before applying cryptoperiod, authorization, or key-state constraints.
+
+\subsection{Recorded Software Verification}
+The recorded Oct.~15, 2026 clean build passed 69 automated tests with no failures, errors, or skips: 38 cover the contact-data/scheduling pipeline and 31 cover the new lifecycle model. External APIs are not needed for these tests, although existing HTTP-import tests require loopback connectivity. The contact selector is checked against exhaustive enumeration on 250 small fixed-seed inputs; this oracle concerns contact scheduling, not the unimplemented lifecycle optimizer.
+
+The security tests cover the A--B--A return scenario, creation/activation age limits, inclusive reuse-gap boundaries, confirmed installation, scope and authorization rejection, counter continuity after rebinding, rotation, terminal deactivation/destruction, per-direction successful-use history, and immutable failure behavior. These are model-correctness checks, not a cryptographic proof or a policy-performance result. The evidence is a saved build report; it must be rerun with the final archived revision and restored input snapshots before submission.
+\drafttodo{Run and document the full reproducibility script on the final submission environment. Add multi-satellite, multi-day datasets, varying station cohorts, elevation masks, and station-switch guards.}
+\drafttodo{Insert measured policy-comparison results only after implementing the simulator. Tables/figures for establishment latency, key operations, exposure after compromise, channel utilization, and transferred payload are still pending.}
+
+\section{Discussion}
+The contact results and tested lifecycle primitives provide a reproducible basis for evaluating security decisions. They do not yet validate the proposed multi-contact policy. In particular, the absence of same-station returns within one hour on this day indicates that a one-hour reuse-gap threshold offers no temporal reuse opportunities in the selected schedule. Larger thresholds create additional candidates, but may not be acceptable under cryptoperiod, key compromise, or station-authorization constraints.
+
+The contact selector maximizes scheduled duration without incorporating security cost. This produces frequent station changes and is a deliberate common input to all future policies rather than a security-optimal mission schedule. The current use of ISS geometry and public SatNOGS stations is a reproducible model scenario, not a claim that the stations form an authorized secure ISS ground network. In addition, the present geometry neglects radio-channel and ground-segment operational constraints. Generalizability therefore requires further spacecraft, station sets, time horizons, and sensitivity analysis.
+
+To establish the contribution of the multi-contact approach, comparison against a policy that sees \emph{only the next contact} is essential; superiority over fixed-period or per-contact policies alone would not demonstrate the value of a longer planning horizon. Offline preparation and retained state must be accounted for consistently, while potential compromise consequences require separate threat-model-based measurements. No key-lifecycle policy or adversarial security outcome has been measured at this stage.
+\drafttodo{Discuss actual trade-offs, uncertainty, failure cases, and statistical variability after the four-policy experiments and attack/disruption scenarios.}
+
+\section{Conclusion}
+The completed work combines a reproducible public contact-data pipeline with an implemented key/SA lifecycle model. The single-day ISS example yields 146 geometric candidate windows and a feasible 46-contact schedule, with 16 same-station recurrences within two hours and none within one hour. The lifecycle implementation preserves station-specific state and counter progress and enforces explicit validity and reuse constraints; a recorded build passed 69 tests.
+
+These results establish workload and model foundations. They do not demonstrate reduced cryptographic overhead, improved throughput, or lower compromise impact. Remaining work is to freeze the operational and cost assumptions, validate a small-instance decision reference and a genuine multi-contact witness, implement the common simulator and four policies, and evaluate efficiency, constraint compliance, and later compromise/interruption outcomes separately.
+\drafttodo{Update the abstract and conclusion only with reproducible comparative results. Verify the bibliography, final venue format, archived data access, and all remaining draft notes before submission.}
+
+\begin{thebibliography}{00}
+\bibitem{ref1}
+P. Tedeschi, S. Sciancalepore, and R. Di Pietro, ``Satellite-based communications security: A survey of threats, solutions, and research challenges,'' Computer Networks, vol. 216, Art. no. 109246, 2022, doi: 10.1016/j.comnet.2022.109246.
+
+\bibitem{ref2}
+Y. Zhang, S. Zhao, J. He, Y. Zhang, Y. Shen, and X. Jiang, ``A Survey of Secure Communications for Satellite Internet Based on Cryptography and Physical Layer Security,'' IET Information Security, vol. 2023, Art. no. 5604802, 2023, doi: 10.1049/2023/5604802.
+
+\bibitem{ref3}
+X. Wu, Y. Du, T. Fan, J. Guo, J. Ren, R. Wu, and T. Zheng, ``Threat analysis for space information network based on network security attributes: a review,'' Complex \& Intelligent Systems, vol. 9, pp. 3429--3468, 2023, doi: 10.1007/s40747-022-00899-z.
+
+
+\bibitem{ref4} N. H. S. Suhaimi, N. H. Kamarudin, M. N. A. Khalid, I. Tahir, and M. A. A. Mohamed, ``State-of-the-Art Authentication Measures in Satellite Communication Networks: A Comprehensive Analysis,'' IEEE Access, vol. 12, pp. 142241--142264, 2024, doi: 10.1109/ACCESS.2024.3467253.
+
+\bibitem{ref5}
+K. Farrea, Z. Baig, R. Doss, and D. Liu, ``A review of indirect authentication in LEO satellite networks: Three decades of progress,'' Ad Hoc Networks, vol. 187, Art. no. 104198, 2026, doi: 10.1016/j.adhoc.2026.104198.
+
+\bibitem{ref6}
+J. Guo, Y. Du, Y. Zhang, and M. Li, ``A provably secure ECC-based access and handover authentication protocol for space information networks,'' Journal of Network and Computer Applications, vol. 193, Art. no. 103183, 2021, doi: 10.1016/j.jnca.2021.103183.
+
+\bibitem{ref7}
+Y. Zhang, Q. Wu, S. Zhou, and M. Jia, ``Efficient certificateless authentication scheme for LEO satellite networks,'' Application Research of Computers, vol. 39, no. 10, pp. 3151--3155, 2022, doi: 10.19734/j.issn.1001-3695.2022.02.0102.
+
+\bibitem{ref8}
+Y. Tao, H. Du, J. Xu, L. Su, and B. Cui, ``On-Demand Anonymous Access and Roaming Authentication Protocols for 6G Satellite--Ground Integrated Networks,'' Sensors, vol. 23, no. 11, Art. no. 5075, 2023, doi: 10.3390/s23115075.
+
+\bibitem{ref9}
+J. Guo, L. Chang, Y. Song, S. Yao, Z. Zheng, Y. Hao, S. Zhu, W. Guo, and M. Zhao, ``AHA-BV: Access and handover authentication protocol with batch verification for satellite--terrestrial integrated networks,'' Computer Standards \& Interfaces, vol. 91, Art. no. 103870, 2025, doi: 10.1016/j.csi.2024.103870.
+
+\bibitem{ref10}
+D. K. Kwon, S. Son, K. Park, A. K. Das, and Y. Park, ``An Efficient Handover Authentication Scheme for 6G-Enabled Space-Terrestrial Integrated Networks With Mobile Edge Computing,'' IEEE Transactions on Information Forensics and Security, vol. 20, pp. 12157--12172, 2025, doi: 10.1109/TIFS.2025.3628470.
+
+\bibitem{ref11}
+J. Guo, S. Yao, Y. Song, X. Han, Z. Zheng, and L. Chang, ``N3PA-STIN: A Novel Three-Party Authentication Protocol for Multiuser Access in Satellite Terrestrial Integrated Networks,'' IEEE Internet of Things Journal, vol. 12, no. 10, pp. 14952--14968, 2025, doi: 10.1109/JIOT.2025.3527214.
+ 
+\bibitem{ref12}
+Z. Lv, Z. Tao, Q. Yang, Z. Zheng, J. Zhou, and L. Xiao, ``A Certificateless Encryption-Based Authentication Protocol for Low Earth Orbit Satellite Network,'' Sensors, vol. 26, no. 15, Art. no. 4958, 2026, doi: 10.3390/s26154958.
+
+\bibitem{ref13}
+X. Deng, J. Shao, L. Chang, and J. Liang, ``A Blockchain-Based Authentication Protocol Using Cryptocurrency Technology in LEO Satellite Networks,'' Electronics, vol. 10, no. 24, Art. no. 3151, 2021, doi: 10.3390/electronics10243151.
+
+\bibitem{ref14}
+ Y. Yang, J. Cao, R. Ma, L. Cheng, L. Chen, B. Niu, and H. Li, ``FHAP: Fast Handover Authentication Protocol for High-Speed Mobile Terminals in 5G Satellite--Terrestrial-Integrated Networks,'' IEEE Internet of Things Journal, vol. 10, no. 15, pp. 13959--13973, 2023, doi: 10.1109/JIOT.2023.3262933.
+
+\bibitem{ref15}
+S. Ren, J. Liu, R. Ji, S. S. Ge, and D. Li, ``A Secure Authentication Scheme for Satellite-Terrestrial Networks,'' IEEE Transactions on Network Science and Engineering, vol. 11, no. 6, pp. 6470--6482, 2024, doi: 10.1109/TNSE.2024.3445712.
+
+\bibitem{ref16}
+Consultative Committee for Space Data Systems (CCSDS), Space Data Link Security Protocol, CCSDS 355.0-B-2, Blue Book, Washington, DC, 2022.
+
+\bibitem{ref17}
+Consultative Committee for Space Data Systems (CCSDS), Space Data Link Security Protocol---Extended Procedures, CCSDS 355.1-B-1, Blue Book, Washington, DC, 2020.
+
+\bibitem{ref18}
+E. Jedermann, M. Strohmeier, M. Schäfer, J. Schmitt, and V. Lenders, ``Orbit-based Authentication Using TDOA Signatures in Satellite Networks,'' in Proc. ACM Conference on Security and Privacy in Wireless and Mobile Networks (WiSec), 2021, doi: 10.1145/3448300.3469132.
+
+\bibitem{ref19}
+Y. Yang, J. Cao, X. Ren, B. Niu, Y. Zhang, and H. Li, ``LK-AKA: A lightweight location key-based authentication and key agreement protocol for S2S communication,'' Computer Communications, vol. 197, pp. 214--229, 2023, doi: 10.1016/j.comcom.2022.10.028.
+
+\bibitem{ref20}
+D. Bernal, O. Ledesma, P. Lamo, and J. Bermejo, ``IOTA-Based Authentication for IoT Devices in Satellite Networks,'' Computers, Materials \& Continua, vol. 86, no. 1, pp. 1--39, 2026, doi: 10.32604/cmc.2025.069746.
+
+\bibitem{ref21}
+M. Abdrabou, F. Gebali, M. A. Shawky, A. S. Alluhaidan, A. E. Mansour, S. A. El-Rahman, A. Al-ahwal, et al., ``Advanced security framework for low Earth orbit satellites in space information network,'' EURASIP Journal on Wireless Communications and Networking, vol. 2024, Art. no. 87, 2024, doi: 10.1186/s13638-024-02417-w.
+
+
+\bibitem{ref22}
+Libre Space Foundation, ``SatNOGS Network API documentation,'' [Online]. Available: \url{https://docs.satnogs.org/projects/satnogs-network/en/stable/api.html}. Accessed: Oct. 11, 2026.
+
+\bibitem{ref23}
+T. S. Kelso, ``CelesTrak: GP data formats,'' [Online]. Available: \url{https://celestrak.org/NORAD/documentation/gp-data-formats.php}. Accessed: Oct. 11, 2026.
+
+\bibitem{ref24}
+Orekit, ``Orekit: An open-source library for spaceflight dynamics,'' [Online]. Available: \url{https://www.orekit.org/}. Accessed: Oct. 11, 2026.
+
+\end{thebibliography}
+
+\end{document}
+

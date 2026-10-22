@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-22",
+  "javaHome": "C:\\Program Files\\Java\\jdk-21.0.10",
+  "mavenVerify": {
+    "command": ".\\mvnw.cmd '-Dmaven.repo.local=.tools/m2' -o -B -ntp '-DargLine=-Xmx1024m' verify",
+    "tests": 236,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "status": "BUILD SUCCESS"
+  },
+  "additionalRegression": {
+    "command": ".\\mvnw.cmd '-Dmaven.repo.local=.tools/m2' -o -B -ntp '-DargLine=-Xmx1024m' '-Dtest=RecedingHorizonControllerTest' test",
+    "tests": 16,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "newCasesSinceVerify": 1,
+    "productionChangedSinceVerify": false
+  },
+  "originalWitness": {
+    "runner": "ControlledWitnessIntegrationTest via ControlledWitnessMain",
+    "maxNodesPerDecision": 2000000,
+    "maxMillisPerDecision": 0,
+    "mode": "accelerated",
+    "allFourFinished": true,
+    "allSearchesComplete": true,
+    "warmupIncludedOnce": true,
+    "nextSameObservationsAndActionsUntilC2": true,
+    "allFiveMetricsChecked": true
+  },
+  "sourceRun": "target/controlled-witness-12930399991414883441",
+  "jarSha256": "5716215B6CCB0539F6B01637F9424A7BAD5F221803B7775D23AD964FFBA2D1BD",
+  "archiveSha256": "E23D0B7DFFFBCF1947DDC422A2C97CBFFEE33B2A932E0AF6F58AC041D4EEB4F7",
+  "archivedFilesVerifiedByteForByte": [
+    {
+      "file": "summary.json",
+      "sha256": "A436A4DAC7AD901D2CD0BB39D79FF09F7BA0B1FCFF1387F5F7BA646161F7EF47"
+    },
+    {
+      "file": "X-MULTI.json",
+      "sha256": "D02C1B09525B0FE52879102C8D6ED3C8DA6E3011F832CDD7123F449B1A3467E9"
+    },
+    {
+      "file": "X-NEXT.json",
+      "sha256": "E42D535856C0DB85425095AB6596C9B283B5E8F23F527FE62BF6166256CF0497"
+    },
+    {
+      "file": "Y-MULTI.json",
+      "sha256": "83503C794B6D86656EA82019B97D5D11FF365215621BAD2EFB60A36498CAD321"
+    },
+    {
+      "file": "Y-NEXT.json",
+      "sha256": "F3ED7DCEA3DB616121D5003B1BE0E688417D0DF932F5DCD934C226A1664AEB65"
+    }
+  ],
+  "limitations": [
+    "Synthetic costs and exact contact forecast.",
+    "Search wall time does not advance the simulated clock.",
+    "Single JVM timing sample, not a statistical benchmark.",
+    "Completeness is per finite nominal horizon, not a guarantee of globally optimal receding execution.",
+    "FixedPeriod and PerContact are not implemented."
+  ]
+}

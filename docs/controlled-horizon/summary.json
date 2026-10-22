@@ -1,0 +1,262 @@
+{
+  "X-MULTI" : {
+    "status" : "FINISHED",
+    "decisions" : 162,
+    "exploredNodes" : 775665,
+    "searchNanos" : 75429363000,
+    "metrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 37.000000000,
+      "controlCosts" : {
+        "elapsed" : 10.000000000,
+        "spacecraftCpu" : 0.420000000,
+        "groundCpu" : 0.410000000,
+        "radioOccupancy" : 3.100000000,
+        "uplinkBytes" : 820,
+        "downlinkBytes" : 420
+      },
+      "createdKeys" : 2,
+      "startedOperations" : {
+        "PREPARE" : 1,
+        "INSTALL" : 1,
+        "SWITCH" : 1,
+        "OPEN" : 3,
+        "STOP" : 3
+      },
+      "completedOperations" : {
+        "PREPARE" : 1,
+        "INSTALL" : 1,
+        "SWITCH" : 1,
+        "OPEN" : 3,
+        "STOP" : 3
+      },
+      "completedActions" : {
+        "PREPARE" : 1,
+        "INSTALL" : 1,
+        "SWITCH" : 1,
+        "OPEN" : 3
+      },
+      "operationFailures" : { },
+      "contacts" : [ {
+        "contactId" : "C1",
+        "served" : true,
+        "usefulTime" : 14.000000000,
+        "uplinkBytes" : 2800,
+        "downlinkBytes" : 2800,
+        "uplinkFrames" : 28,
+        "downlinkFrames" : 28,
+        "failureReasons" : [ ]
+      }, {
+        "contactId" : "C2",
+        "served" : true,
+        "usefulTime" : 19.000000000,
+        "uplinkBytes" : 3800,
+        "downlinkBytes" : 3800,
+        "uplinkFrames" : 38,
+        "downlinkFrames" : 38,
+        "failureReasons" : [ ]
+      }, {
+        "contactId" : "C3",
+        "served" : true,
+        "usefulTime" : 4.000000000,
+        "uplinkBytes" : 800,
+        "downlinkBytes" : 800,
+        "uplinkFrames" : 8,
+        "downlinkFrames" : 8,
+        "failureReasons" : [ ]
+      } ]
+    }
+  },
+  "X-NEXT" : {
+    "status" : "FINISHED",
+    "decisions" : 162,
+    "exploredNodes" : 109076,
+    "searchNanos" : 9037811400,
+    "metrics" : {
+      "servedContacts" : 2,
+      "usefulSecureTime" : 38.000000000,
+      "controlCosts" : {
+        "elapsed" : 4.000000000,
+        "spacecraftCpu" : 0.080000000,
+        "groundCpu" : 0.240000000,
+        "radioOccupancy" : 0.400000000,
+        "uplinkBytes" : 80,
+        "downlinkBytes" : 80
+      },
+      "createdKeys" : 2,
+      "startedOperations" : {
+        "PREPARE" : 1,
+        "OPEN" : 2,
+        "STOP" : 2,
+        "EXPIRE_CONTEXT" : 1
+      },
+      "completedOperations" : {
+        "PREPARE" : 1,
+        "OPEN" : 2,
+        "STOP" : 2,
+        "EXPIRE_CONTEXT" : 1
+      },
+      "completedActions" : {
+        "PREPARE" : 1,
+        "OPEN" : 2
+      },
+      "operationFailures" : { },
+      "contacts" : [ {
+        "contactId" : "C1",
+        "served" : true,
+        "usefulTime" : 19.000000000,
+        "uplinkBytes" : 3800,
+        "downlinkBytes" : 3800,
+        "uplinkFrames" : 38,
+        "downlinkFrames" : 38,
+        "failureReasons" : [ ]
+      }, {
+        "contactId" : "C2",
+        "served" : true,
+        "usefulTime" : 19.000000000,
+        "uplinkBytes" : 3800,
+        "downlinkBytes" : 3800,
+        "uplinkFrames" : 38,
+        "downlinkFrames" : 38,
+        "failureReasons" : [ ]
+      }, {
+        "contactId" : "C3",
+        "served" : false,
+        "usefulTime" : 0.0,
+        "uplinkBytes" : 0,
+        "downlinkBytes" : 0,
+        "uplinkFrames" : 0,
+        "downlinkFrames" : 0,
+        "failureReasons" : [ "NO_SECURE_PAYLOAD" ]
+      } ]
+    }
+  },
+  "Y-MULTI" : {
+    "status" : "FINISHED",
+    "decisions" : 179,
+    "exploredNodes" : 141948,
+    "searchNanos" : 10756168300,
+    "metrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 42.000000000,
+      "controlCosts" : {
+        "elapsed" : 5.000000000,
+        "spacecraftCpu" : 0.120000000,
+        "groundCpu" : 0.260000000,
+        "radioOccupancy" : 0.600000000,
+        "uplinkBytes" : 120,
+        "downlinkBytes" : 120
+      },
+      "createdKeys" : 2,
+      "startedOperations" : {
+        "PREPARE" : 1,
+        "OPEN" : 3,
+        "STOP" : 3,
+        "EXPIRE_CONTEXT" : 1
+      },
+      "completedOperations" : {
+        "PREPARE" : 1,
+        "OPEN" : 3,
+        "STOP" : 3,
+        "EXPIRE_CONTEXT" : 1
+      },
+      "completedActions" : {
+        "PREPARE" : 1,
+        "OPEN" : 3
+      },
+      "operationFailures" : { },
+      "contacts" : [ {
+        "contactId" : "C1",
+        "served" : true,
+        "usefulTime" : 19.000000000,
+        "uplinkBytes" : 3800,
+        "downlinkBytes" : 3800,
+        "uplinkFrames" : 38,
+        "downlinkFrames" : 38,
+        "failureReasons" : [ ]
+      }, {
+        "contactId" : "C2",
+        "served" : true,
+        "usefulTime" : 19.000000000,
+        "uplinkBytes" : 3800,
+        "downlinkBytes" : 3800,
+        "uplinkFrames" : 38,
+        "downlinkFrames" : 38,
+        "failureReasons" : [ ]
+      }, {
+        "contactId" : "C3",
+        "served" : true,
+        "usefulTime" : 4.000000000,
+        "uplinkBytes" : 800,
+        "downlinkBytes" : 800,
+        "uplinkFrames" : 8,
+        "downlinkFrames" : 8,
+        "failureReasons" : [ ]
+      } ]
+    }
+  },
+  "Y-NEXT" : {
+    "status" : "FINISHED",
+    "decisions" : 179,
+    "exploredNodes" : 117764,
+    "searchNanos" : 6062107600,
+    "metrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 42.000000000,
+      "controlCosts" : {
+        "elapsed" : 5.000000000,
+        "spacecraftCpu" : 0.120000000,
+        "groundCpu" : 0.260000000,
+        "radioOccupancy" : 0.600000000,
+        "uplinkBytes" : 120,
+        "downlinkBytes" : 120
+      },
+      "createdKeys" : 2,
+      "startedOperations" : {
+        "PREPARE" : 1,
+        "OPEN" : 3,
+        "STOP" : 3,
+        "EXPIRE_CONTEXT" : 1
+      },
+      "completedOperations" : {
+        "PREPARE" : 1,
+        "OPEN" : 3,
+        "STOP" : 3,
+        "EXPIRE_CONTEXT" : 1
+      },
+      "completedActions" : {
+        "PREPARE" : 1,
+        "OPEN" : 3
+      },
+      "operationFailures" : { },
+      "contacts" : [ {
+        "contactId" : "C1",
+        "served" : true,
+        "usefulTime" : 19.000000000,
+        "uplinkBytes" : 3800,
+        "downlinkBytes" : 3800,
+        "uplinkFrames" : 38,
+        "downlinkFrames" : 38,
+        "failureReasons" : [ ]
+      }, {
+        "contactId" : "C2",
+        "served" : true,
+        "usefulTime" : 19.000000000,
+        "uplinkBytes" : 3800,
+        "downlinkBytes" : 3800,
+        "uplinkFrames" : 38,
+        "downlinkFrames" : 38,
+        "failureReasons" : [ ]
+      }, {
+        "contactId" : "C3",
+        "served" : true,
+        "usefulTime" : 4.000000000,
+        "uplinkBytes" : 800,
+        "downlinkBytes" : 800,
+        "uplinkFrames" : 8,
+        "downlinkFrames" : 8,
+        "failureReasons" : [ ]
+      } ]
+    }
+  }
+}

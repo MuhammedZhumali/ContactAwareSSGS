@@ -1,0 +1,340 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,longtable,tabularx,array}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\act}[1]{\texttt{#1}}
+\newcommand{\SC}{\mathrm{SC}}
+\newcommand{\GS}{\mathrm{GS}}
+\newtheorem{proposition}{Proposition}
+\title{Formal Cost Model and a Three-Contact Horizon Witness}
+\author{Predictive Multi-Contact Security Lifecycle Management\\Research specification, version 0.1}
+\date{19 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+This specification completes research-plan items 1 and 2: an operational cost model and a verifiable example where a third contact changes the optimal lifecycle decision. It defines a proposed executor contract, not an implemented simulator or a cryptographic protocol. All numerical costs are synthetic assumptions. The witness establishes a value of additional information under a stated objective; it does not establish an ISS performance gain, lower compromise risk, or superiority for every workload.
+\end{abstract}
+
+\section{Scope and common operational assumptions}
+One spacecraft uses a fixed, security-independent sequence of non-overlapping contacts
+\[
+ C_i=(g_i,s_i,e_i,R_i^\uparrow,R_i^\downarrow,Q_i^\uparrow,Q_i^\downarrow),\qquad s_i<e_i.
+\]
+Here $g_i$ is the ground station, $R$ denotes an available directional payload/management rate, and $Q$ is a predeclared service demand. Contact selection is outside the security policy. Unselected geometric candidates are not counted as failed security contacts.
+
+The coordinator knows the current security state and a restricted forecast. Both compared policies have identical trust, permissions, costs, resources, initial state, solver, objective, and tie-breaking. Only the visible contact horizon differs. Forecasts are exact in this initial model. Planning latency is idealized as zero here and must be measured separately in later experiments.
+
+A context belongs to a spacecraft--station pair. Uplink and downlink have distinct traffic keys and Security Associations (SAs). A ground-side preparation for station A creates material at A's authorized secure endpoint; it does not install anything onboard. Installation, confirmed activation/binding, and opening require a contact with that same station. There is no A-management route through B in this model. This is an explicit deployment assumption, applied to both policies, not a claim that such a route is impossible in other architectures.
+
+A separately provisioned authenticated management mechanism allows establishing new traffic keys even when old traffic keys have expired. Its exchange and processing costs belong to the operation profile. Its credentials, protocol security, and renewal are outside this first traffic-key model. The example assumes this mechanism succeeds; it does not claim that expired traffic keys authenticate their own replacement.
+
+\section{State and mandatory security constraints}
+The planning state is
+\[
+ x(t)=\bigl(t,\{\mathcal K_g\},\{\mathrm{SA}_{g,\uparrow},\mathrm{SA}_{g,\downarrow}\},
+          \mathrm{link},\mathrm{pending},\mathrm{queues},\mathrm{resources}\bigr).
+\]
+Existing Java objects represent immutable key/SA snapshots. Pending executions, resource occupancy, payload queues, and an event clock are proposed executor state, not features already implemented in those objects.
+
+A key $k$ carries a unique identifier, context and direction, creation time $c_k$, optional activation time $a_k$, installation confirmation, status, committed expiry bound, nonce progress, and last successful contact end $\ell_k$ per direction. Its usable deadline is
+\[
+ d_k(t)=\min\{d_k^{\mathrm{committed}},\,c_k+A(t),\,a_k+P(t)\}.
+\]
+The last term is omitted before activation. $A$ is maximum material age and $P$ is cryptoperiod. At creation the committed bound is fixed from material age; activation can only tighten it. Later parameter relaxation, reuse, SA recreation, or rebinding cannot extend the committed bound.
+
+Key statuses are \act{PRE\_ACTIVE}, \act{ACTIVE}, \act{DEACTIVATED}, and \act{DESTROYED}. SA statuses are \act{ABSENT}, \act{UNKEYED}, \act{KEYED}, and \act{OPERATIONAL}. These are not interchangeable: an installed prepared key need not be active or bound; a stopped SA may remain keyed.
+
+Every protected interval $[u,v)$ must satisfy authorization, context/direction matching, active installed material, peer synchronization, available counters, and
+\[
+ [u,v)\subseteq[s_i,e_i),\qquad u<d_k,\quad v\leq d_k
+\]
+for both directional keys in the paired-context model. A setup commit or start must occur strictly before $e_i$ and strictly before the relevant deadline. Traffic may end exactly at a deadline. At most one contact is operational.
+
+For a previously used direction,
+\[
+ 0\leq s_i-\ell_k\leq G,\qquad G=\mathrm{maxReuseGap}.
+\]
+The gap is measured from contact start, not from delayed setup completion. Empty sessions do not refresh history. First use has no previous-success gap and must not be mislabeled as successful reuse. Counters survive stops and rebinding; key IDs cannot be recycled. Expiry of either directional key blocks paired use. A separately prepared candidate survives expiry of the old bound pair.
+
+Constraints are hard feasibility conditions, not penalties that a policy may trade against performance. No claim about compromise probability follows from satisfying them.
+
+\section{Operations and execution semantics}
+Table~\ref{tab:ops} fixes the cost-bearing execution units. Each operation has a resource phase graph, an observable success checkpoint, and a specified treatment of incomplete work.
+\begin{longtable}{@{}p{22mm}p{55mm}p{64mm}@{}}
+\caption{Execution contract; these units are shared by every policy.}\label{tab:ops}\\
+\toprule
+Unit & Admission and resources & Confirmed effect / incomplete execution\\
+\midrule\endfirsthead
+\toprule Unit & Admission and resources & Confirmed effect / incomplete execution\\\midrule\endhead
+$P$: prepare & Authorized context; fresh IDs; ground CPU/storage. May execute without a radio contact. & Two directional keys become \act{PRE\_ACTIVE} at completion. Creation is counted even if they are never used. No onboard installation is inferred.\\
+$I$: install & Prepared, unexpired candidate; matching station contact; CPU and management exchange. & After confirmation, candidate is installed but still \act{PRE\_ACTIVE}. A completed installation can persist to a later contact. Without confirmation it is not considered usable onboard.\\
+$K$: switch & Installed candidate; matching contact; no protected traffic during switching. Includes confirmed activation and SA synchronization/binding. & At the confirmed checkpoint: stop/detach and retire old material when present; activate and bind the candidate; state becomes \act{KEYED}. An uncertain switch blocks traffic until reconciliation.\\
+$O$: open & Valid, synchronized bound pair and matching contact; gap and counters checked at completion. & \act{KEYED} to \act{OPERATIONAL}. For a previously successful pair this is \act{REUSE}; otherwise it is a first start.\\
+$L$: local lifecycle & Stop, expiry gate, retirement/destruction, and metadata updates. & Stop preserves eligible keys and counters. Expiry blocks use immediately. Local retirement does not prove remote deletion. A later protocol may charge additional remote cleanup.\\
+\bottomrule
+\end{longtable}
+
+The four lifecycle intentions are therefore:
+\begin{itemize}
+\item \act{PREPARE}: execute $P$ only. Installation is a separate, costed step.
+\item \act{REUSE}: execute $O$ on the existing eligible pair.
+\item \act{ROTATE}: execute missing $P$/$I$, then $K$; execute $O$ if serving the current contact.
+\item \act{EXPIRE}: enforce the use prohibition and perform the specified local retirement. It does not create a replacement.
+\end{itemize}
+\act{STOP}, first establishment, installation-only, and staged continuations remain explicit executor operations. The four names are not a reason to remove valid intermediate states. In particular, the planner may install during C1, retain the old bound pair for C1, and switch during C3.
+
+$K$ is a proposed indivisible confirmed management unit; the underlying stage-1 methods are separate snapshot transitions. A later executor must prevalidate the intended transition sequence and publish it at the confirmed checkpoint. This abstraction does not make a distributed protocol atomic. Loss of an acknowledgement may require a pending/uncertain state and recovery, which stage 1 does not yet implement.
+
+After a failure, every completed checkpoint persists, and already consumed CPU, time and bytes remain charged. An incomplete $I$ must be retried or reconciled according to the chosen protocol. An incomplete $K$ cannot silently roll both peers back or authorize traffic. Automatic expiry must continue to block use while any operation is pending.
+
+\section{Cost and resource equations}
+For operation $o$, the profile specifies ground/spacecraft CPU work $c_o^\GS,c_o^\SC$, directional bytes $b_o^\uparrow,b_o^\downarrow$, phase ordering, rate requirements, waiting time, and completion conditions. CPU-seconds, elapsed seconds, radio seconds, and bytes are separate quantities.
+
+Let $z_{o,p}(t)$ indicate an executing phase on resource $p$, and let $u_{i,d}(t)$ be the payload fraction assigned to direction $d$ within contact $i$. Resource feasibility includes
+\[
+ \sum_o z_{o,p}(t)+z_{\mathrm{payload},p}(t)\leq M_p(t),
+ \qquad
+ \sum_o z_{o,\mathrm{radio}}(t)+\sum_{i,d}u_{i,d}(t)\leq1
+\]
+for the single half-duplex radio and corresponding normalized CPU capacities. Phase precedence and matching-contact constraints also apply. Payload CPU demand, when modeled, must be included in these resource constraints. Simultaneous work on independent resources is allowed by the general formulation.
+
+For the strictly serial phase profiles used in the witness only,
+\[
+ \tau_o=c_o^\GS+c_o^\SC+
+       \frac{b_o^\uparrow}{R^\uparrow}+
+       \frac{b_o^\downarrow}{R^\downarrow}+w_o .
+\]
+For a different phase graph, elapsed duration is obtained from its scheduled phases and critical path; it is not obtained by adding already-overlapping CPU and radio time. No additional CPU-time term is subtracted from useful time after a blocked setup interval has already been removed.
+
+Accounting through time $T$ uses actual execution:
+\[
+ C^\SC(T)=\sum_o\int^{T}\dot c_o^\SC(t)\,dt,\quad
+ C^\GS(T)=\sum_o\int^{T}\dot c_o^\GS(t)\,dt,\quad
+ B^d(T)=\sum_o\int^{T}\dot b_o^d(t)\,dt.
+\]
+These are control-plane CPU totals. Payload cryptographic work and planner work must be reported separately; they are not silently estimated from geometry. The first objective uses $C_{\rm ctl}=C^\SC+C^\GS$, with unit weights fixed in advance. Later sensitivity studies may change weights, but not separately for competing policies.
+
+$N_{\rm new}$ counts individual directional traffic keys at successful logical creation, not key pairs, activations, or used keys. Discarded/unused created keys remain counted. An aborted preparation still incurs completed work even if no logical creation checkpoint occurred.
+
+Define
+\[
+ V_i^d=\int_{s_i}^{e_i}R_i^d(t)u_{i,d}(t)\,dt,\quad
+ T_i=\int_{s_i}^{e_i}\sum_d u_{i,d}(t)\,dt,\quad
+ y_i=\mathbf1\{V_i^\uparrow\geq Q_i^\uparrow,\ V_i^\downarrow\geq Q_i^\downarrow\}.
+\]
+$T_i$ is actual protected payload transmission time, not merely visible time or time with an open SA. Backlog and demand must be inputs. Setup, idle time, and retransmitted management bytes are not useful payload.
+
+\section{Optimization and information boundary}
+For a feasible execution plan $\pi$ and its resulting state trajectory,
+\[
+ \boxed{\quad
+ \max_{\pi\in\mathcal F(x,\mathcal C)}
+       \operatorname{lex}\bigl(
+       N_{\rm served},T_{\rm useful},-C_{\rm ctl},-B_{\rm mgmt},-N_{\rm new}\bigr)
+       \quad}
+\]
+where $N_{\rm served}=\sum_i y_i$, $T_{\rm useful}=\sum_iT_i$, and
+$B_{\rm mgmt}=B^\uparrow+B^\downarrow$.
+This is an efficiency/service objective. It does not optimize a compromise-risk function. Lexicographic order deliberately permits paying more CPU and even losing total useful seconds to serve an additional contact.
+
+At decision $i$, $H$ counts \emph{additional} future contacts:
+\[
+ W_i^H=(C_i,\ldots,C_{\min(n,i+H)}),\qquad
+ a_i=\mathrm{first}\bigl(\arg\max_{\pi\in\mathcal F(x_i,W_i^H)}\operatorname{lex}J(\pi)\bigr).
+\]
+Next-contact uses $H=1$; Multi-contact uses $H\geq2$. Both use the same exact selection rule for a given finite model and replan when new contacts enter view. Neither may inspect hidden forecast rows, future actual failures, or metrics from the complete experiment. Knowing a common experiment end time is not knowing the hidden station identity.
+
+A deterministic tie-break is part of the algorithm. For the witness it orders contact plans as
+\[
+ \act{ROTATE}<\act{INSTALL\_REUSE}<\act{REUSE}<
+ \act{INSTALL\_ONLY}<\act{ROTATE\_ONLY}<\act{SKIP},
+\]
+then chooses earliest feasible starts and stable key IDs. This ordering is used only after equality of the whole objective vector. It selects a representative among tied optimum plans; it does not produce the service advantage.
+
+There is no terminal inventory reward, speculative future cost, or forced destruction charge at a visible horizon boundary: $V_{\rm terminal}=0$ for both policies. State carries forward physically; previous expenditure is sunk at replanning. Full experiment reports include the prescribed warmup. Material still present at experiment end is recorded as surviving/censored, not assumed destroyed. This terminal convention is an explicit assumption to vary in later studies.
+
+The general formulation permits continuous scheduling. A discretized or bounded implementation may only claim optimality within its declared action/time model. The following witness is reduced to a finite canonical set by a separate dominance argument; its enumeration is not a general optimizer.
+
+\section{Fully specified synthetic fixture}
+All times below are seconds relative to an arbitrary epoch. Rates are $400$ bytes/s per active direction on a shared half-duplex radio. Backlog is saturated, directional payload time is split equally, and each contact requires at least $400$ uplink and $400$ downlink payload bytes. Thus service requires $q=2$ useful seconds. Data-plane CPU is omitted in this control-plane fixture; the assumed rate is an exogenous sustainable rate, not a measured crypto throughput. There are no attacks, outages, counter exhaustion, or binding storage limits.
+
+Set cryptoperiod $P=150$, maximum material age $A=400$, and reuse gap $G=200$. Both contexts are authorized and initially \act{KEYED}, with confirmed installation, synchronized SAs, and non-exhausted counters. For each directional pair:
+\begin{center}
+\begin{tabular}{@{}lrrrrl@{}}
+\toprule
+Pair & Created & Activated & Deadline & Last success & Initial placement\\
+\midrule
+A old & $-90$ & $-80$ & $70$ & $-60$ & Both peers, active/bound\\
+B old & $-40$ & $-30$ & $120$ & $-20$ & Both peers, active/bound\\
+A candidate & $0$ & -- & $400$ & -- & Ground only, prepared\\
+\bottomrule
+\end{tabular}
+\end{center}
+The candidate's common warmup $P$ occupies $[-2,0]$, creates two logical keys at $0$, and costs $0.20$ ground CPU-seconds. This cost and these two keys are included in every table, even when unused. Earlier provisioning of the four old keys is common initial history outside this accounting window. Supplying the same candidate to all policies isolates the timing of onboard installation and SA renewal; it does not grant Multi-contact free preparation.
+
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Sequence & C1 & C2 & C3\\
+\midrule
+X & A, $[0,20)$ & B, $[30,50)$ & A, $[80,85)$\\
+Y & A, $[0,20)$ & B, $[30,50)$ & B, $[80,85)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Only C3's station differs. Initial state, duration, rate, demand, C1, C2, and all costs are identical.
+
+\subsection{Operation costs and non-overlapping phases}
+\begin{center}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Operation & Elapsed s & GS CPU s & SC CPU s & Up B & Down B & Wait s\\
+\midrule
+$P$ prepare & 2 & .20 & 0 & 0 & 0 & 1.80\\
+$I$ install & 4 & .10 & .20 & 600 & 200 & 1.70\\
+$K$ switch & 1 & .05 & .10 & 100 & 100 & .35\\
+$O$ open/reuse & 1 & .02 & .04 & 40 & 40 & .74\\
+\bottomrule
+\end{tabular}
+\end{center}
+$P$ consists of ground CPU then its specified latency. Each online operation executes in order: ground CPU, uplink transmission, spacecraft CPU, downlink transmission, fixed acknowledgement/processing wait. For example,
+$I=.10+1.50+.20+.50+1.70=4$ s.
+The radio occupancy of $I$ is $2$ s, not $4$ s. Radio occupancy of $K$ is $.50$ s and of $O$ is $.20$ s.
+
+In this fixture each online management operation is non-preemptive, and protected payload for that contact is suspended for its entire elapsed interval, including waits. This is a declared conservative executor choice; allowing payload in management waits is a different profile to evaluate later. Distinct completed operations may be separated across contacts. $L$ metadata operations have zero modeled cost here, and automatic local expiry occurs at the deadline. This omits metadata overhead equally for all policies, not actual physical CPU work or remote acknowledgements.
+
+A full renewal of the ready ground candidate costs $I+K+O=6$ online seconds, $.51$ CPU-seconds and $1080$ management bytes. Mere reuse costs $1$ second, $.06$ CPU-seconds and $80$ bytes. A previously installed candidate needs only $K+O=2$ online seconds.
+
+\subsection{A partial execution that can be checked by hand}
+Start $I$ at $t=0$ and interrupt it at $t=2$. Ground CPU uses $[0,.10)$; uplink sends $600$ bytes during $[.10,1.60)$; spacecraft CPU uses $[1.60,1.80)$; downlink has sent $80$ of its $200$ bytes by $2$. Charged totals are $2$ elapsed seconds, $.10$ GS CPU, $.20$ SC CPU, $600$ up bytes, $80$ down bytes, and $1.70$ radio seconds. There is no installation-confirmation checkpoint at $2$, so the candidate is not marked installed. The old bound pair is unchanged by this failed staging attempt. Retrying $I$ consumes new work; the first attempt is not refunded.
+
+If $I$ completes at $4$ and a subsequent $K$ is interrupted, the completed installation remains. The uncertain switch blocks protected traffic pending reconciliation. This pending-state requirement belongs to a future executor; the present witness has no interruptions.
+
+\section{Exhaustive small-instance result}
+\subsection{Canonical plans and why the reduction is valid}
+For each contact enumerate six plan labels when admissible:
+\begin{itemize}
+\item \act{REUSE}: $O$ on the current pair (a first start if it has no prior use).
+\item \act{INSTALL\_REUSE}: $I$ on A's candidate, then $O$ on the old bound pair.
+\item \act{ROTATE}: missing $I$, then $K+O$ on the candidate.
+\item \act{INSTALL\_ONLY}: $I$, without serving this contact.
+\item \act{ROTATE\_ONLY}: missing $I$, then $K$, without serving this contact.
+\item \act{SKIP}: no management or payload in that contact.
+\end{itemize}
+The label \act{INSTALL\_REUSE} is a composite plan, not a fifth proposed security policy. Installed prepared material is retained between contacts. An action whose online completion is at or after contact end is inadmissible. A valid action can complete yet fail the service threshold; its costs and any useful payload would still count.
+
+B's original pair is valid throughout the entire example. Renewing B incurs additional setup and cannot improve any validity, gap, or resource condition. Creating a second A candidate likewise cannot improve coverage through $85$ because the supplied candidate already suffices, while adding positive cost and creation count. Such plans are dominated.
+
+One completed A installation is enough. Repeating installations/rotations adds cost and cannot improve this example's service or deadline feasibility. With saturated backlog, a scheduled non-preemptive management step removes its elapsed time from payload. Moving a useful step within a contact cannot reduce this total; delaying an entire step past the only A opportunity can lose feasibility. An old-pair start followed by a fresh-pair start has extra open cost. Switching after serving the old pair without opening the new pair cannot outperform the canonical renewal: at best it approaches the same payload budget, and its online commit must still occur strictly before contact end. Installation-only and switch-only alternatives are explicitly enumerated.
+
+Thus every optimal plan has a representative in the six-label set for this fixture. This reduction relies on the stated phase contract and non-binding fresh-key deadlines; it is not asserted for arbitrary schedules, payload arrivals, protocols, or failures.
+
+Enumeration gives 12 complete canonical plans on the common C1/C2 prefix, 28 on X, and 24 on Y. Counts include feasible but dominated plans. The saved JSON contains every leaf, its action sequence, operation intervals, costs, and payload intervals.
+
+\subsection{Root choices and best continuations}
+\begin{center}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+C1 choice & C1/C2 only $(N,T)$ & X best $(N,T)$ & Y best $(N,T)$\\
+\midrule
+REUSE & $(2,38)$ & $(2,38)$ & $(3,42)$\\
+INSTALL\_REUSE & $(2,34)$ & $(3,37)$ & $(3,38)$\\
+ROTATE & $(2,33)$ & $(3,37)$ & $(3,37)$\\
+INSTALL\_ONLY & $(1,19)$ & $(2,22)$ & $(2,23)$\\
+ROTATE\_ONLY & $(1,19)$ & $(2,23)$ & $(2,23)$\\
+SKIP & $(1,19)$ & $(1,19)$ & $(2,23)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+$T$ is useful seconds, and the best continuation includes all later admissible decisions. Prefix selection strictly prefers \act{REUSE}; its lower-order tie-break is irrelevant.
+
+\begin{center}
+\begin{tabular}{@{}llrrrrr@{}}
+\toprule
+Sequence/policy & C1 decision & Served & Useful s & GS CPU s & SC CPU s & Mgmt B\\
+\midrule
+X / Next & REUSE & 2 & 38 & .24 & .08 & 160\\
+X / Multi & ROTATE & 3 & 37 & .41 & .42 & 1240\\
+X / tied Multi & INSTALL\_REUSE & 3 & 37 & .41 & .42 & 1240\\
+Y / Next & REUSE & 3 & 42 & .26 & .12 & 240\\
+Y / Multi & REUSE & 3 & 42 & .26 & .12 & 240\\
+\bottomrule
+\end{tabular}
+\end{center}
+Every row includes two newly prepared directional keys and $.20$ GS CPU from the same warmup. For X/Multi, directional management totals are $820$ up and $420$ down bytes. For X/Next they are $80$ and $80$ bytes.
+
+The representative X/Multi timeline is:
+\[
+\begin{array}{c|l}
+\mathrm{C1/A}& I:[0,4),\ K:[4,5),\ O:[5,6),\ \mathrm{payload}:[6,20)\\
+\mathrm{C2/B}& O:[30,31),\ \mathrm{payload}:[31,50)\\
+\mathrm{C3/A}& O:[80,81),\ \mathrm{payload}:[81,85).
+\end{array}
+\]
+A's new activation time is $5$, its deadline is $155$, and its return gap is $80-20=60\leq200$. The alternative optimum installs during $[0,4)$, opens the old pair during $[4,5)$, sends payload during $[5,20)$, and switches/opens at C3 during $[80,82)$. It gives $15+19+3=37$ useful seconds. Its new activation time is $81$ and its deadline $231$. This is a real tie under the stated objective, resolved by the common tie-break; it must not be hidden as an invalid alternative.
+
+For X/Next, the old A pair serves C1 but expires at $70$. At C2, Next now sees C3 and may replan, but it can only manage B over that contact. A's ready ground candidate is still uninstalled. At C3, $I+K+O=6>5$ seconds, so no protected A payload can begin. An installation attempt without a useful continuation only adds cost and loses to skipping. Knowledge arriving at C2 cannot repair the missed A installation opportunity.
+
+\subsection{Proof of an information-dependent decision}
+\begin{proposition}
+For this fixture, the common-horizon $H=1$ solver chooses the same C1 plan on X and Y. The $H=2$ solver chooses different C1 plans. Its X result is strictly better under the specified lexicographic objective.
+\end{proposition}
+\begin{proof}
+The $H=1$ input, including initial state, C1/C2, parameters and tie-breaking, is identical for X and Y. It must therefore return the same action. The prefix table shows that action is uniquely \act{REUSE} among canonical root choices.
+
+On X, any three-served-contact plan must make progress in A's installation during C1: old A expires before C3; B cannot install A; the uninstalled candidate needs six online seconds whereas C3 has five. With the operation contract, completing installation at C1 is necessary for a feasible three-contact plan. Both early renewal and installation followed by deferred switching attain three contacts and 37 useful seconds. They tie on all remaining objective components; the deterministic tie-break selects \act{ROTATE}.
+
+On Y, the old A pair suffices for C1 and the old B pair suffices for both later contacts. Extra installation or renewal cannot increase the served count and strictly lowers useful time. Consequently \act{REUSE} is optimal. X/Multi has three served contacts versus X/Next's two, so it strictly wins lexicographically even though it uses more CPU/bytes and has one less useful second.
+\end{proof}
+
+The stronger information statement concerns the \emph{decision to install A before leaving C1}, not uniqueness of every low-level command: all X optimum representatives install, while Y optima do not. No deterministic controller receiving the identical restricted observation can be fully optimal on both sequences. A controller that blindly renews can still serve three contacts in both; it pays unnecessary cost and loses useful time on Y. The example does not prove that short-horizon policies must always miss a contact, nor an expected advantage without a workload distribution.
+
+\section{Robustness, negative controls, and security interpretation}
+The mechanism is not an equality-edge construction. Let $r$ be open time, $i$ installation time, $a$ switching time, $q$ required useful seconds, and $L_j$ contact lengths. One open range preserving it is
+\[
+ L_1>i+a+r+q,\quad L_2>r+q,\quad
+ a+r+q<L_3<i+a+r,
+\]
+together with
+\[
+ e_1<d_{A,\rm old}<s_3,\qquad
+ d_{A,\rm new}>e_3,\qquad d_{B,\rm old}>e_3,
+\]
+and strict authorization/gap/resource feasibility. Numerically, $4<5<6$ for the short-contact condition. Small perturbations inside these margins preserve the install-now necessity and the opposing Y decision.
+
+Two negative controls are required:
+\begin{enumerate}
+\item Keep all other settings, but activate the old A pair at $-50$ (deadline $100$) and set its previous success to $-40$. Both policies now reuse in both sequences: three contacts, 42 useful seconds, $.38$ total control CPU and 240 bytes. There is no horizon advantage. Enumeration has 36 leaves on X and 24 on Y.
+\item Widen X's C3 to $[80,100)$. Next may renew at C3 and obtains $19+19+14=52$ useful seconds. Early Multi renewal gives $14+19+19=52$. Both serve three contacts with $.83$ CPU and 1240 bytes. Different first decisions can therefore coexist with equal performance. Enumeration has 36 leaves; the tie-break still selects early rotation for Multi.
+\end{enumerate}
+
+All fixture paths used as results respect the same cryptoperiod, scope, counter, and reuse-gap constraints. The selected Multi plan costs $.51$ more control CPU and 1080 more management bytes than Next on X, and its useful time is $37$ versus $38$ seconds. Its demonstrated advantage is service coverage according to the declared first objective, not a universal resource saving.
+
+Early rotation and deferred activation also create different lifetimes. The tied plans activate new A at $5$ and $81$, respectively. Record preparation-to-activation delay, installed-but-inactive residence, actual allowed-use interval, retirement/destruction times, and surviving material at experiment end separately. The objective does not choose between these two plans on compromise risk. Do not describe either as more secure without a threat/compromise model.
+
+\section{Verification artifact and future acceptance tests}
+The accompanying \act{verification.json} records input assumptions and all canonical enumeration leaves, with CPU in milliseconds and time in seconds. Totals were recalculated from phase intervals and independently checked against the closed-form tables. This is a one-off calculation, not executed Java policy tests.
+
+Future implementation acceptance conditions are:
+\begin{enumerate}
+\item Identical C1/C2 observations produce identical Next C1 decisions on X and Y, including identical serialized observation content.
+\item Multi uses A installation in X and avoids it in Y; the documented tie-break selects early rotation among X's tied optima.
+\item Replanning at C2 cannot install A through B or convert ground preparation into onboard confirmation.
+\item The exact solver reproduces $(3,37,.83,1240,2)$ for X/Multi and $(2,38,.32,160,2)$ for X/Next, with the stated units.
+\item The installation/deferred-activation alternative is admitted and reproduces the tie.
+\item Both negative controls reproduce the stated equality results.
+\item A $t=2$ interrupted installation charges the exact partial costs, has no successful installation checkpoint, and cannot authorize new-key use.
+\item No interval crosses a key deadline; no forbidden cross-station reuse or nonce reset occurs; rejected/unfinished operations do not falsely advance confirmed state.
+\item Offline/warmup and unused-key costs are included, including the unconsumed candidate on Y.
+\end{enumerate}
+Application source and tests have not been changed for this document. The next implementation step, after review, is a shared cost profile and executor/event engine that respects these checkpoints. Only then should the exact planner and four policies be implemented and evaluated on the ISS schedule.
+
+\appendix
+\section{Reproducing the finite enumeration}
+Start with the two context records and one A candidate shown above. Carry forward the active deadline, activation, last successful end, and candidate placement (ground, installed, or consumed). For each visible contact try the six labels, reject violated placement/validity/gap/completion conditions, and add actual operation costs. Service uses the remaining contact interval after setup, except for the explicit no-service labels. Update last-success only after positive payload. An expired deadline disqualifies use independently of whether a cleanup status has been materialized.
+
+Order complete leaves by descending served count and useful time, then ascending combined control CPU, management bytes, newly created keys, and finally the fixed label order. For a prescribed first label, take the best remaining leaf. No future C3 is included in the prefix enumeration. Full-loop Next executes that prefix choice, advances state, then uses the newly visible suffix. On these fixtures B's optimal C2 action is reuse, and its suffix cannot alter A's already missed installation opportunity.
+
+The reduction does not enumerate arbitrary key IDs, repeated dominated renewal, uncertain protocol outcomes, or continuous start positions that change no useful-time budget. Those exclusions are justified only by the fixture's stated dominance conditions. The general 46-contact problem still requires a separate search design and scale evaluation.
+\end{document}
