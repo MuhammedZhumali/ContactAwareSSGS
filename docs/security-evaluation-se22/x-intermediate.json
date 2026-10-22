@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "stage": "x",
+  "coverage": {
+    "PROCESS_ERROR": 5,
+    "FINISHED": 10,
+    "SEARCH_INCOMPLETE": 5
+  },
+  "canonicalChecks": [
+    {
+      "case": "X-multi-original-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "X-next-p70-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "X-next-p90-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "X-multi-p90-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "X-next-gap-midpoint-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "X-multi-gap-midpoint-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    }
+  ],
+  "claudeOriginalChecks": [
+    {
+      "case": "X-next-original-detected-canonical",
+      "comparable": false,
+      "metricsEqual": null,
+      "actionsEqual": null
+    },
+    {
+      "case": "X-next-original-detected-continue_wait",
+      "comparable": false,
+      "metricsEqual": null,
+      "actionsEqual": null
+    },
+    {
+      "case": "X-multi-original-detected-canonical",
+      "comparable": true,
+      "metricsEqual": true,
+      "actionsEqual": true
+    },
+    {
+      "case": "X-multi-original-detected-continue_wait",
+      "comparable": false,
+      "metricsEqual": null,
+      "actionsEqual": null
+    }
+  ],
+  "optimalSetStatuses": {
+    "COMPLETE": 7,
+    "INCOMPLETE": 1
+  },
+  "summarySha256": "c9e44c183dca6a41a2420391aa29f14e51bba6950a868d02e2a02775731779d4",
+  "analysisSha256": "3bcf24520b9468f9272334270832ac885cf8bd07a016de660eef997dffa066b7",
+  "manifestSha256": "06d58d5a4674d14d9e7165ed2f9aa5cdde053156cd1d3990779775f19e583460"
+}

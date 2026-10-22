@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "maven": {
+    "tests": 361,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "pythonTests": 14,
+  "preservedInputsVerified": 1890,
+  "registeredControllers": 52,
+  "coverage": {
+    "PROCESS_ERROR": 7,
+    "FINISHED": 40,
+    "SEARCH_INCOMPLETE": 5
+  },
+  "completedCanonicalComparisons": 21,
+  "xCheckpointPreserved": true,
+  "analysisSha256": "189555ba9926671a74bd08553a1086ad16e3e5a14d1d33907683a07612953a4c",
+  "scope": "Accounting/implementation checks passed; incomplete or failed controllers are not quality results.",
+  "logHashes": {
+    "target/security-evaluation-se22/python-tests.log": "b2636c558fcb05855d81e2f1ce3805b2657c930308f7fb2486e9a1a7678da7a7"
+  }
+}

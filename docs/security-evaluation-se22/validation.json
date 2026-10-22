@@ -1,0 +1,149 @@
+{
+  "status": "PASS",
+  "stage": "all",
+  "coverage": {
+    "PROCESS_ERROR": 7,
+    "FINISHED": 40,
+    "SEARCH_INCOMPLETE": 5
+  },
+  "canonicalChecks": [
+    {
+      "case": "X-multi-original-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "X-next-p70-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "X-next-p90-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "X-multi-p90-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "X-next-gap-midpoint-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "X-multi-gap-midpoint-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "iss3-cp5400-next-none-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "iss3-cp5400-multi-none-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "iss3-cp5400-next-original-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "iss3-cp5400-multi-original-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "iss3-cp5400-next-p30-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "iss3-cp5400-multi-p30-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "Y-next-none-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "Y-multi-none-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "Y-next-original-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "iss3-cp7200-next-none-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "iss3-cp7200-multi-none-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "iss3-cp7200-next-original-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "iss3-cp7200-multi-original-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "iss3-cp7200-next-p30-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "case": "iss3-cp7200-multi-p30-detected-canonical",
+      "journalEqual": true,
+      "metricsEqual": true
+    }
+  ],
+  "claudeOriginalChecks": [
+    {
+      "case": "X-next-original-detected-canonical",
+      "comparable": false,
+      "metricsEqual": null,
+      "actionsEqual": null
+    },
+    {
+      "case": "X-next-original-detected-continue_wait",
+      "comparable": false,
+      "metricsEqual": null,
+      "actionsEqual": null
+    },
+    {
+      "case": "X-multi-original-detected-canonical",
+      "comparable": true,
+      "metricsEqual": true,
+      "actionsEqual": true
+    },
+    {
+      "case": "X-multi-original-detected-continue_wait",
+      "comparable": false,
+      "metricsEqual": null,
+      "actionsEqual": null
+    }
+  ],
+  "optimalSetStatuses": {
+    "COMPLETE": 7,
+    "INCOMPLETE": 1
+  },
+  "summarySha256": "5d6e973fcfb7df31fb2fe27c7fb6e3c2f1d1e1a00b1e23d4acbe80e7a3f8d5cc",
+  "analysisSha256": "189555ba9926671a74bd08553a1086ad16e3e5a14d1d33907683a07612953a4c",
+  "manifestSha256": "06d58d5a4674d14d9e7165ed2f9aa5cdde053156cd1d3990779775f19e583460"
+}
