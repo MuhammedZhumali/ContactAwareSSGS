@@ -1,0 +1,135 @@
+{
+  "status": "PASS",
+  "attempts": 30,
+  "statusCounts": {
+    "COMPLETE": 16,
+    "INCOMPLETE": 8,
+    "FINISHED": 4,
+    "CONTROLLER_TIME_LIMIT": 1,
+    "PROCESS_TIMEOUT": 1
+  },
+  "searchStatusCounts": {
+    "COMPLETE": 16,
+    "INCOMPLETE": 8
+  },
+  "comparisons": [
+    {
+      "case": "X-next-none",
+      "comparison": "completed legacy/current isolated searches",
+      "completed": 2,
+      "scoreEqual": true,
+      "canonicalPlanEqual": true,
+      "exploredNodesEqual": true,
+      "status": "PASS"
+    },
+    {
+      "case": "X-multi-none",
+      "comparison": "completed legacy/current isolated searches",
+      "completed": 2,
+      "scoreEqual": true,
+      "canonicalPlanEqual": true,
+      "exploredNodesEqual": true,
+      "status": "PASS"
+    },
+    {
+      "case": "iss3-cp5400-alt-wait-next-none",
+      "comparison": "completed legacy/current isolated searches",
+      "completed": 4,
+      "scoreEqual": true,
+      "canonicalPlanEqual": true,
+      "exploredNodesEqual": true,
+      "status": "PASS"
+    },
+    {
+      "case": "iss3-cp5400-alt-wait-next-original-undetected",
+      "comparison": "completed legacy/current isolated searches",
+      "completed": 4,
+      "scoreEqual": true,
+      "canonicalPlanEqual": true,
+      "exploredNodesEqual": true,
+      "status": "PASS"
+    },
+    {
+      "case": "iss3-cp5400-alt-wait-multi-none",
+      "comparison": "completed legacy/current isolated searches",
+      "completed": 0,
+      "scoreEqual": null,
+      "canonicalPlanEqual": null,
+      "exploredNodesEqual": null,
+      "status": "NOT_COMPARABLE"
+    },
+    {
+      "case": "iss3-cp5400-moderate-multi-none",
+      "comparison": "completed legacy/current isolated searches",
+      "completed": 4,
+      "scoreEqual": true,
+      "canonicalPlanEqual": true,
+      "exploredNodesEqual": true,
+      "status": "PASS"
+    },
+    {
+      "case": "iss3-cp5400-saturated-multi-none",
+      "comparison": "completed legacy/current isolated searches",
+      "completed": 0,
+      "scoreEqual": null,
+      "canonicalPlanEqual": null,
+      "exploredNodesEqual": null,
+      "status": "NOT_COMPARABLE"
+    },
+    {
+      "case": "X-next-none",
+      "comparison": "full controller vs frozen SE2",
+      "completed": 1,
+      "scoreEqual": true,
+      "canonicalPlanEqual": true,
+      "journalEqual": true,
+      "status": "PASS"
+    },
+    {
+      "case": "X-multi-none",
+      "comparison": "full controller vs frozen SE2",
+      "completed": 1,
+      "scoreEqual": true,
+      "canonicalPlanEqual": true,
+      "journalEqual": true,
+      "status": "PASS"
+    },
+    {
+      "case": "X-next-original-detected",
+      "comparison": "full controller vs frozen SE2",
+      "completed": 1,
+      "scoreEqual": true,
+      "canonicalPlanEqual": true,
+      "journalEqual": true,
+      "status": "PASS"
+    },
+    {
+      "case": "X-multi-original-detected",
+      "comparison": "full controller vs frozen SE2",
+      "completed": 1,
+      "scoreEqual": true,
+      "canonicalPlanEqual": true,
+      "journalEqual": true,
+      "status": "PASS"
+    }
+  ],
+  "restoredSourceSnapshots": 7,
+  "historicalSearchesPerformedForCapture": 0,
+  "frozenSE2FilesVerified": 1631,
+  "cooperativeControllerStop": "CONTROLLER_TIME_LIMIT",
+  "externalProbe": {
+    "at": "2026-01-01T00:00:00Z",
+    "frameInFlight": false,
+    "pendingOperations": 0,
+    "status": "RESTORED"
+  },
+  "sourceSummarySha256": "37d0171c4f9afe6c0f91655a0c6753ec187ef45f8d4e0370eb11ddc3981bda52",
+  "manifestSha256": "370075687befcb8a151387c4b0723f6d0115d72041cd61cc5f9261bb82a96f0a",
+  "analysisSha256": "2ebc502a9ed40e0483304edab1092289aa920acf454f9a786da4c71883cd168f",
+  "timingCaveats": [
+    "No original CPU/GC/pause trace exists for 42/3361s anomalies; their cause remains unknown.",
+    "CPU counters can have coarse OS resolution; do not infer parallel search from small CPU/elapsed discrepancies.",
+    "GC/safepoint logs include startup and export; MXBean deltas cover the timed call but are JVM-wide.",
+    "Legacy new-phase counters are unavailable, not zero. Incomplete scores/plans are incumbents, not optima."
+  ]
+}

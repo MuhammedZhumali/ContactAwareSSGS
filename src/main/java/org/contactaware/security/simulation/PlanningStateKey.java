@@ -36,6 +36,7 @@ record PlanningStateKey(SimulationScenario scenario, Instant at, SecurityState s
     }
 
     static PlanningStateKey from(ExecutionSnapshot snapshot) {
+        SearchControl.checkpoint("stateKey.snapshot");
         Objects.requireNonNull(snapshot);
         if (snapshot.executionMode() != ExecutionMode.PLANNING_BRANCH)
             throw new IllegalArgumentException("Planning equivalence requires a planning branch snapshot");
@@ -45,7 +46,7 @@ record PlanningStateKey(SimulationScenario scenario, Instant at, SecurityState s
                 snapshot.inFlightFrame(), snapshot.carriedRecordedCosts(), snapshot.carriedUsefulTime(),
                 snapshot.carriedCreatedKeys(), snapshot.issuedKeyIds(), snapshot.issuedOperationIds(), snapshot.executionMode(),
                 snapshot.recordedCosts(), snapshot.usefulSecureTime(), snapshot.createdKeys(),
-                snapshot.journal().stream().anyMatch(event -> event.type() == SimulationEvent.Type.ACTION_FAILED
+                snapshot.journal().stream().peek(ignored -> SearchControl.checkpoint("stateKey.stream")).anyMatch(event -> event.type() == SimulationEvent.Type.ACTION_FAILED
                         || event.type() == SimulationEvent.Type.PAYLOAD_REJECTED));
     }
 }

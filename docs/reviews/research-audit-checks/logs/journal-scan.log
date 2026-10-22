@@ -1,0 +1,13 @@
+﻿files=488
+aborted:KNOWN_COMPROMISE:UPLINK = 3  e.g. [iss3-cp5400-multi-original-detected, iss3-cp5400-multi-p10-detected, iss3-cp5400-notice2-multi-original-detected]
+aborted:KNOWN_COMPROMISE_DOWNLINK_DROPPED:DOWNLINK = 62  e.g. [iss-fragment3-cp5400-fixed-original-detected, iss-fragment3-cp5400-moderate-fixed-original-detected, iss-fragment3-cp5400-moderate-multi-original-detected, iss-fragment3-cp5400-moderate-next-original-detected]
+coincident-with-GS-notice:ACTION_COMPLETED:INSTALL: = 4  e.g. [X-fixed-p10-detected, X-percontact-p10-detected, Y-fixed-p10-detected, Y-percontact-p10-detected]
+coincident-with-GS-notice:CONTACT_ENDED:: = 8  e.g. [X-fixed-p90-detected, X-multi-p90-detected, X-next-p90-detected, X-percontact-p90-detected]
+coincident-with-GS-notice:CONTEXT_STOPPED:STOP: = 168  e.g. [iss-fragment3-cp5400-fixed-original-detected, iss-fragment3-cp5400-moderate-fixed-original-detected, iss-fragment3-cp5400-moderate-multi-original-detected, iss-fragment3-cp5400-moderate-next-original-detected]
+coincident-with-GS-notice:PAYLOAD_ABORTED::KNOWN_COMPROMISE = 3  e.g. [iss3-cp5400-multi-original-detected, iss3-cp5400-multi-p10-detected, iss3-cp5400-notice2-multi-original-detected]
+coincident-with-GS-notice:PAYLOAD_TRANSFERRED:: = 70  e.g. [X-alt-wait-fixed-original-detected, X-alt-wait-multi-original-detected, X-alt-wait-next-original-detected, X-alt-wait-percontact-original-detected]
+coincident-with-GS-notice:STEP_COMPLETED:INSTALL: = 4  e.g. [X-fixed-p10-detected, X-percontact-p10-detected, Y-fixed-p10-detected, Y-percontact-p10-detected]
+coincident-with-GS-notice:STEP_COMPLETED:STOP: = 168  e.g. [iss-fragment3-cp5400-fixed-original-detected, iss-fragment3-cp5400-moderate-fixed-original-detected, iss-fragment3-cp5400-moderate-multi-original-detected, iss-fragment3-cp5400-moderate-next-original-detected]
+coincident-with-disclosure:ACTION_COMPLETED:OPEN = 8  e.g. [X-fixed-p30-detected, X-fixed-p30-undetected, X-percontact-p30-detected, X-percontact-p30-undetected]
+coincident-with-disclosure:PAYLOAD_TRANSFERRED: = 132  e.g. [X-alt-wait-fixed-original-detected, X-alt-wait-fixed-original-undetected, X-alt-wait-multi-original-detected, X-alt-wait-multi-original-undetected]
+coincident-with-disclosure:STEP_COMPLETED:OPEN = 8  e.g. [X-fixed-p30-detected, X-fixed-p30-undetected, X-percontact-p30-detected, X-percontact-p30-undetected]

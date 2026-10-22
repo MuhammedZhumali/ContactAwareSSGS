@@ -1,0 +1,22 @@
+{
+  "archives": [
+    {
+      "file": "research-results-se21.zip",
+      "sha256": "90edf96793544ed1391fc0d624aab8d8d0062d1aa050aa6dc4d263eed41805eb",
+      "bytes": 385558,
+      "entries": 23,
+      "readbackHashes": "PASS"
+    },
+    {
+      "file": "experiment-evidence-se21.zip",
+      "sha256": "5a763f34d931b7349a94817695cf5ad9a53dc865329ff7f2bc99952c1153a8d1",
+      "bytes": 76066347,
+      "entries": 2064,
+      "readbackHashes": "PASS"
+    }
+  ],
+  "sourceFiles": 2063,
+  "legacyJarSha256": "e141ebf63f7cf72b15309974cab5fadce5fbf970ad330673fc39b2b13d8586a3",
+  "currentJarSha256": "d405ebe1af2c451b79ca06489ba56b5a386c7182a36c0b3cf30db0d9b8841548",
+  "scope": "Publication bundle and local raw-evidence/source snapshot. Full Maven reproduction also needs repository datasets and Maven dependencies; tooling runtimes/caches are not bundled."
+}

@@ -15,6 +15,7 @@ public final class KeyGenerationIds {
         var unavailable = new HashSet<>(issuedIds);
         unavailable.addAll(blockedIds);
         for (var id : issuedIds) {
+            SearchControl.checkpoint("generation.issuedKey");
             if (!id.startsWith(prefix)) continue;
             String suffix = id.substring(prefix.length());
             int colon = suffix.indexOf(':');
@@ -24,6 +25,7 @@ public final class KeyGenerationIds {
             highest = highest.max(new BigInteger(number));
         }
         for (var generation = highest.add(BigInteger.ONE); ; generation = generation.add(BigInteger.ONE)) {
+            SearchControl.checkpoint("generation.keyId");
             var pair = new KeyPairIds(prefix + generation + ":up", prefix + generation + ":down");
             if (!unavailable.contains(pair.uplink()) && !unavailable.contains(pair.downlink())) return pair;
         }

@@ -1,0 +1,24 @@
+recovered/censored (attack-time block, detected):
+  ('X', 'fixed'): {'RECOVERED': 3, 'CENSORED_NO_RECOVERY': 3}
+  ('X', 'multi'): {'RECOVERED': 6}
+  ('X', 'next'): {'RECOVERED': 3, 'CENSORED_NO_RECOVERY': 3}
+  ('X', 'percontact'): {'RECOVERED': 2, 'CENSORED_NO_RECOVERY': 4}
+  ('Y', 'fixed'): {'RECOVERED': 2, 'CENSORED_NO_RECOVERY': 4}
+  ('Y', 'multi'): {'RECOVERED': 2, 'CENSORED_NO_RECOVERY': 4}
+  ('Y', 'next'): {'RECOVERED': 2, 'CENSORED_NO_RECOVERY': 4}
+  ('Y', 'percontact'): {'RECOVERED': 2, 'CENSORED_NO_RECOVERY': 4}
+  ('iss3-cp5400', 'fixed'): {'RECOVERED': 7}
+  ('iss3-cp5400', 'multi'): {'RECOVERED': 7}
+  ('iss3-cp5400', 'next'): {'RECOVERED': 7}
+  ('iss3-cp5400', 'percontact'): {'RECOVERED': 7}
+  ('iss3-cp7200', 'fixed'): {'RECOVERED': 7}
+  ('iss3-cp7200', 'multi'): {'RECOVERED': 7}
+  ('iss3-cp7200', 'next'): {'RECOVERED': 7}
+  ('iss3-cp7200', 'percontact'): {'RECOVERED': 7}
+coverage by workload: {'WITNESS': '209/212', 'LIGHT': '211/216', 'MODERATE': '33/36', 'SATURATED': '21/24'}
+coverage by block: {'attack-time': '224/224', 'load': '42/48', 'contacts': '45/48', 'fragments': '48/48', 'combinations': '24/24', 'assumptions': '91/96'}
+coverage by policy: {'fixed': '122/122', 'percontact': '122/122', 'next': '120/122', 'multi': '110/122'}
+iss3-cp5400-next-original-detected: recovery 27.40s; decisions in [GS,recovery]=6 sumSearch=0.026s max=0.007s; decisions before GS notice=12 sumSearch=0.065s (C1 AOS->GS notice = 17.0s physical)
+iss3-cp5400-multi-original-detected: recovery 18.40s; decisions in [GS,recovery]=8 sumSearch=8.597s max=1.869s; decisions before GS notice=14 sumSearch=11.769s (C1 AOS->GS notice = 17.0s physical)
+iss3-cp5400-next-p10-detected: recovery 25.31s; decisions in [GS,recovery]=6 sumSearch=0.024s max=0.006s; decisions before GS notice=12 sumSearch=0.049s (C1 AOS->GS notice = 19.1s physical)
+iss3-cp5400-multi-p10-detected: recovery 18.40s; decisions in [GS,recovery]=8 sumSearch=8.400s max=1.732s; decisions before GS notice=14 sumSearch=13.309s (C1 AOS->GS notice = 19.1s physical)

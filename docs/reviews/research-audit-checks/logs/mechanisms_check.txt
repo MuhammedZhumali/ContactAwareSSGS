@@ -1,0 +1,254 @@
+attacked Next/Multi pairs: 88; Multi exposure WIN: 25
+  of wins, same captured key id: 25
+  of wins, before-disclosure reduction fully equal to reduction of TARGET-CONTEXT traffic volume before disclosure (no key-hygiene term): 25
+  of wins, Multi delivered fewer total bytes than Next: 11; more: 9; equal: 5
+  of wins, Multi confidential delivered >= Next: 25
+  of wins, reduction located before disclosure only: 18; after only: 2
+  summed exposure reduction over wins: before=33000 B, after=5291 B
+   multi=X-multi-p10-undetected, sameCapturedKey=True, next_tgtTrafficBefore=400, multi_tgtTrafficBefore=400, dExpBefore(N-M)=0, dExpAfter(N-M)=1600, next_delivered=15200, multi_delivered=14800, next_conf=7600, multi_conf=8800
+   multi=X-multi-p10-detected, sameCapturedKey=True, next_tgtTrafficBefore=400, multi_tgtTrafficBefore=400, dExpBefore(N-M)=0, dExpAfter(N-M)=400, next_delivered=13400, multi_delivered=14200, next_conf=12200, multi_conf=13400
+   multi=X-multi-p30-undetected, sameCapturedKey=True, next_tgtTrafficBefore=2000, multi_tgtTrafficBefore=800, dExpBefore(N-M)=1200, dExpAfter(N-M)=400, next_delivered=15200, multi_delivered=14800, next_conf=7600, multi_conf=8800
+   multi=X-multi-p30-detected, sameCapturedKey=True, next_tgtTrafficBefore=2000, multi_tgtTrafficBefore=800, dExpBefore(N-M)=1200, dExpAfter(N-M)=400, next_delivered=13400, multi_delivered=14200, next_conf=10600, multi_conf=13000
+   multi=X-multi-original-undetected, sameCapturedKey=True, next_tgtTrafficBefore=3600, multi_tgtTrafficBefore=2000, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=15200, multi_delivered=14800, next_conf=7600, multi_conf=8800
+   multi=X-multi-original-detected, sameCapturedKey=True, next_tgtTrafficBefore=3600, multi_tgtTrafficBefore=2000, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=13600, multi_delivered=14200, next_conf=9200, multi_conf=11400
+   multi=X-multi-p70-undetected, sameCapturedKey=True, next_tgtTrafficBefore=5200, multi_tgtTrafficBefore=3600, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=15200, multi_delivered=14800, next_conf=7600, multi_conf=8800
+   multi=X-multi-p70-detected, sameCapturedKey=True, next_tgtTrafficBefore=5200, multi_tgtTrafficBefore=3600, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=13600, multi_delivered=14200, next_conf=7600, multi_conf=9800
+   multi=X-multi-p90-undetected, sameCapturedKey=True, next_tgtTrafficBefore=6800, multi_tgtTrafficBefore=5200, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=15200, multi_delivered=14800, next_conf=7600, multi_conf=8800
+   multi=X-multi-p90-detected, sameCapturedKey=True, next_tgtTrafficBefore=6800, multi_tgtTrafficBefore=5200, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=15200, multi_delivered=14600, next_conf=7600, multi_conf=8600
+   multi=X-multi-gap-midpoint-undetected, sameCapturedKey=True, next_tgtTrafficBefore=7600, multi_tgtTrafficBefore=6000, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=15200, multi_delivered=14800, next_conf=7600, multi_conf=8800
+   multi=X-multi-gap-midpoint-detected, sameCapturedKey=True, next_tgtTrafficBefore=7600, multi_tgtTrafficBefore=6000, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=15200, multi_delivered=14600, next_conf=7600, multi_conf=8600
+   multi=iss3-cp5400-multi-original-detected, sameCapturedKey=True, next_tgtTrafficBefore=900, multi_tgtTrafficBefore=300, dExpBefore(N-M)=600, dExpAfter(N-M)=900, next_delivered=6000, multi_delivered=6000, next_conf=5000, multi_conf=6000
+   multi=iss3-cp5400-multi-p10-detected, sameCapturedKey=True, next_tgtTrafficBefore=1109, multi_tgtTrafficBefore=509, dExpBefore(N-M)=600, dExpAfter(N-M)=691, next_delivered=6000, multi_delivered=6000, next_conf=5000, multi_conf=6000
+   multi=X-length12-multi-original-undetected, sameCapturedKey=True, next_tgtTrafficBefore=3600, multi_tgtTrafficBefore=2000, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=17600, multi_delivered=17600, next_conf=10000, multi_conf=11600
+   multi=X-length12-multi-original-detected, sameCapturedKey=True, next_tgtTrafficBefore=3600, multi_tgtTrafficBefore=2000, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=16400, multi_delivered=17000, next_conf=12000, multi_conf=14200
+   multi=X-start100-multi-original-undetected, sameCapturedKey=True, next_tgtTrafficBefore=3600, multi_tgtTrafficBefore=2000, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=15200, multi_delivered=14800, next_conf=7600, multi_conf=8800
+   multi=X-start100-multi-original-detected, sameCapturedKey=True, next_tgtTrafficBefore=3600, multi_tgtTrafficBefore=2000, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=13600, multi_delivered=14200, next_conf=9200, multi_conf=11400
+   multi=X-start100-length12-multi-original-undetected, sameCapturedKey=True, next_tgtTrafficBefore=3600, multi_tgtTrafficBefore=2000, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=17600, multi_delivered=17600, next_conf=10000, multi_conf=11600
+   multi=X-start100-length12-multi-original-detected, sameCapturedKey=True, next_tgtTrafficBefore=3600, multi_tgtTrafficBefore=2000, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=16400, multi_delivered=17000, next_conf=12000, multi_conf=14200
+   multi=X-alt-wait-multi-original-undetected, sameCapturedKey=True, next_tgtTrafficBefore=3600, multi_tgtTrafficBefore=2000, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=15200, multi_delivered=14800, next_conf=7600, multi_conf=8800
+   multi=X-alt-wait-multi-original-detected, sameCapturedKey=True, next_tgtTrafficBefore=3600, multi_tgtTrafficBefore=2000, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=13600, multi_delivered=14200, next_conf=9200, multi_conf=11400
+   multi=X-notice2-multi-original-undetected, sameCapturedKey=True, next_tgtTrafficBefore=3600, multi_tgtTrafficBefore=2000, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=15200, multi_delivered=14800, next_conf=7600, multi_conf=8800
+   multi=X-notice2-multi-original-detected, sameCapturedKey=True, next_tgtTrafficBefore=3600, multi_tgtTrafficBefore=2000, dExpBefore(N-M)=1600, dExpAfter(N-M)=0, next_delivered=13600, multi_delivered=14000, next_conf=9200, multi_conf=11200
+   multi=iss3-cp5400-notice2-multi-original-detected, sameCapturedKey=True, next_tgtTrafficBefore=900, multi_tgtTrafficBefore=300, dExpBefore(N-M)=600, dExpAfter(N-M)=900, next_delivered=6000, multi_delivered=6000, next_conf=5000, multi_conf=6000
+
+== X-next-p10-detected
+   00:00:00Z | CONTACT_STARTED | None | C1 | 
+   00:00:00Z | STARTED | OPEN | A | A-old-down,A-old-up
+   00:00:01Z | COMPLETED | OPEN | A | A-old-down,A-old-up
+   00:00:02Z | KEY_DISCLOSED | None | C1 | 
+   00:00:04Z | REVOCATION_RECEIVED_GROUND | None | C1 | 
+   00:00:04Z | STARTED | NOTIFY_REVOCATION | A | A-old-down,A-old-up
+   00:00:04.400Z | COMPLETED | NOTIFY_REVOCATION | A | A-old-down,A-old-up
+   00:00:04.400Z | REVOCATION_RECEIVED_SPACECRAFT | None | C1 | 
+   00:00:04.400Z | STARTED | PREPARE | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:06.400Z | COMPLETED | PREPARE | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:06.400Z | STARTED | INSTALL | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:10.400Z | COMPLETED | INSTALL | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:10.400Z | STARTED | SWITCH | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:11.400Z | COMPLETED | SWITCH | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:11.400Z | STARTED | OPEN | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:12.400Z | COMPLETED | OPEN | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:20Z | CONTACT_ENDED | None | C1 | 
+   00:00:30Z | CONTACT_STARTED | None | C2 | 
+   00:00:30Z | STARTED | OPEN | B | B-old-down,B-old-up
+   00:00:31Z | COMPLETED | OPEN | B | B-old-down,B-old-up
+   00:00:50Z | CONTACT_ENDED | None | C2 | 
+   00:01:20Z | CONTACT_STARTED | None | C3 | 
+   00:01:20Z | STARTED | OPEN | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:01:21Z | COMPLETED | OPEN | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:01:25Z | CONTACT_ENDED | None | C3 | 
+   traffic ('A-old', 'C1') [1.000,4.000] frames=12 bytes=1200
+   traffic ('g1', 'C1') [12.400,19.900] frames=30 bytes=3000
+   traffic ('B-old', 'C2') [31.000,50.000] frames=76 bytes=7600
+   traffic ('g1', 'C3') [81.000,85.000] frames=16 bytes=1600
+
+== X-multi-p10-detected
+   00:00:00Z | CONTACT_STARTED | None | C1 | 
+   00:00:00Z | STARTED | OPEN | A | A-old-down,A-old-up
+   00:00:01Z | COMPLETED | OPEN | A | A-old-down,A-old-up
+   00:00:01Z | STARTED | PREPARE | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:02Z | KEY_DISCLOSED | None | C1 | 
+   00:00:03Z | COMPLETED | PREPARE | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:03Z | STARTED | INSTALL | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:04Z | REVOCATION_RECEIVED_GROUND | None | C1 | 
+   00:00:07Z | COMPLETED | INSTALL | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:07Z | STARTED | NOTIFY_REVOCATION | A | A-old-down,A-old-up
+   00:00:07.400Z | COMPLETED | NOTIFY_REVOCATION | A | A-old-down,A-old-up
+   00:00:07.400Z | REVOCATION_RECEIVED_SPACECRAFT | None | C1 | 
+   00:00:07.400Z | STARTED | SWITCH | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:08.400Z | COMPLETED | SWITCH | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:08.400Z | STARTED | OPEN | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:09.400Z | COMPLETED | OPEN | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:20Z | CONTACT_ENDED | None | C1 | 
+   00:00:30Z | CONTACT_STARTED | None | C2 | 
+   00:00:30Z | STARTED | OPEN | B | B-old-down,B-old-up
+   00:00:31Z | COMPLETED | OPEN | B | B-old-down,B-old-up
+   00:00:50Z | CONTACT_ENDED | None | C2 | 
+   00:01:20Z | CONTACT_STARTED | None | C3 | 
+   00:01:20Z | STARTED | OPEN | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:01:21Z | COMPLETED | OPEN | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:01:25Z | CONTACT_ENDED | None | C3 | 
+   traffic ('A-old', 'C1') [1.000,3.000] frames=8 bytes=800
+   traffic ('g1', 'C1') [9.400,19.900] frames=42 bytes=4200
+   traffic ('B-old', 'C2') [31.000,50.000] frames=76 bytes=7600
+   traffic ('g1', 'C3') [81.000,85.000] frames=16 bytes=1600
+
+== X-next-original-detected
+   00:00:00Z | CONTACT_STARTED | None | C1 | 
+   00:00:00Z | STARTED | OPEN | A | A-old-down,A-old-up
+   00:00:01Z | COMPLETED | OPEN | A | A-old-down,A-old-up
+   00:00:10Z | KEY_DISCLOSED | None | C1 | 
+   00:00:12Z | REVOCATION_RECEIVED_GROUND | None | C1 | 
+   00:00:12Z | STARTED | NOTIFY_REVOCATION | A | A-old-down,A-old-up
+   00:00:12.400Z | COMPLETED | NOTIFY_REVOCATION | A | A-old-down,A-old-up
+   00:00:12.400Z | REVOCATION_RECEIVED_SPACECRAFT | None | C1 | 
+   00:00:12.400Z | STARTED | PREPARE | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:14.400Z | COMPLETED | PREPARE | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:14.400Z | STARTED | INSTALL | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:18.400Z | COMPLETED | INSTALL | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:18.400Z | STARTED | SWITCH | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:19.400Z | COMPLETED | SWITCH | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:20Z | CONTACT_ENDED | None | C1 | 
+   00:00:30Z | CONTACT_STARTED | None | C2 | 
+   00:00:30Z | STARTED | OPEN | B | B-old-down,B-old-up
+   00:00:31Z | COMPLETED | OPEN | B | B-old-down,B-old-up
+   00:00:50Z | CONTACT_ENDED | None | C2 | 
+   00:01:20Z | CONTACT_STARTED | None | C3 | 
+   00:01:20Z | STARTED | OPEN | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:01:21Z | COMPLETED | OPEN | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:01:25Z | CONTACT_ENDED | None | C3 | 
+   traffic ('A-old', 'C1') [1.000,12.000] frames=44 bytes=4400
+   traffic ('B-old', 'C2') [31.000,50.000] frames=76 bytes=7600
+   traffic ('g1', 'C3') [81.000,85.000] frames=16 bytes=1600
+
+== X-multi-original-detected
+   00:00:00Z | CONTACT_STARTED | None | C1 | 
+   00:00:00Z | STARTED | OPEN | A | A-old-down,A-old-up
+   00:00:01Z | COMPLETED | OPEN | A | A-old-down,A-old-up
+   00:00:01Z | STARTED | PREPARE | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:03Z | COMPLETED | PREPARE | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:03Z | STARTED | INSTALL | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:07Z | COMPLETED | INSTALL | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:10Z | KEY_DISCLOSED | None | C1 | 
+   00:00:12Z | REVOCATION_RECEIVED_GROUND | None | C1 | 
+   00:00:12Z | STARTED | NOTIFY_REVOCATION | A | A-old-down,A-old-up
+   00:00:12.400Z | COMPLETED | NOTIFY_REVOCATION | A | A-old-down,A-old-up
+   00:00:12.400Z | REVOCATION_RECEIVED_SPACECRAFT | None | C1 | 
+   00:00:12.400Z | STARTED | SWITCH | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:13.400Z | COMPLETED | SWITCH | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:13.400Z | STARTED | OPEN | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:14.400Z | COMPLETED | OPEN | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:00:20Z | CONTACT_ENDED | None | C1 | 
+   00:00:30Z | CONTACT_STARTED | None | C2 | 
+   00:00:30Z | STARTED | OPEN | B | B-old-down,B-old-up
+   00:00:31Z | COMPLETED | OPEN | B | B-old-down,B-old-up
+   00:00:50Z | CONTACT_ENDED | None | C2 | 
+   00:01:20Z | CONTACT_STARTED | None | C3 | 
+   00:01:20Z | STARTED | OPEN | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:01:21Z | COMPLETED | OPEN | A | planner-key:10:WITNESS-SC:1:A:g1:down,planner-key:10:WITNESS
+   00:01:25Z | CONTACT_ENDED | None | C3 | 
+   traffic ('A-old', 'C1') [1.000,3.000] frames=8 bytes=800
+   traffic ('A-old', 'C1') [7.000,12.000] frames=20 bytes=2000
+   traffic ('g1', 'C1') [14.400,19.900] frames=22 bytes=2200
+   traffic ('B-old', 'C2') [31.000,50.000] frames=76 bytes=7600
+   traffic ('g1', 'C3') [81.000,85.000] frames=16 bytes=1600
+
+== iss3-cp5400-next-original-detected
+   00:07:52.680328369Z | STARTED | PREPARE | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:07:54.680328369Z | CONTACT_STARTED | None | orekit-25544-SATNOGS-3634-1 | 
+   00:07:54.680328369Z | COMPLETED | PREPARE | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:07:54.680328369Z | STARTED | PREPARE | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:07:54.680328369Z | STARTED | INSTALL | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:07:56.680328369Z | COMPLETED | PREPARE | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:07:58.680328369Z | COMPLETED | INSTALL | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:07:58.680328369Z | STARTED | SWITCH | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:07:59.680328369Z | COMPLETED | SWITCH | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:07:59.680328369Z | STARTED | OPEN | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:08:00.680328369Z | COMPLETED | OPEN | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:08:09.680328369Z | KEY_DISCLOSED | None | orekit-25544-SATNOGS-3634-1 | 
+   00:08:11.680328369Z | REVOCATION_RECEIVED_GROUND | None | orekit-25544-SATNOGS-3634-1 | 
+   00:08:20.680328369Z | PAYLOAD_ABORTED | KNOWN_COMPROMISE_DOWNLINK_DROPPED | orekit-25544-SATNOGS-3634-1 | {"from": "2026-10-10T00:08:10.680328369Z", "until": "2026-10-10T00:08:20.680328369Z", "direction": "DOWNLINK", "keyId": "planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down", "frameBytes": 1000, "emitt
+   00:08:20.680328369Z | STARTED | NOTIFY_REVOCATION | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:08:21.080328369Z | COMPLETED | NOTIFY_REVOCATION | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:08:21.080328369Z | REVOCATION_RECEIVED_SPACECRAFT | None | orekit-25544-SATNOGS-3634-1 | 
+   00:08:21.080328369Z | STARTED | PREPARE | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:08:23.080328369Z | COMPLETED | PREPARE | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:08:23.080328369Z | STARTED | INSTALL | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:08:27.080328369Z | COMPLETED | INSTALL | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:08:27.080328369Z | STARTED | SWITCH | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:08:28.080328369Z | COMPLETED | SWITCH | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:08:28.080328369Z | STARTED | OPEN | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:08:29.080328369Z | COMPLETED | OPEN | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:10:45.617523193Z | CONTACT_ENDED | None | orekit-25544-SATNOGS-3634-1 | 
+   00:22:33.719329834Z | CONTACT_STARTED | None | orekit-25544-SATNOGS-2987-1 | 
+   00:22:33.719329834Z | STARTED | PREPARE | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   00:22:33.719329834Z | STARTED | INSTALL | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:22:35.719329834Z | COMPLETED | PREPARE | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   00:22:37.719329834Z | COMPLETED | INSTALL | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:22:37.719329834Z | STARTED | SWITCH | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:22:38.719329834Z | COMPLETED | SWITCH | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:22:38.719329834Z | STARTED | OPEN | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:22:39.719329834Z | COMPLETED | OPEN | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:29:17.999725342Z | CONTACT_ENDED | None | orekit-25544-SATNOGS-2987-1 | 
+   01:43:03.388824463Z | CONTACT_STARTED | None | orekit-25544-SATNOGS-3634-2 | 
+   01:43:03.388824463Z | STARTED | INSTALL | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   01:43:07.388824463Z | COMPLETED | INSTALL | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   01:43:07.388824463Z | STARTED | SWITCH | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   01:43:08.388824463Z | COMPLETED | SWITCH | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   01:43:08.388824463Z | STARTED | OPEN | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   01:43:09.388824463Z | COMPLETED | OPEN | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   01:49:34.350128174Z | CONTACT_ENDED | None | orekit-25544-SATNOGS-3634-2 | 
+   traffic ('g1', 'orekit-25544-SATNOGS-3634-1') [6.000,26.000] frames=2 bytes=2000
+   traffic ('g2', 'orekit-25544-SATNOGS-3634-1') [34.400,44.400] frames=1 bytes=1000
+   traffic ('g1', 'orekit-25544-SATNOGS-2987-1') [885.039,905.039] frames=2 bytes=2000
+   traffic ('g3', 'orekit-25544-SATNOGS-3634-2') [5714.708,5734.708] frames=2 bytes=2000
+
+== iss3-cp5400-multi-original-detected
+   00:07:52.680328369Z | STARTED | PREPARE | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:07:52.680328369Z | STARTED | PREPARE | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:07:54.680328369Z | CONTACT_STARTED | None | orekit-25544-SATNOGS-3634-1 | 
+   00:07:54.680328369Z | COMPLETED | PREPARE | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:07:54.680328369Z | COMPLETED | PREPARE | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:07:54.680328369Z | STARTED | INSTALL | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:07:58.680328369Z | COMPLETED | INSTALL | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:07:58.680328369Z | STARTED | SWITCH | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:07:59.680328369Z | COMPLETED | SWITCH | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:07:59.680328369Z | STARTED | PREPARE | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:08:01.680328369Z | COMPLETED | PREPARE | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:08:01.680328369Z | STARTED | INSTALL | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:08:05.680328369Z | COMPLETED | INSTALL | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:08:05.680328369Z | STARTED | OPEN | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:08:06.680328369Z | COMPLETED | OPEN | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:08:09.680328369Z | KEY_DISCLOSED | None | orekit-25544-SATNOGS-3634-1 | 
+   00:08:11.680328369Z | REVOCATION_RECEIVED_GROUND | None | orekit-25544-SATNOGS-3634-1 | 
+   00:08:11.680328369Z | PAYLOAD_ABORTED | KNOWN_COMPROMISE | orekit-25544-SATNOGS-3634-1 | {"from": "2026-10-10T00:08:06.680328369Z", "until": "2026-10-10T00:08:11.680328369Z", "direction": "UPLINK", "keyId": "planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:up", "frameBytes": 1000, "emittedBy
+   00:08:11.680328369Z | STARTED | NOTIFY_REVOCATION | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:08:12.080328369Z | COMPLETED | NOTIFY_REVOCATION | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g1:down,planner-k
+   00:08:12.080328369Z | REVOCATION_RECEIVED_SPACECRAFT | None | orekit-25544-SATNOGS-3634-1 | 
+   00:08:12.080328369Z | STARTED | SWITCH | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:08:13.080328369Z | COMPLETED | SWITCH | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:08:13.080328369Z | STARTED | PREPARE | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   00:08:15.080328369Z | COMPLETED | PREPARE | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   00:08:15.080328369Z | STARTED | INSTALL | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   00:08:19.080328369Z | COMPLETED | INSTALL | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   00:08:19.080328369Z | STARTED | OPEN | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:08:20.080328369Z | COMPLETED | OPEN | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g2:down,planner-k
+   00:10:45.617523193Z | CONTACT_ENDED | None | orekit-25544-SATNOGS-3634-1 | 
+   00:22:33.719329834Z | CONTACT_STARTED | None | orekit-25544-SATNOGS-2987-1 | 
+   00:22:33.719329834Z | STARTED | INSTALL | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:22:37.719329834Z | COMPLETED | INSTALL | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:22:37.719329834Z | STARTED | SWITCH | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:22:38.719329834Z | COMPLETED | SWITCH | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:22:38.719329834Z | STARTED | OPEN | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:22:39.719329834Z | COMPLETED | OPEN | SATNOGS-2987 | planner-key:11:NORAD-25544:12:SATNOGS-2987:g1:down,planner-k
+   00:29:17.999725342Z | CONTACT_ENDED | None | orekit-25544-SATNOGS-2987-1 | 
+   01:43:03.388824463Z | CONTACT_STARTED | None | orekit-25544-SATNOGS-3634-2 | 
+   01:43:03.388824463Z | STARTED | SWITCH | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   01:43:04.388824463Z | COMPLETED | SWITCH | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   01:43:04.388824463Z | STARTED | OPEN | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   01:43:05.388824463Z | COMPLETED | OPEN | SATNOGS-3634 | planner-key:11:NORAD-25544:12:SATNOGS-3634:g3:down,planner-k
+   01:49:34.350128174Z | CONTACT_ENDED | None | orekit-25544-SATNOGS-3634-2 | 
+   traffic ('g1', 'orekit-25544-SATNOGS-3634-1') [12.000,17.000] frames=1 bytes=500
+   traffic ('g2', 'orekit-25544-SATNOGS-3634-1') [25.400,45.400] frames=2 bytes=2000
+   traffic ('g1', 'orekit-25544-SATNOGS-2987-1') [885.039,905.039] frames=2 bytes=2000
+   traffic ('g3', 'orekit-25544-SATNOGS-3634-2') [5710.708,5730.708] frames=2 bytes=2000

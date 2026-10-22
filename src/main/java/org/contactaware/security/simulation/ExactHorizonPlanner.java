@@ -55,28 +55,51 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
 
     private final class Search {
         final PlanningObservation origin;
-        final PlanningOptimisticBound bound;
-        final long start = clock.getAsLong();
+        PlanningOptimisticBound bound;
+        SearchControl.Scope control;
+        SearchRuntimeTelemetry.Recorder runtime;
+        String stoppedAtCheckpoint;
         final SearchDiagnostics.Counter stats = new SearchDiagnostics.Counter();
         final Map<PlanningStateKey, Solved> memo = new HashMap<>();
         final ArrayDeque<Visit> stack = new ArrayDeque<>();
         long explored;
         PlanningResult best;
 
-        Search(PlanningObservation origin) {
-            this.origin = origin;
-            long beforeBound = System.nanoTime();
-            this.bound = options.optimisticBounds() ? new PlanningOptimisticBound(origin) : null;
-            if (options.optimisticBounds()) stats.boundNanos += System.nanoTime() - beforeBound;
-            var root = engine.create(origin);
-            stack.push(new Visit(root, PlanningStateKey.from(root.snapshot())));
-        }
+        Search(PlanningObservation origin) { this.origin = origin; }
 
         HorizonPlanResult run() {
+            try (var scope = SearchControl.open(limits.maxElapsed(), SearchDiagnostics.StopReason.TIME_LIMIT,
+                    clock, ignored -> { })) {
+                control = scope;
+                runtime = new SearchRuntimeTelemetry.Recorder();
+                try {
+                    try (var phase = runtime.phase("initialization")) {
+                        SearchControl.checkpoint("initialization.begin");
+                        long beforeBound = System.nanoTime();
+                        try {
+                            bound = options.optimisticBounds() ? new PlanningOptimisticBound(origin) : null;
+                        } finally {
+                            if (options.optimisticBounds()) stats.boundNanos += System.nanoTime() - beforeBound;
+                        }
+                        SearchControl.checkpoint("initialization.root");
+                        var root = engine.create(origin);
+                        stack.push(new Visit(root, PlanningStateKey.from(root.snapshot())));
+                        SearchControl.checkpoint("initialization.end");
+                    }
+                    return search();
+                } catch (SearchControl.Stopped stopped) {
+                    stats.stopReason = stopped.reason();
+                    stoppedAtCheckpoint = stopped.checkpoint();
+                    return result(HorizonPlanResult.Status.INCOMPLETE);
+                }
+            }
+        }
+
+        HorizonPlanResult search() {
             while (!stack.isEmpty()) {
                 var visit = stack.peek();
                 if (visit.actions == null) {
-                    if (exhausted()) return result(HorizonPlanResult.Status.INCOMPLETE);
+                    checkBudget();
                     explored = Math.incrementExact(explored);
                     stats.maxDepth = Math.max(stats.maxDepth, visit.branch.plan().size());
                     if (visit.key.rejected()) { finish(null); continue; }
@@ -90,13 +113,23 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
                     }
                     if (visit.branch.snapshot().at().equals(origin.evaluationEnd())) {
                         stats.terminalPlans++;
-                        finish(evaluator.evaluate(visit.branch));
+                        PlanningResult evaluated;
+                        try (var phase = runtime.phase("evaluation")) {
+                            SearchControl.checkpoint("evaluation.begin");
+                            evaluated = evaluator.evaluate(visit.branch);
+                            SearchControl.checkpoint("evaluation.end");
+                        }
+                        finish(evaluated);
                         continue;
                     }
                     if (options.optimisticBounds() && best != null) {
                         long beforeBound = System.nanoTime();
-                        var optimistic = bound.upperBound(visit.branch);
-                        stats.boundNanos += System.nanoTime() - beforeBound;
+                        BranchEvaluation optimistic;
+                        try (var phase = runtime.phase("bound")) {
+                            SearchControl.checkpoint("bound.begin");
+                            optimistic = bound.upperBound(visit.branch);
+                            SearchControl.checkpoint("bound.end");
+                        } finally { stats.boundNanos += System.nanoTime() - beforeBound; }
                         int metricOrder = comparator.compareMetrics(optimistic, best.evaluation());
                         boolean canonicalLoser = options.canonicalBoundPruning() && metricOrder == 0
                                 && PlanningActionReduction.prefixAlreadyWorse(visit.branch.plan(), best.plan());
@@ -111,99 +144,119 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
                         }
                     }
                     long before = System.nanoTime();
-                    visit.observation = decisionTimeModel.apply(visit.branch.observation());
-                    var generated = generator.candidates(visit.observation);
-                    stats.generationNanos += System.nanoTime() - before;
+                    List<PlanningAction> generated;
+                    try (var phase = runtime.phase("generation")) {
+                        SearchControl.checkpoint("generation.begin");
+                        visit.observation = decisionTimeModel.apply(visit.branch.observation());
+                        generated = generator.candidates(visit.observation);
+                        SearchControl.checkpoint("generation.end");
+                    } finally { stats.generationNanos += System.nanoTime() - before; }
                     stats.expandedNodes++;
                     stats.generatedActions += generated.size();
                     for (var action : generated) stats.generatedByAction.merge(action.kind(), 1L, Long::sum);
                     if (stack.size() == 1)
                         for (var action : generated) stats.rootGeneratedByAction.merge(action.kind(), 1L, Long::sum);
-                    // Validate the ordering hook against ALL candidates, before exact reduction.
-                    var ordered = ordered(generated, visit.observation);
-                    if (options.preExecutionWaitReduction()) {
-                        var reduced = PlanningActionReduction.coalesceWaits(visit.observation, ordered);
-                        stats.preExecutionWaitSkips += ordered.size() - reduced.size();
-                        ordered = reduced;
-                    }
-                    if (stack.size() == 1) stats.rootCandidateCount = ordered.size();
-                    var representatives = new HashMap<PlanningAction, Candidate>();
-                    if (options.collapseEquivalentWaits()) {
-                        var waits = new HashMap<PlanningStateKey, Candidate>();
-                        for (var action : ordered.stream().filter(a -> a.kind() == PlanningAction.Kind.WAIT)
-                                .sorted(comparator::compareActions).toList()) {
-                            if (exhausted()) return result(HorizonPlanResult.Status.INCOMPLETE);
-                            var child = execute(visit, action);
-                            var prior = waits.putIfAbsent(child.key, child);
-                            if (prior == null) representatives.put(action, child);
-                            else stats.collapsedWaitTransitions++;
+                    try (var phase = runtime.phase("candidateProcessing")) {
+                        SearchControl.checkpoint("candidateProcessing.begin");
+                        // Validate the ordering hook against ALL candidates, before exact reduction.
+                        var ordered = ordered(generated, visit.observation);
+                        if (options.preExecutionWaitReduction()) {
+                            var reduced = PlanningActionReduction.coalesceWaits(visit.observation, ordered);
+                            stats.preExecutionWaitSkips += ordered.size() - reduced.size();
+                            ordered = reduced;
                         }
+                        if (stack.size() == 1) stats.rootCandidateCount = ordered.size();
+                        var representatives = new HashMap<PlanningAction, Candidate>();
+                        if (options.collapseEquivalentWaits()) {
+                            var waits = new HashMap<PlanningStateKey, Candidate>();
+                            for (var action : ordered.stream().filter(a -> a.kind() == PlanningAction.Kind.WAIT)
+                                    .sorted(comparator::compareActions).toList()) {
+                                checkBudget();
+                                var child = execute(visit, action);
+                                var prior = waits.putIfAbsent(child.key, child);
+                                if (prior == null) representatives.put(action, child);
+                                else stats.collapsedWaitTransitions++;
+                            }
+                        }
+                        var candidates = new ArrayList<Candidate>();
+                        for (var action : ordered) {
+                            SearchControl.checkpoint("candidateProcessing.action");
+                            if (options.collapseEquivalentWaits() && action.kind() == PlanningAction.Kind.WAIT) {
+                                if (representatives.containsKey(action)) candidates.add(representatives.get(action));
+                            } else candidates.add(new Candidate(action, null, null));
+                        }
+                        visit.actions = candidates.iterator();
+                        if (stack.size() == 1) stats.rootCandidateCount = candidates.size();
+                        SearchControl.checkpoint("candidateProcessing.end");
                     }
-                    var candidates = new ArrayList<Candidate>();
-                    for (var action : ordered) {
-                        if (options.collapseEquivalentWaits() && action.kind() == PlanningAction.Kind.WAIT) {
-                            if (representatives.containsKey(action)) candidates.add(representatives.get(action));
-                        } else candidates.add(new Candidate(action, null, null));
-                    }
-                    visit.actions = candidates.iterator();
-                    if (stack.size() == 1) stats.rootCandidateCount = candidates.size();
                 }
                 if (!visit.actions.hasNext()) { finish(visit.best); continue; }
-                if (exhausted()) return result(HorizonPlanResult.Status.INCOMPLETE);
+                checkBudget();
                 var candidate = visit.actions.next();
                 if (candidate.branch == null) candidate = execute(visit, candidate.action);
                 stack.push(new Visit(candidate.branch, candidate.key));
             }
+            SearchControl.checkpoint("search.complete");
             return result(best == null ? HorizonPlanResult.Status.INFEASIBLE : HorizonPlanResult.Status.COMPLETE);
         }
 
         Candidate execute(Visit visit, PlanningAction action) {
             long before = System.nanoTime();
-            var branch = engine.executeGenerated(visit.branch, visit.observation, action);
-            stats.executionNanos += System.nanoTime() - before;
+            PlanningBranch branch;
+            try (var phase = runtime.phase("execution")) {
+                SearchControl.checkpoint("execution.begin");
+                branch = engine.executeGenerated(visit.branch, visit.observation, action);
+                SearchControl.checkpoint("execution.end");
+            } finally { stats.executionNanos += System.nanoTime() - before; }
             stats.executedTransitions++;
             stats.executedByAction.merge(action.kind(), 1L, Long::sum);
-            var key = PlanningStateKey.from(branch.snapshot());
+            PlanningStateKey key;
+            try (var phase = runtime.phase("stateKey")) {
+                SearchControl.checkpoint("stateKey.begin");
+                key = PlanningStateKey.from(branch.snapshot());
+                SearchControl.checkpoint("stateKey.end");
+            }
             if (!visit.children.add(key)) stats.repeatedTransitions++;
             return new Candidate(action, branch, key);
         }
 
         void finish(PlanningResult solved) {
-            var visit = stack.pop();
-            if (solved != null && (best == null || comparator.compare(solved, best) < 0)) best = solved;
-            if (options.memoize() && visit.cacheable && !memo.containsKey(visit.key)) {
-                if (options.maxMemoEntries() == 0 || memo.size() < options.maxMemoEntries()) {
-                    // Publish only after the WHOLE subtree is solved; never cache a budget-aborted prefix.
-                    memo.put(visit.key, solved == null ? new Solved(null, List.of()) : new Solved(solved.evaluation(),
-                            List.copyOf(solved.plan().subList(visit.branch.plan().size(), solved.plan().size()))));
-                    stats.memoEntries = memo.size();
-                } else stats.memoStoreSkips++;
-            }
-            if (!stack.isEmpty()) {
-                var parent = stack.peek();
-                // A globally bounded subtree is sufficient for the final optimum, but is NOT
-                // an independently solved local suffix. Do not publish it into the exact cache.
-                parent.cacheable &= visit.cacheable;
-                if (solved != null && (parent.best == null || comparator.compare(solved, parent.best) < 0)) parent.best = solved;
+            try (var phase = runtime.phase("completion")) {
+                SearchControl.checkpoint("completion.begin");
+                var visit = stack.pop();
+                if (solved != null && (best == null || comparator.compare(solved, best) < 0)) best = solved;
+                if (options.memoize() && visit.cacheable && !memo.containsKey(visit.key)) {
+                    if (options.maxMemoEntries() == 0 || memo.size() < options.maxMemoEntries()) {
+                        // Publish only after the WHOLE subtree is solved; never cache a budget-aborted prefix.
+                        SearchControl.checkpoint("memo.publish");
+                        memo.put(visit.key, solved == null ? new Solved(null, List.of()) : new Solved(solved.evaluation(),
+                                List.copyOf(solved.plan().subList(visit.branch.plan().size(), solved.plan().size()))));
+                        stats.memoEntries = memo.size();
+                    } else stats.memoStoreSkips++;
+                }
+                if (!stack.isEmpty()) {
+                    var parent = stack.peek();
+                    // A globally bounded subtree is sufficient for the final optimum, but is NOT
+                    // an independently solved local suffix. Do not publish it into the exact cache.
+                    parent.cacheable &= visit.cacheable;
+                    if (solved != null && (parent.best == null || comparator.compare(solved, parent.best) < 0)) parent.best = solved;
+                }
             }
         }
 
-        boolean exhausted() {
+        void checkBudget() {
+            SearchControl.checkpoint("search.node");
             if (limits.maxNodes() != 0 && explored >= limits.maxNodes()) {
-                stats.stopReason = SearchDiagnostics.StopReason.NODE_LIMIT;
-                return true;
+                throw new SearchControl.Stopped(SearchDiagnostics.StopReason.NODE_LIMIT, "search.node");
             }
-            if (!limits.maxElapsed().isZero() && elapsed() >= limits.maxElapsed().toNanos()) {
-                stats.stopReason = SearchDiagnostics.StopReason.TIME_LIMIT;
-                return true;
-            }
-            return false;
         }
-        long elapsed() { return Math.max(0, clock.getAsLong() - start); }
         HorizonPlanResult result(HorizonPlanResult.Status status) {
+            long elapsed = control.elapsedNanos();
+            stats.runtimeTelemetry = runtime.snapshot(elapsed, stoppedAtCheckpoint);
             var plan = best == null ? List.<PlanningAction>of() : best.plan();
+            if (status != HorizonPlanResult.Status.INCOMPLETE) SearchControl.checkpoint("result.publish");
             return new HorizonPlanResult(plan, best == null ? null : best.evaluation(), plan.isEmpty() ? null : plan.getFirst(),
-                    status, explored, elapsed(), stats.snapshot());
+                    status, explored, elapsed, stats.snapshot());
         }
     }
 
@@ -215,7 +268,9 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
         else if (options.traversalOrder() == PlannerOptions.TraversalOrder.RENEWAL_FIRST)
             initial.sort(Comparator.comparingInt((PlanningAction a) -> renewalRank(a, observation))
                     .thenComparing(comparator::compareActions));
+        SearchControl.checkpoint("candidateProcessing.order.before");
         var ordered = List.copyOf(Objects.requireNonNull(candidateOrder.apply(initial)));
+        SearchControl.checkpoint("candidateProcessing.order.after");
         var originalSorted = candidates.stream().sorted(comparator::compareActions).toList();
         if (!originalSorted.equals(ordered.stream().sorted(comparator::compareActions).toList()))
             throw new IllegalArgumentException("Candidate order must be a permutation of every generated action");

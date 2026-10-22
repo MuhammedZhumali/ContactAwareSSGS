@@ -1,0 +1,35 @@
+comparison cells: 122; cells whose 4 policies do not share one model file / not exactly 4 policies: 0
+attack cases whose control/model differs other than the disclosure (or wrong policy/attack/delay): 0 []
+configurations: 26; attack grids differing from own schedule-only recomputation: 0
+undetected runs whose full journal (minus KEY_DISCLOSED) equals own control: 187 ok / 0 differ []
+detected runs whose journal strictly before GS notice equals own control: 187 ok / 0 differ []; skipped (unfinished run/control): 10
+finished-run recovery statuses (own): {'NO_ATTACK': 99, 'RECOVERED': 148, 'UNDETECTED': 187, 'CENSORED_NO_RECOVERY': 40}
+censored rows with empty detectionToRecovery: 40/40; censorAt filled: 40
+runs with SC notice: 180; bytesAfterSpacecraftNotice distribution {'0': 180}
+runs with bytes after GS notice >0: 62 range 691-900
+detected finished runs without SC notice: 8 ['Y-fixed-gap-midpoint-detected', 'Y-fixed-p90-detected', 'Y-multi-gap-midpoint-detected', 'Y-multi-p90-detected', 'Y-next-gap-midpoint-detected', 'Y-next-p90-detected', 'Y-percontact-gap-midpoint-detected', 'Y-percontact-p90-detected']
+Next/Multi cells: 122; both finished with finished controls: 110; excluded: 12
+  excluded ('iss3-cp5400-moderate-next-none', 'FINISHED', 'FINISHED', 'iss3-cp5400-moderate-multi-none', 'SEARCH_INCOMPLETE', 'SEARCH_INCOMPLETE')
+  excluded ('iss3-cp5400-moderate-next-original-undetected', 'FINISHED', 'FINISHED', 'iss3-cp5400-moderate-multi-original-undetected', 'SEARCH_INCOMPLETE', 'SEARCH_INCOMPLETE')
+  excluded ('iss3-cp5400-moderate-next-original-detected', 'FINISHED', 'FINISHED', 'iss3-cp5400-moderate-multi-original-detected', 'SEARCH_INCOMPLETE', 'SEARCH_INCOMPLETE')
+  excluded ('iss3-cp5400-saturated-next-none', 'FINISHED', 'FINISHED', 'iss3-cp5400-saturated-multi-none', 'SEARCH_INCOMPLETE', 'SEARCH_INCOMPLETE')
+  excluded ('iss3-cp5400-saturated-next-original-undetected', 'FINISHED', 'FINISHED', 'iss3-cp5400-saturated-multi-original-undetected', 'SEARCH_INCOMPLETE', 'SEARCH_INCOMPLETE')
+  excluded ('iss3-cp5400-saturated-next-original-detected', 'FINISHED', 'FINISHED', 'iss3-cp5400-saturated-multi-original-detected', 'SEARCH_INCOMPLETE', 'SEARCH_INCOMPLETE')
+  excluded ('X-length2-next-none', 'FINISHED', 'FINISHED', 'X-length2-multi-none', 'SEARCH_INCOMPLETE', 'SEARCH_INCOMPLETE')
+  excluded ('X-length2-next-original-undetected', 'FINISHED', 'FINISHED', 'X-length2-multi-original-undetected', 'SEARCH_INCOMPLETE', 'SEARCH_INCOMPLETE')
+  excluded ('X-length2-next-original-detected', 'FINISHED', 'FINISHED', 'X-length2-multi-original-detected', 'SEARCH_INCOMPLETE', 'SEARCH_INCOMPLETE')
+  excluded ('iss3-cp5400-alt-wait-next-none', 'SEARCH_INCOMPLETE', 'SEARCH_INCOMPLETE', 'iss3-cp5400-alt-wait-multi-none', 'SEARCH_INCOMPLETE', 'SEARCH_INCOMPLETE')
+  excluded ('iss3-cp5400-alt-wait-next-original-undetected', 'SEARCH_INCOMPLETE', 'SEARCH_INCOMPLETE', 'iss3-cp5400-alt-wait-multi-original-undetected', 'SEARCH_INCOMPLETE', 'SEARCH_INCOMPLETE')
+  excluded ('iss3-cp5400-alt-wait-next-original-detected', 'FINISHED', 'SEARCH_INCOMPLETE', 'iss3-cp5400-alt-wait-multi-original-detected', 'SEARCH_INCOMPLETE', 'SEARCH_INCOMPLETE')
+Own Multi-vs-Next win/tie/loss (WIN = Multi better):
+  service: {'WIN': 16, 'TIE': 94}
+  delivered: {'LOSS': 15, 'WIN': 9, 'TIE': 86}
+  confidential: {'LOSS': 4, 'WIN': 25, 'TIE': 81}
+  cpu: {'LOSS': 22, 'TIE': 88}
+  mgmt: {'LOSS': 22, 'TIE': 88}
+  keys: {'LOSS': 13, 'TIE': 97}
+  exposure: {'WIN': 25, 'TIE': 63}
+  exposureAfter: {'WIN': 7, 'TIE': 78, 'LOSS': 3}
+  exposureBefore: {'TIE': 62, 'WIN': 26}
+  recoveryOrdered: {'NA(undetected)': 44, 'WIN': 16, 'WIN(Next censored)': 3, 'TIE': 19, 'TIE(both censored)': 6}
+pairwise.csv next/multi rows: 110; total pairwise rows: 690

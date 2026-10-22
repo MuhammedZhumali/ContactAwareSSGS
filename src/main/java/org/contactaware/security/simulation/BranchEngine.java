@@ -10,6 +10,7 @@ public final class BranchEngine {
     private final SecurityActionGenerator generator = new SecurityActionGenerator();
 
     public PlanningBranch create(PlanningObservation observation) {
+        SearchControl.checkpoint("branch.create");
         Objects.requireNonNull(observation);
         return new PlanningBranch(observation, engine.planningSnapshot(observation), List.of());
     }
@@ -23,11 +24,15 @@ public final class BranchEngine {
 
     /** Trusted search path: action must come from the generator for this same immutable observation. */
     PlanningBranch executeGenerated(PlanningBranch branch, PlanningObservation observation, PlanningAction action) {
+        SearchControl.checkpoint("branch.execute");
         ExecutionSnapshot next;
         if (action.kind() == PlanningAction.Kind.WAIT || action.kind() == PlanningAction.Kind.CONTINUE) {
             Instant until = action.until();
             // A requested wait may be interrupted by a newly relevant event or JIT preparation start.
-            for (var wake : observation.wakeUps()) if (wake.isBefore(until)) until = wake;
+            for (var wake : observation.wakeUps()) {
+                SearchControl.checkpoint("branch.wake");
+                if (wake.isBefore(until)) until = wake;
+            }
             next = engine.planningAdvance(branch.snapshot(), until, action.kind() == PlanningAction.Kind.CONTINUE);
         } else {
             var intent = new ScheduledSecurityAction(action.securityAction(), action.at(), action.contextId(),
@@ -37,12 +42,16 @@ public final class BranchEngine {
         }
         var plan = new ArrayList<>(branch.plan());
         plan.add(action);
+        SearchControl.checkpoint("branch.complete");
         return new PlanningBranch(branch.origin(), next, plan);
     }
 
     static String nextOperationId(Set<String> issued) {
         long generation = 1;
-        while (issued.contains("branch-operation:" + generation)) generation = Math.incrementExact(generation);
+        while (issued.contains("branch-operation:" + generation)) {
+            SearchControl.checkpoint("branch.operationId");
+            generation = Math.incrementExact(generation);
+        }
         return "branch-operation:" + generation;
     }
 }

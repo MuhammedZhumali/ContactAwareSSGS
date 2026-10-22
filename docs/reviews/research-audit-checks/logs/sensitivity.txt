@@ -1,0 +1,86 @@
+(a) search wall-time per family (Next/Multi finished runs):
+  ISS/multi: runs=60 decisions=11577 totalSearch=1789.5s maxDecision=3.542s decisions>0.25s=2258 >1s=152 runsWhoseTotalSearch>simulatedSpan=0
+  ISS/next: runs=67 decisions=15221 totalSearch=1368.1s maxDecision=0.524s decisions>0.25s=904 >1s=0 runsWhoseTotalSearch>simulatedSpan=0
+  X/Y/multi: runs=50 decisions=8602 totalSearch=297.7s maxDecision=0.223s decisions>0.25s=0 >1s=0 runsWhoseTotalSearch>simulatedSpan=0
+  X/Y/next: runs=53 decisions=8966 totalSearch=270.5s maxDecision=0.510s decisions>0.25s=8 >1s=0 runsWhoseTotalSearch>simulatedSpan=0
+  X/Y detected recovered runs: (case, detection->recovery s, #search decisions in [GS notice, recovery], their summed search s, slack to target-contact end after recovery frame, search>slack)
+   ('X-alt-wait-multi-original-detected', 2.65, 4, 0.343, 5.35, False)
+   ('X-alt-wait-next-original-detected', 69.25, 106, 2.313, 3.75, False)
+   ('X-length12-multi-original-detected', 2.65, 4, 0.378, 5.35, False)
+   ('X-length12-next-original-detected', 69.25, 89, 3.061, 10.75, False)
+   ('X-length2-next-original-detected', 69.25, 89, 0.803, 0.75, True)
+   ('X-multi-gap-midpoint-detected', 55.65, 86, 1.257, 2.35, False)
+   ('X-multi-original-detected', 2.65, 4, 0.329, 5.35, False)
+   ('X-multi-p10-detected', 5.65, 4, 0.499, 10.35, False)
+   ('X-multi-p30-detected', 2.65, 4, 0.438, 9.35, False)
+   ('X-multi-p70-detected', 2.65, 4, 0.359, 1.35, False)
+   ('X-multi-p90-detected', 62.65, 86, 1.203, 2.35, False)
+   ('X-next-original-detected', 69.25, 89, 2.035, 3.75, False)
+   ('X-next-p10-detected', 8.65, 6, 0.327, 7.35, False)
+   ('X-next-p30-detected', 8.65, 6, 0.107, 3.35, False)
+   ('X-notice2-multi-original-detected', 3.05, 4, 0.293, 4.95, False)
+   ('X-notice2-next-original-detected', 69.25, 89, 1.749, 3.75, False)
+   ('X-start100-length12-multi-original-detected', 2.65, 4, 0.355, 5.35, False)
+   ('X-start100-length12-next-original-detected', 89.25, 89, 2.472, 10.75, False)
+   ('X-start100-multi-original-detected', 2.65, 4, 0.31, 5.35, False)
+   ('X-start100-next-original-detected', 89.25, 89, 1.651, 3.75, False)
+   ('X-start60-multi-original-detected', 49.25, 89, 1.617, 3.75, False)
+   ('X-start60-next-original-detected', 49.25, 89, 1.691, 3.75, False)
+   ('Y-multi-p10-detected', 8.65, 6, 0.496, 7.35, False)
+   ('Y-multi-p30-detected', 8.65, 6, 0.33, 3.35, False)
+   ('Y-next-p10-detected', 8.65, 6, 0.243, 7.35, False)
+   ('Y-next-p30-detected', 8.65, 6, 0.267, 3.35, False)
+(b) iss3-cp5400-none.model.json: start=2026-10-10T00:07:52.680328369Z first AOS=2026-10-10T00:07:54.680328369Z initial keys=0 contacts=3 cryptoperiod=5400.0
+(b) iss-fragment3-cp5400-none.model.json: start=2026-10-10T03:55:46.766021729Z first AOS=2026-10-10T03:55:48.766021729Z initial keys=0 contacts=3 cryptoperiod=5400.0
+(b) iss-fragment6-cp5400-none.model.json: start=2026-10-10T05:31:58.939788818Z first AOS=2026-10-10T05:32:00.939788818Z initial keys=0 contacts=3 cryptoperiod=5400.0
+(b) X-none.model.json: start=2025-12-31T23:59:58Z first AOS=2026-01-01T00:00:00Z initial keys=4 contacts=3 cryptoperiod=150.0
+(b') Next vs Multi per fixture: [identical on all compared metrics, differing, not comparable(unfinished)]
+   X: [0, 13, 0]
+   X-alt-wait: [0, 3, 0]
+   X-length12: [1, 2, 0]
+   X-length2: [0, 0, 3]
+   X-notice2: [0, 3, 0]
+   X-start100: [0, 3, 0]
+   X-start100-length12: [1, 2, 0]
+   X-start60: [3, 0, 0]
+   Y: [13, 0, 0]
+   Y-alt-wait: [3, 0, 0]
+   Y-notice2: [3, 0, 0]
+   iss-fragment3-cp5400: [3, 0, 0]
+   iss-fragment3-cp5400-moderate: [3, 0, 0]
+   iss-fragment3-cp7200: [3, 0, 0]
+   iss-fragment6-cp5400: [3, 0, 0]
+   iss-fragment6-cp7200: [3, 0, 0]
+   iss3-cp5400: [6, 9, 0]
+   iss3-cp5400-alt-wait: [0, 0, 3]
+   iss3-cp5400-moderate: [0, 0, 3]
+   iss3-cp5400-notice2: [1, 2, 0]
+   iss3-cp5400-saturated: [0, 0, 3]
+   iss3-cp7200: [15, 0, 0]
+   iss3-cp7200-alt-wait: [3, 0, 0]
+   iss3-cp7200-moderate: [3, 0, 0]
+   iss3-cp7200-notice2: [3, 0, 0]
+   iss3-cp7200-saturated: [3, 0, 0]
+(c) alternative vs base (original attack point): policy/mode: base -> alt [recovery s | conf B | useful s | cpu | served]
+   X/notice2/fixed/original-detected: 69.25|6400|22.0|2.37|3 -> 69.25|6400|22.0|2.41|3
+   X/notice2/percontact/original-detected: None|5600|20.0|2.61|2 -> None|5600|20.0|2.65|2
+   X/notice2/next/original-detected: 69.25|9200|34.0|0.87|3 -> 69.25|9200|34.0|0.91|3
+   X/notice2/multi/original-detected: 2.65|11400|35.5|0.93|3 -> 3.05|11200|35.0|0.97|3
+   Y/notice2/fixed/original-detected: None|6400|22.0|2.37|3 -> None|6400|22.0|2.41|3
+   Y/notice2/percontact/original-detected: None|5600|20.0|2.61|2 -> None|5600|20.0|2.65|2
+   Y/notice2/next/original-detected: None|9200|34.0|0.87|3 -> None|9200|34.0|0.91|3
+   Y/notice2/multi/original-detected: None|9200|34.0|0.87|3 -> None|9200|34.0|0.91|3
+   iss3-cp5400/alt-wait/next/none: None|6000|60.0|2.13|3 -> SEARCH_INCOMPLETE
+   iss3-cp5400/alt-wait/next/original-undetected: None|4000|60.0|2.13|3 -> SEARCH_INCOMPLETE
+   iss3-cp5400/alt-wait/multi/none: None|6000|60.0|2.13|3 -> SEARCH_INCOMPLETE
+   iss3-cp5400/alt-wait/multi/original-undetected: None|4000|60.0|2.13|3 -> SEARCH_INCOMPLETE
+   iss3-cp5400/alt-wait/multi/original-detected: 18.4|6000|60.0|2.88|3 -> SEARCH_INCOMPLETE
+   iss3-cp5400/notice2/fixed/original-detected: 27.4|5000|60.0|3.08|3 -> 27.8|5000|60.0|3.12|3
+   iss3-cp5400/notice2/percontact/original-detected: 27.4|5000|60.0|2.88|3 -> 27.8|5000|60.0|2.92|3
+   iss3-cp5400/notice2/next/original-detected: 27.4|5000|60.0|2.88|3 -> 27.8|5000|60.0|2.92|3
+   iss3-cp5400/notice2/multi/original-detected: 18.4|6000|60.0|2.88|3 -> 18.8|6000|60.0|2.92|3
+   iss3-cp7200/notice2/fixed/original-detected: 27.4|5000|60.0|3.08|3 -> 27.8|5000|60.0|3.12|3
+   iss3-cp7200/notice2/percontact/original-detected: 27.4|5000|60.0|2.88|3 -> 27.8|5000|60.0|2.92|3
+   iss3-cp7200/notice2/next/original-detected: 27.4|5000|60.0|2.23|3 -> 27.8|5000|60.0|2.27|3
+   iss3-cp7200/notice2/multi/original-detected: 27.4|5000|60.0|2.23|3 -> 27.8|5000|60.0|2.27|3
+   (pairs not listed are identical on these 5 values)

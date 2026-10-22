@@ -6,7 +6,8 @@ import java.util.*;
 /** Actual full-run accounting is separate from the successive, differently bounded forecasts. */
 public record ControlledSimulationResult(PolicyConfiguration policy, Status status, ExecutionSnapshot snapshot,
                                          SimulationResult simulation, List<Decision> decisions) {
-    public enum Status { FINISHED, SEARCH_INCOMPLETE, NO_FEASIBLE_PLAN, EXECUTION_STALLED }
+    public enum Status { FINISHED, SEARCH_INCOMPLETE, NO_FEASIBLE_PLAN, EXECUTION_STALLED,
+        CONTROLLER_TIME_LIMIT, CANCELLED, INTERRUPTED }
     public enum DecisionSource { SEARCH, RULE }
 
     public record Decision(PlanningObservation observation, HorizonPlanResult search,

@@ -3,7 +3,8 @@ package org.contactaware.security.simulation;
 import java.time.Duration;
 import java.util.Objects;
 
-/** Zero means unlimited. A time budget is checked between node visits, not inside an operation. */
+/** Zero means unlimited. Elapsed limits are cooperative, including initialization and inner loops;
+ * host pauses and indivisible library/native calls still require an external watchdog. */
 public record SearchLimits(long maxNodes, Duration maxElapsed) {
     public SearchLimits {
         Objects.requireNonNull(maxElapsed);

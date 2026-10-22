@@ -19,6 +19,7 @@ final class PlanningActionReduction {
         var comparator = new PlanningResultComparator();
         var representatives = new HashMap<Instant, PlanningAction>();
         for (var action : orderedCandidates) {
+            SearchControl.checkpoint("candidateProcessing.waitReduction");
             if (action.kind() != PlanningAction.Kind.WAIT) continue;
             representatives.merge(effectiveWaitTarget(observation, action), action,
                     (first, second) -> comparator.compareActions(first, second) <= 0 ? first : second);
@@ -37,6 +38,7 @@ final class PlanningActionReduction {
         Objects.requireNonNull(prefix); Objects.requireNonNull(incumbent);
         var comparator = new PlanningResultComparator();
         for (int index = 0; index < Math.min(prefix.size(), incumbent.size()); index++) {
+            SearchControl.checkpoint("bound.canonicalPrefix");
             int order = comparator.compareActions(prefix.get(index), incumbent.get(index));
             if (order != 0) return order > 0;
         }
@@ -45,7 +47,10 @@ final class PlanningActionReduction {
 
     private static Instant effectiveWaitTarget(PlanningObservation observation, PlanningAction action) {
         var until = action.until();
-        for (var wake : observation.wakeUps()) if (wake.isBefore(until)) until = wake;
+        for (var wake : observation.wakeUps()) {
+            SearchControl.checkpoint("candidateProcessing.waitWake");
+            if (wake.isBefore(until)) until = wake;
+        }
         return until;
     }
 }

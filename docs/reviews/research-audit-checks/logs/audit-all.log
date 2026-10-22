@@ -1,0 +1,80 @@
+﻿PASS 1a initial OLD_A history from real transitions :: created=2025-12-31T23:58:30Z activated=2025-12-31T23:58:40Z deadline=2026-01-01T00:01:10Z lastSuccess=2025-12-31T23:59:00Z ctr=1
+PASS 1b REUSE does not reset activation/deadline :: activated=2025-12-31T23:58:40Z deadline=2026-01-01T00:01:10Z status=DEACTIVATED
+PASS 1c frame [69.75,70) delivered at deadline, then expiry at exactly 70 :: lastFrame=2026-01-01T00:01:10Z expiries=[2026-01-01T00:01:10Z]
+PASS 1d nonce counter progressed monotonically from history (not reset by REUSE) :: finalCtr=19 ulFrames=18
+PASS 1e re-activation of ACTIVE key rejected :: 
+PASS 1f half-open lifetime: [d-0.25,d) ok, [d-0.25,d+1ns) rejected, REUSE at d-1ns ok, at d rejected :: pIn=true pOut=false startBefore=true startAt=false
+PASS 2a OPEN/REUSE completing exactly at LOS is interrupted (CONTACT_END before STEP_COMPLETE) :: [2026-01-01T00:00:20Z CONTACT_ENDED usage=ResourceUsage[elapsed=PT1S, spacecraftCpu=PT0.04S, groundCpu=PT0.02S, radioOccupancy=PT0.2S, uplinkBytes=40, downlinkBytes=40]]
+INFO 2a consequence: context marked uncertain for rest of run :: [ContextId[satelliteId=WITNESS-SC, groundStationId=A]]
+PASS 2b REUSE completing 1 ns before LOS succeeds; no partial frame is started in remaining 1 ns :: frames=0 lastSuccess=2025-12-31T23:59:00Z
+PASS 2c partial-step cost = exact ns elapsed, bytes floor(40*50.0000013/100)=20 :: ResourceUsage[elapsed=PT0.070000301S, spacecraftCpu=PT0S, groundCpu=PT0.02S, radioOccupancy=PT0.050000301S, uplinkBytes=20, downlinkBytes=0]
+PASS 2d partial cost charged once in metrics :: ResourceUsage[elapsed=PT0.070000301S, spacecraftCpu=PT0S, groundCpu=PT0.02S, radioOccupancy=PT0.050000301S, uplinkBytes=20, downlinkBytes=0]
+PASS 3a frame ending at disclosure instant is 'before' (FRAME_COMPLETE prio 0 < DISCLOSURE 5) :: before=100 after=7500
+PASS 3b disclosure mid-frame splits bytes by floor(100*0.05/0.25)=20 :: before=120 after=7480 emitted=7600
+PASS 3b' before+after == emitted on compromised keys (all frames here use OLD_A) :: 7600
+PASS 3c disclosure at deadline -> NO_TARGET; at deadline-1ns -> KEY_DISCLOSED :: 
+INFO 3d notice coincident with deadline: deactivationReason / ground notice :: EXPIRED / 1
+PASS 5a predefined UL abort: counters == delivered frames; aborted frame keys retired, never reused :: aborted UPLINK key=A-old-up status=DEACTIVATED reason=KNOWN_COMPROMISE ctrNotAdvanced; 
+PASS 5b predefined DL rejected: counters == delivered frames; aborted frame keys retired, never reused :: aborted DOWNLINK key=A-old-down status=DEACTIVATED reason=KNOWN_COMPROMISE ctrNotAdvanced; 
+INFO 5b DL-rejected events :: [REVOCATION_RECEIVED_GROUND@PT3.35S, PAYLOAD_ABORTED@PT3.5S emitted=100 dir=DOWNLINK]
+PASS 4a run() == start+188 random pauses+resume (journal, metrics, state) :: events=133/133
+PASS 4b security metrics identical after pauses :: before=1600 after=800
+PASS 4c metrics are a pure function of the journal (no hidden carried totals) :: 
+PASS 4d controlled resume from checkpoint #61 (at 2026-01-01T00:00:40.500Z) reproduces journal (in-memory and JSON round-trip) :: status=FINISHED/FINISHED/FINISHED
+PASS 4e recordedCosts of final snapshot == metrics controlCosts :: 
+PASS 4f planning-branch root totals == observation totals at 18 mid-operation/mid-frame decisions :: []
+PASS 7a H1 vs H2 observation at PT0S differs only in visible contacts/evaluationEnd/wakeups :: H1 visible=[C1, C2] end=2026-01-01T00:00:50Z; H2 visible=[C1, C2, C3] end=2026-01-01T00:01:25Z
+PASS 7b planning branch has no disclosure/notice events at PT0S :: 
+PASS 7a H1 vs H2 observation at PT5S differs only in visible contacts/evaluationEnd/wakeups :: H1 visible=[C1, C2] end=2026-01-01T00:00:50Z; H2 visible=[C1, C2, C3] end=2026-01-01T00:01:25Z
+PASS 7b planning branch has no disclosure/notice events at PT5S :: 
+PASS 7a H1 vs H2 observation at PT25S differs only in visible contacts/evaluationEnd/wakeups :: H1 visible=[C1, C2] end=2026-01-01T00:00:50Z; H2 visible=[C1, C2, C3] end=2026-01-01T00:01:25Z
+PASS 7b planning branch has no disclosure/notice events at PT25S :: 
+INFO fixed/none :: FINISHED decisions=130 wall=43ms
+INFO fixed/undetected :: FINISHED decisions=130 wall=31ms
+INFO fixed/detected :: FINISHED decisions=122 wall=39ms
+PASS 6/7 fixed: undetected attack leaves every decision unchanged :: 130 vs 130
+PASS 6/7 fixed: undetected journal == none journal except KEY_DISCLOSED :: 
+PASS 6/7 fixed: detected run decisions before GS notice (t=12) unchanged :: 
+INFO 8 fixed response :: GS notice=PT12S SC notice=PT12.4S firstDecision@PT12S source=RULE reason=Common response: deliver revocation to spacecraft before further online work
+INFO 8 fixed common-response decisions :: [PT12S:NOTIFY, PT12S:WAIT, PT12.4S:PREPARE, PT14.4S:INSTALL, PT18.4S:SWITCH]
+INFO 9 fixed exposure :: before=1600 after=800 delivered=8800 emitted=8800 compromisedDelivered=2400 afterGS=0 afterSC=0 status=RECOVERED firstIndependent=PT1M21.25S
+PASS 9 fixed: before+after == recount of emitted on disclosed keys; delivered recount; no new compromised frame started after GS notice :: emittedRecount=2400 deliveredRecount=2400 newAfterGS=0
+PASS 5 fixed detected: counters == delivered frames; aborted frame keys retired, never reused :: counters consistent, no aborts
+PASS 2e fixed: no policy-selected step cut by LOS/deadline/ACK in detected run :: []
+INFO percontact/none :: FINISHED decisions=135 wall=35ms
+INFO percontact/undetected :: FINISHED decisions=135 wall=36ms
+INFO percontact/detected :: FINISHED decisions=112 wall=24ms
+PASS 6/7 percontact: undetected attack leaves every decision unchanged :: 135 vs 135
+PASS 6/7 percontact: undetected journal == none journal except KEY_DISCLOSED :: 
+PASS 6/7 percontact: detected run decisions before GS notice (t=12) unchanged :: 
+INFO 8 percontact response :: GS notice=PT12S SC notice=PT12.4S firstDecision@PT12S source=RULE reason=Common response: deliver revocation to spacecraft before further online work
+INFO 8 percontact common-response decisions :: [PT12S:NOTIFY, PT12S:WAIT, PT12.4S:PREPARE, PT14.4S:INSTALL, PT18.4S:SWITCH]
+INFO 9 percontact exposure :: before=1600 after=800 delivered=8000 emitted=8000 compromisedDelivered=2400 afterGS=0 afterSC=0 status=CENSORED_NO_RECOVERY firstIndependent=null
+PASS 9 percontact: before+after == recount of emitted on disclosed keys; delivered recount; no new compromised frame started after GS notice :: emittedRecount=2400 deliveredRecount=2400 newAfterGS=0
+PASS 5 percontact detected: counters == delivered frames; aborted frame keys retired, never reused :: counters consistent, no aborts
+PASS 2e percontact: no policy-selected step cut by LOS/deadline/ACK in detected run :: []
+INFO next/none :: FINISHED decisions=163 wall=4453ms
+INFO next/undetected :: FINISHED decisions=163 wall=2379ms
+INFO next/detected :: FINISHED decisions=156 wall=1855ms
+PASS 6/7 next: undetected attack leaves every decision unchanged :: 163 vs 163
+PASS 6/7 next: undetected journal == none journal except KEY_DISCLOSED :: 
+PASS 6/7 next: detected run decisions before GS notice (t=12) unchanged :: 
+INFO 8 next response :: GS notice=PT12S SC notice=PT12.4S firstDecision@PT12S source=RULE reason=Common response: deliver revocation to spacecraft before further online work
+INFO 8 next common-response decisions :: [PT12S:NOTIFY, PT12S:WAIT, PT12.4S:PREPARE, PT14.4S:INSTALL, PT18.4S:SWITCH]
+INFO 9 next exposure :: before=3600 after=800 delivered=13600 emitted=13600 compromisedDelivered=4400 afterGS=0 afterSC=0 status=RECOVERED firstIndependent=PT1M21.25S
+PASS 9 next: before+after == recount of emitted on disclosed keys; delivered recount; no new compromised frame started after GS notice :: emittedRecount=4400 deliveredRecount=4400 newAfterGS=0
+PASS 5 next detected: counters == delivered frames; aborted frame keys retired, never reused :: counters consistent, no aborts
+PASS 2e next: no policy-selected step cut by LOS/deadline/ACK in detected run :: []
+INFO multi/none :: FINISHED decisions=165 wall=2982ms
+INFO multi/undetected :: FINISHED decisions=165 wall=2304ms
+INFO multi/detected :: FINISHED decisions=163 wall=3031ms
+PASS 6/7 multi: undetected attack leaves every decision unchanged :: 165 vs 165
+PASS 6/7 multi: undetected journal == none journal except KEY_DISCLOSED :: 
+PASS 6/7 multi: detected run decisions before GS notice (t=12) unchanged :: 
+INFO 8 multi response :: GS notice=PT12S SC notice=PT12.4S firstDecision@PT12S source=RULE reason=Common response: deliver revocation to spacecraft before further online work
+INFO 8 multi common-response decisions :: [PT12S:NOTIFY, PT12S:WAIT, PT12.4S:SWITCH]
+INFO 9 multi exposure :: before=2000 after=800 delivered=14200 emitted=14200 compromisedDelivered=2800 afterGS=0 afterSC=0 status=RECOVERED firstIndependent=PT14.65S
+PASS 9 multi: before+after == recount of emitted on disclosed keys; delivered recount; no new compromised frame started after GS notice :: emittedRecount=2800 deliveredRecount=2800 newAfterGS=0
+PASS 5 multi detected: counters == delivered frames; aborted frame keys retired, never reused :: counters consistent, no aborts
+PASS 2e multi: no policy-selected step cut by LOS/deadline/ACK in detected run :: []
+FAILURES=0

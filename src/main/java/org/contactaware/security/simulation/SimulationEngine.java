@@ -44,9 +44,9 @@ public final class SimulationEngine {
         Objects.requireNonNull(snapshot);
         if (snapshot.executionMode() == ExecutionMode.PLANNING_BRANCH)
             throw new IllegalArgumentException("A nominal planning branch is not an actual execution checkpoint");
-        if (snapshot.queuedEvents().stream().anyMatch(e -> e.kind() == EventKind.ACTION_START))
+        if (snapshot.queuedEvents().stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).anyMatch(e -> e.kind() == EventKind.ACTION_START))
             throw new IllegalArgumentException("Unexecuted prescribed actions cannot compete with the controller");
-        if (snapshot.journal().stream().anyMatch(e -> e.type() == SIMULATION_ENDED))
+        if (snapshot.journal().stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).anyMatch(e -> e.type() == SIMULATION_ENDED))
             throw new IllegalArgumentException("The experiment is already finalized");
         var run = new Run(snapshot);
         run.executionMode = ExecutionMode.CONTROLLED_REAL;
@@ -86,9 +86,16 @@ public final class SimulationEngine {
 
     /** Trusted adapter: only the supplied observation can enter a planning branch. */
     ExecutionSnapshot planningSnapshot(PlanningObservation observation) {
+        SearchControl.checkpoint("simulation.planningSnapshot");
         Instant start = observation.at();
-        for (var contact : observation.visibleContacts()) start = Run.earlier(start, contact.window().start());
-        for (var operation : observation.ongoingOperations()) start = Run.earlier(start, operation.stepStartedAt());
+        for (var contact : observation.visibleContacts()) {
+            SearchControl.checkpoint("simulation.rootContact");
+            start = Run.earlier(start, contact.window().start());
+        }
+        for (var operation : observation.ongoingOperations()) {
+            SearchControl.checkpoint("simulation.rootOperation");
+            start = Run.earlier(start, operation.stepStartedAt());
+        }
         if (!start.isBefore(observation.evaluationEnd())) start = observation.evaluationEnd().minusNanos(1);
         // Scenario is a configuration carrier. Its closed empty initial state is never executed;
         // the factual (possibly operational) state below is restored directly.
@@ -108,6 +115,7 @@ public final class SimulationEngine {
             run.nextUp.put(id, p.nextUplink());
         });
         for (var contact : observation.visibleContacts()) {
+            SearchControl.checkpoint("simulation.loop");
             var window = contact.window();
             if (window.start().isAfter(run.now))
                 run.schedule(window.start(), EventKind.CONTACT_START, "contact-start:" + window.id(), window.id(), 0, null);
@@ -115,11 +123,12 @@ public final class SimulationEngine {
                 run.schedule(window.end(), EventKind.CONTACT_END, "contact-end:" + window.id(), window.id(), 0, null);
         }
         for (var operation : observation.ongoingOperations()) {
+            SearchControl.checkpoint("simulation.loop");
             var planned = new PlannedOperation(operation.id(),
                     new ScheduledSecurityAction(operation.action(), operation.stepStartedAt(), operation.contextId(),
                             operation.candidateKeys(), "Known committed operation; nominal future confirmation"),
                     operation.contactId());
-            var resources = observation.resourceReservations().stream().filter(r -> r.operationId().equals(operation.id()))
+            var resources = observation.resourceReservations().stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).filter(r -> r.operationId().equals(operation.id()))
                     .map(r -> new ResourceReservation(r.resource(), r.from(), r.until())).toList();
             var execution = new Execution(new PendingOperation(planned, operation.steps(), resources,
                     operation.stepIndex(), operation.stepStartedAt(), operation.stepKeys()));
@@ -178,13 +187,14 @@ public final class SimulationEngine {
         // A notice with no captured target is likewise invisible. Process such events in
         // the actual queue while preserving the original committed wait/frame interval.
         while (true) {
-            var next = run.queue.stream().filter(e -> e.kind() != EventKind.DISCLOSURE)
+            SearchControl.checkpoint("simulation.loop");
+            var next = run.queue.stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).filter(e -> e.kind() != EventKind.DISCLOSURE)
                     .min(ExecutionSnapshot.EVENT_ORDER).orElse(null);
             var target = next == null ? until : Run.earlier(until, next.at());
             long before = run.journal.size();
             run.advanceTo(target);
             if (target.equals(until) || next == null || next.kind() != EventKind.REVOCATION_NOTICE
-                    || run.journal.subList((int) before, run.journal.size()).stream()
+                    || run.journal.subList((int) before, run.journal.size()).stream().peek(ignored -> SearchControl.checkpoint("simulation.stream"))
                         .anyMatch(e -> e.at().equals(target) && e.type() != KEY_DISCLOSED && e.type() != DISCLOSURE_NO_TARGET))
                 break;
         }
@@ -235,6 +245,7 @@ public final class SimulationEngine {
         InFlightFrame frame;
 
         Run(SimulationScenario input) {
+            SearchControl.checkpoint("simulation.run");
             this.input = input; state = input.initialState(); now = input.start();
             transitions = new LifecycleTransitions(input.constraints());
             checker = new SecurityConstraintChecker(input.constraints());
@@ -263,16 +274,18 @@ public final class SimulationEngine {
         }
 
         ExecutionSnapshot snapshot() {
+            SearchControl.checkpoint("simulation.snapshot");
             var progress = new TreeMap<String, PayloadProgress>();
             delivered.forEach((id, counts) -> progress.put(id,
                     new PayloadProgress(counts[0], counts[1], nextUp.getOrDefault(id, true))));
-            return new ExecutionSnapshot(input, now, state, running.values().stream().map(Execution::snapshot).toList(),
+            return new ExecutionSnapshot(input, now, state, running.values().stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).map(Execution::snapshot).toList(),
                     List.copyOf(queue), insertion, expiryEvents, journal, uncertain, progress, frame,
                     carriedRecordedCosts, carriedUsefulTime, carriedCreatedKeys, issuedKeyIds, issuedOperationIds, executionMode);
         }
 
         void initialize() {
             for (var c : input.contacts()) {
+                SearchControl.checkpoint("simulation.loop");
                 var window = c.window();
                 schedule(window.start(), EventKind.CONTACT_START, "contact-start:" + window.id(), window.id(), 0, null);
                 schedule(window.end(), EventKind.CONTACT_END, "contact-end:" + window.id(), window.id(), 0, null);
@@ -281,6 +294,7 @@ public final class SimulationEngine {
             for (var operation : input.plan())
                 schedule(operation.intent().scheduledAt(), EventKind.ACTION_START, operation.id(), operation.id(), 0, null);
             for (var incident : input.disclosures()) {
+                SearchControl.checkpoint("simulation.loop");
                 schedule(incident.at(), EventKind.DISCLOSURE, "disclosure:" + incident.id(), incident.id(), 0, null);
                 if (incident.detectionAt() != null)
                     schedule(incident.detectionAt(), EventKind.REVOCATION_NOTICE, "notice:" + incident.id(), incident.id(), 0, null);
@@ -289,6 +303,7 @@ public final class SimulationEngine {
 
         void advanceTo(Instant until) {
             while (!queue.isEmpty() && !queue.peek().at().isAfter(until)) {
+                SearchControl.checkpoint("simulation.loop");
                 now = queue.peek().at();
                 // Complete the entire timestamp before starting another payload frame.
                 do { dispatch(queue.remove()); } while (!queue.isEmpty() && queue.peek().at().equals(now));
@@ -314,6 +329,7 @@ public final class SimulationEngine {
         }
 
         void dispatch(QueuedEvent event) {
+            SearchControl.checkpoint("simulation.event");
             switch (event.kind()) {
                 case CONTACT_START -> {
                     var window = contacts.get(event.referenceId()).window();
@@ -361,9 +377,10 @@ public final class SimulationEngine {
                 executor.admit(state, intent, steps.getFirst(), contact(planned), now);
                 var reservations = reservations(planned, steps);
                 for (var active : running.values()) {
+                    SearchControl.checkpoint("simulation.loop");
                     boolean sameOnlineContext = active.planned.intent().contextId().equals(intent.contextId())
                             && active.planned.intent().action().requiresContact() && intent.action() != PREPARE;
-                    boolean conflicts = reservations.stream().anyMatch(a -> active.reservations.stream().anyMatch(a::conflicts));
+                    boolean conflicts = reservations.stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).anyMatch(a -> active.reservations.stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).anyMatch(a::conflicts));
                     if (sameOnlineContext || conflicts)
                         throw new SecurityActionExecutor.Rejected("RESOURCE_BUSY", "Conflicts with " + active.planned.id());
                 }
@@ -419,6 +436,7 @@ public final class SimulationEngine {
                     null, "Confirmed checkpoint");
             if (execution.step() == NOTIFY_REVOCATION) {
                 for (var incident : input.disclosures()) {
+                    SearchControl.checkpoint("simulation.loop");
                     var disclosure = disclosed(incident.id());
                     if (disclosure != null && disclosure.keyIds().equals(execution.stepKeys)
                             && hasEvent(REVOCATION_RECEIVED_GROUND, incident.id())
@@ -465,6 +483,7 @@ public final class SimulationEngine {
             if (planned.intent().action().requiresContact()) limit = earlier(limit, contact(planned).end());
             if (planned.interruptAt() != null) limit = earlier(limit, planned.interruptAt());
             for (var step : steps) for (var phase : input.costs().cost(step).phases()) {
+                SearchControl.checkpoint("simulation.loop");
                 var end = cursor.plus(phase.duration());
                 String resource = switch (phase.resource()) {
                     case GROUND_CPU -> "ground:" + planned.intent().contextId().groundStationId();
@@ -499,6 +518,7 @@ public final class SimulationEngine {
 
         void registerDeadlines() {
             for (var key : state.keys().values()) {
+                SearchControl.checkpoint("simulation.loop");
                 if (key.status() != KeyStatus.ACTIVE && key.status() != KeyStatus.PRE_ACTIVE) continue;
                 var deadline = key.hardDeadline(input.constraints());
                 if (expiryEvents.add(key.id() + ":" + deadline))
@@ -526,28 +546,29 @@ public final class SimulationEngine {
             log(KEY_EXPIRED, null, EXPIRE_CONTEXT, key.contextId(), contactId, null, ResourceUsage.ZERO, 0,
                     "KEY_EXPIRED", keyId + (bound ? " (paired context retired)" : " (unbound material)"));
             for (var execution : List.copyOf(running.values())) {
+                SearchControl.checkpoint("simulation.loop");
                 if (execution.stepKeys == null || execution.step() == PREPARE || execution.step() == NOTIFY_REVOCATION) continue;
-                boolean unusable = List.of(execution.stepKeys.uplink(), execution.stepKeys.downlink()).stream()
+                boolean unusable = List.of(execution.stepKeys.uplink(), execution.stepKeys.downlink()).stream().peek(ignored -> SearchControl.checkpoint("simulation.stream"))
                         .map(state::key).anyMatch(k -> k.status() == KeyStatus.DEACTIVATED || k.status() == KeyStatus.DESTROYED);
                 if (unusable) fail(execution, true, "KEY_EXPIRED", "Required material retired during operation");
             }
         }
 
         boolean hasEvent(SimulationEvent.Type type, String id) {
-            return journal.stream().anyMatch(e -> e.type() == type && id.equals(e.operationId()));
+            return journal.stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).anyMatch(e -> e.type() == type && id.equals(e.operationId()));
         }
 
         SimulationEvent disclosed(String id) {
-            return journal.stream().filter(e -> e.type() == KEY_DISCLOSED && id.equals(e.operationId())).findFirst().orElse(null);
+            return journal.stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).filter(e -> e.type() == KEY_DISCLOSED && id.equals(e.operationId())).findFirst().orElse(null);
         }
 
         void disclose(String id) {
-            var incident = input.disclosures().stream().filter(d -> d.id().equals(id)).findFirst().orElseThrow();
+            var incident = input.disclosures().stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).filter(d -> d.id().equals(id)).findFirst().orElseThrow();
             var context = state.context(incident.contextId());
             KeyPairIds keys = null;
             if (context.uplink().keyId() != null && context.downlink().keyId() != null) {
                 var candidate = context.boundKeys();
-                if (List.of(candidate.uplink(), candidate.downlink()).stream().map(state::key)
+                if (List.of(candidate.uplink(), candidate.downlink()).stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).map(state::key)
                         .allMatch(k -> k.status() == KeyStatus.ACTIVE && now.isBefore(k.hardDeadline(input.constraints()))))
                     keys = candidate;
             }
@@ -577,7 +598,7 @@ public final class SimulationEngine {
             if (context.uplink().keyId() != null && context.boundKeys().equals(keys)) {
                 stopIfOperational(context.id(), contactId);
                 state = transitions.expireContext(state, context.id(), DeactivationReason.KNOWN_COMPROMISE, now);
-            } else if (List.of(keys.uplink(), keys.downlink()).stream().map(state::key)
+            } else if (List.of(keys.uplink(), keys.downlink()).stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).map(state::key)
                     .allMatch(k -> k.status() == KeyStatus.ACTIVE || k.status() == KeyStatus.PRE_ACTIVE)) {
                 state = transitions.deactivateKeys(state, keys, DeactivationReason.KNOWN_COMPROMISE, now);
             }
@@ -601,10 +622,10 @@ public final class SimulationEngine {
 
         void sendNextFrame() {
             if (frame != null) return;
-            var ctx = state.contexts().values().stream().filter(c -> c.status() == AssociationStatus.OPERATIONAL).findFirst().orElse(null);
+            var ctx = state.contexts().values().stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).filter(c -> c.status() == AssociationStatus.OPERATIONAL).findFirst().orElse(null);
             if (ctx == null || uncertain.contains(ctx.id())) return;
             var contact = contacts.get(ctx.activeContact().id());
-            if (running.values().stream().anyMatch(e -> e.planned.intent().action().requiresContact()
+            if (running.values().stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).anyMatch(e -> e.planned.intent().action().requiresContact()
                     && contact.window().id().equals(e.planned.contactId()))) return;
             var profile = contact.payload();
             var counts = delivered.computeIfAbsent(contact.window().id(), ignored -> new long[2]);
@@ -616,6 +637,7 @@ public final class SimulationEngine {
                 bound = earlier(bound, state.key(keyId).hardDeadline(input.constraints()));
             // Complete frames only; reserve management boundaries without using future outcomes.
             for (var planned : input.plan()) {
+                SearchControl.checkpoint("simulation.loop");
                 var intent = planned.intent();
                 boolean blocks = intent.action().requiresContact() && contact.window().id().equals(planned.contactId())
                         || (intent.action() == STOP || intent.action() == EXPIRE_CONTEXT) && intent.contextId().equals(ctx.id());

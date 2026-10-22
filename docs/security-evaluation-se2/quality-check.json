@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "maven": {
+    "tests": 324,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "mavenSuites": 43,
+  "python": {
+    "tests": 25,
+    "status": "PASS"
+  },
+  "testLogs": {
+    "target/security-evaluation-se2-maven.log": "848e2b7ee9e648c2d97eeeebf654f605199b8df7080eb764d0e392ff4476b20a",
+    "target/security-evaluation-se2-python-tests.log": "d1c21d9ea71f4084abafb34e8b6a0c677d62c612dee58f7708c9e71cb6adf5d3"
+  },
+  "registeredRuns": 488,
+  "runStatuses": {
+    "FINISHED": 474,
+    "SEARCH_INCOMPLETE": 14
+  },
+  "finishedRuns": 474,
+  "notRun": 0,
+  "preKnowledgeDecisionsCompared": 41310,
+  "publicationFigureSets": 6,
+  "protocolSha256": "68bd46934279f33839823c91a823bcbc70bcab2aa3ed3115c1a92ab4f4b899a5",
+  "executableSha256": "e141ebf63f7cf72b15309974cab5fadce5fbf970ad330673fc39b2b13d8586a3",
+  "independentAuditSha256": "55fa6adfdbc405bb69bd2aedfe2105709209628d01eb8cbc2685bef5890c446e",
+  "figureProvenanceSha256": "55b01e4ddbc13a8929fa9cdbeaba1bf98ec39dbb9f9b847a02753b2565295c49",
+  "frozenSe1V2AndInputsVerified": {
+    "target/security-evaluation-build/security-evaluation-se1.jar": "b304138d4f6df1b040725affabc6e0a1905d826aa8f299bfe32f2832fa2a38aa",
+    "docs/security-evaluation/research-figures-se1.zip": "62f0e0db371fdea46fdd719da0ec2329e7a68991e5b16d1776ea013e8d70d6c7",
+    "docs/security-evaluation/experiment-evidence-se1.zip": "93f3038e7f8d054f7c97056c765e13a7403e3569317764a41fb22d468ef8c440",
+    "target/search-scaling-build/experiment-v2.jar": "789261d4e7ad697c69c65f17f5a73cd498d578be64f187b20933715f680d80cd",
+    "docs/search-scaling/research-figures-v2.zip": "1ee9b3cc9e7e574781081440db0e969149720df3de8a4db3d93808863f337160",
+    "docs/search-scaling/experiment-evidence-v2.zip": "0003bb8c897e543d5c8034acc483e00f8890c476963ff984904335cd377ed537",
+    "data/runs/iss-20261010/schedule/schedule.json": "fe8a56aebdae09d31dcb3097f1c03ed960a21860edb727643db4310788c64862"
+  },
+  "interpretation": "Binds recorded validation and preserved artifacts. Incomplete/ERROR cases remain excluded from final quality comparisons. Not a security proof."
+}

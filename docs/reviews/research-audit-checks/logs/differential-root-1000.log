@@ -1,0 +1,2 @@
+compared=69 skipped=31 planMismatches=0 boundNodes=2795233 boundViolations=0 keyRepeats=4805282 keyViolations=0
+{exhaustive-capped=6, planHas:[CONTINUE, INSTALL, OPEN, PREPARE, SWITCH, WAIT]=5, planHas:[CONTINUE, INSTALL, OPEN, SWITCH, WAIT]=1, planHas:[CONTINUE, OPEN, WAIT]=3, planHas:[CONTINUE, REUSE, WAIT]=5, planHas:[WAIT]=55, ref-COMPLETE-OPEN=3, ref-COMPLETE-PREPARE=5, ref-COMPLETE-REUSE=1, ref-COMPLETE-WAIT=60, ref-incomplete=31, served=0,keys=0=59, served=0,keys=2=2, served=1,keys=0=5, served=1,keys=2=3}

@@ -37,6 +37,7 @@ final class PlanningOptimisticBound {
 
     /** One immutable origin per search: its conditional relaxation need only be built once. */
     PlanningOptimisticBound(PlanningObservation origin) {
+        SearchControl.checkpoint("bound.initialization");
         cachedOrigin = Objects.requireNonNull(origin);
         cachedEligibleContacts = geometricallyEligibleContacts(origin);
         cachedRootBound = eligibleContactsServedRootBound(origin, cachedEligibleContacts);
@@ -60,6 +61,7 @@ final class PlanningOptimisticBound {
 
         var earlierRemainingContexts = new HashSet<ContextId>();
         for (var contact : root.visibleContacts()) {
+            SearchControl.checkpoint("bound.loop");
             var payload = contact.payload();
             var oldProgress = root.payloadProgress().get(contact.window().id());
             if (served(payload, up(oldProgress), down(oldProgress))) initiallyServed++;
@@ -128,6 +130,7 @@ final class PlanningOptimisticBound {
         // work on a pair that is never used; two keys are created if it finishes in the horizon.
         // Composite operations are excluded because their contact closure may interrupt them.
         for (var operation : snapshot.pendingOperations()) {
+            SearchControl.checkpoint("bound.loop");
             if (operation.planned().intent().action() != SecurityAction.PREPARE
                     || operation.steps().size() != 1 || operation.step() != SecurityAction.PREPARE) continue;
             var cost = root.costs().cost(SecurityAction.PREPARE);
@@ -153,6 +156,7 @@ final class PlanningOptimisticBound {
                 var onlineByContext = consumedOnlineByContext(snapshot);
                 BigInteger contextualFuture = ZERO;
                 for (var entry : allServed.onlineByContext().entrySet()) {
+                    SearchControl.checkpoint("bound.loop");
                     var context = entry.getKey();
                     var actualOnline = onlineByContext.getOrDefault(context, ResourceUsage.ZERO);
                     var remainingOnline = entry.getValue().subtract(nanos(actualOnline.elapsed())).max(ZERO);
@@ -172,7 +176,7 @@ final class PlanningOptimisticBound {
                 // and O its online part, A + max(0, M - O) is a lower bound. Unlike max(A,M),
                 // this does not let an unrelated ground PREPARE pay for a future OPEN/INSTALL.
                 // Extra online work overcredits M, which only makes the bound more optimistic.
-                var online = onlineByContext.values().stream().reduce(ResourceUsage.ZERO, ResourceUsage::plus);
+                var online = onlineByContext.values().stream().peek(ignored -> SearchControl.checkpoint("bound.stream")).reduce(ResourceUsage.ZERO, ResourceUsage::plus);
                 // Required online elapsed time also remains disjoint from payload. Unlike the
                 // constant root cap, this tracks already wasted idle time: past useful + elapsed
                 // part of the committed frame + remaining windows - unavoidable remaining work.
@@ -183,6 +187,7 @@ final class PlanningOptimisticBound {
                 // Work at B cannot pay A's mandatory CPU or management bytes. Coordinatewise
                 // residuals are lower bounds even when unnecessary work at A overcredits A.
                 for (var context : allServed.onlineByContext().keySet()) {
+                    SearchControl.checkpoint("bound.loop");
                     var actualOnline = onlineByContext.getOrDefault(context, ResourceUsage.ZERO);
                     var remainingCpu = allServed.onlineCpuByContext().get(context).minus(actualOnline.totalCpu());
                     if (!remainingCpu.isNegative()) cpu = cpu.plus(remainingCpu);
@@ -196,10 +201,13 @@ final class PlanningOptimisticBound {
                 if (!allServed.preparationContexts().isEmpty()) {
                     var preparationByContext = consumedPreparationByContext(snapshot);
                     var createdByContext = new HashMap<ContextId, Long>();
-                    for (var event : snapshot.journal()) if (event.createdKeys() > 0)
-                        createdByContext.merge(event.contextId(), event.createdKeys(), Math::addExact);
+                    for (var event : snapshot.journal()) {
+                        SearchControl.checkpoint("bound.journal");
+                        if (event.createdKeys() > 0) createdByContext.merge(event.contextId(), event.createdKeys(), Math::addExact);
+                    }
                     var mandatoryCpu = root.costs().cost(SecurityAction.PREPARE).total().totalCpu();
                     for (var context : allServed.preparationContexts()) {
+                        SearchControl.checkpoint("bound.loop");
                         var spent = preparationByContext.getOrDefault(context, ResourceUsage.ZERO).totalCpu();
                         var remainingCpu = mandatoryCpu.minus(spent)
                                 .minus(committedPreparationCpu.getOrDefault(context, Duration.ZERO));
@@ -249,6 +257,7 @@ final class PlanningOptimisticBound {
         Duration openingCpu = open.totalCpu().compareTo(reuse.totalCpu()) <= 0 ? open.totalCpu() : reuse.totalCpu();
         long openingBytes = Math.min(open.managementBytes(), reuse.managementBytes());
         for (var contact : root.visibleContacts()) {
+            SearchControl.checkpoint("bound.loop");
             var progress = root.payloadProgress().get(contact.window().id());
             // The current PayloadProfile constructor already rejects zero total demand;
             // keep this sufficient guard explicit if that input contract is relaxed later.
@@ -281,9 +290,11 @@ final class PlanningOptimisticBound {
             latestStarts.merge(id, from, PlanningOptimisticBound::later);
         }
         for (var entry : latestStarts.entrySet()) {
+            SearchControl.checkpoint("bound.loop");
             Instant upDeadline = null, downDeadline = null;
             boolean installedUp = false, installedDown = false, preparedUp = false, preparedDown = false;
             for (var key : root.securityState().keys().values()) {
+                SearchControl.checkpoint("bound.loop");
                 if (!key.contextId().equals(entry.getKey())) continue;
                 if (key.status() == KeyStatus.ACTIVE) {
                     // Grant arbitrary pairing/rebinding of every existing active key. This is
@@ -322,13 +333,17 @@ final class PlanningOptimisticBound {
         }
         var rootPendingOnline = new HashMap<ContextId, ResourceUsage>();
         for (var operation : root.ongoingOperations()) {
+            SearchControl.checkpoint("bound.loop");
             var step = operation.steps().get(operation.stepIndex());
             if (step.requiresContact()) rootPendingOnline.merge(operation.contextId(), root.costs().cost(step)
                     .consumedUntil(Duration.between(operation.stepStartedAt(), root.at())), ResourceUsage::plus);
         }
         BigInteger remainingOverhead = ZERO;
-        for (var entry : onlineByContext.entrySet()) remainingOverhead = remainingOverhead.add(entry.getValue()
-                .subtract(nanos(rootPendingOnline.getOrDefault(entry.getKey(), ResourceUsage.ZERO).elapsed())).max(ZERO));
+        for (var entry : onlineByContext.entrySet()) {
+            SearchControl.checkpoint("bound.context");
+            remainingOverhead = remainingOverhead.add(entry.getValue()
+                    .subtract(nanos(rootPendingOnline.getOrDefault(entry.getKey(), ResourceUsage.ZERO).elapsed())).max(ZERO));
+        }
         return new RootBound(pool.subtract(remainingOverhead).max(ZERO), overhead, Map.copyOf(onlineByContext),
                 Map.copyOf(onlineCpuByContext), Map.copyOf(onlineBytesByContext), Set.copyOf(preparationContexts));
     }
@@ -346,6 +361,7 @@ final class PlanningOptimisticBound {
     private Set<String> geometricallyEligibleContacts(PlanningObservation root) {
         var eligible = new HashSet<String>();
         for (var contact : root.visibleContacts()) {
+            SearchControl.checkpoint("bound.loop");
             var payload = contact.payload();
             var progress = root.payloadProgress().get(contact.window().id());
             var up = up(progress);
@@ -376,7 +392,10 @@ final class PlanningOptimisticBound {
 
     private BigInteger frameQuantum(PlanningObservation root) {
         var quantum = ZERO;
-        for (var contact : root.visibleContacts()) quantum = quantum.gcd(nanos(contact.payload().frameDuration()));
+        for (var contact : root.visibleContacts()) {
+            SearchControl.checkpoint("bound.quantum");
+            quantum = quantum.gcd(nanos(contact.payload().frameDuration()));
+        }
         if (root.inFlightFrame() != null && !root.inFlightFrame().deliveryRejectedAtGround()) quantum = quantum.gcd(
                 nanos(Duration.between(root.inFlightFrame().from(), root.inFlightFrame().until())));
         return quantum.signum() == 0 ? BigInteger.ONE : quantum;
@@ -396,12 +415,13 @@ final class PlanningOptimisticBound {
     private BigInteger openingDelay(PlanningBranch branch, ContextId context, Instant from, boolean earlierWindow) {
         var snapshot = branch.snapshot();
         var costs = branch.origin().costs();
-        if (snapshot.pendingOperations().stream().anyMatch(op -> op.planned().intent().contextId().equals(context)
+        if (snapshot.pendingOperations().stream().peek(ignored -> SearchControl.checkpoint("bound.stream")).anyMatch(op -> op.planned().intent().contextId().equals(context)
                 && op.planned().intent().action().requiresContact())) return ZERO;
         BigInteger delay = minimumOpeningTime(costs);
         if (earlierWindow) return delay;
         boolean activeUp = false, activeDown = false, installedUp = false, installedDown = false;
         for (var key : snapshot.securityState().keys().values()) {
+            SearchControl.checkpoint("bound.loop");
             if (!key.contextId().equals(context)) continue;
             if (key.status() == KeyStatus.ACTIVE && from.isBefore(key.hardDeadline(branch.origin().constraints()))) {
                 if (key.direction() == Direction.UPLINK) activeUp = true; else activeDown = true;
@@ -418,22 +438,30 @@ final class PlanningOptimisticBound {
 
     private Map<ContextId, ResourceUsage> consumedOnlineByContext(ExecutionSnapshot snapshot) {
         var usage = new HashMap<ContextId, ResourceUsage>();
-        for (var event : snapshot.journal())
+        for (var event : snapshot.journal()) {
+            SearchControl.checkpoint("bound.journal");
             if (event.action() != null && event.action().requiresContact()) usage.merge(event.contextId(), event.usage(), ResourceUsage::plus);
-        for (var operation : snapshot.pendingOperations())
+        }
+        for (var operation : snapshot.pendingOperations()) {
+            SearchControl.checkpoint("bound.operation");
             if (operation.step().requiresContact()) usage.merge(operation.planned().intent().contextId(), snapshot.scenario().costs().cost(operation.step())
                     .consumedUntil(Duration.between(operation.stepStartedAt(), snapshot.at())), ResourceUsage::plus);
+        }
         return usage;
     }
 
     private Map<ContextId, ResourceUsage> consumedPreparationByContext(ExecutionSnapshot snapshot) {
         var usage = new HashMap<ContextId, ResourceUsage>();
-        for (var event : snapshot.journal())
+        for (var event : snapshot.journal()) {
+            SearchControl.checkpoint("bound.journal");
             if (event.action() == SecurityAction.PREPARE) usage.merge(event.contextId(), event.usage(), ResourceUsage::plus);
-        for (var operation : snapshot.pendingOperations())
+        }
+        for (var operation : snapshot.pendingOperations()) {
+            SearchControl.checkpoint("bound.operation");
             if (operation.step() == SecurityAction.PREPARE)
                 usage.merge(operation.planned().intent().contextId(), snapshot.scenario().costs().cost(SecurityAction.PREPARE)
                         .consumedUntil(Duration.between(operation.stepStartedAt(), snapshot.at())), ResourceUsage::plus);
+        }
         return usage;
     }
 

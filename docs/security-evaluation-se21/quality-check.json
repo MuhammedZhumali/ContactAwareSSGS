@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "maven": {
+    "tests": 344,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "mavenSuites": 45,
+  "python": {
+    "tests": 14,
+    "status": "PASS"
+  },
+  "frozenSE2FilesVerified": 1631,
+  "sourceJournalFilesVerified": 1100,
+  "repeatValidation": "PASS",
+  "controllerCheckpointRestored": true,
+  "figureStructure": "PASS",
+  "visualReview": "PNG inspected: separate policy and hatch legends, readable axes, no clipped labels.",
+  "testLogs": {
+    "target/security-evaluation-se21-maven.log": "d020bfc1f56b4e4b7e9ac79a9abfee553849fd38dcb43e6e439e395acfb81ea4",
+    "target/security-evaluation-se21-python.log": "6464ee92c0ba194c0fbf1ec69ee5e689278044bb44d6dd74599e7102729db183"
+  },
+  "scope": "344 tests and the registered 30-attempt diagnostic series; no new full SE2 grid."
+}

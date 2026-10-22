@@ -12,8 +12,9 @@ public record SearchDiagnostics(long terminalPlans, long expandedNodes, int maxD
                                 long rootCandidateCount, StopReason stopReason,
                                 Map<PlanningAction.Kind, Long> rootGeneratedByAction,
                                 Map<PlanningAction.Kind, Long> generatedByAction,
-                                Map<PlanningAction.Kind, Long> executedByAction) {
-    public enum StopReason { NONE, NODE_LIMIT, TIME_LIMIT }
+                                Map<PlanningAction.Kind, Long> executedByAction,
+                                SearchRuntimeTelemetry runtimeTelemetry) {
+    public enum StopReason { NONE, NODE_LIMIT, TIME_LIMIT, CONTROLLER_TIME_LIMIT, CANCELLED, INTERRUPTED }
     public SearchDiagnostics {
         rootGeneratedByAction = Collections.unmodifiableMap(new EnumMap<>(rootGeneratedByAction));
         generatedByAction = Collections.unmodifiableMap(new EnumMap<>(generatedByAction));
@@ -26,6 +27,7 @@ public record SearchDiagnostics(long terminalPlans, long expandedNodes, int maxD
         long generationNanos, executionNanos, boundNanos, boundPrunedNodes;
         long preExecutionWaitSkips, canonicalBoundPrunedNodes, rootCandidateCount;
         StopReason stopReason = StopReason.NONE;
+        SearchRuntimeTelemetry runtimeTelemetry;
         int maxDepth;
         final Map<PlanningAction.Kind, Long> rootGeneratedByAction = counts();
         final Map<PlanningAction.Kind, Long> generatedByAction = counts();
@@ -42,7 +44,7 @@ public record SearchDiagnostics(long terminalPlans, long expandedNodes, int maxD
                     repeatedTransitions, collapsedWaitTransitions, memoHits, memoEntries, memoStoreSkips,
                     generationNanos, executionNanos, boundNanos, boundPrunedNodes,
                     preExecutionWaitSkips, canonicalBoundPrunedNodes, rootCandidateCount, stopReason,
-                    rootGeneratedByAction, generatedByAction, executedByAction);
+                    rootGeneratedByAction, generatedByAction, executedByAction, runtimeTelemetry);
         }
     }
 }

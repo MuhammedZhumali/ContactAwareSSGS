@@ -1,0 +1,57 @@
+{
+  "archives": [
+    {
+      "file": "research-figures-se2.zip",
+      "bytes": 3721528,
+      "entries": 40,
+      "sha256": "90ec5795e6d4f1af7881c01985be34323b22183276ac34973877594e5a3aa9f5"
+    },
+    {
+      "file": "experiment-evidence-se2.zip",
+      "bytes": 26365268,
+      "entries": 1901,
+      "sha256": "add945199100b41e2974c68b350509e55431b7086bd316cff6c0c7683152d0ac"
+    }
+  ],
+  "protocolSha256": "68bd46934279f33839823c91a823bcbc70bcab2aa3ed3115c1a92ab4f4b899a5",
+  "executableSha256": "e141ebf63f7cf72b15309974cab5fadce5fbf970ad330673fc39b2b13d8586a3",
+  "frozenSe1V2AndInputsVerified": {
+    "target/security-evaluation-build/security-evaluation-se1.jar": "b304138d4f6df1b040725affabc6e0a1905d826aa8f299bfe32f2832fa2a38aa",
+    "docs/security-evaluation/research-figures-se1.zip": "62f0e0db371fdea46fdd719da0ec2329e7a68991e5b16d1776ea013e8d70d6c7",
+    "docs/security-evaluation/experiment-evidence-se1.zip": "93f3038e7f8d054f7c97056c765e13a7403e3569317764a41fb22d468ef8c440",
+    "target/search-scaling-build/experiment-v2.jar": "789261d4e7ad697c69c65f17f5a73cd498d578be64f187b20933715f680d80cd",
+    "docs/search-scaling/research-figures-v2.zip": "1ee9b3cc9e7e574781081440db0e969149720df3de8a4db3d93808863f337160",
+    "docs/search-scaling/experiment-evidence-v2.zip": "0003bb8c897e543d5c8034acc483e00f8890c476963ff984904335cd377ed537",
+    "data/runs/iss-20261010/schedule/schedule.json": "fe8a56aebdae09d31dcb3097f1c03ed960a21860edb727643db4310788c64862"
+  },
+  "registeredRuns": 488,
+  "runStatuses": {
+    "FINISHED": 474,
+    "SEARCH_INCOMPLETE": 14
+  },
+  "inputFilesIncluded": {
+    "data/runs/iss-20261010/orekit/dataset.json": "881247220bc1ea6b43cd7559badabc9498dff4230ea1c7b410ef69633fc4aa2f",
+    "data/runs/iss-20261010/orekit/raw/earth/finals2000A.all": "0baf00f67a39ab362a3e4f07d2a1f084842178523f56bcf5a861e7ac084d411a",
+    "data/runs/iss-20261010/orekit/raw/earth/finals2000A.all.source.json": "2525ad7379311c87688a5b9fd15e206d4abdcaa27027a25389763eb1a88711e0",
+    "data/runs/iss-20261010/orekit/raw/earth/tai-utc.dat": "3524e1ae34d67e858873a89e59983bbc5bd100221da898e796c1b36036a310c3",
+    "data/runs/iss-20261010/orekit/raw/earth/tai-utc.dat.source.json": "85fc097636f80f868f9201710908580161f5412bfd741dbb67c23e38f21b0384",
+    "data/runs/iss-20261010/orekit/raw/orbit/gp.json": "9d78055cff2573f4d18b1f367050542595cb8f714a4de57e118bc42bd9f56a73",
+    "data/runs/iss-20261010/orekit/raw/orbit/gp.json.source.json": "1c9fa3fa60fdb7f08b9b1c74c08c4c4ee9ff5f65ddb0a29e9dbc004f0a51944e",
+    "data/runs/iss-20261010/orekit/raw/station-dataset.json": "f4ecee80bda5611b1e69962cab002d29659a303003433f847ce839334364c285",
+    "data/runs/iss-20261010/orekit/raw/station-dataset.json.source.json": "cca92b9d9946f9e181fb3b9c9734ee9b9fbc23dfd62cb7bdd53b27e985b4423c",
+    "data/runs/iss-20261010/orekit/raw/station-sources/raw/observations-0001.json": "a69e6d211f7846f06321e9ede3647cdd345f54521ab42df3806a2d61fc8470b9",
+    "data/runs/iss-20261010/orekit/raw/station-sources/raw/observations-0001.json.source.json": "a5e42fd32d27748855540cabc1514d9bb0414ea27bd72a5645392347f2ecda6b",
+    "data/runs/iss-20261010/orekit/raw/station-sources/raw/observations-0002.json": "a6458542f7f37a7fccc109e24c4a9fd492eee5a2e8a35ccb99fdd2f89d56d256",
+    "data/runs/iss-20261010/orekit/raw/station-sources/raw/observations-0002.json.source.json": "b796800b2c3f9a8cb9402ee6e9cc37d2c524ebd9ae972f29016998a715be22e6",
+    "data/runs/iss-20261010/orekit/raw/station-sources/raw/observations-0003.json": "283d93728b6950eed6783dcc5c659f9489d72ebb2d46a61d0c2d29569b3df60b",
+    "data/runs/iss-20261010/orekit/raw/station-sources/raw/observations-0003.json.source.json": "54f346087646de6bfa3ae1c465b619c1934561efe5f846c83bf2ac7ce27b3231",
+    "data/runs/iss-20261010/orekit/raw/station-sources/raw/observations-0004.json": "e4cbf60e58d26008b85cb67e25c086f1eac5d10f7448b77271b39d7f82887f12",
+    "data/runs/iss-20261010/orekit/raw/station-sources/raw/observations-0004.json.source.json": "b441a5df3aabccd85421f0580d49c6a300cbecb142ae2d644ca78ce007b29061",
+    "data/runs/iss-20261010/orekit/raw/stations.json": "921201a236337afa86d98da592e0a42e20eb0c043978e153531139a17aff44e9",
+    "data/runs/iss-20261010/orekit/raw/stations.json.source.json": "807f40a3fea2400884c4b284da7682e2c16fa61fad0e856c306a87e2a8bfad45",
+    "data/runs/iss-20261010/schedule/schedule.json": "fe8a56aebdae09d31dcb3097f1c03ed960a21860edb727643db4310788c64862"
+  },
+  "evidenceFileHashesSha256": "90a7bd69934666a62184ce73793c614dd606b948f8122a7427d1ec32d6d13c82",
+  "qualityCheckSha256": "3da8dea51edd4a6c420758a365859499438a5123008ecb63f82eabd3893dcb21",
+  "scope": "Local research package; no upload or publication. All registered statuses retained; final quality excludes unfinished runs."
+}

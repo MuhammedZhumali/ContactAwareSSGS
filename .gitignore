@@ -40,6 +40,14 @@ __pycache__/
 /docs/security-evaluation/*.zip
 /docs/security-evaluation/artifact-manifest.json
 /docs/security-evaluation/evidence-file-hashes.json
+/docs/security-evaluation-se2/figures/
+/docs/security-evaluation-se2/tables/
+/docs/security-evaluation-se2/*.zip
+/docs/security-evaluation-se2/evidence-file-hashes.json
+/docs/security-evaluation-se21/figures/
+/docs/security-evaluation-se21/tables/
+/docs/security-evaluation-se21/*.zip
+/docs/security-evaluation-se21/evidence-file-hashes.json
 
 # LaTeX build intermediates (keep .tex sources and reference documents)
 *.aux
