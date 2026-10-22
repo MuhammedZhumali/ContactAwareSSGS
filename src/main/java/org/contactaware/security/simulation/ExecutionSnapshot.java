@@ -103,17 +103,23 @@ public record ExecutionSnapshot(SimulationScenario scenario, Instant at, Securit
     }
 
     public record InFlightFrame(SimulationContact contact, ContextId context, KeyPairIds keys,
-                                Instant from, Instant until, boolean uplink) {
+                                Instant from, Instant until, boolean uplink, boolean deliveryRejectedAtGround) {
+        public InFlightFrame(SimulationContact contact, ContextId context, KeyPairIds keys,
+                             Instant from, Instant until, boolean uplink) {
+            this(contact, context, keys, from, until, uplink, false);
+        }
         public InFlightFrame {
             Objects.requireNonNull(contact); Objects.requireNonNull(context); Objects.requireNonNull(keys);
             Objects.requireNonNull(from); Objects.requireNonNull(until);
             if (!from.isBefore(until)) throw new IllegalArgumentException("Empty frame interval");
+            if (uplink && deliveryRejectedAtGround)
+                throw new IllegalArgumentException("Ground can immediately stop its own uplink transmission");
         }
     }
 
     /** Priorities are part of the v1 execution contract, including deadline-before-ACK ordering. */
     public enum EventKind {
-        FRAME_COMPLETE(0), KEY_DEADLINE(10), CONTACT_END(20), INTERRUPT(25),
+        FRAME_COMPLETE(0), DISCLOSURE(5), KEY_DEADLINE(10), REVOCATION_NOTICE(15), CONTACT_END(20), INTERRUPT(25),
         CONTACT_START(30), STEP_COMPLETE(40), ACTION_START(50);
         private final int priority;
         EventKind(int priority) { this.priority = priority; }

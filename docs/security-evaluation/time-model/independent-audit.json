@@ -1,0 +1,857 @@
+{
+  "schemaVersion": "time-model-audit-1",
+  "interpretation": "Independent Decimal journal/accounting checks and manual tiny-case calculation; not an independent search implementation.",
+  "counterexampleCellsChecked": 4,
+  "cases": [
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 3,
+        "usefulSecureTime": "37.00",
+        "controlCpu": "0.830000000",
+        "managementBytes": "1240",
+        "newKeys": 2
+      },
+      "contacts": {
+        "C1": {
+          "up": 3000,
+          "down": 3000,
+          "time": "15.00",
+          "frames": 60,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 600,
+          "down": 600,
+          "time": "3.00",
+          "frames": 12,
+          "served": true
+        }
+      },
+      "renewalStarts": [
+        {
+          "at": "2026-01-01T00:00:01Z",
+          "action": "PREPARE",
+          "station": "A",
+          "secondsAfterAnchor": "81"
+        },
+        {
+          "at": "2026-01-01T00:00:03Z",
+          "action": "INSTALL",
+          "station": "A",
+          "secondsAfterAnchor": "83"
+        },
+        {
+          "at": "2026-01-01T00:01:20Z",
+          "action": "SWITCH",
+          "station": "A",
+          "secondsAfterAnchor": "160"
+        }
+      ],
+      "events": 191,
+      "modelSha256": "fc74c8a71bab1a291c1c6e56ff5953c0d7bb426d6395450be29ac2eb6f0c3ef6",
+      "eventsSha256": "64efde7fb9fdef554ac88083dc31b38f000011bd29b3552fc807c1ce8ed87639"
+    },
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 3,
+        "usefulSecureTime": "37.00",
+        "controlCpu": "0.830000000",
+        "managementBytes": "1240",
+        "newKeys": 2
+      },
+      "contacts": {
+        "C1": {
+          "up": 3000,
+          "down": 3000,
+          "time": "15.00",
+          "frames": 60,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 600,
+          "down": 600,
+          "time": "3.00",
+          "frames": 12,
+          "served": true
+        }
+      },
+      "renewalStarts": [
+        {
+          "at": "2026-01-01T00:00:01Z",
+          "action": "PREPARE",
+          "station": "A",
+          "secondsAfterAnchor": "81"
+        },
+        {
+          "at": "2026-01-01T00:00:03Z",
+          "action": "INSTALL",
+          "station": "A",
+          "secondsAfterAnchor": "83"
+        },
+        {
+          "at": "2026-01-01T00:01:20Z",
+          "action": "SWITCH",
+          "station": "A",
+          "secondsAfterAnchor": "160"
+        }
+      ],
+      "events": 191,
+      "modelSha256": "fc74c8a71bab1a291c1c6e56ff5953c0d7bb426d6395450be29ac2eb6f0c3ef6",
+      "eventsSha256": "64efde7fb9fdef554ac88083dc31b38f000011bd29b3552fc807c1ce8ed87639"
+    },
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 2,
+        "usefulSecureTime": "38.00",
+        "controlCpu": "0.120000000",
+        "managementBytes": "160",
+        "newKeys": 0
+      },
+      "contacts": {
+        "C1": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 0,
+          "down": 0,
+          "time": "0",
+          "frames": 0,
+          "served": false
+        }
+      },
+      "renewalStarts": [],
+      "events": 176,
+      "modelSha256": "fc74c8a71bab1a291c1c6e56ff5953c0d7bb426d6395450be29ac2eb6f0c3ef6",
+      "eventsSha256": "e1324a041937f28924a846eae1a523a24649353157880c134c84b78ed7b57822"
+    },
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 2,
+        "usefulSecureTime": "38.00",
+        "controlCpu": "0.120000000",
+        "managementBytes": "160",
+        "newKeys": 0
+      },
+      "contacts": {
+        "C1": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 0,
+          "down": 0,
+          "time": "0",
+          "frames": 0,
+          "served": false
+        }
+      },
+      "renewalStarts": [],
+      "events": 176,
+      "modelSha256": "fc74c8a71bab1a291c1c6e56ff5953c0d7bb426d6395450be29ac2eb6f0c3ef6",
+      "eventsSha256": "e1324a041937f28924a846eae1a523a24649353157880c134c84b78ed7b57822"
+    },
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 3,
+        "usefulSecureTime": "37.00",
+        "controlCpu": "0.830000000",
+        "managementBytes": "1240",
+        "newKeys": 2
+      },
+      "contacts": {
+        "C1": {
+          "up": 2800,
+          "down": 2800,
+          "time": "14.00",
+          "frames": 56,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 800,
+          "down": 800,
+          "time": "4.00",
+          "frames": 16,
+          "served": true
+        }
+      },
+      "renewalStarts": [
+        {
+          "at": "2025-12-31T23:59:58Z",
+          "action": "PREPARE",
+          "station": "A",
+          "secondsAfterAnchor": "78"
+        },
+        {
+          "at": "2026-01-01T00:00:00Z",
+          "action": "INSTALL",
+          "station": "A",
+          "secondsAfterAnchor": "80"
+        },
+        {
+          "at": "2026-01-01T00:00:04Z",
+          "action": "SWITCH",
+          "station": "A",
+          "secondsAfterAnchor": "84"
+        }
+      ],
+      "events": 188,
+      "modelSha256": "8a310f8601023714c6489ccc1944e7ae9723fd8fc34a3ead4abd99f2866abd70",
+      "eventsSha256": "68e2598ebf1cf2b3627aee719294431c6954d497b943efa2fcaef1236c4cc2e0"
+    },
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 3,
+        "usefulSecureTime": "37.00",
+        "controlCpu": "0.830000000",
+        "managementBytes": "1240",
+        "newKeys": 2
+      },
+      "contacts": {
+        "C1": {
+          "up": 2800,
+          "down": 2800,
+          "time": "14.00",
+          "frames": 56,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 800,
+          "down": 800,
+          "time": "4.00",
+          "frames": 16,
+          "served": true
+        }
+      },
+      "renewalStarts": [
+        {
+          "at": "2025-12-31T23:59:58Z",
+          "action": "PREPARE",
+          "station": "A",
+          "secondsAfterAnchor": "78"
+        },
+        {
+          "at": "2026-01-01T00:00:00Z",
+          "action": "INSTALL",
+          "station": "A",
+          "secondsAfterAnchor": "80"
+        },
+        {
+          "at": "2026-01-01T00:00:04Z",
+          "action": "SWITCH",
+          "station": "A",
+          "secondsAfterAnchor": "84"
+        }
+      ],
+      "events": 188,
+      "modelSha256": "8a310f8601023714c6489ccc1944e7ae9723fd8fc34a3ead4abd99f2866abd70",
+      "eventsSha256": "68e2598ebf1cf2b3627aee719294431c6954d497b943efa2fcaef1236c4cc2e0"
+    },
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 2,
+        "usefulSecureTime": "38.00",
+        "controlCpu": "0.320000000",
+        "managementBytes": "160",
+        "newKeys": 2
+      },
+      "contacts": {
+        "C1": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 0,
+          "down": 0,
+          "time": "0",
+          "frames": 0,
+          "served": false
+        }
+      },
+      "renewalStarts": [
+        {
+          "at": "2025-12-31T23:59:58Z",
+          "action": "PREPARE",
+          "station": "A",
+          "secondsAfterAnchor": "78"
+        }
+      ],
+      "events": 180,
+      "modelSha256": "8a310f8601023714c6489ccc1944e7ae9723fd8fc34a3ead4abd99f2866abd70",
+      "eventsSha256": "44f7d7a3102407783c6212dd5e56551a0fe0673f5e6416a73ef0dc291f09f672"
+    },
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 2,
+        "usefulSecureTime": "38.00",
+        "controlCpu": "0.320000000",
+        "managementBytes": "160",
+        "newKeys": 2
+      },
+      "contacts": {
+        "C1": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 0,
+          "down": 0,
+          "time": "0",
+          "frames": 0,
+          "served": false
+        }
+      },
+      "renewalStarts": [
+        {
+          "at": "2025-12-31T23:59:58Z",
+          "action": "PREPARE",
+          "station": "A",
+          "secondsAfterAnchor": "78"
+        }
+      ],
+      "events": 180,
+      "modelSha256": "8a310f8601023714c6489ccc1944e7ae9723fd8fc34a3ead4abd99f2866abd70",
+      "eventsSha256": "44f7d7a3102407783c6212dd5e56551a0fe0673f5e6416a73ef0dc291f09f672"
+    },
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 3,
+        "usefulSecureTime": "42.00",
+        "controlCpu": "0.180000000",
+        "managementBytes": "240",
+        "newKeys": 0
+      },
+      "contacts": {
+        "C1": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 800,
+          "down": 800,
+          "time": "4.00",
+          "frames": 16,
+          "served": true
+        }
+      },
+      "renewalStarts": [],
+      "events": 199,
+      "modelSha256": "035180d65442afa7b681458320bdd205bd54219cb75db6b407404c72575c3f66",
+      "eventsSha256": "776908c5e06b9dae46d15f3e09d24475390a31c959765e9344898f1eba6fd198"
+    },
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 3,
+        "usefulSecureTime": "42.00",
+        "controlCpu": "0.180000000",
+        "managementBytes": "240",
+        "newKeys": 0
+      },
+      "contacts": {
+        "C1": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 800,
+          "down": 800,
+          "time": "4.00",
+          "frames": 16,
+          "served": true
+        }
+      },
+      "renewalStarts": [],
+      "events": 199,
+      "modelSha256": "035180d65442afa7b681458320bdd205bd54219cb75db6b407404c72575c3f66",
+      "eventsSha256": "776908c5e06b9dae46d15f3e09d24475390a31c959765e9344898f1eba6fd198"
+    },
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 3,
+        "usefulSecureTime": "42.00",
+        "controlCpu": "0.180000000",
+        "managementBytes": "240",
+        "newKeys": 0
+      },
+      "contacts": {
+        "C1": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 800,
+          "down": 800,
+          "time": "4.00",
+          "frames": 16,
+          "served": true
+        }
+      },
+      "renewalStarts": [],
+      "events": 199,
+      "modelSha256": "035180d65442afa7b681458320bdd205bd54219cb75db6b407404c72575c3f66",
+      "eventsSha256": "776908c5e06b9dae46d15f3e09d24475390a31c959765e9344898f1eba6fd198"
+    },
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 3,
+        "usefulSecureTime": "42.00",
+        "controlCpu": "0.180000000",
+        "managementBytes": "240",
+        "newKeys": 0
+      },
+      "contacts": {
+        "C1": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 800,
+          "down": 800,
+          "time": "4.00",
+          "frames": 16,
+          "served": true
+        }
+      },
+      "renewalStarts": [],
+      "events": 199,
+      "modelSha256": "035180d65442afa7b681458320bdd205bd54219cb75db6b407404c72575c3f66",
+      "eventsSha256": "776908c5e06b9dae46d15f3e09d24475390a31c959765e9344898f1eba6fd198"
+    },
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 3,
+        "usefulSecureTime": "42.00",
+        "controlCpu": "0.380000000",
+        "managementBytes": "240",
+        "newKeys": 2
+      },
+      "contacts": {
+        "C1": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 800,
+          "down": 800,
+          "time": "4.00",
+          "frames": 16,
+          "served": true
+        }
+      },
+      "renewalStarts": [
+        {
+          "at": "2025-12-31T23:59:58Z",
+          "action": "PREPARE",
+          "station": "A",
+          "secondsAfterAnchor": "78"
+        }
+      ],
+      "events": 203,
+      "modelSha256": "54cbfda86b48c1713f176a58eb81f619ce616c18280e52df3d3c6f84a5c87449",
+      "eventsSha256": "218b0b70af64dde20e3fffb77e55d023d2a8cff6972b832b55279c4bab6f7097"
+    },
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 3,
+        "usefulSecureTime": "42.00",
+        "controlCpu": "0.380000000",
+        "managementBytes": "240",
+        "newKeys": 2
+      },
+      "contacts": {
+        "C1": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 800,
+          "down": 800,
+          "time": "4.00",
+          "frames": 16,
+          "served": true
+        }
+      },
+      "renewalStarts": [
+        {
+          "at": "2025-12-31T23:59:58Z",
+          "action": "PREPARE",
+          "station": "A",
+          "secondsAfterAnchor": "78"
+        }
+      ],
+      "events": 203,
+      "modelSha256": "54cbfda86b48c1713f176a58eb81f619ce616c18280e52df3d3c6f84a5c87449",
+      "eventsSha256": "218b0b70af64dde20e3fffb77e55d023d2a8cff6972b832b55279c4bab6f7097"
+    },
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 3,
+        "usefulSecureTime": "42.00",
+        "controlCpu": "0.380000000",
+        "managementBytes": "240",
+        "newKeys": 2
+      },
+      "contacts": {
+        "C1": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 800,
+          "down": 800,
+          "time": "4.00",
+          "frames": 16,
+          "served": true
+        }
+      },
+      "renewalStarts": [
+        {
+          "at": "2025-12-31T23:59:58Z",
+          "action": "PREPARE",
+          "station": "A",
+          "secondsAfterAnchor": "78"
+        }
+      ],
+      "events": 203,
+      "modelSha256": "54cbfda86b48c1713f176a58eb81f619ce616c18280e52df3d3c6f84a5c87449",
+      "eventsSha256": "218b0b70af64dde20e3fffb77e55d023d2a8cff6972b832b55279c4bab6f7097"
+    },
+    {
+      "status": "FINISHED",
+      "independentRecordedMetrics": {
+        "servedContacts": 3,
+        "usefulSecureTime": "42.00",
+        "controlCpu": "0.380000000",
+        "managementBytes": "240",
+        "newKeys": 2
+      },
+      "contacts": {
+        "C1": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C2": {
+          "up": 3800,
+          "down": 3800,
+          "time": "19.00",
+          "frames": 76,
+          "served": true
+        },
+        "C3": {
+          "up": 800,
+          "down": 800,
+          "time": "4.00",
+          "frames": 16,
+          "served": true
+        }
+      },
+      "renewalStarts": [
+        {
+          "at": "2025-12-31T23:59:58Z",
+          "action": "PREPARE",
+          "station": "A",
+          "secondsAfterAnchor": "78"
+        }
+      ],
+      "events": 203,
+      "modelSha256": "54cbfda86b48c1713f176a58eb81f619ce616c18280e52df3d3c6f84a5c87449",
+      "eventsSha256": "218b0b70af64dde20e3fffb77e55d023d2a8cff6972b832b55279c4bab6f7097"
+    }
+  ],
+  "xyComparisons": [
+    {
+      "fixture": "X-prepared",
+      "policy": "NEXT",
+      "bothFinished": true,
+      "fiveMetricsEqual": true,
+      "executedActionsEqual": false,
+      "nonWaitActionsEqual": true,
+      "v2Status": "FINISHED",
+      "experimentalStatus": "FINISHED"
+    },
+    {
+      "fixture": "X-prepared",
+      "policy": "MULTI",
+      "bothFinished": true,
+      "fiveMetricsEqual": true,
+      "executedActionsEqual": false,
+      "nonWaitActionsEqual": true,
+      "v2Status": "FINISHED",
+      "experimentalStatus": "FINISHED"
+    },
+    {
+      "fixture": "Y-prepared",
+      "policy": "NEXT",
+      "bothFinished": true,
+      "fiveMetricsEqual": true,
+      "executedActionsEqual": false,
+      "nonWaitActionsEqual": true,
+      "v2Status": "FINISHED",
+      "experimentalStatus": "FINISHED"
+    },
+    {
+      "fixture": "Y-prepared",
+      "policy": "MULTI",
+      "bothFinished": true,
+      "fiveMetricsEqual": true,
+      "executedActionsEqual": false,
+      "nonWaitActionsEqual": true,
+      "v2Status": "FINISHED",
+      "experimentalStatus": "FINISHED"
+    },
+    {
+      "fixture": "X-autonomous",
+      "policy": "NEXT",
+      "bothFinished": true,
+      "fiveMetricsEqual": true,
+      "executedActionsEqual": false,
+      "nonWaitActionsEqual": true,
+      "v2Status": "FINISHED",
+      "experimentalStatus": "FINISHED"
+    },
+    {
+      "fixture": "X-autonomous",
+      "policy": "MULTI",
+      "bothFinished": true,
+      "fiveMetricsEqual": true,
+      "executedActionsEqual": false,
+      "nonWaitActionsEqual": true,
+      "v2Status": "FINISHED",
+      "experimentalStatus": "FINISHED"
+    },
+    {
+      "fixture": "Y-autonomous",
+      "policy": "NEXT",
+      "bothFinished": true,
+      "fiveMetricsEqual": true,
+      "executedActionsEqual": false,
+      "nonWaitActionsEqual": true,
+      "v2Status": "FINISHED",
+      "experimentalStatus": "FINISHED"
+    },
+    {
+      "fixture": "Y-autonomous",
+      "policy": "MULTI",
+      "bothFinished": true,
+      "fiveMetricsEqual": true,
+      "executedActionsEqual": false,
+      "nonWaitActionsEqual": true,
+      "v2Status": "FINISHED",
+      "experimentalStatus": "FINISHED"
+    }
+  ],
+  "v2RegressionComparisons": [
+    {
+      "fixture": "X-prepared",
+      "policy": "NEXT",
+      "sameMetrics": true,
+      "sameEvents": true,
+      "sameExploredNodes": true
+    },
+    {
+      "fixture": "X-prepared",
+      "policy": "MULTI",
+      "sameMetrics": true,
+      "sameEvents": true,
+      "sameExploredNodes": true
+    },
+    {
+      "fixture": "Y-prepared",
+      "policy": "NEXT",
+      "sameMetrics": true,
+      "sameEvents": true,
+      "sameExploredNodes": true
+    },
+    {
+      "fixture": "Y-prepared",
+      "policy": "MULTI",
+      "sameMetrics": true,
+      "sameEvents": true,
+      "sameExploredNodes": true
+    },
+    {
+      "fixture": "X-autonomous",
+      "policy": "NEXT",
+      "sameMetrics": true,
+      "sameEvents": true,
+      "sameExploredNodes": true
+    },
+    {
+      "fixture": "X-autonomous",
+      "policy": "MULTI",
+      "sameMetrics": true,
+      "sameEvents": true,
+      "sameExploredNodes": true
+    },
+    {
+      "fixture": "Y-autonomous",
+      "policy": "NEXT",
+      "sameMetrics": true,
+      "sameEvents": true,
+      "sameExploredNodes": true
+    },
+    {
+      "fixture": "Y-autonomous",
+      "policy": "MULTI",
+      "sameMetrics": true,
+      "sameEvents": true,
+      "sameExploredNodes": true
+    }
+  ]
+}

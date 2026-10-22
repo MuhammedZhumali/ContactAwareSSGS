@@ -10,11 +10,11 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
     private final PlannerOptions options;
     private final UnaryOperator<List<PlanningAction>> candidateOrder;
     private final LongSupplier clock;
+    private final DecisionTimeModel decisionTimeModel;
     private final BranchEngine engine = new BranchEngine();
     private final SecurityActionGenerator generator = new SecurityActionGenerator();
     private final ContinuationEvaluator evaluator = new ContinuationEvaluator();
     private final PlanningResultComparator comparator = new PlanningResultComparator();
-    private final PlanningOptimisticBound bound = new PlanningOptimisticBound();
 
     public ExactHorizonPlanner() { this(SearchLimits.unlimited()); }
     public ExactHorizonPlanner(SearchLimits limits) { this(limits, PlannerOptions.accelerated()); }
@@ -28,15 +28,25 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
                                UnaryOperator<List<PlanningAction>> candidateOrder) {
         this(limits, options, candidateOrder, System::nanoTime);
     }
+    /** Opt-in timing sensitivity. Existing constructors retain the frozen v2 event boundaries. */
+    public ExactHorizonPlanner(SearchLimits limits, PlannerOptions options, DecisionTimeModel decisionTimeModel) {
+        this(limits, options, UnaryOperator.identity(), System::nanoTime, decisionTimeModel);
+    }
     ExactHorizonPlanner(SearchLimits limits, UnaryOperator<List<PlanningAction>> candidateOrder, LongSupplier clock) {
         this(limits, PlannerOptions.accelerated(), candidateOrder, clock);
     }
     private ExactHorizonPlanner(SearchLimits limits, PlannerOptions options,
                                 UnaryOperator<List<PlanningAction>> candidateOrder, LongSupplier clock) {
+        this(limits, options, candidateOrder, clock, DecisionTimeModel.V2_EVENT_BOUNDARIES);
+    }
+    private ExactHorizonPlanner(SearchLimits limits, PlannerOptions options,
+                                UnaryOperator<List<PlanningAction>> candidateOrder, LongSupplier clock,
+                                DecisionTimeModel decisionTimeModel) {
         this.limits = Objects.requireNonNull(limits);
         this.options = Objects.requireNonNull(options);
         this.candidateOrder = Objects.requireNonNull(candidateOrder);
         this.clock = Objects.requireNonNull(clock);
+        this.decisionTimeModel = Objects.requireNonNull(decisionTimeModel);
     }
 
     public HorizonPlanResult plan(PlanningObservation observation) {
@@ -45,6 +55,7 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
 
     private final class Search {
         final PlanningObservation origin;
+        final PlanningOptimisticBound bound;
         final long start = clock.getAsLong();
         final SearchDiagnostics.Counter stats = new SearchDiagnostics.Counter();
         final Map<PlanningStateKey, Solved> memo = new HashMap<>();
@@ -54,6 +65,9 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
 
         Search(PlanningObservation origin) {
             this.origin = origin;
+            long beforeBound = System.nanoTime();
+            this.bound = options.optimisticBounds() ? new PlanningOptimisticBound(origin) : null;
+            if (options.optimisticBounds()) stats.boundNanos += System.nanoTime() - beforeBound;
             var root = engine.create(origin);
             stack.push(new Visit(root, PlanningStateKey.from(root.snapshot())));
         }
@@ -83,27 +97,40 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
                         long beforeBound = System.nanoTime();
                         var optimistic = bound.upperBound(visit.branch);
                         stats.boundNanos += System.nanoTime() - beforeBound;
-                        // Equality is NOT enough: an equal-score branch may win the canonical tie.
-                        if (comparator.compareMetrics(optimistic, best.evaluation()) > 0) {
+                        int metricOrder = comparator.compareMetrics(optimistic, best.evaluation());
+                        boolean canonicalLoser = options.canonicalBoundPruning() && metricOrder == 0
+                                && PlanningActionReduction.prefixAlreadyWorse(visit.branch.plan(), best.plan());
+                        // A proven equal metric bound permits pruning only after a strictly
+                        // worse first differing committed action; proper prefixes are inconclusive.
+                        if (metricOrder > 0 || canonicalLoser) {
                             stats.boundPrunedNodes++;
+                            if (canonicalLoser) stats.canonicalBoundPrunedNodes++;
                             visit.cacheable = false;
                             finish(null);
                             continue;
                         }
                     }
                     long before = System.nanoTime();
-                    visit.observation = visit.branch.observation();
+                    visit.observation = decisionTimeModel.apply(visit.branch.observation());
                     var generated = generator.candidates(visit.observation);
                     stats.generationNanos += System.nanoTime() - before;
                     stats.expandedNodes++;
                     stats.generatedActions += generated.size();
                     for (var action : generated) stats.generatedByAction.merge(action.kind(), 1L, Long::sum);
+                    if (stack.size() == 1)
+                        for (var action : generated) stats.rootGeneratedByAction.merge(action.kind(), 1L, Long::sum);
                     // Validate the ordering hook against ALL candidates, before exact reduction.
-                    var ordered = ordered(generated);
+                    var ordered = ordered(generated, visit.observation);
+                    if (options.preExecutionWaitReduction()) {
+                        var reduced = PlanningActionReduction.coalesceWaits(visit.observation, ordered);
+                        stats.preExecutionWaitSkips += ordered.size() - reduced.size();
+                        ordered = reduced;
+                    }
+                    if (stack.size() == 1) stats.rootCandidateCount = ordered.size();
                     var representatives = new HashMap<PlanningAction, Candidate>();
                     if (options.collapseEquivalentWaits()) {
                         var waits = new HashMap<PlanningStateKey, Candidate>();
-                        for (var action : generated.stream().filter(a -> a.kind() == PlanningAction.Kind.WAIT)
+                        for (var action : ordered.stream().filter(a -> a.kind() == PlanningAction.Kind.WAIT)
                                 .sorted(comparator::compareActions).toList()) {
                             if (exhausted()) return result(HorizonPlanResult.Status.INCOMPLETE);
                             var child = execute(visit, action);
@@ -119,6 +146,7 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
                         } else candidates.add(new Candidate(action, null, null));
                     }
                     visit.actions = candidates.iterator();
+                    if (stack.size() == 1) stats.rootCandidateCount = candidates.size();
                 }
                 if (!visit.actions.hasNext()) { finish(visit.best); continue; }
                 if (exhausted()) return result(HorizonPlanResult.Status.INCOMPLETE);
@@ -161,8 +189,15 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
         }
 
         boolean exhausted() {
-            return limits.maxNodes() != 0 && explored >= limits.maxNodes()
-                    || !limits.maxElapsed().isZero() && elapsed() >= limits.maxElapsed().toNanos();
+            if (limits.maxNodes() != 0 && explored >= limits.maxNodes()) {
+                stats.stopReason = SearchDiagnostics.StopReason.NODE_LIMIT;
+                return true;
+            }
+            if (!limits.maxElapsed().isZero() && elapsed() >= limits.maxElapsed().toNanos()) {
+                stats.stopReason = SearchDiagnostics.StopReason.TIME_LIMIT;
+                return true;
+            }
+            return false;
         }
         long elapsed() { return Math.max(0, clock.getAsLong() - start); }
         HorizonPlanResult result(HorizonPlanResult.Status status) {
@@ -172,16 +207,49 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
         }
     }
 
-    private List<PlanningAction> ordered(List<PlanningAction> candidates) {
+    private List<PlanningAction> ordered(List<PlanningAction> candidates, PlanningObservation observation) {
         var initial = new ArrayList<>(candidates);
         if (options.traversalOrder() == PlannerOptions.TraversalOrder.SERVICE_FIRST)
             initial.sort(Comparator.comparingInt((PlanningAction a) -> serviceRank(a.kind()))
+                    .thenComparing(comparator::compareActions));
+        else if (options.traversalOrder() == PlannerOptions.TraversalOrder.RENEWAL_FIRST)
+            initial.sort(Comparator.comparingInt((PlanningAction a) -> renewalRank(a, observation))
                     .thenComparing(comparator::compareActions));
         var ordered = List.copyOf(Objects.requireNonNull(candidateOrder.apply(initial)));
         var originalSorted = candidates.stream().sorted(comparator::compareActions).toList();
         if (!originalSorted.equals(ordered.stream().sorted(comparator::compareActions).toList()))
             throw new IllegalArgumentException("Candidate order must be a permutation of every generated action");
         return ordered;
+    }
+
+    /** Observation-only traversal hint, never a feasibility filter or a tie-break. */
+    private static int renewalRank(PlanningAction action, PlanningObservation observation) {
+        return switch (action.kind()) {
+            case INSTALL -> 0;
+            case SWITCH -> observation.securityState().context(action.contextId()).status()
+                    == org.contactaware.security.AssociationStatus.OPERATIONAL ? 7 : 1;
+            case OPEN -> 2;
+            case REUSE -> 3;
+            case PREPARE -> renewalVisible(action, observation) ? 4 : 8;
+            case CONTINUE -> 5;
+            case WAIT -> 6;
+        };
+    }
+
+    private static boolean renewalVisible(PlanningAction action, PlanningObservation observation) {
+        var latest = observation.visibleContacts().stream()
+                .filter(c -> c.window().satelliteId().equals(action.contextId().satelliteId())
+                        && c.window().groundStationId().equals(action.contextId().groundStationId()))
+                .map(c -> c.window().start()).max(Comparator.naturalOrder()).orElse(null);
+        if (latest == null) return false;
+        for (var direction : org.contactaware.security.Direction.values()) {
+            boolean reaches = observation.securityState().keys().values().stream().anyMatch(key ->
+                    key.contextId().equals(action.contextId()) && key.direction() == direction
+                            && key.status() == org.contactaware.security.KeyStatus.ACTIVE
+                            && latest.isBefore(key.hardDeadline(observation.constraints())));
+            if (!reaches) return true;
+        }
+        return false;
     }
 
     private static int serviceRank(PlanningAction.Kind kind) {

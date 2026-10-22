@@ -1,0 +1,32 @@
+{
+  "schedule3-cp7200-cost1-multi" : {
+    "fixture" : "schedule3-cp7200-cost1",
+    "policyName" : "MULTI",
+    "horizon" : 3,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 3
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-10-10T01:49:34.350128174Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 60.000000000,
+      "controlCpu" : 1.480000000,
+      "managementBytes" : 2240,
+      "newKeys" : 4
+    },
+    "partialProgress" : null,
+    "decisions" : 30,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 30
+    },
+    "exploredNodes" : 83577,
+    "searchNanos" : 6866547200,
+    "controllerWallNanos" : 6896168700,
+    "actualEventsFile" : "schedule3-cp7200-cost1-multi.events.json",
+    "actualResultFile" : "schedule3-cp7200-cost1-multi.actual.json",
+    "compactDecisionsFile" : "schedule3-cp7200-cost1-multi.decisions.json"
+  }
+}

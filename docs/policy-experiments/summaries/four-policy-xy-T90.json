@@ -1,0 +1,110 @@
+{
+  "X-autonomous-fixed" : {
+    "fixture" : "X-autonomous",
+    "policyName" : "FIXED_PERIOD",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "period" : 90.000000000
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 36.000000000,
+      "controlCpu" : 1.090000000,
+      "managementBytes" : 1320,
+      "newKeys" : 4
+    },
+    "partialProgress" : null,
+    "decisions" : 165,
+    "ruleDecisions" : 165,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 66005300,
+    "actualEventsFile" : "X-autonomous-fixed.events.json",
+    "actualResultFile" : "X-autonomous-fixed.actual.json",
+    "compactDecisionsFile" : "X-autonomous-fixed.decisions.json"
+  },
+  "X-prepared-fixed" : {
+    "fixture" : "X-prepared",
+    "policyName" : "FIXED_PERIOD",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "period" : 90.000000000
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 36.000000000,
+      "controlCpu" : 1.090000000,
+      "managementBytes" : 1320,
+      "newKeys" : 4
+    },
+    "partialProgress" : null,
+    "decisions" : 163,
+    "ruleDecisions" : 163,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 167638700,
+    "actualEventsFile" : "X-prepared-fixed.events.json",
+    "actualResultFile" : "X-prepared-fixed.actual.json",
+    "compactDecisionsFile" : "X-prepared-fixed.decisions.json"
+  },
+  "Y-autonomous-fixed" : {
+    "fixture" : "Y-autonomous",
+    "policyName" : "FIXED_PERIOD",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "period" : 90.000000000
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 2,
+      "usefulSecureTime" : 32.000000000,
+      "controlCpu" : 1.330000000,
+      "managementBytes" : 2040,
+      "newKeys" : 4
+    },
+    "partialProgress" : null,
+    "decisions" : 150,
+    "ruleDecisions" : 150,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 33895700,
+    "actualEventsFile" : "Y-autonomous-fixed.events.json",
+    "actualResultFile" : "Y-autonomous-fixed.actual.json",
+    "compactDecisionsFile" : "Y-autonomous-fixed.decisions.json"
+  },
+  "Y-prepared-fixed" : {
+    "fixture" : "Y-prepared",
+    "policyName" : "FIXED_PERIOD",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "period" : 90.000000000
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 2,
+      "usefulSecureTime" : 32.000000000,
+      "controlCpu" : 1.330000000,
+      "managementBytes" : 2040,
+      "newKeys" : 4
+    },
+    "partialProgress" : null,
+    "decisions" : 148,
+    "ruleDecisions" : 148,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 48835100,
+    "actualEventsFile" : "Y-prepared-fixed.events.json",
+    "actualResultFile" : "Y-prepared-fixed.actual.json",
+    "compactDecisionsFile" : "Y-prepared-fixed.decisions.json"
+  }
+}

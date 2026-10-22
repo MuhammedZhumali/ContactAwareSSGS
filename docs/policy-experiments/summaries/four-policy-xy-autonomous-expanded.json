@@ -1,0 +1,80 @@
+{
+  "X-autonomous-multi" : {
+    "fixture" : "X-autonomous",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "SEARCH_INCOMPLETE",
+    "stoppedAt" : "2026-01-01T00:00:00Z",
+    "finalMetrics" : null,
+    "partialProgress" : {
+      "at" : "2026-01-01T00:00:00Z",
+      "servedContactsSoFar" : 0,
+      "usefulSecureTimeSoFar" : 0.0,
+      "recordedCosts" : {
+        "elapsed" : 0.0,
+        "spacecraftCpu" : 0.0,
+        "groundCpu" : 0.0,
+        "radioOccupancy" : 0.0,
+        "uplinkBytes" : 0,
+        "downlinkBytes" : 0
+      },
+      "accruedCosts" : {
+        "elapsed" : 0.0,
+        "spacecraftCpu" : 0.0,
+        "groundCpu" : 0.0,
+        "radioOccupancy" : 0.0,
+        "uplinkBytes" : 0,
+        "downlinkBytes" : 0
+      },
+      "createdKeysSoFar" : 0,
+      "pendingOperations" : 0,
+      "frameInFlight" : false
+    },
+    "decisions" : 2,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 1,
+      "INCOMPLETE" : 1
+    },
+    "exploredNodes" : 2006115,
+    "searchNanos" : 174484673799,
+    "controllerWallNanos" : 174517886201,
+    "actualEventsFile" : "X-autonomous-multi.events.json",
+    "actualResultFile" : "X-autonomous-multi.actual.json",
+    "compactDecisionsFile" : "X-autonomous-multi.decisions.json"
+  },
+  "Y-autonomous-multi" : {
+    "fixture" : "Y-autonomous",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 42.000000000,
+      "controlCpu" : 0.180000000,
+      "managementBytes" : 240,
+      "newKeys" : 0
+    },
+    "partialProgress" : null,
+    "decisions" : 180,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 180
+    },
+    "exploredNodes" : 346841,
+    "searchNanos" : 20247195003,
+    "controllerWallNanos" : 20265854700,
+    "actualEventsFile" : "Y-autonomous-multi.events.json",
+    "actualResultFile" : "Y-autonomous-multi.actual.json",
+    "compactDecisionsFile" : "Y-autonomous-multi.decisions.json"
+  }
+}

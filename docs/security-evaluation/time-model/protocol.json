@@ -1,0 +1,10 @@
+{
+  "model" : "SYNTHETIC_ASSUMPTION; opt-in timing sensitivity",
+  "extraWaitRule" : "At each decision, add a WAIT wakeup at observed time + observed PREPARE duration, if within the frozen horizon. Existing earlier events still interrupt WAIT/CONTINUE. No material or operation is created by the timer.",
+  "filtering" : "Off-horizon PREPARE is retained in both production spaces. Its removal is tested only as a separate tiny exhaustive ablation.",
+  "scope" : "Four counterexample cells; prepared/autonomous X/Y; identical exact solver for Next H=1 and Multi H=2. Each timing model uses the same timer rule in forecast branches and actual execution.",
+  "xySearchLimits" : {
+    "maxNodes" : 100000,
+    "maxElapsed" : 10.000000000
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "byteIdenticalReproduction": {
+    "01_prepared.pdf": true,
+    "01_prepared.svg": true,
+    "01_prepared.png": true,
+    "metrics.csv": true,
+    "captions.txt": true
+  },
+  "pdf": {
+    "pages": 1,
+    "rasterImages": 0,
+    "embeddedFonts": 4
+  },
+  "svgTextElements": 98,
+  "pngPixels": [
+    2148,
+    1740
+  ],
+  "pngDpi": [
+    299.9994,
+    299.9994
+  ],
+  "negativeControl": {
+    "plot_policy_comparison.py": "ValueError: X-prepared-fixed: summary vs actual controlCpu: actual=1.93, expected=1.920000000",
+    "verify_policy_experiments.py": "ValueError: X-prepared-fixed: summary differs from independent five metrics"
+  },
+  "visualInspection": "PNG inspected: labels, values, panels and legend legible; no clipping observed",
+  "autonomousFigure": "SKIPPED: X-autonomous-multi SEARCH_INCOMPLETE"
+}

@@ -1,0 +1,116 @@
+{
+  "schedule3-cp7200-cost2-fixed" : {
+    "fixture" : "schedule3-cp7200-cost2",
+    "policyName" : "FIXED_PERIOD",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "period" : 3600.000000000
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-10-10T01:49:34.350128174Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 60.000000000,
+      "controlCpu" : 4.660000000,
+      "managementBytes" : 6480,
+      "newKeys" : 8
+    },
+    "partialProgress" : null,
+    "decisions" : 40,
+    "ruleDecisions" : 40,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 74432900,
+    "actualEventsFile" : "schedule3-cp7200-cost2-fixed.events.json",
+    "actualResultFile" : "schedule3-cp7200-cost2-fixed.actual.json",
+    "compactDecisionsFile" : "schedule3-cp7200-cost2-fixed.decisions.json"
+  },
+  "schedule3-cp7200-cost2-multi" : {
+    "fixture" : "schedule3-cp7200-cost2",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-10-10T01:49:34.350128174Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 60.000000000,
+      "controlCpu" : 2.960000000,
+      "managementBytes" : 4480,
+      "newKeys" : 4
+    },
+    "partialProgress" : null,
+    "decisions" : 30,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 30
+    },
+    "exploredNodes" : 16759,
+    "searchNanos" : 1386563300,
+    "controllerWallNanos" : 1390356800,
+    "actualEventsFile" : "schedule3-cp7200-cost2-multi.events.json",
+    "actualResultFile" : "schedule3-cp7200-cost2-multi.actual.json",
+    "compactDecisionsFile" : "schedule3-cp7200-cost2-multi.decisions.json"
+  },
+  "schedule3-cp7200-cost2-next" : {
+    "fixture" : "schedule3-cp7200-cost2",
+    "policyName" : "NEXT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "name" : "NEXT",
+      "horizon" : 1
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-10-10T01:49:34.350128174Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 60.000000000,
+      "controlCpu" : 2.960000000,
+      "managementBytes" : 4480,
+      "newKeys" : 4
+    },
+    "partialProgress" : null,
+    "decisions" : 31,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 31
+    },
+    "exploredNodes" : 10172,
+    "searchNanos" : 1847902600,
+    "controllerWallNanos" : 1864224400,
+    "actualEventsFile" : "schedule3-cp7200-cost2-next.events.json",
+    "actualResultFile" : "schedule3-cp7200-cost2-next.actual.json",
+    "compactDecisionsFile" : "schedule3-cp7200-cost2-next.decisions.json"
+  },
+  "schedule3-cp7200-cost2-percontact" : {
+    "fixture" : "schedule3-cp7200-cost2",
+    "policyName" : "PER_CONTACT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "advancePreparation" : "JUST_IN_TIME"
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-10-10T01:49:34.350128174Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 60.000000000,
+      "controlCpu" : 4.260000000,
+      "managementBytes" : 6480,
+      "newKeys" : 6
+    },
+    "partialProgress" : null,
+    "decisions" : 35,
+    "ruleDecisions" : 35,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 22803900,
+    "actualEventsFile" : "schedule3-cp7200-cost2-percontact.events.json",
+    "actualResultFile" : "schedule3-cp7200-cost2-percontact.actual.json",
+    "compactDecisionsFile" : "schedule3-cp7200-cost2-percontact.decisions.json"
+  }
+}

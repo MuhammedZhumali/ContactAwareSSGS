@@ -100,6 +100,7 @@ class PlannerAccelerationTest {
         assertThat(second.diagnostics().memoHits()).isEqualTo(first.diagnostics().memoHits());
         assertThat(second.diagnostics().memoEntries()).isEqualTo(first.diagnostics().memoEntries());
         assertThat(second.diagnostics().terminalPlans()).isEqualTo(first.diagnostics().terminalPlans());
+        assertThat(first.diagnostics().stopReason()).isEqualTo(SearchDiagnostics.StopReason.NODE_LIMIT);
         if (first.score() != null) replay(observation, first);
         assertSameComplete(planner(PlannerOptions.reference()).plan(observation), planner(PlannerOptions.accelerated()).plan(observation));
     }
@@ -119,6 +120,10 @@ class PlannerAccelerationTest {
         assertThat(diagnostics.memoHits()).isZero();
         assertThat(diagnostics.collapsedWaitTransitions()).isZero();
         assertThat(diagnostics.repeatedTransitions()).isPositive();
+        assertThat(diagnostics.stopReason()).isEqualTo(SearchDiagnostics.StopReason.NONE);
+        assertThat(diagnostics.rootCandidateCount()).isPositive();
+        assertThat(diagnostics.rootGeneratedByAction().values().stream().mapToLong(Long::longValue).sum())
+                .isEqualTo(diagnostics.rootCandidateCount());
         assertThatThrownBy(() -> diagnostics.generatedByAction().put(PlanningAction.Kind.WAIT, 0L))
                 .isInstanceOf(UnsupportedOperationException.class);
     }
@@ -127,7 +132,20 @@ class PlannerAccelerationTest {
         return List.of(new PlannerOptions(true, false, PlannerOptions.TraversalOrder.CANONICAL, 0),
                 new PlannerOptions(false, true, PlannerOptions.TraversalOrder.CANONICAL, 0),
                 new PlannerOptions(false, false, PlannerOptions.TraversalOrder.SERVICE_FIRST, 0),
+                new PlannerOptions(true, false, PlannerOptions.TraversalOrder.CANONICAL, 0, false, true, false),
+                new PlannerOptions(false, false, PlannerOptions.TraversalOrder.SERVICE_FIRST, 0, true, false, true),
                 PlannerOptions.accelerated());
+    }
+
+    @Test void earlyWaitReductionPreservesWinnerAndAvoidsExecutingDuplicateTransitions() {
+        var observation = reusableObservation(true);
+        var legacy = planner(new PlannerOptions(true, true, PlannerOptions.TraversalOrder.SERVICE_FIRST, 50_000, true))
+                .plan(observation);
+        var reduced = planner(PlannerOptions.accelerated()).plan(observation);
+        assertSameComplete(legacy, reduced);
+        assertThat(reduced.diagnostics().preExecutionWaitSkips()).isPositive();
+        assertThat(reduced.diagnostics().executedTransitions()).isLessThan(legacy.diagnostics().executedTransitions());
+        assertSameComplete(reduced, new ExactHorizonPlanner(UNLIMITED, PlannerOptions.accelerated(), REVERSE).plan(observation));
     }
 
     private ExactHorizonPlanner planner(PlannerOptions options) { return new ExactHorizonPlanner(UNLIMITED, options); }

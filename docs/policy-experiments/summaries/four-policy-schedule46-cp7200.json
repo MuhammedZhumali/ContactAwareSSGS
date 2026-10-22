@@ -1,0 +1,150 @@
+{
+  "schedule46-cp7200-cost1-fixed" : {
+    "fixture" : "schedule46-cp7200-cost1",
+    "policyName" : "FIXED_PERIOD",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "period" : 3600.000000000
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-10-10T23:41:52.701873779Z",
+    "finalMetrics" : {
+      "servedContacts" : 46,
+      "usefulSecureTime" : 920.000000000,
+      "controlCpu" : 35.660000000,
+      "managementBytes" : 49680,
+      "newKeys" : 122
+    },
+    "partialProgress" : null,
+    "decisions" : 679,
+    "ruleDecisions" : 679,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 790435000,
+    "actualEventsFile" : "schedule46-cp7200-cost1-fixed.events.json",
+    "actualResultFile" : "schedule46-cp7200-cost1-fixed.actual.json",
+    "compactDecisionsFile" : "schedule46-cp7200-cost1-fixed.decisions.json"
+  },
+  "schedule46-cp7200-cost1-multi" : {
+    "fixture" : "schedule46-cp7200-cost1",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "SEARCH_INCOMPLETE",
+    "stoppedAt" : "2026-10-10T00:07:52.680328369Z",
+    "finalMetrics" : null,
+    "partialProgress" : {
+      "at" : "2026-10-10T00:07:52.680328369Z",
+      "servedContactsSoFar" : 0,
+      "usefulSecureTimeSoFar" : 0.0,
+      "recordedCosts" : {
+        "elapsed" : 0.0,
+        "spacecraftCpu" : 0.0,
+        "groundCpu" : 0.0,
+        "radioOccupancy" : 0.0,
+        "uplinkBytes" : 0,
+        "downlinkBytes" : 0
+      },
+      "accruedCosts" : {
+        "elapsed" : 0.0,
+        "spacecraftCpu" : 0.0,
+        "groundCpu" : 0.0,
+        "radioOccupancy" : 0.0,
+        "uplinkBytes" : 0,
+        "downlinkBytes" : 0
+      },
+      "createdKeysSoFar" : 0,
+      "pendingOperations" : 0,
+      "frameInFlight" : false
+    },
+    "decisions" : 1,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "INCOMPLETE" : 1
+    },
+    "exploredNodes" : 10000,
+    "searchNanos" : 3267793200,
+    "controllerWallNanos" : 3268511700,
+    "actualEventsFile" : "schedule46-cp7200-cost1-multi.events.json",
+    "actualResultFile" : "schedule46-cp7200-cost1-multi.actual.json",
+    "compactDecisionsFile" : "schedule46-cp7200-cost1-multi.decisions.json"
+  },
+  "schedule46-cp7200-cost1-next" : {
+    "fixture" : "schedule46-cp7200-cost1",
+    "policyName" : "NEXT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "name" : "NEXT",
+      "horizon" : 1
+    },
+    "status" : "SEARCH_INCOMPLETE",
+    "stoppedAt" : "2026-10-10T00:07:52.680328369Z",
+    "finalMetrics" : null,
+    "partialProgress" : {
+      "at" : "2026-10-10T00:07:52.680328369Z",
+      "servedContactsSoFar" : 0,
+      "usefulSecureTimeSoFar" : 0.0,
+      "recordedCosts" : {
+        "elapsed" : 0.0,
+        "spacecraftCpu" : 0.0,
+        "groundCpu" : 0.0,
+        "radioOccupancy" : 0.0,
+        "uplinkBytes" : 0,
+        "downlinkBytes" : 0
+      },
+      "accruedCosts" : {
+        "elapsed" : 0.0,
+        "spacecraftCpu" : 0.0,
+        "groundCpu" : 0.0,
+        "radioOccupancy" : 0.0,
+        "uplinkBytes" : 0,
+        "downlinkBytes" : 0
+      },
+      "createdKeysSoFar" : 0,
+      "pendingOperations" : 0,
+      "frameInFlight" : false
+    },
+    "decisions" : 1,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "INCOMPLETE" : 1
+    },
+    "exploredNodes" : 10000,
+    "searchNanos" : 3891155400,
+    "controllerWallNanos" : 3905525200,
+    "actualEventsFile" : "schedule46-cp7200-cost1-next.events.json",
+    "actualResultFile" : "schedule46-cp7200-cost1-next.actual.json",
+    "compactDecisionsFile" : "schedule46-cp7200-cost1-next.decisions.json"
+  },
+  "schedule46-cp7200-cost1-percontact" : {
+    "fixture" : "schedule46-cp7200-cost1",
+    "policyName" : "PER_CONTACT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "advancePreparation" : "JUST_IN_TIME"
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-10-10T23:41:52.701873779Z",
+    "finalMetrics" : {
+      "servedContacts" : 46,
+      "usefulSecureTime" : 920.000000000,
+      "controlCpu" : 32.660000000,
+      "managementBytes" : 49680,
+      "newKeys" : 92
+    },
+    "partialProgress" : null,
+    "decisions" : 576,
+    "ruleDecisions" : 576,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 745871000,
+    "actualEventsFile" : "schedule46-cp7200-cost1-percontact.events.json",
+    "actualResultFile" : "schedule46-cp7200-cost1-percontact.actual.json",
+    "compactDecisionsFile" : "schedule46-cp7200-cost1-percontact.decisions.json"
+  }
+}

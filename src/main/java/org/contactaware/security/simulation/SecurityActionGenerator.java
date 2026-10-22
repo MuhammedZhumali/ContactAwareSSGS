@@ -17,6 +17,9 @@ public final class SecurityActionGenerator {
                 throw new IllegalArgumentException("Finite planning requires positive duration for " + kind);
         var result = new ArrayList<PlanningAction>();
         for (var context : observation.securityState().contexts().values()) {
+            // A GS-side rejection cannot cancel the already committed SC transmission.
+            // Wait for its boundary before the common authenticated-notice protocol proceeds.
+            if (observation.inFlightFrame() != null && observation.inFlightFrame().deliveryRejectedAtGround()) continue;
             var id = context.id();
             if (!observation.constraints().authorizedContexts().contains(id) || context.status() == AssociationStatus.ABSENT) continue;
             var prepared = observation.securityState().keys().values().stream()

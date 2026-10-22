@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "maven": {
+    "tests": 317,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "registeredRuns": 104,
+  "finishedRuns": 104,
+  "preKnowledgeDecisionsCompared": 4062,
+  "v2RegressionCases": 4,
+  "publicationFigureSets": 4,
+  "protocolSha256": "879864065e5bc96d498b0d4bbcaced264f3603f01f0484a2379876555b55206a",
+  "executableSha256": "b304138d4f6df1b040725affabc6e0a1905d826aa8f299bfe32f2832fa2a38aa",
+  "independentAuditSha256": "7bb870c92aa2240953a5aa8686be37342febb4c012e72b4ad60f53767d623bb9",
+  "figureQualitySha256": "f872928957f82ac98fc5c7b4a3fe108bf197c3c7dc795fbccd8eb7308b774853",
+  "testLog": "target/security-evaluation-maven-verified.log",
+  "interpretation": "Links preserved input/output files and recorded validations; not an independent security proof."
+}

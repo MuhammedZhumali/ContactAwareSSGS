@@ -174,8 +174,20 @@ public final class SimulationEngine {
             case INTERRUPT -> !run.running.containsKey(e.referenceId());
             default -> false;
         });
-        if (!run.queue.isEmpty()) until = Run.earlier(until, run.queue.peek().at());
-        run.advanceTo(until);
+        // A disclosure is attacker-only knowledge, not a controller decision opportunity.
+        // A notice with no captured target is likewise invisible. Process such events in
+        // the actual queue while preserving the original committed wait/frame interval.
+        while (true) {
+            var next = run.queue.stream().filter(e -> e.kind() != EventKind.DISCLOSURE)
+                    .min(ExecutionSnapshot.EVENT_ORDER).orElse(null);
+            var target = next == null ? until : Run.earlier(until, next.at());
+            long before = run.journal.size();
+            run.advanceTo(target);
+            if (target.equals(until) || next == null || next.kind() != EventKind.REVOCATION_NOTICE
+                    || run.journal.subList((int) before, run.journal.size()).stream()
+                        .anyMatch(e -> e.at().equals(target) && e.type() != KEY_DISCLOSED && e.type() != DISCLOSURE_NO_TARGET))
+                break;
+        }
         return run.snapshot();
     }
 
@@ -268,6 +280,11 @@ public final class SimulationEngine {
             registerDeadlines();
             for (var operation : input.plan())
                 schedule(operation.intent().scheduledAt(), EventKind.ACTION_START, operation.id(), operation.id(), 0, null);
+            for (var incident : input.disclosures()) {
+                schedule(incident.at(), EventKind.DISCLOSURE, "disclosure:" + incident.id(), incident.id(), 0, null);
+                if (incident.detectionAt() != null)
+                    schedule(incident.detectionAt(), EventKind.REVOCATION_NOTICE, "notice:" + incident.id(), incident.id(), 0, null);
+            }
         }
 
         void advanceTo(Instant until) {
@@ -318,6 +335,8 @@ public final class SimulationEngine {
                         throw new IllegalStateException("Frame completion does not match the in-flight frame");
                     completeFrame(frame);
                 }
+                case DISCLOSURE -> disclose(event.referenceId());
+                case REVOCATION_NOTICE -> receiveGroundNotice(event.referenceId());
             }
         }
 
@@ -398,6 +417,17 @@ public final class SimulationEngine {
             log(STEP_COMPLETED, planned.id(), execution.step(), planned.intent().contextId(), planned.contactId(),
                     execution.stepKeys, input.costs().cost(execution.step()).total(), execution.step() == PREPARE ? 2 : 0,
                     null, "Confirmed checkpoint");
+            if (execution.step() == NOTIFY_REVOCATION) {
+                for (var incident : input.disclosures()) {
+                    var disclosure = disclosed(incident.id());
+                    if (disclosure != null && disclosure.keyIds().equals(execution.stepKeys)
+                            && hasEvent(REVOCATION_RECEIVED_GROUND, incident.id())
+                            && !hasEvent(REVOCATION_RECEIVED_SPACECRAFT, incident.id()))
+                        log(REVOCATION_RECEIVED_SPACECRAFT, incident.id(), NOTIFY_REVOCATION,
+                                disclosure.contextId(), planned.contactId(), disclosure.keyIds(), ResourceUsage.ZERO,
+                                0, null, "Spacecraft receipt confirmed over independent authenticated management channel");
+                }
+            }
             registerDeadlines();
             execution.index++;
             if (execution.index == execution.steps.size()) {
@@ -418,7 +448,7 @@ public final class SimulationEngine {
             var usage = input.costs().cost(execution.step()).consumedUntil(Duration.between(execution.stepStart, now));
             log(interrupted ? STEP_INTERRUPTED : STEP_FAILED, planned.id(), execution.step(), planned.intent().contextId(),
                     planned.contactId(), execution.stepKeys, usage, 0, code, detail);
-            if (execution.step() == SWITCH || execution.step() == OPEN || execution.step() == REUSE) {
+            if (!code.equals("KNOWN_COMPROMISE") && (execution.step() == SWITCH || execution.step() == OPEN || execution.step() == REUSE)) {
                 // No protocol rollback is invented after a possibly delivered switch/open.
                 uncertain.add(planned.intent().contextId());
                 stopIfOperational(planned.intent().contextId(), planned.contactId());
@@ -496,11 +526,77 @@ public final class SimulationEngine {
             log(KEY_EXPIRED, null, EXPIRE_CONTEXT, key.contextId(), contactId, null, ResourceUsage.ZERO, 0,
                     "KEY_EXPIRED", keyId + (bound ? " (paired context retired)" : " (unbound material)"));
             for (var execution : List.copyOf(running.values())) {
-                if (execution.stepKeys == null || execution.step() == PREPARE) continue;
+                if (execution.stepKeys == null || execution.step() == PREPARE || execution.step() == NOTIFY_REVOCATION) continue;
                 boolean unusable = List.of(execution.stepKeys.uplink(), execution.stepKeys.downlink()).stream()
                         .map(state::key).anyMatch(k -> k.status() == KeyStatus.DEACTIVATED || k.status() == KeyStatus.DESTROYED);
                 if (unusable) fail(execution, true, "KEY_EXPIRED", "Required material retired during operation");
             }
+        }
+
+        boolean hasEvent(SimulationEvent.Type type, String id) {
+            return journal.stream().anyMatch(e -> e.type() == type && id.equals(e.operationId()));
+        }
+
+        SimulationEvent disclosed(String id) {
+            return journal.stream().filter(e -> e.type() == KEY_DISCLOSED && id.equals(e.operationId())).findFirst().orElse(null);
+        }
+
+        void disclose(String id) {
+            var incident = input.disclosures().stream().filter(d -> d.id().equals(id)).findFirst().orElseThrow();
+            var context = state.context(incident.contextId());
+            KeyPairIds keys = null;
+            if (context.uplink().keyId() != null && context.downlink().keyId() != null) {
+                var candidate = context.boundKeys();
+                if (List.of(candidate.uplink(), candidate.downlink()).stream().map(state::key)
+                        .allMatch(k -> k.status() == KeyStatus.ACTIVE && now.isBefore(k.hardDeadline(input.constraints()))))
+                    keys = candidate;
+            }
+            log(keys == null ? DISCLOSURE_NO_TARGET : KEY_DISCLOSED, id, null, incident.contextId(),
+                    context.activeContact() == null ? null : context.activeContact().id(), keys, ResourceUsage.ZERO,
+                    0, null, keys == null ? "No active bound traffic pair at the physical attack time"
+                            : "Attacker-only one-time disclosure; controller is not notified");
+        }
+
+        void receiveGroundNotice(String id) {
+            var incident = disclosed(id);
+            if (incident == null) return; // No affected pair, hence no revocation instruction.
+            var keys = incident.keyIds();
+            var context = state.context(incident.contextId());
+            var contactId = context.activeContact() == null ? null : context.activeContact().id();
+            log(REVOCATION_RECEIVED_GROUND, id, null, context.id(), contactId, keys, ResourceUsage.ZERO,
+                    0, null, "Authenticated terrestrial notice received by GS; spacecraft has not yet been notified");
+            if (frame != null && frame.keys().equals(keys)) {
+                if (frame.uplink()) abortFrame("KNOWN_COMPROMISE");
+                else frame = new InFlightFrame(frame.contact(), frame.context(), frame.keys(), frame.from(), frame.until(), false, true);
+                // GS can stop its own transmitter immediately. A committed spacecraft downlink
+                // continues until its frame boundary; local rejection is not remote notification.
+            }
+            for (var execution : List.copyOf(running.values()))
+                if (keys.equals(execution.stepKeys)) fail(execution, true, "KNOWN_COMPROMISE", "Affected operation stopped by known revocation");
+            context = state.context(incident.contextId());
+            if (context.uplink().keyId() != null && context.boundKeys().equals(keys)) {
+                stopIfOperational(context.id(), contactId);
+                state = transitions.expireContext(state, context.id(), DeactivationReason.KNOWN_COMPROMISE, now);
+            } else if (List.of(keys.uplink(), keys.downlink()).stream().map(state::key)
+                    .allMatch(k -> k.status() == KeyStatus.ACTIVE || k.status() == KeyStatus.PRE_ACTIVE)) {
+                state = transitions.deactivateKeys(state, keys, DeactivationReason.KNOWN_COMPROMISE, now);
+            }
+            // Retired old generations stay retired; an independent current generation is untouched.
+        }
+
+        void abortFrame(String reason) {
+            var aborted = frame;
+            long emitted = java.math.BigInteger.valueOf(aborted.contact().payload().frameBytes())
+                    .multiply(java.math.BigInteger.valueOf(Duration.between(aborted.from(), now).toNanos()))
+                    .divide(java.math.BigInteger.valueOf(Duration.between(aborted.from(), aborted.until()).toNanos())).longValueExact();
+            var direction = aborted.uplink() ? Direction.UPLINK : Direction.DOWNLINK;
+            var evidence = new SimulationEvent.FrameEvidence(aborted.from(), now, direction,
+                    aborted.keys().forDirection(direction), aborted.contact().payload().frameBytes(), emitted, false);
+            journal.add(new SimulationEvent(journal.size(), now, PAYLOAD_ABORTED, null, null, aborted.context(),
+                    aborted.contact().window().id(), aborted.keys(), ResourceUsage.ZERO, Duration.ZERO,
+                    0, 0, 0, 0, 0, reason, "In-flight frame interrupted; emitted ciphertext recorded separately from delivered payload", evidence));
+            queue.removeIf(e -> e.kind() == EventKind.FRAME_COMPLETE);
+            frame = null;
         }
 
         void sendNextFrame() {
@@ -539,6 +635,10 @@ public final class SimulationEngine {
         }
 
         void completeFrame(InFlightFrame completed) {
+            if (frame == completed && completed.deliveryRejectedAtGround()) {
+                abortFrame("KNOWN_COMPROMISE_DOWNLINK_DROPPED");
+                return;
+            }
             if (frame != completed || !state.context(completed.context()).boundKeys().equals(completed.keys()))
                 throw new IllegalStateException("An in-flight frame lost its admitted security context");
             // A concurrent ground-only checkpoint can advance asOf. The frame was admitted at its original
@@ -552,7 +652,10 @@ public final class SimulationEngine {
             journal.add(new SimulationEvent(journal.size(), now, PAYLOAD_TRANSFERRED, null, null, completed.context(),
                     completed.contact().window().id(), completed.keys(), ResourceUsage.ZERO, Duration.between(completed.from(), now),
                     completed.uplink() ? bytes : 0, completed.uplink() ? 0 : bytes, completed.uplink() ? 1 : 0,
-                    completed.uplink() ? 0 : 1, 0, null, "Complete protected frame"));
+                    completed.uplink() ? 0 : 1, 0, null, "Complete protected frame", input.disclosures().isEmpty() ? null
+                    : new SimulationEvent.FrameEvidence(completed.from(), now,
+                    completed.uplink() ? Direction.UPLINK : Direction.DOWNLINK,
+                    completed.keys().forDirection(completed.uplink() ? Direction.UPLINK : Direction.DOWNLINK), bytes, bytes, true)));
             frame = null;
         }
 

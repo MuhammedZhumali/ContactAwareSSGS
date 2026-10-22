@@ -8,11 +8,27 @@ import java.util.*;
 
 public record SimulationScenario(String name, Instant start, Instant end, SecurityState initialState,
                                  SecurityConstraints constraints, SecurityCostProfile costs,
-                                 List<SimulationContact> contacts, List<PlannedOperation> plan) {
+                                 List<SimulationContact> contacts, List<PlannedOperation> plan,
+                                 List<TrafficKeyDisclosure> disclosures) {
+    public SimulationScenario(String name, Instant start, Instant end, SecurityState initialState,
+                              SecurityConstraints constraints, SecurityCostProfile costs,
+                              List<SimulationContact> contacts, List<PlannedOperation> plan) {
+        this(name, start, end, initialState, constraints, costs, contacts, plan, List.of());
+    }
+
     public SimulationScenario {
         if (name == null || name.isBlank()) throw new IllegalArgumentException("Scenario name is required");
         var period = new Interval(start, end);
         Objects.requireNonNull(initialState); Objects.requireNonNull(constraints); Objects.requireNonNull(costs);
+        disclosures = List.copyOf(disclosures);
+        var incidentIds = new HashSet<String>();
+        for (var disclosure : disclosures) {
+            if (!incidentIds.add(disclosure.id())) throw new IllegalArgumentException("Duplicate disclosure ID");
+            if (disclosure.at().isBefore(start) || !disclosure.at().isBefore(end))
+                throw new IllegalArgumentException("Disclosure outside experiment interval");
+            if (!initialState.contexts().containsKey(disclosure.contextId()))
+                throw new IllegalArgumentException("Disclosure context is not configured");
+        }
         if (initialState.asOf().isAfter(start)) throw new IllegalArgumentException("Initial state is from the future");
         if (initialState.contexts().values().stream().anyMatch(c -> c.status() == AssociationStatus.OPERATIONAL))
             throw new IllegalArgumentException("Start from a closed initial session");

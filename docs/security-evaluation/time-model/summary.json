@@ -1,0 +1,754 @@
+{
+  "X-autonomous-MULTI-PREPARE_DURATION_WAIT" : {
+    "fixture" : "X-autonomous",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 37.000000000,
+      "controlCpu" : 0.830000000,
+      "managementBytes" : 1240,
+      "newKeys" : 2
+    },
+    "partialProgress" : null,
+    "decisions" : 181,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 181
+    },
+    "exploredNodes" : 51886,
+    "searchNanos" : 2037402102,
+    "controllerWallNanos" : 2053802801,
+    "actualEventsFile" : "X-autonomous-MULTI-PREPARE_DURATION_WAIT.events.json",
+    "actualResultFile" : "X-autonomous-MULTI-PREPARE_DURATION_WAIT.actual.json",
+    "compactDecisionsFile" : "X-autonomous-MULTI-PREPARE_DURATION_WAIT.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 181,
+      "totalSearchNanos" : 2037402102,
+      "maximumSearchNanos" : 50426299,
+      "meanSearchNanos" : 11256365.204420,
+      "totalExploredNodes" : 51886,
+      "maximumExploredNodes" : 664,
+      "meanExploredNodes" : 286.662983,
+      "totalGeneratedActions" : 141256,
+      "totalExecutedTransitions" : 51705,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 31984,
+      "totalCanonicalBoundPrunedNodes" : 90,
+      "stopReasons" : {
+        "NONE" : 181
+      }
+    }
+  },
+  "X-autonomous-MULTI-V2_EVENT_BOUNDARIES" : {
+    "fixture" : "X-autonomous",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 37.000000000,
+      "controlCpu" : 0.830000000,
+      "managementBytes" : 1240,
+      "newKeys" : 2
+    },
+    "partialProgress" : null,
+    "decisions" : 165,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 165
+    },
+    "exploredNodes" : 45629,
+    "searchNanos" : 1909718903,
+    "controllerWallNanos" : 1925377901,
+    "actualEventsFile" : "X-autonomous-MULTI-V2_EVENT_BOUNDARIES.events.json",
+    "actualResultFile" : "X-autonomous-MULTI-V2_EVENT_BOUNDARIES.actual.json",
+    "compactDecisionsFile" : "X-autonomous-MULTI-V2_EVENT_BOUNDARIES.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 165,
+      "totalSearchNanos" : 1909718903,
+      "maximumSearchNanos" : 56603801,
+      "meanSearchNanos" : 11574053.957576,
+      "totalExploredNodes" : 45629,
+      "maximumExploredNodes" : 632,
+      "meanExploredNodes" : 276.539394,
+      "totalGeneratedActions" : 110415,
+      "totalExecutedTransitions" : 45464,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 27695,
+      "totalCanonicalBoundPrunedNodes" : 86,
+      "stopReasons" : {
+        "NONE" : 165
+      }
+    }
+  },
+  "X-autonomous-NEXT-PREPARE_DURATION_WAIT" : {
+    "fixture" : "X-autonomous",
+    "policyName" : "NEXT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "name" : "NEXT",
+      "horizon" : 1
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 2,
+      "usefulSecureTime" : 38.000000000,
+      "controlCpu" : 0.120000000,
+      "managementBytes" : 160,
+      "newKeys" : 0
+    },
+    "partialProgress" : null,
+    "decisions" : 180,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 180
+    },
+    "exploredNodes" : 68664,
+    "searchNanos" : 1954204203,
+    "controllerWallNanos" : 1969846800,
+    "actualEventsFile" : "X-autonomous-NEXT-PREPARE_DURATION_WAIT.events.json",
+    "actualResultFile" : "X-autonomous-NEXT-PREPARE_DURATION_WAIT.actual.json",
+    "compactDecisionsFile" : "X-autonomous-NEXT-PREPARE_DURATION_WAIT.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 180,
+      "totalSearchNanos" : 1954204203,
+      "maximumSearchNanos" : 27740600,
+      "meanSearchNanos" : 10856690.016667,
+      "totalExploredNodes" : 68664,
+      "maximumExploredNodes" : 640,
+      "meanExploredNodes" : 381.466667,
+      "totalGeneratedActions" : 128604,
+      "totalExecutedTransitions" : 68484,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 47708,
+      "totalCanonicalBoundPrunedNodes" : 4550,
+      "stopReasons" : {
+        "NONE" : 180
+      }
+    }
+  },
+  "X-autonomous-NEXT-V2_EVENT_BOUNDARIES" : {
+    "fixture" : "X-autonomous",
+    "policyName" : "NEXT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "name" : "NEXT",
+      "horizon" : 1
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 2,
+      "usefulSecureTime" : 38.000000000,
+      "controlCpu" : 0.120000000,
+      "managementBytes" : 160,
+      "newKeys" : 0
+    },
+    "partialProgress" : null,
+    "decisions" : 163,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 163
+    },
+    "exploredNodes" : 60697,
+    "searchNanos" : 1742893103,
+    "controllerWallNanos" : 1757258900,
+    "actualEventsFile" : "X-autonomous-NEXT-V2_EVENT_BOUNDARIES.events.json",
+    "actualResultFile" : "X-autonomous-NEXT-V2_EVENT_BOUNDARIES.actual.json",
+    "compactDecisionsFile" : "X-autonomous-NEXT-V2_EVENT_BOUNDARIES.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 163,
+      "totalSearchNanos" : 1742893103,
+      "maximumSearchNanos" : 23702099,
+      "meanSearchNanos" : 10692595.723926,
+      "totalExploredNodes" : 60697,
+      "maximumExploredNodes" : 615,
+      "meanExploredNodes" : 372.374233,
+      "totalGeneratedActions" : 96656,
+      "totalExecutedTransitions" : 60534,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 37434,
+      "totalCanonicalBoundPrunedNodes" : 3403,
+      "stopReasons" : {
+        "NONE" : 163
+      }
+    }
+  },
+  "X-prepared-MULTI-PREPARE_DURATION_WAIT" : {
+    "fixture" : "X-prepared",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 37.000000000,
+      "controlCpu" : 0.830000000,
+      "managementBytes" : 1240,
+      "newKeys" : 2
+    },
+    "partialProgress" : null,
+    "decisions" : 179,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 179
+    },
+    "exploredNodes" : 59251,
+    "searchNanos" : 1947000905,
+    "controllerWallNanos" : 1965320000,
+    "actualEventsFile" : "X-prepared-MULTI-PREPARE_DURATION_WAIT.events.json",
+    "actualResultFile" : "X-prepared-MULTI-PREPARE_DURATION_WAIT.actual.json",
+    "compactDecisionsFile" : "X-prepared-MULTI-PREPARE_DURATION_WAIT.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 179,
+      "totalSearchNanos" : 1947000905,
+      "maximumSearchNanos" : 40545900,
+      "meanSearchNanos" : 10877100.027933,
+      "totalExploredNodes" : 59251,
+      "maximumExploredNodes" : 675,
+      "meanExploredNodes" : 331.011173,
+      "totalGeneratedActions" : 116681,
+      "totalExecutedTransitions" : 59072,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 41558,
+      "totalCanonicalBoundPrunedNodes" : 241,
+      "stopReasons" : {
+        "NONE" : 179
+      }
+    }
+  },
+  "X-prepared-MULTI-V2_EVENT_BOUNDARIES" : {
+    "fixture" : "X-prepared",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 37.000000000,
+      "controlCpu" : 0.830000000,
+      "managementBytes" : 1240,
+      "newKeys" : 2
+    },
+    "partialProgress" : null,
+    "decisions" : 162,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 162
+    },
+    "exploredNodes" : 50100,
+    "searchNanos" : 2105382292,
+    "controllerWallNanos" : 2135087500,
+    "actualEventsFile" : "X-prepared-MULTI-V2_EVENT_BOUNDARIES.events.json",
+    "actualResultFile" : "X-prepared-MULTI-V2_EVENT_BOUNDARIES.actual.json",
+    "compactDecisionsFile" : "X-prepared-MULTI-V2_EVENT_BOUNDARIES.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 162,
+      "totalSearchNanos" : 2105382292,
+      "maximumSearchNanos" : 49373700,
+      "meanSearchNanos" : 12996186.987654,
+      "totalExploredNodes" : 50100,
+      "maximumExploredNodes" : 625,
+      "meanExploredNodes" : 309.259259,
+      "totalGeneratedActions" : 87110,
+      "totalExecutedTransitions" : 49938,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 34118,
+      "totalCanonicalBoundPrunedNodes" : 218,
+      "stopReasons" : {
+        "NONE" : 162
+      }
+    }
+  },
+  "X-prepared-NEXT-PREPARE_DURATION_WAIT" : {
+    "fixture" : "X-prepared",
+    "policyName" : "NEXT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "name" : "NEXT",
+      "horizon" : 1
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 2,
+      "usefulSecureTime" : 38.000000000,
+      "controlCpu" : 0.320000000,
+      "managementBytes" : 160,
+      "newKeys" : 2
+    },
+    "partialProgress" : null,
+    "decisions" : 179,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 179
+    },
+    "exploredNodes" : 83901,
+    "searchNanos" : 2902187191,
+    "controllerWallNanos" : 2920231800,
+    "actualEventsFile" : "X-prepared-NEXT-PREPARE_DURATION_WAIT.events.json",
+    "actualResultFile" : "X-prepared-NEXT-PREPARE_DURATION_WAIT.actual.json",
+    "compactDecisionsFile" : "X-prepared-NEXT-PREPARE_DURATION_WAIT.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 179,
+      "totalSearchNanos" : 2902187191,
+      "maximumSearchNanos" : 83437700,
+      "meanSearchNanos" : 16213336.262570,
+      "totalExploredNodes" : 83901,
+      "maximumExploredNodes" : 2100,
+      "meanExploredNodes" : 468.720670,
+      "totalGeneratedActions" : 188017,
+      "totalExecutedTransitions" : 83722,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 48508,
+      "totalCanonicalBoundPrunedNodes" : 2038,
+      "stopReasons" : {
+        "NONE" : 179
+      }
+    }
+  },
+  "X-prepared-NEXT-V2_EVENT_BOUNDARIES" : {
+    "fixture" : "X-prepared",
+    "policyName" : "NEXT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "name" : "NEXT",
+      "horizon" : 1
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 2,
+      "usefulSecureTime" : 38.000000000,
+      "controlCpu" : 0.320000000,
+      "managementBytes" : 160,
+      "newKeys" : 2
+    },
+    "partialProgress" : null,
+    "decisions" : 162,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 162
+    },
+    "exploredNodes" : 73716,
+    "searchNanos" : 3712587399,
+    "controllerWallNanos" : 3751878800,
+    "actualEventsFile" : "X-prepared-NEXT-V2_EVENT_BOUNDARIES.events.json",
+    "actualResultFile" : "X-prepared-NEXT-V2_EVENT_BOUNDARIES.actual.json",
+    "compactDecisionsFile" : "X-prepared-NEXT-V2_EVENT_BOUNDARIES.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 162,
+      "totalSearchNanos" : 3712587399,
+      "maximumSearchNanos" : 358766000,
+      "meanSearchNanos" : 22917206.166667,
+      "totalExploredNodes" : 73716,
+      "maximumExploredNodes" : 1896,
+      "meanExploredNodes" : 455.037037,
+      "totalGeneratedActions" : 134761,
+      "totalExecutedTransitions" : 73554,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 34569,
+      "totalCanonicalBoundPrunedNodes" : 2035,
+      "stopReasons" : {
+        "NONE" : 162
+      }
+    }
+  },
+  "Y-autonomous-MULTI-PREPARE_DURATION_WAIT" : {
+    "fixture" : "Y-autonomous",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 42.000000000,
+      "controlCpu" : 0.180000000,
+      "managementBytes" : 240,
+      "newKeys" : 0
+    },
+    "partialProgress" : null,
+    "decisions" : 195,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 195
+    },
+    "exploredNodes" : 70599,
+    "searchNanos" : 2178111407,
+    "controllerWallNanos" : 2196501499,
+    "actualEventsFile" : "Y-autonomous-MULTI-PREPARE_DURATION_WAIT.events.json",
+    "actualResultFile" : "Y-autonomous-MULTI-PREPARE_DURATION_WAIT.actual.json",
+    "compactDecisionsFile" : "Y-autonomous-MULTI-PREPARE_DURATION_WAIT.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 195,
+      "totalSearchNanos" : 2178111407,
+      "maximumSearchNanos" : 30523201,
+      "meanSearchNanos" : 11169802.087179,
+      "totalExploredNodes" : 70599,
+      "maximumExploredNodes" : 740,
+      "meanExploredNodes" : 362.046154,
+      "totalGeneratedActions" : 156240,
+      "totalExecutedTransitions" : 70404,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 49795,
+      "totalCanonicalBoundPrunedNodes" : 264,
+      "stopReasons" : {
+        "NONE" : 195
+      }
+    }
+  },
+  "Y-autonomous-MULTI-V2_EVENT_BOUNDARIES" : {
+    "fixture" : "Y-autonomous",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 42.000000000,
+      "controlCpu" : 0.180000000,
+      "managementBytes" : 240,
+      "newKeys" : 0
+    },
+    "partialProgress" : null,
+    "decisions" : 180,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 180
+    },
+    "exploredNodes" : 61884,
+    "searchNanos" : 1969500897,
+    "controllerWallNanos" : 1986097701,
+    "actualEventsFile" : "Y-autonomous-MULTI-V2_EVENT_BOUNDARIES.events.json",
+    "actualResultFile" : "Y-autonomous-MULTI-V2_EVENT_BOUNDARIES.actual.json",
+    "compactDecisionsFile" : "Y-autonomous-MULTI-V2_EVENT_BOUNDARIES.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 180,
+      "totalSearchNanos" : 1969500897,
+      "maximumSearchNanos" : 32444501,
+      "meanSearchNanos" : 10941671.650000,
+      "totalExploredNodes" : 61884,
+      "maximumExploredNodes" : 695,
+      "meanExploredNodes" : 343.800000,
+      "totalGeneratedActions" : 122877,
+      "totalExecutedTransitions" : 61704,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 42452,
+      "totalCanonicalBoundPrunedNodes" : 246,
+      "stopReasons" : {
+        "NONE" : 180
+      }
+    }
+  },
+  "Y-autonomous-NEXT-PREPARE_DURATION_WAIT" : {
+    "fixture" : "Y-autonomous",
+    "policyName" : "NEXT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "name" : "NEXT",
+      "horizon" : 1
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 42.000000000,
+      "controlCpu" : 0.180000000,
+      "managementBytes" : 240,
+      "newKeys" : 0
+    },
+    "partialProgress" : null,
+    "decisions" : 195,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 195
+    },
+    "exploredNodes" : 60645,
+    "searchNanos" : 1654834908,
+    "controllerWallNanos" : 1670928799,
+    "actualEventsFile" : "Y-autonomous-NEXT-PREPARE_DURATION_WAIT.events.json",
+    "actualResultFile" : "Y-autonomous-NEXT-PREPARE_DURATION_WAIT.actual.json",
+    "compactDecisionsFile" : "Y-autonomous-NEXT-PREPARE_DURATION_WAIT.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 195,
+      "totalSearchNanos" : 1654834908,
+      "maximumSearchNanos" : 21729700,
+      "meanSearchNanos" : 8486332.861538,
+      "totalExploredNodes" : 60645,
+      "maximumExploredNodes" : 624,
+      "meanExploredNodes" : 311.000000,
+      "totalGeneratedActions" : 100392,
+      "totalExecutedTransitions" : 60450,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 42663,
+      "totalCanonicalBoundPrunedNodes" : 180,
+      "stopReasons" : {
+        "NONE" : 195
+      }
+    }
+  },
+  "Y-autonomous-NEXT-V2_EVENT_BOUNDARIES" : {
+    "fixture" : "Y-autonomous",
+    "policyName" : "NEXT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "name" : "NEXT",
+      "horizon" : 1
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 42.000000000,
+      "controlCpu" : 0.180000000,
+      "managementBytes" : 240,
+      "newKeys" : 0
+    },
+    "partialProgress" : null,
+    "decisions" : 180,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 180
+    },
+    "exploredNodes" : 55167,
+    "searchNanos" : 1541393394,
+    "controllerWallNanos" : 1557325700,
+    "actualEventsFile" : "Y-autonomous-NEXT-V2_EVENT_BOUNDARIES.events.json",
+    "actualResultFile" : "Y-autonomous-NEXT-V2_EVENT_BOUNDARIES.actual.json",
+    "compactDecisionsFile" : "Y-autonomous-NEXT-V2_EVENT_BOUNDARIES.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 180,
+      "totalSearchNanos" : 1541393394,
+      "maximumSearchNanos" : 19620000,
+      "meanSearchNanos" : 8563296.633333,
+      "totalExploredNodes" : 55167,
+      "maximumExploredNodes" : 615,
+      "meanExploredNodes" : 306.483333,
+      "totalGeneratedActions" : 77439,
+      "totalExecutedTransitions" : 54987,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 32695,
+      "totalCanonicalBoundPrunedNodes" : 165,
+      "stopReasons" : {
+        "NONE" : 180
+      }
+    }
+  },
+  "Y-prepared-MULTI-PREPARE_DURATION_WAIT" : {
+    "fixture" : "Y-prepared",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 42.000000000,
+      "controlCpu" : 0.380000000,
+      "managementBytes" : 240,
+      "newKeys" : 2
+    },
+    "partialProgress" : null,
+    "decisions" : 194,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 194
+    },
+    "exploredNodes" : 99429,
+    "searchNanos" : 3809116105,
+    "controllerWallNanos" : 3826481600,
+    "actualEventsFile" : "Y-prepared-MULTI-PREPARE_DURATION_WAIT.events.json",
+    "actualResultFile" : "Y-prepared-MULTI-PREPARE_DURATION_WAIT.actual.json",
+    "compactDecisionsFile" : "Y-prepared-MULTI-PREPARE_DURATION_WAIT.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 194,
+      "totalSearchNanos" : 3809116105,
+      "maximumSearchNanos" : 125303600,
+      "meanSearchNanos" : 19634619.097938,
+      "totalExploredNodes" : 99429,
+      "maximumExploredNodes" : 2382,
+      "meanExploredNodes" : 512.520619,
+      "totalGeneratedActions" : 328352,
+      "totalExecutedTransitions" : 99235,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 57442,
+      "totalCanonicalBoundPrunedNodes" : 2278,
+      "stopReasons" : {
+        "NONE" : 194
+      }
+    }
+  },
+  "Y-prepared-MULTI-V2_EVENT_BOUNDARIES" : {
+    "fixture" : "Y-prepared",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 42.000000000,
+      "controlCpu" : 0.380000000,
+      "managementBytes" : 240,
+      "newKeys" : 2
+    },
+    "partialProgress" : null,
+    "decisions" : 179,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 179
+    },
+    "exploredNodes" : 85662,
+    "searchNanos" : 3737467409,
+    "controllerWallNanos" : 3753785300,
+    "actualEventsFile" : "Y-prepared-MULTI-V2_EVENT_BOUNDARIES.events.json",
+    "actualResultFile" : "Y-prepared-MULTI-V2_EVENT_BOUNDARIES.actual.json",
+    "compactDecisionsFile" : "Y-prepared-MULTI-V2_EVENT_BOUNDARIES.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 179,
+      "totalSearchNanos" : 3737467409,
+      "maximumSearchNanos" : 153296400,
+      "meanSearchNanos" : 20879706.195531,
+      "totalExploredNodes" : 85662,
+      "maximumExploredNodes" : 2091,
+      "meanExploredNodes" : 478.558659,
+      "totalGeneratedActions" : 243687,
+      "totalExecutedTransitions" : 85483,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 49394,
+      "totalCanonicalBoundPrunedNodes" : 2260,
+      "stopReasons" : {
+        "NONE" : 179
+      }
+    }
+  },
+  "Y-prepared-NEXT-PREPARE_DURATION_WAIT" : {
+    "fixture" : "Y-prepared",
+    "policyName" : "NEXT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "name" : "NEXT",
+      "horizon" : 1
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 42.000000000,
+      "controlCpu" : 0.380000000,
+      "managementBytes" : 240,
+      "newKeys" : 2
+    },
+    "partialProgress" : null,
+    "decisions" : 194,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 194
+    },
+    "exploredNodes" : 87278,
+    "searchNanos" : 3049150992,
+    "controllerWallNanos" : 3067387101,
+    "actualEventsFile" : "Y-prepared-NEXT-PREPARE_DURATION_WAIT.events.json",
+    "actualResultFile" : "Y-prepared-NEXT-PREPARE_DURATION_WAIT.actual.json",
+    "compactDecisionsFile" : "Y-prepared-NEXT-PREPARE_DURATION_WAIT.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 194,
+      "totalSearchNanos" : 3049150992,
+      "maximumSearchNanos" : 82263201,
+      "meanSearchNanos" : 15717273.154639,
+      "totalExploredNodes" : 87278,
+      "maximumExploredNodes" : 2100,
+      "meanExploredNodes" : 449.886598,
+      "totalGeneratedActions" : 191606,
+      "totalExecutedTransitions" : 87084,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 50109,
+      "totalCanonicalBoundPrunedNodes" : 2132,
+      "stopReasons" : {
+        "NONE" : 194
+      }
+    }
+  },
+  "Y-prepared-NEXT-V2_EVENT_BOUNDARIES" : {
+    "fixture" : "Y-prepared",
+    "policyName" : "NEXT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "name" : "NEXT",
+      "horizon" : 1
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 42.000000000,
+      "controlCpu" : 0.380000000,
+      "managementBytes" : 240,
+      "newKeys" : 2
+    },
+    "partialProgress" : null,
+    "decisions" : 179,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 179
+    },
+    "exploredNodes" : 77207,
+    "searchNanos" : 4390912105,
+    "controllerWallNanos" : 4421114600,
+    "actualEventsFile" : "Y-prepared-NEXT-V2_EVENT_BOUNDARIES.events.json",
+    "actualResultFile" : "Y-prepared-NEXT-V2_EVENT_BOUNDARIES.actual.json",
+    "compactDecisionsFile" : "Y-prepared-NEXT-V2_EVENT_BOUNDARIES.decisions.json",
+    "searchPerformance" : {
+      "searchDecisions" : 179,
+      "totalSearchNanos" : 4390912105,
+      "maximumSearchNanos" : 242065800,
+      "meanSearchNanos" : 24530235.223464,
+      "totalExploredNodes" : 77207,
+      "maximumExploredNodes" : 1896,
+      "meanExploredNodes" : 431.324022,
+      "totalGeneratedActions" : 137985,
+      "totalExecutedTransitions" : 77028,
+      "totalMemoHits" : 0,
+      "totalBoundPrunedNodes" : 35361,
+      "totalCanonicalBoundPrunedNodes" : 2117,
+      "stopReasons" : {
+        "NONE" : 179
+      }
+    }
+  }
+}

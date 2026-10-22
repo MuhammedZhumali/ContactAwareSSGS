@@ -1,0 +1,160 @@
+{
+  "buildSha256": "789261d4e7ad697c69c65f17f5a73cd498d578be64f187b20933715f680d80cd",
+  "visualReview": "All five final PNGs inspected; labels, legends and note panels are readable without clipping.",
+  "figures": {
+    "figures/01-prepared-xy.pdf": {
+      "source": "docs/search-scaling/xy-figures/01_prepared.pdf",
+      "sha256": "b4ccc5da2846ddc26af16a09800aba95add52eaf45c929907816a694f3746ff4"
+    },
+    "figures/01-prepared-xy.svg": {
+      "source": "docs/search-scaling/xy-figures/01_prepared.svg",
+      "sha256": "4022831e39e70f1d727299651304bc69bcaa9b4b18b58705220cdada7e716979"
+    },
+    "figures/01-prepared-xy.png": {
+      "source": "docs/search-scaling/xy-figures/01_prepared.png",
+      "sha256": "2044af12fd4287241ed1bbd9f5a3878934d05e5837c182e203ba61509a6d3c83"
+    },
+    "figures/02-autonomous-xy.pdf": {
+      "source": "docs/search-scaling/xy-figures/02_autonomous.pdf",
+      "sha256": "5c5e09e58d672021d6871fb7be2f0d96b1c6f85714d41fd8bba68e86c8b9f7db"
+    },
+    "figures/02-autonomous-xy.svg": {
+      "source": "docs/search-scaling/xy-figures/02_autonomous.svg",
+      "sha256": "f37afd7ec43186e143010ba0d8d8d2ceb69327f9020bc90a7e61f9509ca540e7"
+    },
+    "figures/02-autonomous-xy.png": {
+      "source": "docs/search-scaling/xy-figures/02_autonomous.png",
+      "sha256": "4888bafb6e5f543384edfa3b9e74aa239b7ec920b675af6e1ec717f30c52853c"
+    },
+    "figures/03-light-growth.pdf": {
+      "source": "docs/search-scaling/schedule-figures/light-growth-fc951fdfaf07.pdf",
+      "sha256": "4af3baa6401c67dbffda09a7193fd9e35356fd02c32c7c90c2327fbd9d2014ed"
+    },
+    "figures/03-light-growth.svg": {
+      "source": "docs/search-scaling/schedule-figures/light-growth-fc951fdfaf07.svg",
+      "sha256": "16e53c7905b7df9f5039ad3ec51adedcacd948c7b73186770f3286e44d5cfb12"
+    },
+    "figures/03-light-growth.png": {
+      "source": "docs/search-scaling/schedule-figures/light-growth-fc951fdfaf07.png",
+      "sha256": "c379cd2a160550d51bb3177cc6c237a5e798d84adbf4c229bfb6f7deda924e17"
+    },
+    "figures/04-workloads.pdf": {
+      "source": "docs/search-scaling/schedule-figures/three-contact-workloads-8c2263d1a3c7.pdf",
+      "sha256": "609e838baecd56adb3169ecbe11d01a2fe039c03ccbfcb48dd4bbfeedbf51d2b"
+    },
+    "figures/04-workloads.svg": {
+      "source": "docs/search-scaling/schedule-figures/three-contact-workloads-8c2263d1a3c7.svg",
+      "sha256": "e9eef40cfe6d6696cd88b80bbf3fddc7bd2dd3b0898cd4a91029771f72b16631"
+    },
+    "figures/04-workloads.png": {
+      "source": "docs/search-scaling/schedule-figures/three-contact-workloads-8c2263d1a3c7.png",
+      "sha256": "2df77cb2580385166506303415f7815fbc3f65daa5b81bd457d8e2d1b1416d94"
+    },
+    "figures/05-grid-coverage.pdf": {
+      "source": "docs/search-scaling/coverage-figures/coverage.pdf",
+      "sha256": "857df9ce5b12707718ec748312ac9837c6c173e79e132f123592001ea1905c95"
+    },
+    "figures/05-grid-coverage.svg": {
+      "source": "docs/search-scaling/coverage-figures/coverage.svg",
+      "sha256": "6a953940485d138cd85f5c1c8b24b8251b37708d4c0f0a9648a127c5592b71ab"
+    },
+    "figures/05-grid-coverage.png": {
+      "source": "docs/search-scaling/coverage-figures/coverage.png",
+      "sha256": "13edf3646cefabeb91b0656ea704cf44aae827d5a21ecf89c6b21e33ead2c0cc"
+    }
+  },
+  "checks": [
+    {
+      "figure": "01-prepared-xy",
+      "pdfInches": [
+        7.16,
+        5.800000000000001
+      ],
+      "vectorPdf": true,
+      "embeddedFonts": [
+        "/DJMTKY+DejaVuSans-Bold",
+        "/HJKXRH+DejaVuSans-Bold",
+        "/BJBPLR+DejaVuSans",
+        "/CPUQYB+DejaVuSans"
+      ],
+      "editableSvgText": true,
+      "pngPixels": [
+        2148,
+        1740
+      ],
+      "pngDpi": 300
+    },
+    {
+      "figure": "02-autonomous-xy",
+      "pdfInches": [
+        7.16,
+        5.800000000000001
+      ],
+      "vectorPdf": true,
+      "embeddedFonts": [
+        "/DJMTKY+DejaVuSans-Bold",
+        "/HJKXRH+DejaVuSans-Bold",
+        "/BJBPLR+DejaVuSans",
+        "/CPUQYB+DejaVuSans"
+      ],
+      "editableSvgText": true,
+      "pngPixels": [
+        2148,
+        1740
+      ],
+      "pngDpi": 300
+    },
+    {
+      "figure": "03-light-growth",
+      "pdfInches": [
+        7.16,
+        5.5
+      ],
+      "vectorPdf": true,
+      "embeddedFonts": [
+        "/GRNXFE+DejaVuSans"
+      ],
+      "editableSvgText": true,
+      "pngPixels": [
+        2148,
+        1650
+      ],
+      "pngDpi": 300
+    },
+    {
+      "figure": "04-workloads",
+      "pdfInches": [
+        7.16,
+        5.800000000000001
+      ],
+      "vectorPdf": true,
+      "embeddedFonts": [
+        "/EKQHSI+DejaVuSans",
+        "/DSWGTF+DejaVuSans"
+      ],
+      "editableSvgText": true,
+      "pngPixels": [
+        2148,
+        1740
+      ],
+      "pngDpi": 300
+    },
+    {
+      "figure": "05-grid-coverage",
+      "pdfInches": [
+        7.16,
+        6.300000000000001
+      ],
+      "vectorPdf": true,
+      "embeddedFonts": [
+        "/GUGNOP+DejaVuSans"
+      ],
+      "editableSvgText": true,
+      "pngPixels": [
+        2148,
+        1890
+      ],
+      "pngDpi": 300
+    }
+  ]
+}

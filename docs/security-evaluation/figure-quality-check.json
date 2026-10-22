@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "visualInspection": "All four PNG layouts reviewed; explicit headroom repaired title/annotation collision in detected ISS panel; vector exports use same layout.",
+  "files": [
+    {
+      "stem": "01_no_attack_service_cost",
+      "pdfPages": 1,
+      "pdfEmbeddedRasterImages": 0,
+      "pdfFonts": [
+        "/EPQHAE+DejaVuSans"
+      ],
+      "pngPixels": [
+        2148,
+        1515
+      ],
+      "pngDpi": [
+        299.9994,
+        299.9994
+      ],
+      "svgEditableTextElements": 31,
+      "sha256": {
+        ".pdf": "f97178b4a427a7adfa7113a96d8fffdf88fab2e0bd733f4b4c6c771a824b6519",
+        ".png": "953732826014f0fe20df88712bb7662f783a25dae7aa2f8dc2b88a82d2841972",
+        ".svg": "469509c6dba1532a0c0e8be5b496000f352079e4b068434bc3c09a50b0bef36c"
+      }
+    },
+    {
+      "stem": "02_undetected_exposure_service",
+      "pdfPages": 1,
+      "pdfEmbeddedRasterImages": 0,
+      "pdfFonts": [
+        "/FPFWAR+DejaVuSans",
+        "/PNCDCV+DejaVuSans"
+      ],
+      "pngPixels": [
+        2148,
+        2661
+      ],
+      "pngDpi": [
+        299.9994,
+        299.9994
+      ],
+      "svgEditableTextElements": 123,
+      "sha256": {
+        ".pdf": "cc3d82b0077f71d2d8c70b2ab6e5f85441ff68bca2b7a61c2aa8b32844122457",
+        ".png": "4319f6eb58b1e526772ba5d386d71dae021ec3399a5c2d585c98ce0f7e2e3031",
+        ".svg": "f29b2e1d3ced66b3b8cdc1dc3f3662392a1316c11241416a66bc7ad4394f1828"
+      }
+    },
+    {
+      "stem": "03_detected_exposure_service",
+      "pdfPages": 1,
+      "pdfEmbeddedRasterImages": 0,
+      "pdfFonts": [
+        "/FPFWAR+DejaVuSans",
+        "/PNCDCV+DejaVuSans"
+      ],
+      "pngPixels": [
+        2148,
+        2661
+      ],
+      "pngDpi": [
+        299.9994,
+        299.9994
+      ],
+      "svgEditableTextElements": 128,
+      "sha256": {
+        ".pdf": "894f872a7404f3ea00643c7c27aea057dec9248a392054c7347066bf42fa3f59",
+        ".png": "3c2343d481c37a4a63aabf603a97fa9f8317a97a9306c01c5b50594bc7d84b90",
+        ".svg": "a1afae09e1e158d0c07b776a5fe178553be064fdea0e9fcc956e7f9929e9d005"
+      }
+    },
+    {
+      "stem": "04_detection_recovery_cost",
+      "pdfPages": 1,
+      "pdfEmbeddedRasterImages": 0,
+      "pdfFonts": [
+        "/CXPTVM+DejaVuSans"
+      ],
+      "pngPixels": [
+        2148,
+        1500
+      ],
+      "pngDpi": [
+        299.9994,
+        299.9994
+      ],
+      "svgEditableTextElements": 26,
+      "sha256": {
+        ".pdf": "ec439ecccf32a92609581f37072dedf173063e7aec1cbe9aaf3f1fcd946227ee",
+        ".png": "7dea86474d512033fc1bb49dd97b4df8ba27ffa63f5a29c33f4fc734ed0336e6",
+        ".svg": "8513820cc20b734b34dc0508b21027a5fcd5818122db57eed86c1329706b2e03"
+      }
+    }
+  ]
+}

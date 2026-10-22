@@ -80,6 +80,16 @@ public final class SecurityActionExecutor {
                 }
                 case STOP -> transitions.stopContext(state, id, at);
                 case EXPIRE_CONTEXT -> transitions.expireContext(state, id, DeactivationReason.POLICY_RETIRED, at);
+                case NOTIFY_REVOCATION -> {
+                    if (!SecurityContext.matches(contact, id) || at.isBefore(contact.start()) || !at.isBefore(contact.end()))
+                        throw new Rejected("OUTSIDE_CONTACT", "Revocation delivery needs the matching open contact");
+                    if (!state.contexts().containsKey(id) || !state.key(keys.uplink()).contextId().equals(id)
+                            || !state.key(keys.downlink()).contextId().equals(id))
+                        throw new Rejected("INVALID_KEY_PAIR", "Revocation names a known pair from this context");
+                    // Independent authenticated management credential is an explicit model assumption.
+                    // Ground admission already retired affected traffic keys; receipt does not rebind SAs.
+                    yield state;
+                }
                 default -> throw new Rejected("INVALID_ACTION", "Execute resolved primitive steps, not " + step);
             };
         } catch (Rejected rejection) {

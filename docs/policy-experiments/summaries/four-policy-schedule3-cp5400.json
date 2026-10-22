@@ -1,0 +1,134 @@
+{
+  "schedule3-cp5400-cost1-fixed" : {
+    "fixture" : "schedule3-cp5400-cost1",
+    "policyName" : "FIXED_PERIOD",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "period" : 3600.000000000
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-10-10T01:49:34.350128174Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 60.000000000,
+      "controlCpu" : 2.330000000,
+      "managementBytes" : 3240,
+      "newKeys" : 8
+    },
+    "partialProgress" : null,
+    "decisions" : 41,
+    "ruleDecisions" : 41,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 75163000,
+    "actualEventsFile" : "schedule3-cp5400-cost1-fixed.events.json",
+    "actualResultFile" : "schedule3-cp5400-cost1-fixed.actual.json",
+    "compactDecisionsFile" : "schedule3-cp5400-cost1-fixed.decisions.json"
+  },
+  "schedule3-cp5400-cost1-multi" : {
+    "fixture" : "schedule3-cp5400-cost1",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "SEARCH_INCOMPLETE",
+    "stoppedAt" : "2026-10-10T00:07:54.680328369Z",
+    "finalMetrics" : null,
+    "partialProgress" : {
+      "at" : "2026-10-10T00:07:54.680328369Z",
+      "servedContactsSoFar" : 0,
+      "usefulSecureTimeSoFar" : 0.0,
+      "recordedCosts" : {
+        "elapsed" : 4.000000000,
+        "spacecraftCpu" : 0.0,
+        "groundCpu" : 0.400000000,
+        "radioOccupancy" : 0.0,
+        "uplinkBytes" : 0,
+        "downlinkBytes" : 0
+      },
+      "accruedCosts" : {
+        "elapsed" : 4.000000000,
+        "spacecraftCpu" : 0.0,
+        "groundCpu" : 0.400000000,
+        "radioOccupancy" : 0.0,
+        "uplinkBytes" : 0,
+        "downlinkBytes" : 0
+      },
+      "createdKeysSoFar" : 4,
+      "pendingOperations" : 0,
+      "frameInFlight" : false
+    },
+    "decisions" : 4,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 3,
+      "INCOMPLETE" : 1
+    },
+    "exploredNodes" : 21000,
+    "searchNanos" : 1859572800,
+    "controllerWallNanos" : 1860397100,
+    "actualEventsFile" : "schedule3-cp5400-cost1-multi.events.json",
+    "actualResultFile" : "schedule3-cp5400-cost1-multi.actual.json",
+    "compactDecisionsFile" : "schedule3-cp5400-cost1-multi.decisions.json"
+  },
+  "schedule3-cp5400-cost1-next" : {
+    "fixture" : "schedule3-cp5400-cost1",
+    "policyName" : "NEXT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "name" : "NEXT",
+      "horizon" : 1
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-10-10T01:49:34.350128174Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 60.000000000,
+      "controlCpu" : 2.130000000,
+      "managementBytes" : 3240,
+      "newKeys" : 6
+    },
+    "partialProgress" : null,
+    "decisions" : 38,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 38
+    },
+    "exploredNodes" : 17688,
+    "searchNanos" : 2798465900,
+    "controllerWallNanos" : 2815320100,
+    "actualEventsFile" : "schedule3-cp5400-cost1-next.events.json",
+    "actualResultFile" : "schedule3-cp5400-cost1-next.actual.json",
+    "compactDecisionsFile" : "schedule3-cp5400-cost1-next.decisions.json"
+  },
+  "schedule3-cp5400-cost1-percontact" : {
+    "fixture" : "schedule3-cp5400-cost1",
+    "policyName" : "PER_CONTACT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "advancePreparation" : "JUST_IN_TIME"
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-10-10T01:49:34.350128174Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 60.000000000,
+      "controlCpu" : 2.130000000,
+      "managementBytes" : 3240,
+      "newKeys" : 6
+    },
+    "partialProgress" : null,
+    "decisions" : 36,
+    "ruleDecisions" : 36,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 21859100,
+    "actualEventsFile" : "schedule3-cp5400-cost1-percontact.events.json",
+    "actualResultFile" : "schedule3-cp5400-cost1-percontact.actual.json",
+    "compactDecisionsFile" : "schedule3-cp5400-cost1-percontact.decisions.json"
+  }
+}

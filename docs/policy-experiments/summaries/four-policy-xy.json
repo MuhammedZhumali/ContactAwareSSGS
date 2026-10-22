@@ -1,0 +1,476 @@
+{
+  "X-autonomous-fixed" : {
+    "fixture" : "X-autonomous",
+    "policyName" : "FIXED_PERIOD",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "period" : 60.000000000
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 2,
+      "usefulSecureTime" : 26.000000000,
+      "controlCpu" : 1.920000000,
+      "managementBytes" : 2960,
+      "newKeys" : 6
+    },
+    "partialProgress" : null,
+    "decisions" : 130,
+    "ruleDecisions" : 130,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 12219100,
+    "actualEventsFile" : "X-autonomous-fixed.events.json",
+    "actualResultFile" : "X-autonomous-fixed.actual.json",
+    "compactDecisionsFile" : "X-autonomous-fixed.decisions.json"
+  },
+  "X-autonomous-multi" : {
+    "fixture" : "X-autonomous",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "SEARCH_INCOMPLETE",
+    "stoppedAt" : "2026-01-01T00:00:00Z",
+    "finalMetrics" : null,
+    "partialProgress" : {
+      "at" : "2026-01-01T00:00:00Z",
+      "servedContactsSoFar" : 0,
+      "usefulSecureTimeSoFar" : 0.0,
+      "recordedCosts" : {
+        "elapsed" : 0.0,
+        "spacecraftCpu" : 0.0,
+        "groundCpu" : 0.0,
+        "radioOccupancy" : 0.0,
+        "uplinkBytes" : 0,
+        "downlinkBytes" : 0
+      },
+      "accruedCosts" : {
+        "elapsed" : 0.0,
+        "spacecraftCpu" : 0.0,
+        "groundCpu" : 0.0,
+        "radioOccupancy" : 0.0,
+        "uplinkBytes" : 0,
+        "downlinkBytes" : 0
+      },
+      "createdKeysSoFar" : 0,
+      "pendingOperations" : 0,
+      "frameInFlight" : false
+    },
+    "decisions" : 2,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 1,
+      "INCOMPLETE" : 1
+    },
+    "exploredNodes" : 661549,
+    "searchNanos" : 60337600300,
+    "controllerWallNanos" : 60338124800,
+    "actualEventsFile" : "X-autonomous-multi.events.json",
+    "actualResultFile" : "X-autonomous-multi.actual.json",
+    "compactDecisionsFile" : "X-autonomous-multi.decisions.json"
+  },
+  "X-autonomous-next" : {
+    "fixture" : "X-autonomous",
+    "policyName" : "NEXT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "name" : "NEXT",
+      "horizon" : 1
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 2,
+      "usefulSecureTime" : 38.000000000,
+      "controlCpu" : 0.120000000,
+      "managementBytes" : 160,
+      "newKeys" : 0
+    },
+    "partialProgress" : null,
+    "decisions" : 163,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 163
+    },
+    "exploredNodes" : 254195,
+    "searchNanos" : 11166630700,
+    "controllerWallNanos" : 11178935900,
+    "actualEventsFile" : "X-autonomous-next.events.json",
+    "actualResultFile" : "X-autonomous-next.actual.json",
+    "compactDecisionsFile" : "X-autonomous-next.decisions.json"
+  },
+  "X-autonomous-percontact" : {
+    "fixture" : "X-autonomous",
+    "policyName" : "PER_CONTACT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "advancePreparation" : "JUST_IN_TIME"
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 2,
+      "usefulSecureTime" : 28.000000000,
+      "controlCpu" : 1.920000000,
+      "managementBytes" : 2960,
+      "newKeys" : 6
+    },
+    "partialProgress" : null,
+    "decisions" : 135,
+    "ruleDecisions" : 135,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 8234700,
+    "actualEventsFile" : "X-autonomous-percontact.events.json",
+    "actualResultFile" : "X-autonomous-percontact.actual.json",
+    "compactDecisionsFile" : "X-autonomous-percontact.decisions.json"
+  },
+  "X-prepared-fixed" : {
+    "fixture" : "X-prepared",
+    "policyName" : "FIXED_PERIOD",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "period" : 60.000000000
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 2,
+      "usefulSecureTime" : 26.000000000,
+      "controlCpu" : 1.920000000,
+      "managementBytes" : 2960,
+      "newKeys" : 6
+    },
+    "partialProgress" : null,
+    "decisions" : 128,
+    "ruleDecisions" : 128,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 144372500,
+    "actualEventsFile" : "X-prepared-fixed.events.json",
+    "actualResultFile" : "X-prepared-fixed.actual.json",
+    "compactDecisionsFile" : "X-prepared-fixed.decisions.json"
+  },
+  "X-prepared-multi" : {
+    "fixture" : "X-prepared",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 37.000000000,
+      "controlCpu" : 0.830000000,
+      "managementBytes" : 1240,
+      "newKeys" : 2
+    },
+    "partialProgress" : null,
+    "decisions" : 162,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 162
+    },
+    "exploredNodes" : 775665,
+    "searchNanos" : 65960543700,
+    "controllerWallNanos" : 65976665300,
+    "actualEventsFile" : "X-prepared-multi.events.json",
+    "actualResultFile" : "X-prepared-multi.actual.json",
+    "compactDecisionsFile" : "X-prepared-multi.decisions.json"
+  },
+  "X-prepared-next" : {
+    "fixture" : "X-prepared",
+    "policyName" : "NEXT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "name" : "NEXT",
+      "horizon" : 1
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 2,
+      "usefulSecureTime" : 38.000000000,
+      "controlCpu" : 0.320000000,
+      "managementBytes" : 160,
+      "newKeys" : 2
+    },
+    "partialProgress" : null,
+    "decisions" : 162,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 162
+    },
+    "exploredNodes" : 109076,
+    "searchNanos" : 6812705200,
+    "controllerWallNanos" : 6837557400,
+    "actualEventsFile" : "X-prepared-next.events.json",
+    "actualResultFile" : "X-prepared-next.actual.json",
+    "compactDecisionsFile" : "X-prepared-next.decisions.json"
+  },
+  "X-prepared-percontact" : {
+    "fixture" : "X-prepared",
+    "policyName" : "PER_CONTACT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "advancePreparation" : "JUST_IN_TIME"
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 2,
+      "usefulSecureTime" : 28.000000000,
+      "controlCpu" : 1.920000000,
+      "managementBytes" : 2960,
+      "newKeys" : 6
+    },
+    "partialProgress" : null,
+    "decisions" : 133,
+    "ruleDecisions" : 133,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 61706800,
+    "actualEventsFile" : "X-prepared-percontact.events.json",
+    "actualResultFile" : "X-prepared-percontact.actual.json",
+    "compactDecisionsFile" : "X-prepared-percontact.decisions.json"
+  },
+  "Y-autonomous-fixed" : {
+    "fixture" : "Y-autonomous",
+    "policyName" : "FIXED_PERIOD",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "period" : 60.000000000
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 30.000000000,
+      "controlCpu" : 1.680000000,
+      "managementBytes" : 2240,
+      "newKeys" : 6
+    },
+    "partialProgress" : null,
+    "decisions" : 145,
+    "ruleDecisions" : 145,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 9397400,
+    "actualEventsFile" : "Y-autonomous-fixed.events.json",
+    "actualResultFile" : "Y-autonomous-fixed.actual.json",
+    "compactDecisionsFile" : "Y-autonomous-fixed.decisions.json"
+  },
+  "Y-autonomous-multi" : {
+    "fixture" : "Y-autonomous",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 42.000000000,
+      "controlCpu" : 0.180000000,
+      "managementBytes" : 240,
+      "newKeys" : 0
+    },
+    "partialProgress" : null,
+    "decisions" : 180,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 180
+    },
+    "exploredNodes" : 346841,
+    "searchNanos" : 21781985600,
+    "controllerWallNanos" : 21796157400,
+    "actualEventsFile" : "Y-autonomous-multi.events.json",
+    "actualResultFile" : "Y-autonomous-multi.actual.json",
+    "compactDecisionsFile" : "Y-autonomous-multi.decisions.json"
+  },
+  "Y-autonomous-next" : {
+    "fixture" : "Y-autonomous",
+    "policyName" : "NEXT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "name" : "NEXT",
+      "horizon" : 1
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 42.000000000,
+      "controlCpu" : 0.180000000,
+      "managementBytes" : 240,
+      "newKeys" : 0
+    },
+    "partialProgress" : null,
+    "decisions" : 180,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 180
+    },
+    "exploredNodes" : 278227,
+    "searchNanos" : 12159822100,
+    "controllerWallNanos" : 12173368200,
+    "actualEventsFile" : "Y-autonomous-next.events.json",
+    "actualResultFile" : "Y-autonomous-next.actual.json",
+    "compactDecisionsFile" : "Y-autonomous-next.decisions.json"
+  },
+  "Y-autonomous-percontact" : {
+    "fixture" : "Y-autonomous",
+    "policyName" : "PER_CONTACT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "advancePreparation" : "JUST_IN_TIME"
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 2,
+      "usefulSecureTime" : 28.000000000,
+      "controlCpu" : 1.920000000,
+      "managementBytes" : 2960,
+      "newKeys" : 6
+    },
+    "partialProgress" : null,
+    "decisions" : 135,
+    "ruleDecisions" : 135,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 6635600,
+    "actualEventsFile" : "Y-autonomous-percontact.events.json",
+    "actualResultFile" : "Y-autonomous-percontact.actual.json",
+    "compactDecisionsFile" : "Y-autonomous-percontact.decisions.json"
+  },
+  "Y-prepared-fixed" : {
+    "fixture" : "Y-prepared",
+    "policyName" : "FIXED_PERIOD",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "period" : 60.000000000
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 30.000000000,
+      "controlCpu" : 1.680000000,
+      "managementBytes" : 2240,
+      "newKeys" : 6
+    },
+    "partialProgress" : null,
+    "decisions" : 143,
+    "ruleDecisions" : 143,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 9636200,
+    "actualEventsFile" : "Y-prepared-fixed.events.json",
+    "actualResultFile" : "Y-prepared-fixed.actual.json",
+    "compactDecisionsFile" : "Y-prepared-fixed.decisions.json"
+  },
+  "Y-prepared-multi" : {
+    "fixture" : "Y-prepared",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 42.000000000,
+      "controlCpu" : 0.380000000,
+      "managementBytes" : 240,
+      "newKeys" : 2
+    },
+    "partialProgress" : null,
+    "decisions" : 179,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 179
+    },
+    "exploredNodes" : 141948,
+    "searchNanos" : 9102100100,
+    "controllerWallNanos" : 9115113200,
+    "actualEventsFile" : "Y-prepared-multi.events.json",
+    "actualResultFile" : "Y-prepared-multi.actual.json",
+    "compactDecisionsFile" : "Y-prepared-multi.decisions.json"
+  },
+  "Y-prepared-next" : {
+    "fixture" : "Y-prepared",
+    "policyName" : "NEXT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "name" : "NEXT",
+      "horizon" : 1
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 42.000000000,
+      "controlCpu" : 0.380000000,
+      "managementBytes" : 240,
+      "newKeys" : 2
+    },
+    "partialProgress" : null,
+    "decisions" : 179,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 179
+    },
+    "exploredNodes" : 117764,
+    "searchNanos" : 5278284200,
+    "controllerWallNanos" : 5290837200,
+    "actualEventsFile" : "Y-prepared-next.events.json",
+    "actualResultFile" : "Y-prepared-next.actual.json",
+    "compactDecisionsFile" : "Y-prepared-next.decisions.json"
+  },
+  "Y-prepared-percontact" : {
+    "fixture" : "Y-prepared",
+    "policyName" : "PER_CONTACT",
+    "horizon" : 1,
+    "policyConfiguration" : {
+      "advancePreparation" : "JUST_IN_TIME"
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-01-01T00:01:25Z",
+    "finalMetrics" : {
+      "servedContacts" : 2,
+      "usefulSecureTime" : 28.000000000,
+      "controlCpu" : 1.920000000,
+      "managementBytes" : 2960,
+      "newKeys" : 6
+    },
+    "partialProgress" : null,
+    "decisions" : 133,
+    "ruleDecisions" : 133,
+    "searchStatuses" : { },
+    "exploredNodes" : 0,
+    "searchNanos" : 0,
+    "controllerWallNanos" : 7643800,
+    "actualEventsFile" : "Y-prepared-percontact.events.json",
+    "actualResultFile" : "Y-prepared-percontact.actual.json",
+    "compactDecisionsFile" : "Y-prepared-percontact.decisions.json"
+  }
+}

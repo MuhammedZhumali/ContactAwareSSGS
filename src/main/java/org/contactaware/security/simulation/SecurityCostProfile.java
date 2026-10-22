@@ -68,8 +68,20 @@ public record SecurityCostProfile(String name, Provenance provenance, String sou
 
     public OperationCost cost(SecurityAction action) {
         var cost = operations.get(action);
+        // Opt-in incident response uses a separate independent management message. Existing
+        // profiles/results retain exactly their old ordinary-operation definitions.
+        if (cost == null && action == NOTIFY_REVOCATION) {
+            if (provenance == Provenance.SYNTHETIC_ASSUMPTION) return syntheticRevocationNotice();
+            throw new IllegalArgumentException("Measured profile must explicitly specify NOTIFY_REVOCATION; synthetic fallback is not measured");
+        }
         if (cost == null) throw new IllegalArgumentException("Resolve composite action into steps first: " + action);
         return cost;
+    }
+
+    public static OperationCost syntheticRevocationNotice() {
+        return new OperationCost(List.of(phase(Resource.GROUND_CPU, 20, 0),
+                phase(Resource.UPLINK, 160, 64), phase(Resource.SPACECRAFT_CPU, 20, 0),
+                phase(Resource.DOWNLINK, 80, 32), phase(Resource.WAIT, 120, 0)));
     }
 
     /** ROTATE/ESTABLISH have no extra surcharge; omit preparation/installation already completed. */

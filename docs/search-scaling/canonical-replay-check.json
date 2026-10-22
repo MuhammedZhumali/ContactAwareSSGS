@@ -1,0 +1,34 @@
+[
+  {
+    "case": "X-NEXT",
+    "status": "PASS",
+    "scoreAndFullCanonicalPlanEqual": true,
+    "originalNodes": 8425,
+    "currentNodes": 1896,
+    "currentSearchNanos": 1990093100
+  },
+  {
+    "case": "X-MULTI",
+    "status": "PASS",
+    "scoreAndFullCanonicalPlanEqual": true,
+    "originalNodes": 163151,
+    "currentNodes": 625,
+    "currentSearchNanos": 290968799
+  },
+  {
+    "case": "Y-NEXT",
+    "status": "PASS",
+    "scoreAndFullCanonicalPlanEqual": true,
+    "originalNodes": 8425,
+    "currentNodes": 1896,
+    "currentSearchNanos": 407343700
+  },
+  {
+    "case": "Y-MULTI",
+    "status": "PASS",
+    "scoreAndFullCanonicalPlanEqual": true,
+    "originalNodes": 10331,
+    "currentNodes": 2091,
+    "currentSearchNanos": 788085200
+  }
+]

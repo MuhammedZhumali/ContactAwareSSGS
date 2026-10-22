@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "se1-v2-regression-1",
+  "normalization": "Only remove the new frameEvidence field when null. No event order, key IDs, costs, timestamps or other fields are ignored. Timing measurements are not compared.",
+  "frozenExecutableSha256": "789261d4e7ad697c69c65f17f5a73cd498d578be64f187b20933715f680d80cd",
+  "currentExecutableSha256": "b304138d4f6df1b040725affabc6e0a1905d826aa8f299bfe32f2832fa2a38aa",
+  "cases": [
+    {
+      "currentCase": "X-cp150-next-none",
+      "frozenCase": "X-autonomous-next",
+      "bothFinished": true,
+      "sameFiveMetrics": true,
+      "sameNormalizedJournal": true,
+      "sameExploredNodes": true,
+      "sameDecisionCount": true,
+      "currentNodes": 60697,
+      "frozenNodes": 60697,
+      "eventsCompared": 176,
+      "currentEventsSha256": "4ea375fb7006d5a9da54fd5de32d89eaff0bae730fc43aa5df0dfc77095f6af1",
+      "frozenEventsSha256": "e1324a041937f28924a846eae1a523a24649353157880c134c84b78ed7b57822"
+    },
+    {
+      "currentCase": "X-cp150-multi-none",
+      "frozenCase": "X-autonomous-multi",
+      "bothFinished": true,
+      "sameFiveMetrics": true,
+      "sameNormalizedJournal": true,
+      "sameExploredNodes": true,
+      "sameDecisionCount": true,
+      "currentNodes": 45629,
+      "frozenNodes": 45629,
+      "eventsCompared": 191,
+      "currentEventsSha256": "ed1d2aaa46f9e40bd72b0c74b16184c3013c147b284055e839f3ee580e9d7536",
+      "frozenEventsSha256": "64efde7fb9fdef554ac88083dc31b38f000011bd29b3552fc807c1ce8ed87639"
+    },
+    {
+      "currentCase": "Y-cp150-next-none",
+      "frozenCase": "Y-autonomous-next",
+      "bothFinished": true,
+      "sameFiveMetrics": true,
+      "sameNormalizedJournal": true,
+      "sameExploredNodes": true,
+      "sameDecisionCount": true,
+      "currentNodes": 55167,
+      "frozenNodes": 55167,
+      "eventsCompared": 199,
+      "currentEventsSha256": "3606a746706b2d6fbbde3814391c3a0277ef373b8817f703767c3d9dbf2f758b",
+      "frozenEventsSha256": "776908c5e06b9dae46d15f3e09d24475390a31c959765e9344898f1eba6fd198"
+    },
+    {
+      "currentCase": "Y-cp150-multi-none",
+      "frozenCase": "Y-autonomous-multi",
+      "bothFinished": true,
+      "sameFiveMetrics": true,
+      "sameNormalizedJournal": true,
+      "sameExploredNodes": true,
+      "sameDecisionCount": true,
+      "currentNodes": 61884,
+      "frozenNodes": 61884,
+      "eventsCompared": 199,
+      "currentEventsSha256": "3606a746706b2d6fbbde3814391c3a0277ef373b8817f703767c3d9dbf2f758b",
+      "frozenEventsSha256": "776908c5e06b9dae46d15f3e09d24475390a31c959765e9344898f1eba6fd198"
+    }
+  ]
+}

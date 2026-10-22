@@ -8,9 +8,14 @@ public record SearchDiagnostics(long terminalPlans, long expandedNodes, int maxD
                                 long repeatedTransitions, long collapsedWaitTransitions,
                                 long memoHits, long memoEntries, long memoStoreSkips,
                                 long generationNanos, long executionNanos, long boundNanos, long boundPrunedNodes,
+                                long preExecutionWaitSkips, long canonicalBoundPrunedNodes,
+                                long rootCandidateCount, StopReason stopReason,
+                                Map<PlanningAction.Kind, Long> rootGeneratedByAction,
                                 Map<PlanningAction.Kind, Long> generatedByAction,
                                 Map<PlanningAction.Kind, Long> executedByAction) {
+    public enum StopReason { NONE, NODE_LIMIT, TIME_LIMIT }
     public SearchDiagnostics {
+        rootGeneratedByAction = Collections.unmodifiableMap(new EnumMap<>(rootGeneratedByAction));
         generatedByAction = Collections.unmodifiableMap(new EnumMap<>(generatedByAction));
         executedByAction = Collections.unmodifiableMap(new EnumMap<>(executedByAction));
     }
@@ -19,7 +24,10 @@ public record SearchDiagnostics(long terminalPlans, long expandedNodes, int maxD
         long terminalPlans, expandedNodes, generatedActions, executedTransitions;
         long repeatedTransitions, collapsedWaitTransitions, memoHits, memoEntries, memoStoreSkips;
         long generationNanos, executionNanos, boundNanos, boundPrunedNodes;
+        long preExecutionWaitSkips, canonicalBoundPrunedNodes, rootCandidateCount;
+        StopReason stopReason = StopReason.NONE;
         int maxDepth;
+        final Map<PlanningAction.Kind, Long> rootGeneratedByAction = counts();
         final Map<PlanningAction.Kind, Long> generatedByAction = counts();
         final Map<PlanningAction.Kind, Long> executedByAction = counts();
 
@@ -32,7 +40,9 @@ public record SearchDiagnostics(long terminalPlans, long expandedNodes, int maxD
         SearchDiagnostics snapshot() {
             return new SearchDiagnostics(terminalPlans, expandedNodes, maxDepth, generatedActions, executedTransitions,
                     repeatedTransitions, collapsedWaitTransitions, memoHits, memoEntries, memoStoreSkips,
-                    generationNanos, executionNanos, boundNanos, boundPrunedNodes, generatedByAction, executedByAction);
+                    generationNanos, executionNanos, boundNanos, boundPrunedNodes,
+                    preExecutionWaitSkips, canonicalBoundPrunedNodes, rootCandidateCount, stopReason,
+                    rootGeneratedByAction, generatedByAction, executedByAction);
         }
     }
 }

@@ -19,6 +19,28 @@ __pycache__/
 /docs/simulation-figures/manifest.json
 /docs/simulation-figures.zip
 
+# Generated policy-comparison figures and raw experiment bundles
+/docs/policy-experiments/figures/
+/docs/policy-experiments/*.zip
+
+# Generated research exports; scripts, reports and validation summaries stay versionable
+/docs/search-scaling/tables/
+/docs/search-scaling/schedule-figures/
+/docs/search-scaling/xy-figures/
+/docs/search-scaling/coverage-figures/
+/docs/search-scaling/publication/
+/docs/search-scaling/research-figures*/
+/docs/search-scaling/*.zip
+/docs/search-scaling/artifact-manifest.json
+/docs/search-scaling/evidence-file-hashes.json
+
+# Generated se1 research artifacts; retain source, protocol, reports and compact validation
+/docs/security-evaluation/figures/
+/docs/security-evaluation/tables/
+/docs/security-evaluation/*.zip
+/docs/security-evaluation/artifact-manifest.json
+/docs/security-evaluation/evidence-file-hashes.json
+
 # LaTeX build intermediates (keep .tex sources and reference documents)
 *.aux
 *.bcf

@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-22",
+  "maven": {
+    "command": ".\\mvnw.cmd -Dmaven.repo.local=.tools/m2 -o -B -ntp -DargLine=-Xmx1024m verify",
+    "result": "BUILD SUCCESS",
+    "elapsed": "1 min 49 s",
+    "totals": {
+      "tests": 261,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": [
+      {
+        "suite": "org.contactaware.contacts.ContactGapAnalyzerTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "2550607de74facfbf6b66fcba0adc189d9eb687ca805a8f6994f0eba78ed85d6"
+      },
+      {
+        "suite": "org.contactaware.contacts.ContactScheduleSelectorTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "762a11f4742cdd316eee12b98439792f833af2e25d64737f36a9ee664bf7eaf7"
+      },
+      {
+        "suite": "org.contactaware.contacts.DatasetComparisonTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "91f2f7724d19067a077a65e44fbaf4760d893e562a15fda4408cc25fc051f2ff"
+      },
+      {
+        "suite": "org.contactaware.contacts.HttpImportTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "c997196e2d6ff651fa0c99d404514cc71c0ba9ea3d014bcf13427f620ce87881"
+      },
+      {
+        "suite": "org.contactaware.contacts.OrekitContactGeneratorTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "2300ea7d1487e95a7ff82987e7c70d7c16983fb74f5cde946ab1b963f86f1db4"
+      },
+      {
+        "suite": "org.contactaware.contacts.SatnogsImporterTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "b03519a340bac4348f4723dc6717c112af23c877c01c358e240e9ba354b4c0b8"
+      },
+      {
+        "suite": "org.contactaware.contacts.ScheduleCliTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "c675aa64481a5aa8e7ff5dd114650fe223618dfda3b623567170269106235601"
+      },
+      {
+        "suite": "org.contactaware.security.LifecycleTransitionsTest",
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "eebcbc19a3cdfee7093031e6bef4f4a262d463a7892c806fd4b95d8e29a9a305"
+      },
+      {
+        "suite": "org.contactaware.security.SecurityConstraintCheckerTest",
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "a74e46df5a71e18757313a1b5e3e7f9778331462b601d4c2b1dfbccf6d141039"
+      },
+      {
+        "suite": "org.contactaware.security.SecurityModelTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "75083f8936d9eb25c459574045afdf2c057c3c8980d876e715470426b404fdd2"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.ContinuationEvaluatorTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "7dc48c48f3cf23b18dbf82fe260deab2e12183f17d94eb7cc3e5de7f89598858"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.ControlledWitnessIntegrationTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "aaff7d77a9c7675d4a1fc6f8f974dcc74b459ec20ba81892c0c00fc74fea831a"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.ExactHorizonPlannerTest",
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "322d17e3de1028ea485c80b25e7fc271421ad163956087859f4865714f2c4f09"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.ExecutionSnapshotTest",
+        "tests": 21,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "a20ed5b6d7d89d6ec7d6e6d45f669fe7f3ce6366efaace6df4a4e34513ac58c8"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.FixedPeriodPolicyTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "5e7ef8566efc304de590def5cd4dc7a1ecae6f51f95a4536c0a9976314a0b905"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.FourPolicyExperimentTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "8f119ae5673fbacf82d12b30d5711d4753ed19b156f3beea29511953a903fb3a"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.HorizonPlannerMainTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "40f4cffde41c37905ac7699919b81e46aca49017b06c40127811800048225fca"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.HorizonWitnessIntegrationTest",
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "7c8bbb9e49ca4ba8e68058ff66ec77d610f72f7e059b3805c83592eaf206bde0"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.PerContactPolicyTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "c7706b5e452932c5c5261cf0681d06dde6ca858f3a510e29b07f465ba481ed69"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.PlannerAccelerationTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "e03cd430ec7da8b67217cbb150c5d8c1742a0060dc5dfac16fed1ec24b686ced"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.PlanningBranchTest",
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "305e75795951d002536259711db6d8090f3814abeb515455f3cb2f408133f164"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.PlanningContinuationIntegrationTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "29af72671aafa2f4fae5b1fd4cdc2fe1aded2fe2b70ef2d550ffd42046aa2b0a"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.PlanningObservationTest",
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "6e3527fa2492ff6df9c83581f96e9b3b082136625c521022a03f96182e6d4fe8"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.PlanningOptimisticBoundTest",
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "620c311ea2828637019dea3925507e99b637a773d09959059026769e261776d9"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.PlanningResultComparatorTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "d3f4119ba8c2d27485ac7cbdefee5a2620992edd357ef1330b9a5eece8903b00"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.PlanningStateKeyTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "c30dacf1cf56c2ddb2e79a8843adb1980e3ef97ddcec338f40a322a3d746c157"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.RecedingHorizonControllerTest",
+        "tests": 16,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "7aeb4d458880245ae7651d014c8573ad13896e12eabf26573ad81ba7892e78b0"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.SecurityActionExecutorTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "69e13d73eb87292ffab7409a1b8f9adc54c5cac2e8d7d67c172b7dfee458bcd3"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.SecurityActionGeneratorTest",
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "dab3c5a84f2d525672bc54c1a7b561eb86f5cf57bc11d6b97883d76c9cb429d7"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.SecurityCostProfileTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "9bca905500ea964f8f8d138e85216e81e7ce2bc4bd9b85a593beb0854255c4df"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.SecurityPolicyControllerTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "e18a64acd51ffd43c68f43a8c242244892c0fa1640df9da1e7ae87aa7a83f94d"
+      },
+      {
+        "suite": "org.contactaware.security.simulation.SimulationEngineTest",
+        "tests": 18,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "reportSha256": "38934cc0ee156d27b848434022704217630df19421987f32fa2c83f73eca85f5"
+      }
+    ],
+    "externalAPIsCalled": false,
+    "httpTests": "local loopback only"
+  },
+  "experiments": {
+    "cases": 62,
+    "statuses": {
+      "FINISHED": 52,
+      "SEARCH_INCOMPLETE": 10
+    },
+    "independentAudit": "audit.json"
+  },
+  "archive": {
+    "file": "raw-runs.zip",
+    "sha256": "ff9cafd1b843820bff3102c8375846263ac15b6121a464b4c349ecc3aa5b0184",
+    "bytes": 1091272,
+    "crcValidation": "PASS",
+    "runDirectories": 15,
+    "allPublishedSummariesMatchArchive": true
+  },
+  "scheduleSha256Unchanged": "fe8a56aebdae09d31dcb3097f1c03ed960a21860edb727643db4310788c64862",
+  "figures": "figure-quality-check.json",
+  "gitDiffCheck": "PASS; only CRLF normalization notices"
+}

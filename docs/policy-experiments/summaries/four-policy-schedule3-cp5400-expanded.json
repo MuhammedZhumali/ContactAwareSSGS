@@ -1,0 +1,32 @@
+{
+  "schedule3-cp5400-cost1-multi" : {
+    "fixture" : "schedule3-cp5400-cost1",
+    "policyName" : "MULTI",
+    "horizon" : 2,
+    "policyConfiguration" : {
+      "name" : "MULTI",
+      "horizon" : 2
+    },
+    "status" : "FINISHED",
+    "stoppedAt" : "2026-10-10T01:49:34.350128174Z",
+    "finalMetrics" : {
+      "servedContacts" : 3,
+      "usefulSecureTime" : 60.000000000,
+      "controlCpu" : 2.130000000,
+      "managementBytes" : 3240,
+      "newKeys" : 6
+    },
+    "partialProgress" : null,
+    "decisions" : 37,
+    "ruleDecisions" : 0,
+    "searchStatuses" : {
+      "COMPLETE" : 37
+    },
+    "exploredNodes" : 466128,
+    "searchNanos" : 39177062100,
+    "controllerWallNanos" : 39219367500,
+    "actualEventsFile" : "schedule3-cp5400-cost1-multi.events.json",
+    "actualResultFile" : "schedule3-cp5400-cost1-multi.actual.json",
+    "compactDecisionsFile" : "schedule3-cp5400-cost1-multi.decisions.json"
+  }
+}

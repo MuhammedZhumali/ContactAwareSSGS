@@ -1,0 +1,30 @@
+{
+  "schemaVersion" : "1.0",
+  "options" : {
+    "scope" : "schedule46",
+    "mode" : "both",
+    "output" : "file:///C:/Users/Muhalek/ContactAwareSS/target/four-policy-schedule46-expanded/",
+    "schedule" : "file:///C:/Users/Muhalek/ContactAwareSS/data/runs/iss-20261010/schedule/schedule.json",
+    "policies" : [ "next", "multi" ],
+    "limits" : {
+      "maxNodes" : 100000,
+      "maxElapsed" : 30.000000000
+    },
+    "fixedPeriod" : 3600.000000000,
+    "cryptoperiod" : 7200.000000000,
+    "perContactPreparation" : "JUST_IN_TIME",
+    "multiHorizon" : 2,
+    "costScale" : 1,
+    "trace" : true
+  },
+  "plannerOptions" : {
+    "collapseEquivalentWaits" : true,
+    "memoize" : true,
+    "traversalOrder" : "SERVICE_FIRST",
+    "maxMemoEntries" : 50000,
+    "optimisticBounds" : true
+  },
+  "accounting" : "Final metrics are collected from each complete actual journal, including common preparation once. Partial progress is not a final score; accrued costs already include recorded costs. Forecast scores are never summed. Search time is separate from security CPU and does not advance simulated time.",
+  "interpretation" : "Rule baselines perform no search and have no COMPLETE search certificate. Next and Multi use the same exact solver, constraints, actions and tie-break; only the visible horizon differs. COMPLETE certifies a finite nominal horizon search, not a globally optimal receding policy. Selected orbital windows are geometric inputs, with synthetic finite traffic and security parameters. No hardware, attack or compromise-risk claim.",
+  "fixtureModels" : [ "schedule46-cp7200-cost1.model.json" ]
+}

@@ -173,6 +173,7 @@ class ExactHorizonPlannerTest {
                 java.util.function.UnaryOperator.identity(), clock::getAndIncrement).plan(chainObservation());
         assertThat(result.status()).isEqualTo(HorizonPlanResult.Status.INCOMPLETE);
         assertThat(result.elapsedNanos()).isEqualTo(2);
+        assertThat(result.diagnostics().stopReason()).isEqualTo(SearchDiagnostics.StopReason.TIME_LIMIT);
         assertThat(result.exploredNodes()).isZero();
         assertThat(result.score()).isNull();
     }

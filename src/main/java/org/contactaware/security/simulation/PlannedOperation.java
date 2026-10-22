@@ -15,12 +15,12 @@ public record PlannedOperation(String id, ScheduledSecurityAction intent, String
             throw new IllegalArgumentException("Online action requires a contact ID");
         if (interruptAt != null && interruptAt.isBefore(intent.scheduledAt()))
             throw new IllegalArgumentException("Interruption precedes action");
-        if (!Set.of(SecurityAction.INSTALL, SecurityAction.SWITCH, SecurityAction.OPEN, SecurityAction.REUSE)
+        if (!Set.of(SecurityAction.INSTALL, SecurityAction.SWITCH, SecurityAction.OPEN, SecurityAction.REUSE, SecurityAction.NOTIFY_REVOCATION)
                 .containsAll(missingAcknowledgements))
             throw new IllegalArgumentException("Only confirmed online steps have ACK controls");
         var applicable = switch (intent.action()) {
             case ROTATE, ESTABLISH -> Set.of(SecurityAction.INSTALL, SecurityAction.SWITCH, SecurityAction.OPEN);
-            case INSTALL, SWITCH, OPEN, REUSE -> Set.of(intent.action());
+            case INSTALL, SWITCH, OPEN, REUSE, NOTIFY_REVOCATION -> Set.of(intent.action());
             default -> Set.<SecurityAction>of();
         };
         if (!applicable.containsAll(missingAcknowledgements))

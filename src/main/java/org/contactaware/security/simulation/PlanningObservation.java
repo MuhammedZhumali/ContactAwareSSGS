@@ -137,6 +137,16 @@ public record PlanningObservation(
         if (candidate.isAfter(now) && !candidate.isAfter(end)) wakeUps.add(candidate);
     }
 
+    /** Add rule-derived timers without changing visibility, history, or the fixed evaluation boundary. */
+    public PlanningObservation withAdditionalWakeUps(Collection<Instant> additional) {
+        var combined = new TreeSet<>(wakeUps);
+        for (var candidate : additional) addWakeup(combined, Objects.requireNonNull(candidate), at, evaluationEnd);
+        return new PlanningObservation(at, horizon, currentContact, visibleContacts, evaluationEnd,
+                securityState, constraints, costs, ongoingOperations, resourceReservations, uncertainContexts,
+                payloadProgress, inFlightFrame, recordedCosts, accruedCosts, usefulSecureTime, createdKeys,
+                List.copyOf(combined), issuedKeyIds, issuedOperationIds);
+    }
+
     private static Instant earlier(Instant a, Instant b) { return a.isBefore(b) ? a : b; }
     private static Instant later(Instant a, Instant b) { return a.isAfter(b) ? a : b; }
 }
