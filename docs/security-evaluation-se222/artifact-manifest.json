@@ -1,0 +1,11 @@
+{
+  "sourceCommit": "1900d3d8a3b11b6b338c4bad44ec855d4cdca0ce",
+  "jarSha256": "c0d70b9be866f7d411acf29db80df191a698dcf6c597489076c0e2b8d69e6086",
+  "archive": "se222-new-evidence.zip",
+  "archiveBytes": 15007220,
+  "archiveSha256": "a006c9c4b3444e4972479a1de7f76c91f0c93c70789c7dd6fa2a101161d918d3",
+  "manifest": "../../target/security-evaluation-se222/manifest.json",
+  "manifestSha256": "a3013fbb215095c9a205b3a31359230b39782b89a12cbfc47407bb38458591a6",
+  "archiveIntegrity": "PASS",
+  "preservedLegacyFiles": 2765
+}

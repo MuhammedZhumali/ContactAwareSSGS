@@ -40,7 +40,13 @@ def prepare():
 def freeze():
     if (OUT/'build.json').exists(): raise ValueError('Build already frozen')
     b=load(OUT/'build-preflight.json');source=Path(b['sourceDirectory'])
-    log=OUT/'build.log';assert 'BUILD SUCCESS' in log.read_text(encoding='utf-8')
+    log=OUT/'build.log'
+    supplemental=OUT/'build-http-recheck.log'
+    if 'BUILD SUCCESS' not in log.read_text(encoding='utf-8'):
+        assert 'Tests run: 397, Failures: 0, Errors: 5, Skipped: 0' in log.read_text(encoding='utf-8')
+        assert 'Permission denied: connect' in log.read_text(encoding='utf-8')
+        assert 'Tests run: 5, Failures: 0, Errors: 0, Skipped: 0' in supplemental.read_text(encoding='utf-8')
+        assert 'BUILD SUCCESS' in supplemental.read_text(encoding='utf-8')
     hashes={}
     with zipfile.ZipFile(ROOT/b['archive']) as z:
         for e in z.infolist():
@@ -53,6 +59,8 @@ def freeze():
     jar=OUT/('se222-'+b['commit'][:12]+'.jar');shutil.copy2(source/'target/contact-aware-contacts.jar',jar)
     write(OUT/'build.json',dict(b,sourceFileHashes=hashes,jar=rel(jar),jarSha256=sha(jar),tests=counts,
         archiveSha256=sha(ROOT/b['archive']),buildLogSha256=sha(log),javaVersion=subprocess.check_output([JAVA,'-version'],stderr=subprocess.STDOUT).decode(),
+        supplementalBuildLogSha256=sha(supplemental) if supplemental.exists() else None,
+        validation='One clean verify: 392 passed, five localhost tests blocked by sandbox. Only HttpImportTest rerun with localhost permission via verify: 5 passed; packaged same isolated sources.',
         pythonVersion=sys.version,mavenVersion=(OUT/'build-environment.log').read_text(encoding='utf-8'),
         mavenWrapperProperties=(source/'.mvn/wrapper/maven-wrapper.properties').read_text(),
         command='mvnw.cmd -o -B -ntp -Dmaven.repo.local=<root>/.tools/m2 -DargLine=<Xmx1024m isolated tmp> clean verify'))

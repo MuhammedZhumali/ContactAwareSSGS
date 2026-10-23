@@ -1,0 +1,11 @@
+{
+  "audited": 20,
+  "final": 20,
+  "total": 20,
+  "newStatuses": {
+    "FINISHED": 5
+  },
+  "verifiedReuseLinks": 678,
+  "inputs": "target/security-evaluation-se222/analysis-input-hashes.json",
+  "note": "Independent journal accounting and provenance checks; not independent simulation or an optimality proof"
+}
