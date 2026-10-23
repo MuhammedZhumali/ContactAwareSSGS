@@ -13,6 +13,7 @@ public final class SecurityPolicyController {
     private final SecurityPolicy policy;
     private final Duration maxElapsed;
     private final CheckpointListener listener;
+    private final boolean continuationReuse;
 
     /** Called only with a complete immutable event-boundary snapshot; may persist it atomically. */
     @FunctionalInterface public interface CheckpointListener {
@@ -27,10 +28,16 @@ public final class SecurityPolicyController {
     }
 
     public SecurityPolicyController(SecurityPolicy policy, Duration maxElapsed, CheckpointListener listener) {
+        this(policy, maxElapsed, listener, false);
+    }
+
+    /** Opt-in and identical for Next/Multi. Proofs are local to this invocation, never restored from checkpoint. */
+    public SecurityPolicyController(SecurityPolicy policy, Duration maxElapsed, CheckpointListener listener, boolean continuationReuse) {
         this.policy = Objects.requireNonNull(policy);
         Objects.requireNonNull(policy.configuration());
         this.maxElapsed = Objects.requireNonNull(maxElapsed);
         this.listener = Objects.requireNonNull(listener);
+        this.continuationReuse = continuationReuse;
         if (maxElapsed.isNegative()) throw new IllegalArgumentException("Negative controller budget");
         maxElapsed.toNanos();
     }
@@ -49,6 +56,9 @@ public final class SecurityPolicyController {
         Objects.requireNonNull(outcomes);
         var current = checkpoint;
         var decisions = new ArrayList<ControlledSimulationResult.Decision>();
+        var work = new Work();
+        var guard = new ContinuationReuseGuard();
+        ContinuationReuseGuard.ProvenContinuation proof = null;
         try (var control = SearchControl.open(maxElapsed, SearchDiagnostics.StopReason.CONTROLLER_TIME_LIMIT)) {
         current = engine.controlledSnapshot(current);
         while (current.at().isBefore(current.scenario().end())) {
@@ -59,25 +69,70 @@ public final class SecurityPolicyController {
             SearchControl.checkpoint("controller.candidates");
             var candidates = generator.candidates(observation);
             var response = IncidentResponse.next(current, observation, candidates);
+            // Mandatory response retains precedence. It uses realized notices, never a future attack schedule.
             if (response != null && response.notice() != null) {
+                var audit = continuationReuse ? work.audit(proof, null, new ContinuationReuseGuard.Result(
+                        ContinuationReuseGuard.Status.REJECTED, "EMERGENCY_RESPONSE: observed incident takes precedence"), 0, 0) : null;
+                proof = null;
                 SearchControl.checkpoint("controller.notification");
                 var next = engine.controlledStart(current, Objects.requireNonNull(outcomes.forOperation(response.notice())).apply(response.notice()));
                 decisions.add(new ControlledSimulationResult.Decision(observation, null, null, next.at(),
-                        ControlledSimulationResult.DecisionSource.RULE, response.reason()));
+                        ControlledSimulationResult.DecisionSource.RULE, response.reason(), audit));
                 if (next.at().equals(current.at()) && next.pendingOperations().equals(current.pendingOperations()))
-                    return new ControlledSimulationResult(policy.configuration(), EXECUTION_STALLED, next, null, decisions);
+                    return work.finish(policy.configuration(), EXECUTION_STALLED, next, null, decisions);
                 current = next;
                 continue;
             }
             SearchControl.checkpoint("controller.selection");
-            var selection = response == null ? Objects.requireNonNull(policy.select(observation, candidates))
-                    : PolicySelection.rule(response.action(), response.reason());
-            var source = selection.search() == null ? ControlledSimulationResult.DecisionSource.RULE
-                    : ControlledSimulationResult.DecisionSource.SEARCH;
+            var checkedProof = proof;
+            ContinuationReuseGuard.Result verdict = null;
+            long guardNanos = 0, preparationNanos = 0;
+            boolean reused = false;
+            var rules = policy.continuationRules();
+            PolicySelection selection = null;
+            if (continuationReuse && response == null) {
+                long before = System.nanoTime();
+                ContinuationReuseGuard.Assessment assessment;
+                try {
+                    SearchControl.checkpoint("controller.reuseGuard");
+                    assessment = guard.assess(proof, observation, rules);
+                } finally { guardNanos = System.nanoTime() - before; work.guardNanos += guardNanos; }
+                verdict = assessment.result();
+                SearchControl.checkpoint("controller.reuseGuard.complete");
+                if (verdict.status() == ContinuationReuseGuard.Status.ALLOWED) {
+                    before = System.nanoTime();
+                    try { SearchControl.checkpoint("controller.reusePreparation"); proof = assessment.derive(); }
+                    finally { long elapsed = System.nanoTime() - before; preparationNanos += elapsed; work.preparationNanos += elapsed; }
+                    if (proof.firstAction() == null) throw new IllegalStateException("Proven suffix unexpectedly empty inside a contact");
+                    selection = PolicySelection.rule(proof.firstAction(), "First action of proven continuation " + proof.reference());
+                    reused = true;
+                }
+            } else if (continuationReuse) {
+                verdict = new ContinuationReuseGuard.Result(ContinuationReuseGuard.Status.REJECTED,
+                        "EMERGENCY_RESPONSE: observed incident takes precedence");
+            }
+            if (!reused) {
+                proof = null;
+                long before = System.nanoTime();
+                try { selection = response == null ? Objects.requireNonNull(policy.select(observation, candidates))
+                        : PolicySelection.rule(response.action(), response.reason()); }
+                finally { work.selectionNanos += System.nanoTime() - before; }
+            }
+            var source = reused ? ControlledSimulationResult.DecisionSource.SUFFIX_REUSE
+                    : selection.search() == null ? ControlledSimulationResult.DecisionSource.RULE : ControlledSimulationResult.DecisionSource.SEARCH;
             var search = selection.search();
+            if (search != null) work.searches++;
+            if (continuationReuse && search != null && search.status() == HorizonPlanResult.Status.COMPLETE
+                    && rules != null && policy.configuration() instanceof HorizonPolicy && selection.certificate() != null
+                    && selection.certificate().matches(observation, search, rules)) {
+                long before = System.nanoTime();
+                try { SearchControl.checkpoint("controller.reusePreparation"); proof = guard.start(selection.certificate().evidence(), "decision:" + decisions.size()); }
+                finally { long elapsed = System.nanoTime() - before; preparationNanos += elapsed; work.preparationNanos += elapsed; }
+            }
+            var audit = continuationReuse ? work.audit(checkedProof, proof, verdict, guardNanos, preparationNanos) : null;
             if (search != null && search.status() != HorizonPlanResult.Status.COMPLETE) {
-                decisions.add(new ControlledSimulationResult.Decision(observation, search, null, current.at(), source, selection.reason()));
-                return new ControlledSimulationResult(policy.configuration(),
+                decisions.add(new ControlledSimulationResult.Decision(observation, search, null, current.at(), source, selection.reason(), audit));
+                return work.finish(policy.configuration(),
                         search.status() == HorizonPlanResult.Status.INCOMPLETE ? stoppedStatus(search.diagnostics().stopReason()) : NO_FEASIBLE_PLAN,
                         current, null, decisions);
             }
@@ -86,22 +141,41 @@ public final class SecurityPolicyController {
                 throw new IllegalArgumentException("Policy selected an inadmissible first action");
             SearchControl.checkpoint("controller.execution");
             var next = executeAction(current, observation, action, outcomes);
-            decisions.add(new ControlledSimulationResult.Decision(observation, search, action, next.at(), source, selection.reason()));
+            decisions.add(new ControlledSimulationResult.Decision(observation, search, action, next.at(), source, selection.reason(), audit));
+            if (reused) work.suffixReuses++;
             // Valid positive-duration primitives create committed work. An immediate rejection
             // or zero-time interruption must not generate an unbounded same-time retry loop.
             if (next.at().equals(current.at()) && next.pendingOperations().equals(current.pendingOperations()))
-                return new ControlledSimulationResult(policy.configuration(), EXECUTION_STALLED, next, null, decisions);
+                return work.finish(policy.configuration(), EXECUTION_STALLED, next, null, decisions);
             current = next;
         }
         listener.save(current, decisions.size());
         SearchControl.checkpoint("controller.finish");
         var completed = engine.finishControlled(current);
-        return new ControlledSimulationResult(policy.configuration(), FINISHED, completed.snapshot(), completed.result(), decisions);
+        return work.finish(policy.configuration(), FINISHED, completed.snapshot(), completed.result(), decisions);
         } catch (SearchControl.Stopped stopped) {
             // The attempted transition works on a private runtime. Only committed immutable
             // snapshots replace current; cancellation creates no physical failure/expiry event.
             listener.save(current, decisions.size());
-            return new ControlledSimulationResult(policy.configuration(), stoppedStatus(stopped.reason()), current, null, decisions);
+            return work.finish(policy.configuration(), stoppedStatus(stopped.reason()), current, null, decisions);
+        }
+    }
+
+    private static final class Work {
+        final long started = System.nanoTime();
+        long guardNanos, preparationNanos, selectionNanos, searches, suffixReuses;
+        final Map<String, Long> reasons = new TreeMap<>();
+        ControlledSimulationResult.ContinuationAudit audit(ContinuationReuseGuard.ProvenContinuation checked,
+                ContinuationReuseGuard.ProvenContinuation selected, ContinuationReuseGuard.Result verdict, long guard, long preparation) {
+            if (verdict != null) reasons.merge(verdict.status() + ":" + verdict.reason().split(":", 2)[0], 1L, Long::sum);
+            return new ControlledSimulationResult.ContinuationAudit(selected == null ? null : selected.reference(), selected == null ? -1 : selected.offset(),
+                    checked == null ? null : checked.reference(), checked == null ? -1 : checked.offset(), verdict, guard, preparation);
+        }
+        ControlledSimulationResult finish(PolicyConfiguration policy, ControlledSimulationResult.Status status,
+                ExecutionSnapshot snapshot, SimulationResult simulation, List<ControlledSimulationResult.Decision> decisions) {
+            return new ControlledSimulationResult(policy, status, snapshot, simulation, decisions,
+                    new ControlledSimulationResult.Computation(System.nanoTime() - started, guardNanos, preparationNanos,
+                            selectionNanos, searches, suffixReuses, reasons));
         }
     }
 

@@ -15,6 +15,7 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
     private final SecurityActionGenerator generator = new SecurityActionGenerator();
     private final ContinuationEvaluator evaluator = new ContinuationEvaluator();
     private final PlanningResultComparator comparator;
+    private final PlanTieBreak tieBreak;
     // Traversal is deliberately independent of the tie-break treatment in SE2.2.
     private final PlanningResultComparator traversalComparator = new PlanningResultComparator();
 
@@ -66,10 +67,34 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
         this.clock = Objects.requireNonNull(clock);
         this.decisionTimeModel = Objects.requireNonNull(decisionTimeModel);
         this.comparator = new PlanningResultComparator(tieBreak);
+        this.tieBreak = Objects.requireNonNull(tieBreak);
     }
 
     public HorizonPlanResult plan(PlanningObservation observation) {
         return new Search(Objects.requireNonNull(observation), null).run();
+    }
+
+    @Override public ContinuationReuseGuard.Rules continuationRules() {
+        return new ContinuationReuseGuard.Rules(decisionTimeModel, tieBreak);
+    }
+
+    /** Only this final exact implementation can create a certificate for its unrestricted call. */
+    public static final class CertifiedSearch {
+        private final ContinuationReuseGuard.SearchEvidence evidence;
+        private CertifiedSearch(ContinuationReuseGuard.SearchEvidence evidence) { this.evidence = evidence; }
+        public ContinuationReuseGuard.SearchEvidence evidence() { return evidence; }
+        public boolean matches(PlanningObservation origin, HorizonPlanResult result, ContinuationReuseGuard.Rules rules) {
+            return evidence.origin().equals(origin) && evidence.result() == result && evidence.rules().equals(rules);
+        }
+    }
+
+    @Override public PolicySelection selectUnrestricted(PlanningObservation observation, String reason) {
+        var result = plan(observation); // This final class always calls Search(observation, null).
+        var certificate = result.status() == HorizonPlanResult.Status.COMPLETE ? new CertifiedSearch(
+                new ContinuationReuseGuard.SearchEvidence(observation, result, continuationRules(),
+                        ContinuationReuseGuard.SearchScope.UNRESTRICTED_CURRENT_ENGINE)) : null;
+        return new PolicySelection(result.status() == HorizonPlanResult.Status.COMPLETE ? result.firstAction() : null,
+                result, reason, certificate);
     }
 
     /** Diagnostic constrained optimum, retaining the original root, horizon and score origin. */

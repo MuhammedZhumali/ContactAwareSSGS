@@ -51,7 +51,7 @@ public final class FourPolicyExperimentMain {
                                   String reason, PlanningAction executedAction,
                                   HorizonPlanResult.Status searchStatus, Long exploredNodes, Long searchNanos,
                                   int visibleContacts, Instant evaluationEnd, String searchStopReason,
-                                  SearchDiagnostics searchDiagnostics) {}
+                                  SearchDiagnostics searchDiagnostics, ControlledSimulationResult.ContinuationAudit continuation) {}
     public record ActualResult(ControlledSimulationResult.Status status, Instant at, SecurityState securityState,
                                SimulationResult.Metrics finalMetrics, PartialProgress partialProgress,
                                List<ExecutionSnapshot.PendingOperation> pendingOperations, ExecutionSnapshot.InFlightFrame inFlightFrame,
@@ -154,7 +154,7 @@ public final class FourPolicyExperimentMain {
                 d.search() == null ? null : d.search().exploredNodes(), d.search() == null ? null : d.search().elapsedNanos(),
                 d.observation().visibleContacts().size(), d.observation().evaluationEnd(),
                 d.search() == null ? null : d.search().diagnostics().stopReason().name(),
-                d.search() == null ? null : d.search().diagnostics())).toList();
+                d.search() == null ? null : d.search().diagnostics(), d.continuation())).toList();
         JsonFiles.write(out.resolve(decisionsFile), compact);
         if (trace) JsonFiles.write(out.resolve(name + ".full-trace.json"), result);
         var statuses = new EnumMap<HorizonPlanResult.Status, Long>(HorizonPlanResult.Status.class);

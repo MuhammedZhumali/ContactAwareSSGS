@@ -8,15 +8,18 @@ public final class RecedingHorizonController {
     private final SecurityPolicyController controller;
 
     public RecedingHorizonController(HorizonPolicy policy, HorizonPlanner planner) {
+        this(policy, planner, false);
+    }
+
+    public RecedingHorizonController(HorizonPolicy policy, HorizonPlanner planner, boolean continuationReuse) {
         Objects.requireNonNull(policy); Objects.requireNonNull(planner);
         controller = new SecurityPolicyController(new SecurityPolicy() {
             @Override public PolicyConfiguration configuration() { return policy; }
+            @Override public ContinuationReuseGuard.Rules continuationRules() { return planner.continuationRules(); }
             @Override public PolicySelection select(PlanningObservation observation, List<PlanningAction> candidates) {
-                var search = Objects.requireNonNull(planner.plan(observation));
-                return new PolicySelection(search.status() == HorizonPlanResult.Status.COMPLETE ? search.firstAction() : null,
-                        search, "First horizon action");
+                return planner.selectUnrestricted(observation, "First horizon action");
             }
-        });
+        }, java.time.Duration.ZERO, (snapshot, count) -> {}, continuationReuse);
     }
 
     public ControlledSimulationResult run(SimulationScenario scenario) { return controller.run(scenario); }

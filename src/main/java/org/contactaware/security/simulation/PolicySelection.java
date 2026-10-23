@@ -3,7 +3,11 @@ package org.contactaware.security.simulation;
 import java.util.Objects;
 
 /** A rule decision has no search result and makes no completeness/optimality claim. */
-public record PolicySelection(PlanningAction action, HorizonPlanResult search, String reason) {
+public record PolicySelection(PlanningAction action, HorizonPlanResult search, String reason,
+                              ExactHorizonPlanner.CertifiedSearch certificate) {
+    public PolicySelection(PlanningAction action, HorizonPlanResult search, String reason) {
+        this(action, search, reason, null);
+    }
     public PolicySelection {
         Objects.requireNonNull(reason);
         if (search != null && action != null && !action.equals(search.firstAction()))

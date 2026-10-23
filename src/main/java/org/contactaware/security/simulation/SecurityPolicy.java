@@ -10,4 +10,6 @@ public interface SecurityPolicy {
 
     /** Policy timers derived from observed history, e.g. an activation plus a renewal period. */
     default List<Instant> additionalWakeUps(PlanningObservation observation) { return List.of(); }
+    /** Only adapters calling unrestricted plan(observation) may supply this provenance. */
+    default ContinuationReuseGuard.Rules continuationRules() { return null; }
 }

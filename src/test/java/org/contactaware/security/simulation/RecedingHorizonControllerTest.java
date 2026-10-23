@@ -319,7 +319,7 @@ class RecedingHorizonControllerTest {
         assertThat(new MetricsCollector().collect(result.snapshot().scenario().contacts(), result.snapshot().journal())).isEqualTo(metrics);
     }
 
-    private SimulationScenario keyed(long end, List<PlannedOperation> plan) {
+    SimulationScenario keyed(long end, List<PlannedOperation> plan) {
         var initial = initialState();
         var keys = new TreeMap<String, KeyState>();
         initial.keys().values().stream().filter(k -> k.contextId().equals(A)).forEach(k -> keys.put(k.id(), k));
