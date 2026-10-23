@@ -135,3 +135,6 @@ Desktop.ini
 # New SE2.2.2 bundle; keep compact comparison tables, protocol and manifest.
 /docs/security-evaluation-se222/*.zip
 /docs/security-evaluation-se222/evidence-file-hashes.json
+
+# SE2.3 C3-window evidence archive; tables and compact manifests remain tracked.
+/docs/security-evaluation-c3/*.zip
