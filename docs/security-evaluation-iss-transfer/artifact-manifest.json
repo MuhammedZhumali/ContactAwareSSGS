@@ -1,0 +1,9 @@
+{
+  "archive": "target/security-evaluation-iss-transfer/selection-evidence.zip",
+  "archiveSha256": "b76036a499c3a4d129acc0dd01a1bdd5bd89a323e44efbc043427d23d786a865",
+  "archiveBytes": 146978,
+  "manifestSha256": "529d7e78f1c296eef7fd4868a6e5321dcc98fb7c44cc706739a65a77d2fb1ab7",
+  "integrity": "PASS",
+  "policyRuns": 0,
+  "preservedFiles": 3481
+}
