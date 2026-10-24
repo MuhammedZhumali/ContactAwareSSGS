@@ -1,0 +1,14 @@
+{
+  "cases": 16,
+  "statuses": {
+    "FINISHED": 14,
+    "SEARCH_INCOMPLETE": 1,
+    "CONTROLLER_TIME_LIMIT": 1
+  },
+  "audited": 16,
+  "reuseLinks": 84,
+  "pairedComparisons": 8,
+  "completedComparisons": 6,
+  "noTarget": 0,
+  "interpretation": "Final metrics only FINISHED; missing events censored/not-applicable by existing contract; unfinished/not-run unavailable"
+}

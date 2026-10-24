@@ -1,0 +1,11 @@
+{
+  "sourceCommit": "67870e66f043ce63f8370f1333b564184a6793c1",
+  "runnerCommit": "4175abe2d6556d74a76e5a4b6d2459d3c3a6f938",
+  "jarSha256": "2cefc98259eb910364db57105ad9e4265a4a4fbfa9f6d7efc77ecfee0039a4ee",
+  "archive": "target/security-evaluation-new-days/new-days-evidence.zip",
+  "archiveBytes": 17311508,
+  "archiveSha256": "a8c67008450dfd5c5a723faa17d57d2db4300cb0a40f704ace8fd18d69da5876",
+  "manifestSha256": "7c372a0243bfdb22550a9c113b8edf49521d5a921a3aa6f522332b62659aea9c",
+  "integrity": "PASS",
+  "preservedFiles": 3492
+}

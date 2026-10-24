@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "day": "day1",
+      "status": "PASS",
+      "controlAttackChangedPaths": [
+        {
+          "path": "/name",
+          "before": "SE2.4-ISS-1-3-none",
+          "after": "SE2.4-ISS-1-3-detected-2026-10-11T03:12:10.974151611Z"
+        },
+        {
+          "path": "/disclosures",
+          "before": [],
+          "after": [
+            {
+              "id": "disclosure-1",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-4856"
+              },
+              "at": "2026-10-11T03:12:10.974151611Z",
+              "detectionAt": "2026-10-11T03:12:12.974151611Z"
+            }
+          ]
+        }
+      ],
+      "unchangedPayload": {
+        "bytesPerSecond": 100,
+        "frameBytes": 1000,
+        "offeredUplinkBytes": 1000,
+        "offeredDownlinkBytes": 1000,
+        "minimumUplinkBytes": 1000,
+        "minimumDownlinkBytes": 1000
+      },
+      "initialKeys": [],
+      "initialization": "target/security-evaluation-new-days/day1/models/initialization.json",
+      "comparison": "Costs, age/reuse constraints and finite payload equal to existing ISS CP5400 LIGHT; original windows retained"
+    },
+    {
+      "day": "day2",
+      "status": "PASS",
+      "controlAttackChangedPaths": [
+        {
+          "path": "/name",
+          "before": "SE2.4-ISS-0-3-none",
+          "after": "SE2.4-ISS-0-3-detected-2026-10-12T00:14:21.720977783Z"
+        },
+        {
+          "path": "/disclosures",
+          "before": [],
+          "after": [
+            {
+              "id": "disclosure-1",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "at": "2026-10-12T00:14:21.720977783Z",
+              "detectionAt": "2026-10-12T00:14:23.720977783Z"
+            }
+          ]
+        }
+      ],
+      "unchangedPayload": {
+        "bytesPerSecond": 100,
+        "frameBytes": 1000,
+        "offeredUplinkBytes": 1000,
+        "offeredDownlinkBytes": 1000,
+        "minimumUplinkBytes": 1000,
+        "minimumDownlinkBytes": 1000
+      },
+      "initialKeys": [],
+      "initialization": "target/security-evaluation-new-days/day2/models/initialization.json",
+      "comparison": "Costs, age/reuse constraints and finite payload equal to existing ISS CP5400 LIGHT; original windows retained"
+    }
+  ],
+  "withinAttack": "All four policy/rule combinations reference the exact same model file and initial state"
+}
