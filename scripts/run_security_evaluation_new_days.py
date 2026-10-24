@@ -13,7 +13,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from run_security_evaluation_se21 import ROOT, child, load, write, sha, rel
 from run_security_evaluation_se22 import JAVA
-from run_security_evaluation_c3 import normalized, differences
+from run_security_evaluation_c3 import normalized
 from check_iss_transfer_selection import preserved as preserved_before_transfer
 
 OUT = ROOT/'target/security-evaluation-new-days'
@@ -167,8 +167,10 @@ def configure():
     ref = normalized(load(ROOT/'target/security-evaluation-se2/iss3-cp5400-none.model.json')['scenario'])
     for fragment in load(OUT/'fragments.json'):
         dest = OUT/fragment['day']; models=dest/'models'
-        java_step(['-cp',str(ROOT/build['jar']),MAIN,'--mode','configure','--schedule',str(ROOT/fragment['scheduleFile']),
-                   '--from',str(fragment['fromIndex']),'--count',str(fragment['count']),'--out',str(models)],dest/'configuration.log')
+        # A pre-registration reporting failure must not replace already generated inputs.
+        if not models.exists():
+            java_step(['-cp',str(ROOT/build['jar']),MAIN,'--mode','configure','--schedule',str(ROOT/fragment['scheduleFile']),
+                       '--from',str(fragment['fromIndex']),'--count',str(fragment['count']),'--out',str(models)],dest/'configuration.log')
         control = normalized(load(models/'none.json')['scenario']); attacked = normalized(load(models/'late-detected.json')['scenario'])
         a,c = copy.deepcopy(control),copy.deepcopy(attacked)
         a.pop('name');c.pop('name');a.pop('disclosures');c.pop('disclosures');assert a == c
@@ -184,7 +186,8 @@ def configure():
         nanos=int((instant(first['end'])-instant(first['start']))*10**9)
         assert instant(incident['at']) == instant(first['start']) + __import__('decimal').Decimal(nanos*90//100)/10**9
         assert instant(incident['detectionAt'])-instant(incident['at']) == 2
-        checks.append(dict(day=fragment['day'],status='PASS',controlAttackChangedPaths=differences(control,attacked),
+        checks.append(dict(day=fragment['day'],status='PASS',controlAttackChangedPaths=[
+            dict(path='/'+key,before=control[key],after=attacked[key]) for key in ('name','disclosures') if control[key]!=attacked[key]],
             unchangedPayload=control['contacts'][0]['payload'],initialKeys=[],initialization=rel(models/'initialization.json'),
             comparison='Costs, age/reuse constraints and finite payload equal to existing ISS CP5400 LIGHT; original windows retained'))
         for attack in ('none','late-detected'):
@@ -211,6 +214,7 @@ def register():
     for p in (DOC/'protocol.md',DOC/'configuration-audit.json',OUT/'input-review.txt',OUT/'generation-registration.json',
               OUT/'fragments.json',OUT/'configurations.json',Path(__file__),ROOT/b['jar']): hashes[rel(p)] = sha(p)
     write(OUT/'registration.json',dict(build=b,cases=c['cases'],inputs=hashes,
+        runnerCommit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
         options=dict(traversal='SERVICE_FIRST',reuse=True,timing='V2_EVENT_BOUNDARIES'),
         limits=dict(nodes=2000000,searchSeconds=30,controllerSeconds=60,watchdogSeconds=90),
         stopDiagnostics=dict(processOvershootSeconds=5,controllerOvershootSeconds=5,
