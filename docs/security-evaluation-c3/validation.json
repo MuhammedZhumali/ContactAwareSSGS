@@ -1,0 +1,23 @@
+{
+  "totalRows": 60,
+  "registeredCombinations": 40,
+  "actualNewAttempts": 43,
+  "primaryStatuses": {
+    "FINISHED": 22,
+    "SEARCH_INCOMPLETE": 15,
+    "CONTROLLER_TIME_LIMIT": 3
+  },
+  "technicalRepeatStatuses": {
+    "FINISHED": 3
+  },
+  "selectedNewStatuses": {
+    "FINISHED": 25,
+    "SEARCH_INCOMPLETE": 15
+  },
+  "audited": 60,
+  "newVerifiedReuseLinks": 3739,
+  "extraAttemptsAudited": 3,
+  "allAttemptReuseLinks": 4057,
+  "comparablePairs": 15,
+  "note": "All final metrics unavailable on unfinished runs; prefix facts preserved separately. Existing independent journal/recovery/provenance audit; no new simulation."
+}

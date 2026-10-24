@@ -1,0 +1,11 @@
+{
+  "sourceCommit": "e3266427f33902e636e2eedb81c0b45fcc28bee3",
+  "jarSha256": "e7a97c56e6223c5ba2cb9408999f45d0d69ee3065ab63a014ef78ed289cf0fd3",
+  "archive": "c3-new-evidence.zip",
+  "archiveBytes": 18423083,
+  "archiveSha256": "46b2e5fd966da5876b7d0f62bb9674c7c04172590acc2149a795fb7c77805495",
+  "manifest": "../../target/security-evaluation-c3/manifest.json",
+  "manifestSha256": "a516164eebde22622be68f905a7598ce37179e0dea28c9f03171e3a30cb50afb",
+  "archiveIntegrity": "PASS",
+  "preservedLegacyFiles": 2920
+}
