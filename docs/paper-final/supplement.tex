@@ -1,0 +1,194 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=25mm]{geometry}
+\usepackage{booktabs,longtable,array,amsmath,url}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{2em}
+\title{Supplement: Final ContactAwareSS Evidence and Reproduction Contract}
+\author{Mukhammed Zhumali}
+\date{25 October 2026}
+\begin{document}
+\maketitle
+
+\section{Executable and Evidence Identity}
+This supplement accompanies the separate final manuscript. Prior SE2, R1 and PC2 sources,
+results, papers and archives are preserved as historical evidence. They are not relabeled as
+new final-campaign observations. All 108 final configurations use the same Java executable.
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{.28\textwidth}>{\raggedright\arraybackslash}p{.66\textwidth}}
+\toprule Artifact & Identity \\
+\midrule\endhead
+Base Git commit & \texttt{3621333d8093b4cb0c232}\newline\texttt{c7db9164c66e273053c}; the working tree was dirty, so this commit alone does not identify the executable. \\
+Source manifest & 181 Java/build/wrapper files, SHA-256 \texttt{71c73f5e99550ee6365556fcebcc9411405}\newline\texttt{32dea2cf7a0193de7494bbbde4d07}. \\
+Final-v2 JAR & SHA-256 \texttt{bb694a9e1c3341ab7ab9602348a34a934}\newline\texttt{0daf9fcf708d6906435dcaeb35439c6}. \\
+Registered protocol & SHA-256 \texttt{2c406eb1c13dd88cea8fc7731736678e8}\newline\texttt{fd3f5fae2b343a48395b5666a878cb8}. \\
+Build & Java 21.0.10; Maven 3.9.9; isolated clean verify. 478 tests, 64 test classes, zero failures/errors/skips. \\
+\bottomrule
+\end{longtable}
+
+The first isolated full-suite attempt failed five HTTP-import tests because the sandbox denied
+loopback connections; it had zero assertion failures. A second clean build with local HTTP
+permitted passed the full suite. Both build records are retained, and their source manifests
+are identical. No Java change or test exclusion was used to obtain the final JAR. Source ZIP
+timestamps can differ in a rebuild; the packaged JAR provides the exact binary used here.
+
+The machine records are \texttt{target/final-research/manifest.json},
+\texttt{build-validation.json}, the two build logs and Surefire XML. Two compact PC2 oracle
+files separately record COMPLETE at 1364 nodes under each tie rule. The older small-quality
+test also retains bounded-controller differences; a passing test suite is not a claim that
+every bounded policy attains every oracle optimum.
+
+\section{Fixed Matrix and Input Interpretation}
+\begin{center}
+\begin{tabular}{lr}\toprule Block & Attempts \\
+\midrule
+X5/Y/prior-demand regression, offline and measured & 18 \\
+Three missions, three loads, six offline configurations & 54 \\
+Three ISS loads, five measured configurations & 15 \\
+INSTALL/cryptoperiod/horizon sensitivity & 9 \\
+Disclosure and original temporary channel loss & 10 \\
+Initial management-operation interruption & 2 \\
+\midrule Total & 108 \\
+\bottomrule\end{tabular}
+\end{center}
+
+The full chronological schedules contain ISS46, NOAA38 and HST48 contacts. Different missions
+use different saved dates; this is not a simultaneous operational mission comparison. Public
+GP, station-coordinate and Earth-orientation files supply geometry. Satellite-station
+authorization, payload availability, cryptographic operation timing and lifecycle limits are
+model assumptions. The schedule selector is independent of security-policy results.
+
+The common rate is 100~B/s with 1000~B complete frames and a 1000~B minimum in each direction.
+Low demand offers one frame per direction; medium offers three. High demand offers
+$\max(3,\lfloor L/10\rfloor)$ frames per direction in a contact lasting $L$ seconds.
+The service threshold is unchanged. This differs from the older MODERATE constructor that
+raises both offered traffic and the minimum; the final derivation changes only offer leaves.
+Original nanosecond timestamps and integer tokens are preserved without binary-float
+round trips. Every derived model has a leaf-difference audit.
+
+The input-only descriptor report records shortest windows of 58.977355957, 122.687988281
+and 74.815063477~s for ISS, NOAA and HST. All exceed the simple 26-second prepared-entry
+chain, and no window lies between the corresponding installed/prepared-entry thresholds
+of 22 and 26~s. There are one, five and three adjacent A--B--A triples. All 29, 22 and 35
+same-station recurrence gaps respectively exceed the base 5400-second cryptoperiod.
+For previously activated material, $d_k\leq a+5400\leq e+5400<s$ for prior contact end $e$
+and return start $s$. Such material cannot be reused on return. Unactivated staged candidates
+remain possible, and this deduction excludes the 10800-second sensitivity. Neither timing
+descriptor alone proves service feasibility or general uselessness of an extra horizon.
+
+For this base core, a separate counting consequence is $N_{\rm new}\geq2N_{\rm served}$.
+Choose a delivered uplink key and a delivered downlink key for every served contact; both
+directional minima are positive. Immutable context/direction bindings prevent sharing across
+stations or directions, and the expiry inequality prevents reuse in another same-context
+contact. All selected keys are therefore distinct. Because the initial key maps are empty,
+each was generated and counted during the execution. Staged unactivated material may be
+created earlier but cannot evade that count. Abandoned preparations only add keys. The
+source-level argument and exact input premises are recorded in
+\texttt{docs/final-research/core-key-lower-bound.md}. This is solely a key-generation bound;
+it proves neither useful-time nor CPU/byte optimality and excludes CP10800 sensitivity.
+
+All primary cells use a 5400~s cryptoperiod. FixedPeriod uses $T=3600$~s after successful
+SWITCH, and coalesces delayed requests. This is one declared comparator, not an optimally
+tuned family of periodic policies. PerContact uses just-in-time preparation. Seed H1 and H2
+disable DFS; neither should be confused with the SEED\_ONLY implementation variant that
+still searches. The main matched horizon attribution compares Next H1 with Multi H2 using
+the same portfolio and limits.
+
+The nine sensitivity attempts change only medium ISS: INSTALL phase durations by 0.5 or 2,
+or cryptoperiod to 2700 or 10800~s, for Next/Multi; one additional Multi H3 cell uses the base
+model. INSTALL byte counts are unchanged, so this intervention changes modeled CPU/radio
+timing rather than uniformly scaling every cost. H3 is explicitly compared with the H2 core
+baseline and is not counted as an additional H1/H2 pair.
+
+\section{Decision and Timing Contract}
+Inside a contact, H denotes future contacts beyond the current one. Between contacts, it
+selects the H nearest future contacts. A search keeps its visible contacts and endpoint fixed
+throughout that invocation; entering a later contact inside a hypothetical branch never
+reveals a hidden farther contact. Future attacks and outages are unavailable to planning.
+
+The objective first maximizes served contacts and useful secure time, then minimizes
+modeled operation CPU, management bytes and new directional keys. Already accrued costs,
+delivered progress, counters and issued IDs are preserved. A full-plan rule resolves only
+complete equality of all five scores. This does not minimize compromise probability.
+
+All final searches have 5000-node and 1000-ms limits; the full decision has 2000~ms. Seed and
+retained-continuation stages each have a 350-ms sublimit and 10000-transition cap. The
+external watchdog is 600~s per process. There is no cumulative 20-second controller cutoff.
+One heavy JVM runs at a time with a 1024-MiB heap. No budget is increased after a failure.
+
+Offline computation does not advance the physical timeline. Measured mode uses zero fixed
+delay plus measured host observation/generation/selection time. This includes seed, replay,
+search and selection but excludes separately reported checkpoint I/O and actual execution.
+Committed work and actual events continue during delay. A reached or changed WAIT target
+causes charged replanning; stale intents are not moved silently. This is one host-dependent
+critical-path assumption, not a flight processor benchmark.
+
+Harness controller wall time stops when the controller returns. Its aggregate thread CPU/GC
+sample is taken later, after the final checkpoint and most export serialization. These fields
+therefore do not define a matched CPU/wall interval. Process wall time includes startup and
+exports; individual search telemetry is separate. Checkpoint durations overlap process/controller
+time and are not additive overhead on top of either. The detailed boundary table is
+\texttt{docs/final-research/timing-definitions.md}; no unavailable export CPU is estimated.
+
+The available-candidate portfolio guarantee is local: all candidates are evaluated from the
+same observed root to the same endpoint. The chosen full continuation is no worse under
+the unchanged comparator than the evaluated seed, retained suffix or search candidate.
+This neither certifies an incomplete search nor ensures that Multi dominates Next across
+replanning events. Total searches come from the practical-search ledger; a compact summary
+of certified selections omits bounded RULE selections and is not the denominator.
+
+\section{Security, Recovery and Interruption Metrics}
+The recording attacker learns one selected active traffic-key pair at an exogenous event.
+Replacement material is assumed independent; generators and management credentials are
+not compromised. Recorded past and later emitted traffic under the disclosed keys are
+retrospectively decryptable. Confidential delivered traffic excludes delivered frames under
+keys disclosed by experiment end. Emitted exposure includes aborted prefixes and therefore
+cannot be subtracted from delivered bytes as though both totals had the same population.
+
+Four recovery milestones are measured from GS receipt of notice:
+\begin{enumerate}
+\item confirmed delivery of the revocation notice to the spacecraft;
+\item mutually confirmed activation of admissible independent directional keys;
+\item actual opening of an admissible SA on independent keys;
+\item first delivered independent complete frame.
+\end{enumerate}
+Independence means exclusion of the disclosed key IDs under the independent-material
+assumption, not a statistical test of a real generator. Admissibility checks original material
+age, activation deadline, directional binding, revocation and counters. A state already ready
+at notice is marked explicitly. Missing events are not replaced by zero. Readiness intervals
+also record expiry, binding changes and session closure; first readiness does not imply
+continuous readiness. Waiting for key material, notice, contact/channel and offered traffic
+can overlap, and their durations are not summed as disjoint causal components.
+
+Channel DOWN aborts committed frames and online primitives with consumed partial costs.
+Already admitted aborted frames consume their nonce once. UP does not confirm an interrupted
+operation or clear uncertain peer state. INSTALL may be retried when admissible; uncertain
+SWITCH/OPEN/REUSE is conservatively blocked without reconciliation. The preregistered ISS
+loss is one to three seconds after first AOS; its actual intercepted operation is reported
+without shifting the event to obtain an intended result.
+
+\section{Audit, Coverage and Reproduction}
+The independent Python auditor checks event ordering, operation phase integrals, complete
+and aborted frames, nonce conservation, deadlines, channel/radio overlap, final metrics,
+checkpoint/export equality and full-comparator candidate selection. It verifies configuration
+and input/JAR identities against registration. Failed processes retain their last usable
+checkpoint; partial scores are diagnostic, not final policy quality. A completed physical
+execution can contain many incomplete searches. Censoring in a completed incident case,
+an unfinished execution and an inapplicable no-target event use distinct labels.
+
+\input{supplement-results.tex}
+
+The package includes exact models, source/build definitions, frozen JAR, schedule provenance,
+new raw journals and checkpoints, per-case invocations, all statuses, CSV/JSON tables,
+PDF/SVG/PNG figures, paper sources and reference-verification notes. Each figure has a
+case-level provenance manifest. Use a new output directory for every replay; do not overwrite
+the registered outcomes. \texttt{scripts/replay\_final\_case.py} verifies input and JAR hashes
+and applies the original watchdog. Maven dependencies are declared in \texttt{pom.xml};
+Python plotting requires Matplotlib. Detailed commands are in the reproduction README.
+
+All claims are bounded to these scenarios, budgets, synthetic costs and incident assumptions.
+Repeated deterministic runs are not independent statistical samples. No statement of
+cryptographic proof, operational mission compatibility, universal tie-rule robustness or
+global mission optimum is made.
+\end{document}

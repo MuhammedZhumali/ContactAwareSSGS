@@ -1,0 +1,14 @@
+{
+  "inputs": {
+    "target/aitu-revision/stage2/tables.json": "116e7771298ef836c50136d206e64617a48a283663df2fc4e9cb16fbf7da85c1",
+    "target/aitu-revision/stage3/tables.json": "cbac641ab746e9a3af76a9372238f5f59d08b2cd5cb7d0a8092889d258111a2a",
+    "target/aitu-revision/stage4/tables.json": "86b08f4ca54006bf4d7f75d6a500e43289ce9f152a7467507e5f4d4a36a6a991"
+  },
+  "scriptSha256": "6d007f3919af9c296fdfba77926bbe922638d18debed6d7000e6978065e29fa1",
+  "formats": [
+    "600dpi PNG",
+    "600dpi JPG",
+    "SVG"
+  ],
+  "sourceCampaign": "AITU revision only"
+}

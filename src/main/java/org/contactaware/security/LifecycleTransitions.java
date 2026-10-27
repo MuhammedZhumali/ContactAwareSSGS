@@ -96,6 +96,26 @@ public final class LifecycleTransitions {
         return state.replace(until, used, List.of(nextUp, nextDown));
     }
 
+    /**
+     * Consume the nonce of an already admitted, committed transmission that was not delivered.
+     * This is accounting, not admission: its key may have been retired while a downlink was in
+     * flight. Preserve status, binding, and successful-use/session history; never resurrect it.
+     * The executor must call this exactly once per aborted frame, even for a zero-byte prefix.
+     */
+    public SecurityState recordAbortedTransmission(SecurityState state, String keyId, Instant at) {
+        var key = state.key(keyId);
+        require(key.activatedAt() != null, "An aborted transmission must use previously activated material");
+        var updated = key.withCounter(Math.incrementExact(key.nextNonceCounter()));
+        var context = state.context(key.contextId());
+        var up = context.uplink();
+        var down = context.downlink();
+        if (keyId.equals(up.keyId())) up = up.withCounter(updated.nextNonceCounter());
+        if (keyId.equals(down.keyId())) down = down.withCounter(updated.nextNonceCounter());
+        var preserved = new SecurityContext(context.id(), up, down, context.activeContact(), context.openedAt(),
+                context.uplinkFramesInSession(), context.downlinkFramesInSession());
+        return state.replace(at, preserved, List.of(updated));
+    }
+
     /** Planned local stop; an unsuccessful/empty session does not refresh reuse history. */
     public SecurityState stopContext(SecurityState state, ContextId id, Instant at) {
         var context = state.context(id);

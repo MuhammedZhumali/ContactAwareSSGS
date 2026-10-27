@@ -1,0 +1,12 @@
+{
+  "sourceCommit": "67870e66f043ce63f8370f1333b564184a6793c1",
+  "baseCommit": "3621333d8093b4cb0c232c7db9164c66e273053c",
+  "jarSha256": "2cefc98259eb910364db57105ad9e4265a4a4fbfa9f6d7efc77ecfee0039a4ee",
+  "archive": "target/security-evaluation-remaining-demand/remaining-demand-evidence.zip",
+  "archiveBytes": 14598092,
+  "archiveSha256": "435872d3e6bcb6637c25a88f58562ee7e1b9e78394afd97755c95ccf375bce6e",
+  "manifestSha256": "31c06e435684e87621da1fbaa638ab52ba92dad1f04d735e488137ace130d95c",
+  "files": 145,
+  "preservedFiles": 3785,
+  "integrity": "PASS"
+}

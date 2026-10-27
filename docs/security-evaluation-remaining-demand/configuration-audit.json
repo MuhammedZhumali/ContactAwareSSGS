@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "attack": "none",
+      "source": "target/security-evaluation-new-days/day2/models/none.json",
+      "sourceSha256": "b5b7aa6dd3409480036d35534fd837fced00bc2886241a7b14bd65bd90615ce9",
+      "model": "target/security-evaluation-remaining-demand/models/none.json",
+      "modelSha256": "dd3a319d34f0003c67f5d690a257961c3482ce3797006a77d9e6a24157977cbe",
+      "durationNanos": 382694091797,
+      "frameDurationNanos": 10000000000,
+      "frameBytes": 1000,
+      "floorFrames": 38,
+      "B": 39000,
+      "minimumUplinkBytes": 1000,
+      "minimumDownlinkBytes": 1000,
+      "differences": [
+        {
+          "path": "/scenario/contacts/0/payload/offeredUplinkBytes",
+          "before": 1000,
+          "after": 39000
+        },
+        {
+          "path": "/scenario/contacts/0/payload/offeredDownlinkBytes",
+          "before": 1000,
+          "after": 39000
+        }
+      ]
+    },
+    {
+      "attack": "late-detected",
+      "source": "target/security-evaluation-new-days/day2/models/late-detected.json",
+      "sourceSha256": "fb938a5a9b886da5b492429958e889085a4af5a53beccf5b69c9ea9ca2487171",
+      "model": "target/security-evaluation-remaining-demand/models/late-detected.json",
+      "modelSha256": "212cfac20c9d74848a1da3ec7fc2b42f61c3dcb712b1ed3a771578be04b60fd4",
+      "durationNanos": 382694091797,
+      "frameDurationNanos": 10000000000,
+      "frameBytes": 1000,
+      "floorFrames": 38,
+      "B": 39000,
+      "minimumUplinkBytes": 1000,
+      "minimumDownlinkBytes": 1000,
+      "differences": [
+        {
+          "path": "/scenario/contacts/0/payload/offeredUplinkBytes",
+          "before": 1000,
+          "after": 39000
+        },
+        {
+          "path": "/scenario/contacts/0/payload/offeredDownlinkBytes",
+          "before": 1000,
+          "after": 39000
+        }
+      ]
+    }
+  ],
+  "changedModelFields": 2,
+  "names": "Unchanged scenario names and provenance retained verbatim from LIGHT; this sidecar defines the new offered workload",
+  "outputPaths": "New target/security-evaluation-remaining-demand only",
+  "hiddenAttackProjection": "none/late differ only by existing name and disclosure input"
+}

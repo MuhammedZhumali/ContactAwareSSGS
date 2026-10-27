@@ -14,7 +14,7 @@ public record SearchDiagnostics(long terminalPlans, long expandedNodes, int maxD
                                 Map<PlanningAction.Kind, Long> generatedByAction,
                                 Map<PlanningAction.Kind, Long> executedByAction,
                                 SearchRuntimeTelemetry runtimeTelemetry) {
-    public enum StopReason { NONE, NODE_LIMIT, TIME_LIMIT, CONTROLLER_TIME_LIMIT, CANCELLED, INTERRUPTED }
+    public enum StopReason { NONE, NODE_LIMIT, TIME_LIMIT, CONTROLLER_TIME_LIMIT, DECISION_TIME_LIMIT, CANCELLED, INTERRUPTED }
     public SearchDiagnostics {
         rootGeneratedByAction = Collections.unmodifiableMap(new EnumMap<>(rootGeneratedByAction));
         generatedByAction = Collections.unmodifiableMap(new EnumMap<>(generatedByAction));

@@ -1,0 +1,448 @@
+[
+  {
+    "id": "root-CANONICAL-N100000",
+    "rule": "CANONICAL",
+    "nodes": 100000,
+    "status": "INCOMPLETE",
+    "processSeconds": "10.422",
+    "visitedNodes": 100000,
+    "searchSeconds": "8.4165383",
+    "stopReason": "NODE_LIMIT",
+    "searchCpuSeconds": "8.171875",
+    "selectionSeconds": "8.7187241",
+    "seedStatus": "FEASIBLE_TERMINAL",
+    "seedScore": {
+      "servedContacts": 2,
+      "usefulSecureTime": "38.000000000",
+      "controlCpu": "0.320000000",
+      "managementBytes": 160,
+      "newKeys": 2
+    },
+    "retainedScore": null,
+    "retention": "NO_RETAINED_PLAN",
+    "selectedSource": "SEARCH",
+    "selectedScore": {
+      "servedContacts": 2,
+      "usefulSecureTime": "38.000000000",
+      "controlCpu": "0.120000000",
+      "managementBytes": 160,
+      "newKeys": 0
+    },
+    "selectedPlanActions": 162,
+    "firstAction": {
+      "kind": "OPEN",
+      "at": "2026-01-01T00:00:00Z",
+      "until": "2026-01-01T00:00:01Z",
+      "contextId": {
+        "satelliteId": "WITNESS-SC",
+        "groundStationId": "A"
+      },
+      "keys": null,
+      "contactId": "C1",
+      "securityOperation": true
+    },
+    "certificate": false,
+    "replayAccepted": true,
+    "beatsOldPractical": false,
+    "firstStrictVsOld": null,
+    "firstStrictVsSeed": {
+      "nodes": 163,
+      "seconds": "0.2463898",
+      "evaluation": {
+        "servedContacts": 2,
+        "usefulSecureTime": "38.000000000",
+        "controlCpu": "0.120000000",
+        "managementBytes": 160,
+        "newKeys": 0
+      }
+    },
+    "firstStrictIncumbent": null,
+    "incumbentUpdates": 1,
+    "strictIncumbentUpdates": 0
+  },
+  {
+    "id": "root-CANONICAL-N150000",
+    "rule": "CANONICAL",
+    "nodes": 150000,
+    "status": "INCOMPLETE",
+    "processSeconds": "11.859",
+    "visitedNodes": 150000,
+    "searchSeconds": "10.5118831",
+    "stopReason": "NODE_LIMIT",
+    "searchCpuSeconds": "10.1875",
+    "selectionSeconds": "10.6981055",
+    "seedStatus": "FEASIBLE_TERMINAL",
+    "seedScore": {
+      "servedContacts": 2,
+      "usefulSecureTime": "38.000000000",
+      "controlCpu": "0.320000000",
+      "managementBytes": 160,
+      "newKeys": 2
+    },
+    "retainedScore": null,
+    "retention": "NO_RETAINED_PLAN",
+    "selectedSource": "SEARCH",
+    "selectedScore": {
+      "servedContacts": 3,
+      "usefulSecureTime": "37.000000000",
+      "controlCpu": "0.830000000",
+      "managementBytes": 1240,
+      "newKeys": 2
+    },
+    "selectedPlanActions": 164,
+    "firstAction": {
+      "kind": "OPEN",
+      "at": "2026-01-01T00:00:00Z",
+      "until": "2026-01-01T00:00:01Z",
+      "contextId": {
+        "satelliteId": "WITNESS-SC",
+        "groundStationId": "A"
+      },
+      "keys": null,
+      "contactId": "C1",
+      "securityOperation": true
+    },
+    "certificate": false,
+    "replayAccepted": true,
+    "beatsOldPractical": true,
+    "firstStrictVsOld": {
+      "nodes": 134269,
+      "seconds": "9.1303918",
+      "evaluation": {
+        "servedContacts": 3,
+        "usefulSecureTime": "37.000000000",
+        "controlCpu": "0.830000000",
+        "managementBytes": 1240,
+        "newKeys": 2
+      }
+    },
+    "firstStrictVsSeed": {
+      "nodes": 163,
+      "seconds": "0.1558513",
+      "evaluation": {
+        "servedContacts": 2,
+        "usefulSecureTime": "38.000000000",
+        "controlCpu": "0.120000000",
+        "managementBytes": 160,
+        "newKeys": 0
+      }
+    },
+    "firstStrictIncumbent": {
+      "nodes": 134269,
+      "seconds": "9.1303918",
+      "evaluation": {
+        "servedContacts": 3,
+        "usefulSecureTime": "37.000000000",
+        "controlCpu": "0.830000000",
+        "managementBytes": 1240,
+        "newKeys": 2
+      }
+    },
+    "incumbentUpdates": 53,
+    "strictIncumbentUpdates": 1
+  },
+  {
+    "id": "root-CANONICAL-N200000",
+    "rule": "CANONICAL",
+    "nodes": 200000,
+    "status": "INCOMPLETE",
+    "processSeconds": "16.031",
+    "visitedNodes": 200000,
+    "searchSeconds": "14.5352909",
+    "stopReason": "NODE_LIMIT",
+    "searchCpuSeconds": "14",
+    "selectionSeconds": "14.7751745",
+    "seedStatus": "FEASIBLE_TERMINAL",
+    "seedScore": {
+      "servedContacts": 2,
+      "usefulSecureTime": "38.000000000",
+      "controlCpu": "0.320000000",
+      "managementBytes": 160,
+      "newKeys": 2
+    },
+    "retainedScore": null,
+    "retention": "NO_RETAINED_PLAN",
+    "selectedSource": "SEARCH",
+    "selectedScore": {
+      "servedContacts": 3,
+      "usefulSecureTime": "37.000000000",
+      "controlCpu": "0.830000000",
+      "managementBytes": 1240,
+      "newKeys": 2
+    },
+    "selectedPlanActions": 164,
+    "firstAction": {
+      "kind": "OPEN",
+      "at": "2026-01-01T00:00:00Z",
+      "until": "2026-01-01T00:00:01Z",
+      "contextId": {
+        "satelliteId": "WITNESS-SC",
+        "groundStationId": "A"
+      },
+      "keys": null,
+      "contactId": "C1",
+      "securityOperation": true
+    },
+    "certificate": false,
+    "replayAccepted": true,
+    "beatsOldPractical": true,
+    "firstStrictVsOld": {
+      "nodes": 134269,
+      "seconds": "9.6537307",
+      "evaluation": {
+        "servedContacts": 3,
+        "usefulSecureTime": "37.000000000",
+        "controlCpu": "0.830000000",
+        "managementBytes": 1240,
+        "newKeys": 2
+      }
+    },
+    "firstStrictVsSeed": {
+      "nodes": 163,
+      "seconds": "0.176482",
+      "evaluation": {
+        "servedContacts": 2,
+        "usefulSecureTime": "38.000000000",
+        "controlCpu": "0.120000000",
+        "managementBytes": 160,
+        "newKeys": 0
+      }
+    },
+    "firstStrictIncumbent": {
+      "nodes": 134269,
+      "seconds": "9.6537307",
+      "evaluation": {
+        "servedContacts": 3,
+        "usefulSecureTime": "37.000000000",
+        "controlCpu": "0.830000000",
+        "managementBytes": 1240,
+        "newKeys": 2
+      }
+    },
+    "incumbentUpdates": 208,
+    "strictIncumbentUpdates": 1
+  },
+  {
+    "id": "root-CONTINUE_WAIT-N100000",
+    "rule": "CONTINUE_WAIT",
+    "nodes": 100000,
+    "status": "INCOMPLETE",
+    "processSeconds": "8.781",
+    "visitedNodes": 100000,
+    "searchSeconds": "7.4370512",
+    "stopReason": "NODE_LIMIT",
+    "searchCpuSeconds": "7.1875",
+    "selectionSeconds": "7.6593879",
+    "seedStatus": "FEASIBLE_TERMINAL",
+    "seedScore": {
+      "servedContacts": 2,
+      "usefulSecureTime": "38.000000000",
+      "controlCpu": "0.320000000",
+      "managementBytes": 160,
+      "newKeys": 2
+    },
+    "retainedScore": null,
+    "retention": "NO_RETAINED_PLAN",
+    "selectedSource": "SEARCH",
+    "selectedScore": {
+      "servedContacts": 2,
+      "usefulSecureTime": "38.000000000",
+      "controlCpu": "0.120000000",
+      "managementBytes": 160,
+      "newKeys": 0
+    },
+    "selectedPlanActions": 162,
+    "firstAction": {
+      "kind": "OPEN",
+      "at": "2026-01-01T00:00:00Z",
+      "until": "2026-01-01T00:00:01Z",
+      "contextId": {
+        "satelliteId": "WITNESS-SC",
+        "groundStationId": "A"
+      },
+      "keys": null,
+      "contactId": "C1",
+      "securityOperation": true
+    },
+    "certificate": false,
+    "replayAccepted": true,
+    "beatsOldPractical": false,
+    "firstStrictVsOld": null,
+    "firstStrictVsSeed": {
+      "nodes": 163,
+      "seconds": "0.2070934",
+      "evaluation": {
+        "servedContacts": 2,
+        "usefulSecureTime": "38.000000000",
+        "controlCpu": "0.120000000",
+        "managementBytes": 160,
+        "newKeys": 0
+      }
+    },
+    "firstStrictIncumbent": null,
+    "incumbentUpdates": 1,
+    "strictIncumbentUpdates": 0
+  },
+  {
+    "id": "root-CONTINUE_WAIT-N150000",
+    "rule": "CONTINUE_WAIT",
+    "nodes": 150000,
+    "status": "COMPLETE",
+    "processSeconds": "10.969",
+    "visitedNodes": 134638,
+    "searchSeconds": "9.6423195",
+    "stopReason": "NONE",
+    "searchCpuSeconds": "9.453125",
+    "selectionSeconds": "9.8350607",
+    "seedStatus": "FEASIBLE_TERMINAL",
+    "seedScore": {
+      "servedContacts": 2,
+      "usefulSecureTime": "38.000000000",
+      "controlCpu": "0.320000000",
+      "managementBytes": 160,
+      "newKeys": 2
+    },
+    "retainedScore": null,
+    "retention": "NO_RETAINED_PLAN",
+    "selectedSource": "SEARCH",
+    "selectedScore": {
+      "servedContacts": 3,
+      "usefulSecureTime": "37.000000000",
+      "controlCpu": "0.830000000",
+      "managementBytes": 1240,
+      "newKeys": 2
+    },
+    "selectedPlanActions": 164,
+    "firstAction": {
+      "kind": "OPEN",
+      "at": "2026-01-01T00:00:00Z",
+      "until": "2026-01-01T00:00:01Z",
+      "contextId": {
+        "satelliteId": "WITNESS-SC",
+        "groundStationId": "A"
+      },
+      "keys": null,
+      "contactId": "C1",
+      "securityOperation": true
+    },
+    "certificate": true,
+    "replayAccepted": true,
+    "beatsOldPractical": true,
+    "firstStrictVsOld": {
+      "nodes": 134269,
+      "seconds": "9.6020729",
+      "evaluation": {
+        "servedContacts": 3,
+        "usefulSecureTime": "37.000000000",
+        "controlCpu": "0.830000000",
+        "managementBytes": 1240,
+        "newKeys": 2
+      }
+    },
+    "firstStrictVsSeed": {
+      "nodes": 163,
+      "seconds": "0.1684163",
+      "evaluation": {
+        "servedContacts": 2,
+        "usefulSecureTime": "38.000000000",
+        "controlCpu": "0.120000000",
+        "managementBytes": 160,
+        "newKeys": 0
+      }
+    },
+    "firstStrictIncumbent": {
+      "nodes": 134269,
+      "seconds": "9.6020729",
+      "evaluation": {
+        "servedContacts": 3,
+        "usefulSecureTime": "37.000000000",
+        "controlCpu": "0.830000000",
+        "managementBytes": 1240,
+        "newKeys": 2
+      }
+    },
+    "incumbentUpdates": 2,
+    "strictIncumbentUpdates": 1
+  },
+  {
+    "id": "root-CONTINUE_WAIT-N200000",
+    "rule": "CONTINUE_WAIT",
+    "nodes": 200000,
+    "status": "COMPLETE",
+    "processSeconds": "10.578",
+    "visitedNodes": 134638,
+    "searchSeconds": "9.3063632",
+    "stopReason": "NONE",
+    "searchCpuSeconds": "9.1875",
+    "selectionSeconds": "9.4910328",
+    "seedStatus": "FEASIBLE_TERMINAL",
+    "seedScore": {
+      "servedContacts": 2,
+      "usefulSecureTime": "38.000000000",
+      "controlCpu": "0.320000000",
+      "managementBytes": 160,
+      "newKeys": 2
+    },
+    "retainedScore": null,
+    "retention": "NO_RETAINED_PLAN",
+    "selectedSource": "SEARCH",
+    "selectedScore": {
+      "servedContacts": 3,
+      "usefulSecureTime": "37.000000000",
+      "controlCpu": "0.830000000",
+      "managementBytes": 1240,
+      "newKeys": 2
+    },
+    "selectedPlanActions": 164,
+    "firstAction": {
+      "kind": "OPEN",
+      "at": "2026-01-01T00:00:00Z",
+      "until": "2026-01-01T00:00:01Z",
+      "contextId": {
+        "satelliteId": "WITNESS-SC",
+        "groundStationId": "A"
+      },
+      "keys": null,
+      "contactId": "C1",
+      "securityOperation": true
+    },
+    "certificate": true,
+    "replayAccepted": true,
+    "beatsOldPractical": true,
+    "firstStrictVsOld": {
+      "nodes": 134269,
+      "seconds": "9.2836227",
+      "evaluation": {
+        "servedContacts": 3,
+        "usefulSecureTime": "37.000000000",
+        "controlCpu": "0.830000000",
+        "managementBytes": 1240,
+        "newKeys": 2
+      }
+    },
+    "firstStrictVsSeed": {
+      "nodes": 163,
+      "seconds": "0.162373",
+      "evaluation": {
+        "servedContacts": 2,
+        "usefulSecureTime": "38.000000000",
+        "controlCpu": "0.120000000",
+        "managementBytes": 160,
+        "newKeys": 0
+      }
+    },
+    "firstStrictIncumbent": {
+      "nodes": 134269,
+      "seconds": "9.2836227",
+      "evaluation": {
+        "servedContacts": 3,
+        "usefulSecureTime": "37.000000000",
+        "controlCpu": "0.830000000",
+        "managementBytes": 1240,
+        "newKeys": 2
+      }
+    },
+    "incumbentUpdates": 2,
+    "strictIncumbentUpdates": 1
+  }
+]

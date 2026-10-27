@@ -3,6 +3,14 @@
 /.tools/
 *.log
 
+# Retain the small, reviewed audit evidence already referenced by the reports
+!/docs/reviews/research-audit-checks/logs/audit-all.log
+!/docs/reviews/research-audit-checks/logs/differential-prefix-5000.log
+!/docs/reviews/research-audit-checks/logs/differential-root-1000.log
+!/docs/reviews/research-audit-checks/logs/journal-scan.log
+!/docs/reviews/research-audit-checks/logs/policies.log
+!/docs/reviews/research-audit-checks/logs/tiebreak.log
+
 # Python environments and caches
 .venv/
 venv/
@@ -52,6 +60,17 @@ __pycache__/
 /docs/security-evaluation-se22/figures/
 /docs/security-evaluation-se22/*.zip
 /docs/security-evaluation-se22/evidence-file-hashes.json
+
+# Manuscript build outputs and duplicate figure exports; keep figure PDFs for LaTeX
+/docs/paper-final/main.pdf
+/docs/paper-final/supplement.pdf
+/docs/paper-final/figures/*.png
+/docs/paper-final/figures/*.svg
+/docs/paper-r1/main.pdf
+/docs/paper-r1/supplement.pdf
+/docs/paper-r1/figures/*.png
+/docs/paper-r1/figures/*.svg
+/docs/research-synthesis/report.pdf
 
 # LaTeX build intermediates (keep .tex sources and reference documents)
 *.aux
@@ -138,3 +157,20 @@ Desktop.ini
 
 # SE2.3 C3-window evidence archive; tables and compact manifests remain tracked.
 /docs/security-evaluation-c3/*.zip
+
+# Publication bundles belong in release assets, not the source tree.
+/docs/*.zip
+/docs/*.rar
+
+# AITU: retain current DOCX, JSON, TeX, PNG inputs, tables and audit reports.
+# The previous DOCX exports and JPG/SVG alternatives are reproducible duplicates.
+/docs/aitu-revision/*.docx
+/docs/aitu-revision/figures/*.jpg
+/docs/aitu-revision/figures/*.svg
+/docs/aitu-revision-v2/figures/*.jpg
+/docs/aitu-revision-v2/figures/*.svg
+
+# Historical manuscript render and alternate raster/vector figure exports.
+/docs/paper-corrected/main.pdf
+/docs/paper-final/figures-improved/*.png
+/docs/paper-final/figures-improved/*.svg

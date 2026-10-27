@@ -1,0 +1,16 @@
+{
+  "source": "C:\\Users\\Muhalek\\Downloads\\main(1).tex",
+  "sourceSha256": "bffa93d0315b3c02fc893ce090cc70ab4d394a9a6f437206f8e70e3985746068",
+  "outputSha256": "d687087c3bd4c6f3c89451a329d3735db4973537530b1f7e0900598b0a7945b0",
+  "figuresFrom": "docs/paper-final/figures-improved",
+  "figures": [
+    "service_matrix.pdf",
+    "cost_matrix.pdf",
+    "runtime_completion.pdf",
+    "measured_iss.pdf",
+    "detected_exposure.pdf",
+    "recovery.pdf"
+  ],
+  "sourceModified": false,
+  "unresolved": "Public reproduction URL/DOI remains only a comment"
+}

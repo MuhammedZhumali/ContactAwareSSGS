@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "roots": {
+    "planned": 6,
+    "executed": 6,
+    "statuses": {
+      "INCOMPLETE": 4,
+      "COMPLETE": 2
+    }
+  },
+  "controllers": {
+    "planned": 4,
+    "executed": 4,
+    "statuses": {
+      "FINISHED": 3,
+      "CONTROLLER_TIME_LIMIT": 1
+    }
+  },
+  "historicalFilesUnchanged": 2536,
+  "frozenProductionSourcesMatch": 112,
+  "auditedRawHashes": 130,
+  "frozenInputConfigurations": 11,
+  "recompiledClassesByteIdentical": 27,
+  "article": {
+    "references": 20,
+    "firstCitationOrder": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20"
+    ],
+    "abstractWords": 269,
+    "abstractCharacters": 1672,
+    "titleCharacters": 78
+  },
+  "documents": {
+    "article": {
+      "sha256": "f6ec27dae06d9085a53a189ea35477aabf8cef883230a48d9d8e47390b3e9a7b",
+      "pages": 13,
+      "nativeOMML": 3,
+      "tables": 4,
+      "font": "Times New Roman 12pt",
+      "geometry": "A4; margins top2 bottom2.5 left3 right1.5cm",
+      "preservedTemplateParts": 7
+    },
+    "supplement": {
+      "sha256": "789c7a4f48f55339efce57b5dd5f536d6023e1a4ac9f38d6fdd32908feffbc1d",
+      "pages": 14,
+      "nativeOMML": 0,
+      "tables": 17,
+      "font": "Times New Roman 12pt",
+      "geometry": "A4; margins top2 bottom2.5 left3 right1.5cm",
+      "preservedTemplateParts": 7
+    }
+  },
+  "newPythonScriptsParsed": 10,
+  "gitDiffCheck": "PASS",
+  "boundary": "Local preservation, raw result checks, bytecode rebuild, document structure and recorded page/TeX QA. No new scientific runs or Maven suite."
+}

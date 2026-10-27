@@ -1,0 +1,25 @@
+{
+  "selectedRows": 84,
+  "selectedStatuses": {
+    "FINISHED": 63,
+    "SEARCH_INCOMPLETE": 20,
+    "CONTROLLER_TIME_LIMIT": 1
+  },
+  "reusedHistoricalRows": 20,
+  "additionalOriginalAttempts": 3,
+  "additionalStatuses": {
+    "CONTROLLER_TIME_LIMIT": 3
+  },
+  "auditedJournals": 87,
+  "comparablePairs": 21,
+  "allPairs": 42,
+  "finishedRowsWithDifferentServiceCounts": 42,
+  "finishedNoDisclosureEquality": "PASS",
+  "ordinaryServiceMatchesSavedMetrics": "PASS",
+  "confidentialBytesMatchExistingThreatModel": "PASS",
+  "sameScenarioInAllPairs": "PASS",
+  "newSimulations": 0,
+  "newMavenRuns": 0,
+  "preservedFiles": 3923,
+  "historicalCounts": "20 C3=5 rows reused once; 339/375 belongs to separate old SE2 audit, not this selection"
+}

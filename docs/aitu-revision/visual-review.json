@@ -1,0 +1,142 @@
+{
+  "status": "PASS",
+  "reviewDate": "2026-10-28",
+  "articlePages": 11,
+  "supplementPages": 9,
+  "files": {
+    "docs\\aitu-revision\\article.docx": "13fd2a0fbafa4d88c4cc36a4383cc5dc30322068a52eca08253581cf2910513a",
+    "docs\\aitu-revision\\supplement.docx": "9a01627e067c12105cd5a00d6068a19184ed7c5d893062a4c3054a68f1dbe6b4"
+  },
+  "renderer": "Microsoft Word 16 read-only COM export; bundled Poppler 110dpi page previews",
+  "fallbackReason": "Bundled render_docx.py could not find soffice.exe. No installed LibreOffice used.",
+  "checks": [
+    "All 20 final DOCX pages visually inspected",
+    "No clipped text, overlapping objects or oversized figure gaps",
+    "All main figures legible; table headers repeat across pages",
+    "Editable native OMML equations, not MathType",
+    "Main DOCX unchanged after its complete visual review; final2 rerender still 11 pages",
+    "Both current main.tex and supplement.tex compiled successfully with desktop compiler"
+  ],
+  "pages": [
+    {
+      "file": "target/aitu-revision/document-qa/final/article-01.png",
+      "sha256": "3fab3fa149572b9884ae134721e7cf4fb018049b5da32e91d553fd5e4fdb6b88",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final/article-02.png",
+      "sha256": "38a10866e4902144cf37a72d3020db2e12eb091bae6d51e8a95858f3ba2c9b5d",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final/article-03.png",
+      "sha256": "b7eada3904ab42304c22c21c1f8ace1244eee00e7b174a2f32fe8aa33539a223",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final/article-04.png",
+      "sha256": "915d025720f9a3ec03f3434f332b483d18edebebc5c732f1c352357eafc10307",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final/article-05.png",
+      "sha256": "e3b1272bfd80c0867d2677c470efadcb064ab917323ba2b350a793fa8295cb1e",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final/article-06.png",
+      "sha256": "297241d6977dcf9b6c2d00ea818e7d0f99633b5f8f4f2af42770baa976117683",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final/article-07.png",
+      "sha256": "e9b3ae792b2a407005297cb3e4bf1ebbe41a3d4558e4ad1051d287464c6ef13f",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final/article-08.png",
+      "sha256": "f9ab1230e0620849e44cbff5d131d42a6307a2ee15eab6846dc7491613c03940",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final/article-09.png",
+      "sha256": "8292c120882228e1d1175dc0e01cab50d72b8adb5f74360a04ebdf07fb809fcf",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final/article-10.png",
+      "sha256": "43e87cad2bd4e2e278029ae9fef196e8b6222a0813f64e0e530b4f6ed417ccd0",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final/article-11.png",
+      "sha256": "bb95c2c9dbc0545c80c9610506c479ddcd3a824fe6e954e998eddc12872f107d",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final2/supplement-1.png",
+      "sha256": "185495ab64a27afd4232dcb7188f5267775d3f88d38ee152b3d0bdc16a0cf68a",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final2/supplement-2.png",
+      "sha256": "366f35c160211c99f7d507a24038700867a1a1cbc09833432593fd6acd97dc2f",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final2/supplement-3.png",
+      "sha256": "0af18c3add142d281d1947b5a4d713b71989de95a6567d2ed2062d3f0ae7c868",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final2/supplement-4.png",
+      "sha256": "c871f4a5795634e75f6ba73d04d5a31be165e214db41876abf8b9e436e70ec74",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final2/supplement-5.png",
+      "sha256": "68c0f4cfcf7d90516d8d24d59e21d5cf8a133449f0c157141ba38c67f8c6a203",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final2/supplement-6.png",
+      "sha256": "cdb1ba1bd9bbadcc5ab84946c39b217cf34289f5a71a81ecfb62da3cc6609bfc",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final2/supplement-7.png",
+      "sha256": "4ada5e2d2031ec3441de4e7036588399d8cf17c1f3d7ea1ced532edfac08afc0",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final2/supplement-8.png",
+      "sha256": "26ce35810e63bf15599d7a1c30b618231c3ec8c06e1aff85e63ad7d925655b1b",
+      "reviewed": true
+    },
+    {
+      "file": "target/aitu-revision/document-qa/final2/supplement-9.png",
+      "sha256": "96508f39768fb9d5d1e9906d42dbee10d1a99690d8e0f7888c98ea785d6ac298",
+      "reviewed": true
+    }
+  ],
+  "latex": [
+    {
+      "file": "docs/aitu-revision/article-tex/main.tex",
+      "sha256": "8a5d4e35d1a50cec946cbd4c841f6bf6a2512229aa943a6c562722c5e9241e59",
+      "compiler": "Codex desktop LaTeX",
+      "kind": "success"
+    },
+    {
+      "file": "docs/aitu-revision/article-tex/supplement.tex",
+      "sha256": "28d89a4995a165903eef4f4b489cabfbe2021cbb6466f0f400488ec3a6064e4f",
+      "compiler": "Codex desktop LaTeX",
+      "kind": "success"
+    }
+  ],
+  "limitations": [
+    "Author and publication declarations remain explicitly incomplete",
+    "Reference age exceptions and indexing share unresolved",
+    "Native OMML acceptance requires journal confirmation",
+    "PDFs are internal QA only and are excluded from delivery"
+  ]
+}

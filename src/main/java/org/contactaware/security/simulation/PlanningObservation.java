@@ -70,11 +70,16 @@ public record PlanningObservation(
         if (horizon < 0) throw new IllegalArgumentException("H cannot be negative");
         var now = snapshot.at();
         var scenario = snapshot.scenario();
-        var current = scenario.contacts().stream()
+        var forecastCurrent = scenario.contacts().stream()
                 .filter(c -> !now.isBefore(c.window().start()) && now.isBefore(c.window().end()))
                 .findFirst().orElse(null);
+        boolean unavailable = forecastCurrent != null && snapshot.channelUnavailable(forecastCurrent.window().id());
+        var current = unavailable ? null : forecastCurrent;
+        // Select the original permitted prefix first. Removing a factually unavailable current
+        // contact must not expose an extra distant contact or its private restoration event.
         var visible = scenario.contacts().stream().filter(c -> c.window().end().isAfter(now))
-                .limit((long) horizon + (current == null ? 0 : 1)).toList();
+                .limit((long) horizon + (forecastCurrent == null ? 0 : 1))
+                .filter(c -> !unavailable || !c.window().id().equals(forecastCurrent.window().id())).toList();
         var end = visible.isEmpty() ? now : visible.getLast().window().end();
         var operations = new ArrayList<OngoingOperation>();
         var reservations = new ArrayList<ResourceReservation>();

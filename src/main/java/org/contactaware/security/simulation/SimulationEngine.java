@@ -229,6 +229,8 @@ public final class SimulationEngine {
         final Map<String, PlannedOperation> plannedOperations = new TreeMap<>();
         final Map<String, Execution> running = new TreeMap<>();
         final Set<ContextId> uncertain = new TreeSet<>();
+        // Derived from factual journal events on restore; never supplied to a planning branch.
+        final Set<String> unavailableContacts = new HashSet<>();
         final Set<String> expiryEvents = new HashSet<>();
         final List<SimulationEvent> journal = new ArrayList<>();
         final Map<String, long[]> delivered = new TreeMap<>();
@@ -260,6 +262,10 @@ public final class SimulationEngine {
             now = snapshot.at(); state = snapshot.securityState(); insertion = snapshot.nextInsertion();
             queue.addAll(snapshot.queuedEvents()); expiryEvents.addAll(snapshot.registeredExpiryEvents());
             journal.addAll(snapshot.journal()); uncertain.addAll(snapshot.uncertainContexts());
+            for (var event : journal) {
+                if (event.type() == CHANNEL_DOWN) unavailableContacts.add(event.contactId());
+                else if (event.type() == CHANNEL_UP) unavailableContacts.remove(event.contactId());
+            }
             snapshot.pendingOperations().forEach(p -> running.put(p.planned().id(), new Execution(p)));
             snapshot.payloadProgress().forEach((id, p) -> {
                 delivered.put(id, new long[]{p.uplinkBytes(), p.downlinkBytes()}); nextUp.put(id, p.nextUplink());
@@ -298,6 +304,12 @@ public final class SimulationEngine {
                 schedule(incident.at(), EventKind.DISCLOSURE, "disclosure:" + incident.id(), incident.id(), 0, null);
                 if (incident.detectionAt() != null)
                     schedule(incident.detectionAt(), EventKind.REVOCATION_NOTICE, "notice:" + incident.id(), incident.id(), 0, null);
+            }
+            for (var interruption : input.channelInterruptions()) {
+                schedule(interruption.from(), EventKind.CHANNEL_DOWN, "channel-down:" + interruption.contactId(),
+                        interruption.contactId(), 0, null);
+                schedule(interruption.until(), EventKind.CHANNEL_UP, "channel-up:" + interruption.contactId(),
+                        interruption.contactId(), 0, null);
             }
         }
 
@@ -353,6 +365,13 @@ public final class SimulationEngine {
                 }
                 case DISCLOSURE -> disclose(event.referenceId());
                 case REVOCATION_NOTICE -> receiveGroundNotice(event.referenceId());
+                case CHANNEL_DOWN -> channelDown(event.referenceId());
+                case CHANNEL_UP -> {
+                    unavailableContacts.remove(event.referenceId());
+                    var window = contacts.get(event.referenceId()).window();
+                    log(CHANNEL_UP, null, null, context(window), window.id(), null, ResourceUsage.ZERO, 0, null,
+                            "Channel available; online admission and explicit reopening remain required");
+                }
             }
         }
 
@@ -373,6 +392,7 @@ public final class SimulationEngine {
                 }
                 if (uncertain.contains(intent.contextId()) && intent.action().requiresContact())
                     throw new SecurityActionExecutor.Rejected("CONTEXT_UNCERTAIN", "Reconciliation is required before further online operations");
+                requireChannel(planned, intent.action());
                 var steps = executor.resolve(state, intent);
                 executor.admit(state, intent, steps.getFirst(), contact(planned), now);
                 var reservations = reservations(planned, steps);
@@ -399,6 +419,7 @@ public final class SimulationEngine {
         void startStep(Execution execution) {
             var planned = execution.planned;
             try {
+                requireChannel(planned, execution.step());
                 executor.admit(state, planned.intent(), execution.step(), contact(planned), now);
             } catch (SecurityActionExecutor.Rejected rejection) {
                 running.remove(planned.id());
@@ -426,6 +447,7 @@ public final class SimulationEngine {
                 return;
             }
             try {
+                requireChannel(planned, execution.step());
                 state = executor.complete(state, planned.intent(), execution.step(), contact(planned), now);
             } catch (SecurityActionExecutor.Rejected rejection) {
                 fail(execution, false, rejection.code(), rejection.getMessage());
@@ -504,6 +526,23 @@ public final class SimulationEngine {
                     fail(execution, true, "CONTACT_ENDED", "No online commit at or beyond contact end");
             stopIfOperational(context(window), window.id());
             log(CONTACT_ENDED, null, null, context(window), window.id(), null, ResourceUsage.ZERO, 0, null, "Contact ends");
+        }
+
+        void channelDown(String contactId) {
+            unavailableContacts.add(contactId);
+            var window = contacts.get(contactId).window();
+            log(CHANNEL_DOWN, null, null, context(window), contactId, null, ResourceUsage.ZERO, 0, null,
+                    "Actual channel unavailable; forecast window is unchanged");
+            if (frame != null && contactId.equals(frame.contact().window().id())) abortFrame("CHANNEL_DOWN");
+            for (var execution : List.copyOf(running.values()))
+                if (execution.step().requiresContact() && contactId.equals(execution.planned.contactId()))
+                    fail(execution, true, "CHANNEL_DOWN", "Online work interrupted by actual channel loss");
+            stopIfOperational(context(window), contactId);
+        }
+
+        void requireChannel(PlannedOperation planned, SecurityAction action) {
+            if (action.requiresContact() && unavailableContacts.contains(planned.contactId()))
+                throw new SecurityActionExecutor.Rejected("CHANNEL_DOWN", "The matching channel is currently unavailable");
         }
 
         void stopIfOperational(ContextId id, String contactId) {
@@ -611,12 +650,14 @@ public final class SimulationEngine {
                     .multiply(java.math.BigInteger.valueOf(Duration.between(aborted.from(), now).toNanos()))
                     .divide(java.math.BigInteger.valueOf(Duration.between(aborted.from(), aborted.until()).toNanos())).longValueExact();
             var direction = aborted.uplink() ? Direction.UPLINK : Direction.DOWNLINK;
+            state = transitions.recordAbortedTransmission(state, aborted.keys().forDirection(direction), now);
             var evidence = new SimulationEvent.FrameEvidence(aborted.from(), now, direction,
                     aborted.keys().forDirection(direction), aborted.contact().payload().frameBytes(), emitted, false);
             journal.add(new SimulationEvent(journal.size(), now, PAYLOAD_ABORTED, null, null, aborted.context(),
                     aborted.contact().window().id(), aborted.keys(), ResourceUsage.ZERO, Duration.ZERO,
                     0, 0, 0, 0, 0, reason, "In-flight frame interrupted; emitted ciphertext recorded separately from delivered payload", evidence));
-            queue.removeIf(e -> e.kind() == EventKind.FRAME_COMPLETE);
+            queue.removeIf(e -> e.kind() == EventKind.FRAME_COMPLETE
+                    && e.referenceId().equals(aborted.contact().window().id()) && e.at().equals(aborted.until()));
             frame = null;
         }
 
@@ -625,6 +666,7 @@ public final class SimulationEngine {
             var ctx = state.contexts().values().stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).filter(c -> c.status() == AssociationStatus.OPERATIONAL).findFirst().orElse(null);
             if (ctx == null || uncertain.contains(ctx.id())) return;
             var contact = contacts.get(ctx.activeContact().id());
+            if (unavailableContacts.contains(contact.window().id())) return;
             if (running.values().stream().peek(ignored -> SearchControl.checkpoint("simulation.stream")).anyMatch(e -> e.planned.intent().action().requiresContact()
                     && contact.window().id().equals(e.planned.contactId()))) return;
             var profile = contact.payload();

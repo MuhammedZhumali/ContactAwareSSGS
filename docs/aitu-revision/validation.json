@@ -1,0 +1,124 @@
+{
+  "status": "PASS",
+  "newControllers": 110,
+  "controllerStatuses": {
+    "FINISHED": 105,
+    "SEARCH_INCOMPLETE": 5
+  },
+  "pairedRootDiagnostics": 12,
+  "rootStatuses": {
+    "COMPLETE": 11,
+    "INCOMPLETE": 1
+  },
+  "reusedCells": 6,
+  "stages": {
+    "stage1": {
+      "plannedNewAttempts": 28,
+      "attemptedNew": 28,
+      "newStatuses": {
+        "COMPLETE": 11,
+        "INCOMPLETE": 1,
+        "FINISHED": 15,
+        "SEARCH_INCOMPLETE": 1
+      },
+      "reusedCells": 0,
+      "notRun": 0
+    },
+    "stage2": {
+      "plannedNewAttempts": 32,
+      "attemptedNew": 32,
+      "newStatuses": {
+        "FINISHED": 28,
+        "SEARCH_INCOMPLETE": 4
+      },
+      "reusedCells": 4,
+      "notRun": 0
+    },
+    "stage3": {
+      "plannedNewAttempts": 26,
+      "attemptedNew": 26,
+      "newStatuses": {
+        "FINISHED": 26
+      },
+      "reusedCells": 2,
+      "notRun": 0
+    },
+    "stage4": {
+      "plannedNewAttempts": 36,
+      "attemptedNew": 36,
+      "newStatuses": {
+        "FINISHED": 36
+      },
+      "reusedCells": 0,
+      "notRun": 0
+    }
+  },
+  "auditedHashEntriesVerified": 978,
+  "historicalFilesUnchanged": 37,
+  "frozenProductionSourceHashesEqual": 112,
+  "recompiledClassesByteIdentical": 26,
+  "article": {
+    "titleCharacters": 78,
+    "abstractWords": 263,
+    "abstractCharacters": 1676,
+    "referencesInOrder": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20"
+    ]
+  },
+  "documents": {
+    "article": {
+      "paragraphs": 166,
+      "tables": 2,
+      "nativeOMML": 3,
+      "mainTextFont12TNR": true,
+      "geometry": "A4 top2 bottom2.5 left3 right1.5cm",
+      "sha256": "13fd2a0fbafa4d88c4cc36a4383cc5dc30322068a52eca08253581cf2910513a"
+    },
+    "supplement": {
+      "paragraphs": 1047,
+      "tables": 9,
+      "nativeOMML": 0,
+      "mainTextFont12TNR": true,
+      "geometry": "A4 top2 bottom2.5 left3 right1.5cm",
+      "sha256": "9a01627e067c12105cd5a00d6068a19184ed7c5d893062a4c3054a68f1dbe6b4"
+    }
+  },
+  "renderedPages": [
+    {
+      "pdf": "C:\\Users\\Muhalek\\ContactAwareSS\\target\\aitu-revision\\document-qa\\final2\\article.pdf",
+      "renderer": "16.0",
+      "words": 4788,
+      "pages": 11,
+      "nativeEquationCount": 3,
+      "name": "article"
+    },
+    {
+      "pdf": "C:\\Users\\Muhalek\\ContactAwareSS\\target\\aitu-revision\\document-qa\\final2\\supplement.pdf",
+      "renderer": "16.0",
+      "words": 3055,
+      "pages": 9,
+      "nativeEquationCount": 0,
+      "name": "supplement"
+    }
+  ],
+  "boundary": "Numerical/structural validation; visual review recorded separately. No new policy runs and no Maven suite in this finalization."
+}

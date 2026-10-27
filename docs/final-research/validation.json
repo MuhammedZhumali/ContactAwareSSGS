@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "registered": 108,
+  "attempted": 108,
+  "audited": 93,
+  "statuses": {
+    "FINISHED": 93,
+    "PROCESS_TIMEOUT": 15
+  },
+  "pairOutcomes": {
+    "EQUAL": 19,
+    "NEXT_BETTER": 1,
+    "INCOMPLETE_PAIR": 10,
+    "MULTI_BETTER": 1
+  },
+  "sameRootComparatorChecks": 37164,
+  "protocolSha256": "2c406eb1c13dd88cea8fc7731736678e8fd3f5fae2b343a48395b5666a878cb8",
+  "tableSha256": "799b9b816bb8778fc6f67b081bde99dcd09be4e4d38ff6b00b14ef47f1806f94",
+  "auditSha256": "f46c6512e0e8fceb54401094b8978d67c834a1b3e22681f2f17a1e91449b6251",
+  "summarySha256": "5bc240cb075adbc8585222ff1699b4b7452f6000d4be091007dd4de6eab445c5",
+  "unpairedHorizonCells": [
+    "096-sensitivity-ISS46-medium-offline-multi-H3-canonical"
+  ],
+  "unpairedExplanation": "The H3-only sensitivity is compared with primary H2 in factor-comparisons, never silently treated as H1/H2 pair."
+}

@@ -1,0 +1,704 @@
+{
+  "schemaVersion": 1,
+  "preparedAt": "2026-10-28",
+  "status": "draft_for_parent_integration",
+  "sourceInputs": {
+    "tex": "C:\\Users\\Muhalek\\Downloads\\main(1).tex",
+    "pdf": "C:\\Users\\Muhalek\\Downloads\\Contact_Aware_Research-4.pdf",
+    "note": "The parent handles results. New exact/practical and tie-specific evidence was not restated in the literature."
+  },
+  "introduction": {
+    "heading": "Introduction",
+    "paragraphs": [
+      "Short spacecraft–ground contacts must accommodate both payload transmission and the management of traffic keys and security associations. A later contact may provide enough time to transmit its payload but insufficient time to establish the required security state. Earlier preparation can therefore matter, provided that validity, authorization, resource availability, and communication constraints permit it. Established space-security standards already define protection and management mechanisms [@sdls] [@ep] [@skm]; the operational question is when to invoke their abstract counterparts.",
+      "Predictable connectivity also supports routing over planned contacts [@sabr] [@cgr]. However, a longer forecast does not itself establish a useful scheduling advantage. A feasible improvement may require a particular initial state, a suitable return contact, and enough computation to discover and execute the plan. Decision time can consume the communication opportunity that the plan seeks to preserve.",
+      "This study examines the incremental value of contact visibility for joint traffic-key and security-association lifecycle timing. Matched Next and Multi policies use the same actions, constraints, objective, costs, and tie-breaking rule, while observing different horizons. The analysis separates exact finite-model results from practical bounded execution, without assuming that additional visibility improves service."
+    ],
+    "text": "Short spacecraft–ground contacts must accommodate both payload transmission and the management of traffic keys and security associations. A later contact may provide enough time to transmit its payload but insufficient time to establish the required security state. Earlier preparation can therefore matter, provided that validity, authorization, resource availability, and communication constraints permit it. Established space-security standards already define protection and management mechanisms [@sdls] [@ep] [@skm]; the operational question is when to invoke their abstract counterparts.\n\nPredictable connectivity also supports routing over planned contacts [@sabr] [@cgr]. However, a longer forecast does not itself establish a useful scheduling advantage. A feasible improvement may require a particular initial state, a suitable return contact, and enough computation to discover and execute the plan. Decision time can consume the communication opportunity that the plan seeks to preserve.\n\nThis study examines the incremental value of contact visibility for joint traffic-key and security-association lifecycle timing. Matched Next and Multi policies use the same actions, constraints, objective, costs, and tie-breaking rule, while observing different horizons. The analysis separates exact finite-model results from practical bounded execution, without assuming that additional visibility improves service."
+  },
+  "literatureReviewAndProblemStatement": {
+    "heading": "Literature review and problem statement",
+    "paragraphs": [
+      "Several established mechanisms already connect security management to intermittent or predicted connectivity. The expired Delay-Tolerant Key Administration proposal proactively distributes authenticated public keys using planned communications and effective times [@dtka]. BERMUDA addresses unicast key management for delay-tolerant networks through public-key infrastructure, elliptic-curve key agreement, and certificate revocation [@bermuda]. These works concern the availability and administration of cryptographic material; they prevent treating advance preparation as a new mechanism.",
+      "Satellite handover research provides another precedent. Zhao transfers authentication context and session-key information before a predicted handover [@zhao]. Kwon et al. separate initial authentication from lightweight handover operations in a satellite–terrestrial architecture [@kwon]. Such designs establish that anticipating mobility and reducing repeated authentication costs are existing research directions.",
+      "Bernal et al. provide a particularly relevant contact-dependent identity architecture [@iota]. Ground-side identity operations support onboard authorization allowlists updated during satellite contacts. Their discussion also includes revocation delay, temporary local authorization withdrawal, and short-lived capability tokens. Thus, this work already couples authorization state to intermittent connectivity. The distinction considered here is the timing of directional traffic keys and security associations across an ordered contact sequence, rather than device identity or ledger-backed authorization.",
+      "Bundle Protocol Version 7 and BPSec establish a separate networking and security context [@bp] [@bpsec]. Most directly, Detke et al. translate temporally feasible Contact Graph Routing routes into protection-scheme-dependent key scopes and minimize the activated scopes needed for a target connectivity ratio [@detke]. Their model addresses route feasibility and provisioning footprint; scheduling keys over contact plans is identified as a further direction. The present study instead examines sequential lifecycle actions and their effects on admissible payload service under fixed constraints.",
+      "Receding-horizon optimization is itself established [@rhc]. The narrower problem is whether changing only the visible contact horizon changes the selected lifecycle schedule, and whether a practical controller can realize that change within its computational budget. This operational comparison neither supplies a new authentication protocol nor substitutes for cryptographic analysis such as formal BPSec studies [@bpsec_analysis]. Consequently, any contribution must remain conditional on the modeled state, workload, constraints, and execution method."
+    ],
+    "text": "Several established mechanisms already connect security management to intermittent or predicted connectivity. The expired Delay-Tolerant Key Administration proposal proactively distributes authenticated public keys using planned communications and effective times [@dtka]. BERMUDA addresses unicast key management for delay-tolerant networks through public-key infrastructure, elliptic-curve key agreement, and certificate revocation [@bermuda]. These works concern the availability and administration of cryptographic material; they prevent treating advance preparation as a new mechanism.\n\nSatellite handover research provides another precedent. Zhao transfers authentication context and session-key information before a predicted handover [@zhao]. Kwon et al. separate initial authentication from lightweight handover operations in a satellite–terrestrial architecture [@kwon]. Such designs establish that anticipating mobility and reducing repeated authentication costs are existing research directions.\n\nBernal et al. provide a particularly relevant contact-dependent identity architecture [@iota]. Ground-side identity operations support onboard authorization allowlists updated during satellite contacts. Their discussion also includes revocation delay, temporary local authorization withdrawal, and short-lived capability tokens. Thus, this work already couples authorization state to intermittent connectivity. The distinction considered here is the timing of directional traffic keys and security associations across an ordered contact sequence, rather than device identity or ledger-backed authorization.\n\nBundle Protocol Version 7 and BPSec establish a separate networking and security context [@bp] [@bpsec]. Most directly, Detke et al. translate temporally feasible Contact Graph Routing routes into protection-scheme-dependent key scopes and minimize the activated scopes needed for a target connectivity ratio [@detke]. Their model addresses route feasibility and provisioning footprint; scheduling keys over contact plans is identified as a further direction. The present study instead examines sequential lifecycle actions and their effects on admissible payload service under fixed constraints.\n\nReceding-horizon optimization is itself established [@rhc]. The narrower problem is whether changing only the visible contact horizon changes the selected lifecycle schedule, and whether a practical controller can realize that change within its computational budget. This operational comparison neither supplies a new authentication protocol nor substitutes for cryptographic analysis such as formal BPSec studies [@bpsec_analysis]. Consequently, any contribution must remain conditional on the modeled state, workload, constraints, and execution method."
+  },
+  "methodologyCitationSuggestions": [
+    {
+      "keys": [
+        "bpsec_contexts"
+      ],
+      "section": "Security assumptions and scope",
+      "proposedSentence": "A deployed security context requires concrete cryptographic processing and key-use rules, such as those specified for BPSec contexts [@bpsec_contexts]; the present experiment evaluates abstract lifecycle scheduling and does not claim implementation of those contexts.",
+      "integrationCondition": "Use only when explaining the abstraction boundary; do not imply the simulator implements BPSec."
+    },
+    {
+      "keys": [
+        "madoery"
+      ],
+      "section": "Related-work comparison or model scope",
+      "proposedSentence": "BPSec security models and policy choices form a separate comparison dimension from the timing of lifecycle actions [@madoery].",
+      "integrationCondition": "Publication identity and topical scope are verified. Inspect the full paper before adding detailed claims about individual protection schemes; Detke's actual model can support the presently drafted specific scope comparison."
+    },
+    {
+      "keys": [
+        "celestrak"
+      ],
+      "section": "Orbital-input provenance",
+      "proposedSentence": "The source of general-perturbations orbital data and its formats are documented by CelesTrak [@celestrak].",
+      "integrationCondition": "Add the actual frozen input epoch, retrieval date, files and hashes from the experiment; the live page is not the dataset."
+    },
+    {
+      "keys": [
+        "satnogs"
+      ],
+      "section": "Ground-station metadata provenance",
+      "proposedSentence": "SatNOGS documents an API for scheduled jobs and observations [@satnogs]; any station metadata used in this study must be identified by its archived snapshot.",
+      "integrationCondition": "Use only if the experiment's saved provenance actually uses SatNOGS. Do not imply an observed or reserved operational contact from geometric visibility."
+    },
+    {
+      "keys": [
+        "orekit"
+      ],
+      "section": "Geometric contact generation",
+      "proposedSentence": "Orekit provides space-dynamics components for orbits, frames, dates and propagation [@orekit].",
+      "integrationCondition": "State the exact version, propagation configuration and archived inputs actually used. Do not use the currently advertised version as the experimental version."
+    }
+  ],
+  "references": [
+    {
+      "key": "sdls",
+      "authors": [
+        "Consultative Committee for Space Data Systems"
+      ],
+      "year": 2022,
+      "title": "Space data link security protocol",
+      "source": "CCSDS 355.0-B-2; Blue Book, Issue 2",
+      "doi": null,
+      "url": "https://ccsds.org/Pubs/355x0b2.pdf",
+      "apa": "Consultative Committee for Space Data Systems. (2022). Space data link security protocol (CCSDS 355.0-B-2). https://ccsds.org/Pubs/355x0b2.pdf",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Official standard cover, edition, foreword and scope",
+        "supportedClaims": [
+          "Existing space data-link protection specification"
+        ],
+        "limitations": [
+          "Not a conformance assessment of the present implementation; newest-edition status not audited"
+        ],
+        "evidenceUrls": [
+          "https://ccsds.org/Pubs/355x0b2.pdf"
+        ]
+      },
+      "recencyCaveat": "2022 is within five years as of 2026-10-28.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "ep",
+      "authors": [
+        "Consultative Committee for Space Data Systems"
+      ],
+      "year": 2020,
+      "title": "Space data link security protocol—Extended procedures",
+      "source": "CCSDS 355.1-B-1; Blue Book, Issue 1",
+      "doi": null,
+      "url": "https://ccsds.org/Pubs/355x1b1.pdf",
+      "apa": "Consultative Committee for Space Data Systems. (2020). Space data link security protocol—Extended procedures (CCSDS 355.1-B-1). https://ccsds.org/Pubs/355x1b1.pdf",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Official standard identity and management scope",
+        "supportedClaims": [
+          "Key and security-association management procedures predate this study"
+        ],
+        "limitations": [
+          "Map individual model actions to exact clauses before claiming compliance; current-edition status not audited"
+        ],
+        "evidenceUrls": [
+          "https://ccsds.org/Pubs/355x1b1.pdf"
+        ]
+      },
+      "recencyCaveat": "2020 exceeds the five-year applied-source limit; retain exact standard edition and flag unresolved editorial exception/classification.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "skm",
+      "authors": [
+        "Consultative Committee for Space Data Systems"
+      ],
+      "year": 2023,
+      "title": "Symmetric key management",
+      "source": "CCSDS 354.0-M-1; Magenta Book, Issue 1",
+      "doi": null,
+      "url": "https://ccsds.org/Pubs/354x0m1.pdf",
+      "apa": "Consultative Committee for Space Data Systems. (2023). Symmetric key management (CCSDS 354.0-M-1). https://ccsds.org/Pubs/354x0m1.pdf",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Official Recommended Practice identity and lifecycle scope",
+        "supportedClaims": [
+          "Established symmetric-key lifecycle and management vocabulary"
+        ],
+        "limitations": [
+          "A Recommended Practice, not proof of this policy's security or interoperability"
+        ],
+        "evidenceUrls": [
+          "https://ccsds.org/Pubs/354x0m1.pdf"
+        ]
+      },
+      "recencyCaveat": "2023 is within five years.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "iota",
+      "authors": [
+        "Bernal, D.",
+        "Ledesma, O.",
+        "Lamo, P.",
+        "Bermejo, J."
+      ],
+      "year": 2026,
+      "title": "IOTA-based authentication for IoT devices in satellite networks",
+      "source": "Computers, Materials & Continua, 86(1), 1–39",
+      "doi": "10.32604/cmc.2025.069746",
+      "url": "https://www.techscience.com/cmc/v86n1/64479/html",
+      "apa": "Bernal, D., Ledesma, O., Lamo, P., & Bermejo, J. (2026). IOTA-based authentication for IoT devices in satellite networks. Computers, Materials & Continua, 86(1), 1–39. https://doi.org/10.32604/cmc.2025.069746",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Publisher full text: relevant architecture, methods, revocation/prevalidation discussion and results",
+        "supportedClaims": [
+          "Ground-side identity creation outside the satellite channel",
+          "Onboard authorization allowlist updates during contacts",
+          "Revocation delay, temporary withdrawal and short-lived capability tokens"
+        ],
+        "limitations": [
+          "Distinguish measured Shimmer identity operations from orbital simulation and discussed local overlays; do not transfer its measured costs to this simulator"
+        ],
+        "evidenceUrls": [
+          "https://www.techscience.com/cmc/v86n1/64479/html"
+        ]
+      },
+      "recencyCaveat": "Volume year 2026; publisher issue-online date 2025-11-10. Both are recent; use 2026 consistently for the cited volume.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "bp",
+      "authors": [
+        "Burleigh, S.",
+        "Fall, K.",
+        "Birrane, E., III"
+      ],
+      "year": 2022,
+      "title": "Bundle protocol version 7",
+      "source": "RFC 9171",
+      "doi": "10.17487/RFC9171",
+      "url": "https://www.rfc-editor.org/rfc/rfc9171.html",
+      "apa": "Burleigh, S., Fall, K., & Birrane, E., III. (2022). Bundle protocol version 7 (RFC 9171). RFC Editor. https://doi.org/10.17487/RFC9171",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Official RFC identity and scope",
+        "supportedClaims": [
+          "Bundle protocol baseline for challenged networks"
+        ],
+        "limitations": [
+          "The lifecycle simulator is not thereby a BPv7 implementation"
+        ],
+        "evidenceUrls": [
+          "https://www.rfc-editor.org/rfc/rfc9171.html"
+        ]
+      },
+      "recencyCaveat": "2022 is within five years.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "bpsec",
+      "authors": [
+        "Birrane, E., III",
+        "McKeever, K."
+      ],
+      "year": 2022,
+      "title": "Bundle protocol security (BPSec)",
+      "source": "RFC 9172",
+      "doi": "10.17487/RFC9172",
+      "url": "https://www.rfc-editor.org/rfc/rfc9172.html",
+      "apa": "Birrane, E., III, & McKeever, K. (2022). Bundle protocol security (BPSec) (RFC 9172). RFC Editor. https://doi.org/10.17487/RFC9172",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Official RFC identity; section 6 and security-policy scope",
+        "supportedClaims": [
+          "Bundle security and key management have distinct scopes",
+          "Section 6 leaves key management to separate network management"
+        ],
+        "limitations": [
+          "Not evidence that this data-link lifecycle model implements BPSec"
+        ],
+        "evidenceUrls": [
+          "https://www.rfc-editor.org/rfc/rfc9172.html"
+        ]
+      },
+      "recencyCaveat": "2022 is within five years.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "sabr",
+      "authors": [
+        "Consultative Committee for Space Data Systems"
+      ],
+      "year": 2019,
+      "title": "Schedule-aware bundle routing",
+      "source": "CCSDS 734.3-B-1; Blue Book, Issue 1",
+      "doi": null,
+      "url": "https://ccsds.org/Pubs/734x3b1.pdf",
+      "apa": "Consultative Committee for Space Data Systems. (2019). Schedule-aware bundle routing (CCSDS 734.3-B-1). https://ccsds.org/Pubs/734x3b1.pdf",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Official standard, sections 1.1 and 2.1",
+        "supportedClaims": [
+          "Scheduled connectivity and contact plans drive route computation"
+        ],
+        "limitations": [
+          "Do not equate routing over scheduled contacts with optimal security lifecycle timing"
+        ],
+        "evidenceUrls": [
+          "https://ccsds.org/Pubs/734x3b1.pdf"
+        ]
+      },
+      "recencyCaveat": "2019 exceeds the five-year applied-source limit, but is within ten years. No standard-age exemption established.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "detke",
+      "authors": [
+        "Detke, R.",
+        "Madoery, P. G.",
+        "Cherini, R.",
+        "Fraire, J. A.",
+        "Finochietto, J. M."
+      ],
+      "year": 2026,
+      "title": "Security-aware route selection in DTNs: Towards optimal key provisioning",
+      "source": "IEEE WiSEE, Space-Terrestrial Internetworking Workshop (STINT); conference-hosted paper",
+      "doi": null,
+      "url": "https://stintworkshops.org/papers/stint2026-19-detke.pdf",
+      "apa": "Detke, R., Madoery, P. G., Cherini, R., Fraire, J. A., & Finochietto, J. M. (2026). Security-aware route selection in DTNs: Towards optimal key provisioning [Conference paper]. Space-Terrestrial Internetworking Workshop, IEEE WiSEE. https://stintworkshops.org/papers/stint2026-19-detke.pdf",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Downloaded complete conference-hosted PDF; inspected problem, MILP, results and conclusion; author metadata checked",
+        "supportedClaims": [
+          "Time-feasible CGR routes induce key-scope requirements",
+          "MILP minimizes activated scopes subject to target connectivity",
+          "Conclusion identifies scheduling keys over contact plans as further work"
+        ],
+        "limitations": [
+          "No final proceedings DOI or pagination established; cite inspected conference-hosted version explicitly",
+          "No claim of reproduced results"
+        ],
+        "evidenceUrls": [
+          "https://stintworkshops.org/papers/stint2026-19-detke.pdf",
+          "https://juanfraire.space/publications/2026-security-aware-route-selection-in-dtns/"
+        ]
+      },
+      "recencyCaveat": "2026 is recent.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "rhc",
+      "authors": [
+        "Mattingley, J.",
+        "Wang, Y.",
+        "Boyd, S."
+      ],
+      "year": 2010,
+      "title": "Code generation for receding horizon control",
+      "source": "2010 IEEE International Symposium on Computer-Aided Control System Design, 985–992",
+      "doi": "10.1109/CACSD.2010.5612665",
+      "url": "https://web.stanford.edu/~boyd/papers/pdf/code_gen_rhc_msc.pdf",
+      "apa": "Mattingley, J., Wang, Y., & Boyd, S. (2010). Code generation for receding horizon control. In 2010 IEEE International Symposium on Computer-Aided Control System Design (pp. 985–992). IEEE. https://doi.org/10.1109/CACSD.2010.5612665",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Author-hosted conference abstract/introduction; publisher-deposited DOI metadata",
+        "supportedClaims": [
+          "Receding-horizon control repeatedly solves a constrained optimization over a moving horizon"
+        ],
+        "limitations": [
+          "Not evidence of guaranteed superiority of larger horizons or bounded search"
+        ],
+        "evidenceUrls": [
+          "https://web.stanford.edu/~boyd/papers/pdf/code_gen_rhc_msc.pdf",
+          "https://api.crossref.org/works/10.1109%2FCACSD.2010.5612665"
+        ]
+      },
+      "recencyCaveat": "2010 exceeds even the ten-year fundamental-source limit; explicit exception or justified replacement is needed.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "celestrak",
+      "authors": [
+        "Kelso, T. S."
+      ],
+      "year": 2026,
+      "title": "A new way to obtain GP data (aka TLEs)",
+      "source": "CelesTrak; updated 2026-06-23; originally published 2020-05-27",
+      "doi": null,
+      "url": "https://celestrak.org/NORAD/documentation/gp-data-formats.php",
+      "apa": "Kelso, T. S. (2026, June 23). A new way to obtain GP data (aka TLEs). CelesTrak. https://celestrak.org/NORAD/documentation/gp-data-formats.php",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Provider page author/date/update and format documentation",
+        "supportedClaims": [
+          "GP data format/query documentation"
+        ],
+        "limitations": [
+          "The 2026 date is an explicit webpage update, not a new research publication",
+          "Does not establish historical campaign input validity without frozen files"
+        ],
+        "evidenceUrls": [
+          "https://celestrak.org/NORAD/documentation/gp-data-formats.php"
+        ]
+      },
+      "recencyCaveat": "Documentation first appeared in 2020 and was updated in 2026. Do not count it as a recent peer-reviewed research article.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "satnogs",
+      "authors": [
+        "Libre Space Foundation"
+      ],
+      "year": "n.d.",
+      "title": "API",
+      "source": "SatNOGS Network documentation",
+      "doi": null,
+      "url": "https://docs.satnogs.org/projects/satnogs-network/en/stable/api.html",
+      "apa": "Libre Space Foundation. (n.d.). API. SatNOGS Network documentation. Retrieved October 28, 2026, from https://docs.satnogs.org/projects/satnogs-network/en/stable/api.html",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Official project API page",
+        "supportedClaims": [
+          "API retrieves scheduled jobs and accepts observation data; public data access"
+        ],
+        "limitations": [
+          "An API/station record does not demonstrate availability, authorization or reservation for every modeled pass",
+          "No publication date inferred"
+        ],
+        "evidenceUrls": [
+          "https://docs.satnogs.org/projects/satnogs-network/en/stable/api.html"
+        ]
+      },
+      "recencyCaveat": "Undated evolving documentation; retrieval date is not publication year. Not a recent research article.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "orekit",
+      "authors": [
+        "Orekit"
+      ],
+      "year": "n.d.",
+      "title": "Orekit",
+      "source": "Official project overview",
+      "doi": null,
+      "url": "https://www.orekit.org/",
+      "apa": "Orekit. (n.d.). Orekit. Retrieved October 28, 2026, from https://www.orekit.org/",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Official test.orekit.org overview inspected after canonical homepage access challenge",
+        "supportedClaims": [
+          "Java space-dynamics library supplies orbit, frame, date and propagation components"
+        ],
+        "limitations": [
+          "Canonical homepage returned Anubis challenge; content was verified on official test subdomain",
+          "No claim that the latest displayed release is the version used in experiments; parent must cite frozen runtime version"
+        ],
+        "evidenceUrls": [
+          "https://www.orekit.org/",
+          "https://test.orekit.org/"
+        ]
+      },
+      "recencyCaveat": "Undated evolving software overview, not a dated research publication. Last-modified metadata must not be treated as a scientific publication year.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "dtka",
+      "authors": [
+        "Burleigh, S.",
+        "Horres, D.",
+        "Viswanathan, K.",
+        "Benson, M.",
+        "Templin, F."
+      ],
+      "year": 2018,
+      "title": "Architecture for delay-tolerant key administration",
+      "source": "Internet-Draft draft-burleigh-dtnwg-dtka-02; expired individual draft",
+      "doi": null,
+      "url": "https://datatracker.ietf.org/doc/html/draft-burleigh-dtnwg-dtka-02",
+      "apa": "Burleigh, S., Horres, D., Viswanathan, K., Benson, M., & Templin, F. (2018). Architecture for delay-tolerant key administration (Internet-Draft draft-burleigh-dtnwg-dtka-02) [Expired draft]. Internet Engineering Task Force. https://datatracker.ietf.org/doc/html/draft-burleigh-dtnwg-dtka-02",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "IETF text: motivation, planned communications, effective times, rollover/revocation; current draft-status page",
+        "supportedClaims": [
+          "Planned proactive authenticated public-key distribution is an existing idea"
+        ],
+        "limitations": [
+          "Expired individual work in progress; not an endorsed IETF standard"
+        ],
+        "evidenceUrls": [
+          "https://datatracker.ietf.org/doc/html/draft-burleigh-dtnwg-dtka-02"
+        ]
+      },
+      "recencyCaveat": "2018 exceeds five-year applied limit; under ten years. Status and age must remain explicit.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "bermuda",
+      "authors": [
+        "Fuchs, F.",
+        "Walter, F.",
+        "Tschorsch, F."
+      ],
+      "year": 2025,
+      "title": "BERMUDA: A BPSec-compatible key management scheme for DTNs",
+      "source": "ICT Systems Security and Privacy Protection; IFIP Advances in Information and Communication Technology, 746, 219–233",
+      "doi": "10.1007/978-3-031-92886-4_15",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-031-92886-4_15",
+      "apa": "Fuchs, F., Walter, F., & Tschorsch, F. (2025). BERMUDA: A BPSec-compatible key management scheme for DTNs. In L. Nemec Zlatolas, K. Rannenberg, T. Welzer, & J. Garcia-Alfaro (Eds.), ICT systems security and privacy protection (IFIP Advances in Information and Communication Technology, Vol. 746, pp. 219–233). Springer. https://doi.org/10.1007/978-3-031-92886-4_15",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Publisher abstract, metadata and recommended citation; Crossref publisher deposit; author ePrint abstract",
+        "supportedClaims": [
+          "Hierarchical PKI, ECDH and adapted NOVOMODO revocation for DTN unicast",
+          "DTN chat implementation is reported"
+        ],
+        "limitations": [
+          "Full protocol/model not audited; do not assert absence of all contact-aware decisions"
+        ],
+        "evidenceUrls": [
+          "https://link.springer.com/chapter/10.1007/978-3-031-92886-4_15",
+          "https://eprint.iacr.org/2025/806"
+        ]
+      },
+      "recencyCaveat": "Published 2025-05-16; recent. Author ePrint revision in 2026 does not change publication year.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "zhao",
+      "authors": [
+        "Zhao, H."
+      ],
+      "year": 2020,
+      "title": "A context-based secure handover mechanism for space-ground-integrated network",
+      "source": "Research Briefs on Information and Communication Technology Evolution, 6, 52–61",
+      "doi": "10.56801/rebicte.v6i.94",
+      "url": "https://rebicte.org/index.php/rebicte/article/view/94",
+      "apa": "Zhao, H. (2020). A context-based secure handover mechanism for space-ground-integrated network. Research Briefs on Information and Communication Technology Evolution, 6, 52–61. https://doi.org/10.56801/rebicte.v6i.94",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Current publisher metadata and publisher PDF abstract/section 4.2.2",
+        "supportedClaims": [
+          "Predicted handover enables advance authentication-context/session-key transfer"
+        ],
+        "limitations": [
+          "Use current publisher DOI; older legacy site has conflicting DOI/article numbering",
+          "No independent security proof review"
+        ],
+        "evidenceUrls": [
+          "https://rebicte.org/index.php/rebicte/article/view/94",
+          "https://rebicte.org/index.php/rebicte/article/download/94/169/150"
+        ]
+      },
+      "recencyCaveat": "Published 2020-11-01, beyond five years as of 2026-10-28; relevant precedent remains older than applied-source limit.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "bpsec_contexts",
+      "authors": [
+        "Birrane, E., III",
+        "White, A.",
+        "Heiner, S."
+      ],
+      "year": 2022,
+      "title": "Default security contexts for Bundle Protocol Security (BPSec)",
+      "source": "RFC 9173",
+      "doi": "10.17487/RFC9173",
+      "url": "https://www.rfc-editor.org/rfc/rfc9173.html",
+      "apa": "Birrane, E., III, White, A., & Heiner, S. (2022). Default security contexts for Bundle Protocol Security (BPSec) (RFC 9173). RFC Editor. https://doi.org/10.17487/RFC9173",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Official RFC metadata and sections 3.1, 3.5",
+        "supportedClaims": [
+          "BPSec security contexts define cryptographic operations and key-use assumptions",
+          "Preplaced, conveyed or externally negotiated keys can supply an integrity context"
+        ],
+        "limitations": [
+          "Not a claim that this abstract lifecycle simulator implements the RFC's cryptography"
+        ],
+        "evidenceUrls": [
+          "https://www.rfc-editor.org/rfc/rfc9173.html"
+        ]
+      },
+      "recencyCaveat": "2022 is within five years.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "madoery",
+      "authors": [
+        "Madoery, P. G.",
+        "Cherini, R.",
+        "Cammarano, A.",
+        "Grosso, J.",
+        "Finochietto, J. M."
+      ],
+      "year": 2024,
+      "title": "Bundle protocol security models and policies for safeguarding space information networks",
+      "source": "IEEE Journal of Radio Frequency Identification, 8, 547–558",
+      "doi": "10.1109/JRFID.2024.3406890",
+      "url": "https://doi.org/10.1109/JRFID.2024.3406890",
+      "apa": "Madoery, P. G., Cherini, R., Cammarano, A., Grosso, J., & Finochietto, J. M. (2024). Bundle protocol security models and policies for safeguarding space information networks. IEEE Journal of Radio Frequency Identification, 8, 547–558. https://doi.org/10.1109/JRFID.2024.3406890",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Publisher-deposited Crossref authors/title/year/pages/DOI verified; Detke cites it as protection-scheme background",
+        "supportedClaims": [
+          "Publication identity and relevance to BPSec protection models/policies"
+        ],
+        "limitations": [
+          "Direct publisher full text and abstract not accessed; detailed claims about scheme behavior require paper inspection before integration"
+        ],
+        "evidenceUrls": [
+          "https://doi.org/10.1109/JRFID.2024.3406890",
+          "https://api.crossref.org/works/10.1109%2FJRFID.2024.3406890"
+        ]
+      },
+      "recencyCaveat": "2024 is within five years.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "cgr",
+      "authors": [
+        "Fraire, J. A.",
+        "De Jonckère, O.",
+        "Burleigh, S. C."
+      ],
+      "year": 2021,
+      "title": "Routing in the Space Internet: A contact graph routing tutorial",
+      "source": "Journal of Network and Computer Applications, 174, Article 102884",
+      "doi": "10.1016/j.jnca.2020.102884",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1084804520303489",
+      "apa": "Fraire, J. A., De Jonckère, O., & Burleigh, S. C. (2021). Routing in the Space Internet: A contact graph routing tutorial. Journal of Network and Computer Applications, 174, Article 102884. https://doi.org/10.1016/j.jnca.2020.102884",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Publisher metadata, abstract/introduction and section summaries",
+        "supportedClaims": [
+          "Contact plans support time-dependent route search, management and forwarding"
+        ],
+        "limitations": [
+          "Routing tutorial does not establish security lifecycle policy novelty or superiority"
+        ],
+        "evidenceUrls": [
+          "https://www.sciencedirect.com/science/article/pii/S1084804520303489"
+        ]
+      },
+      "recencyCaveat": "Published 2021-01-15: outside a strict rolling five-year window on 2026-10-28, although within ten years. Calendar-year interpretation differs.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "bpsec_analysis",
+      "authors": [
+        "Dowling, B.",
+        "Hale, B.",
+        "Tian, X.",
+        "Wimalasiri, B."
+      ],
+      "year": 2025,
+      "title": "Cryptography is rocket science: Analysis of BPSec",
+      "source": "IACR Communications in Cryptology, 1(4)",
+      "doi": "10.62056/a39qudhdj",
+      "url": "https://cic.iacr.org/p/1/4/21",
+      "apa": "Dowling, B., Hale, B., Tian, X., & Wimalasiri, B. (2025). Cryptography is rocket science: Analysis of BPSec. IACR Communications in Cryptology, 1(4). https://doi.org/10.62056/a39qudhdj",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Publisher abstract/history/BibTeX and Crossref deposit verified",
+        "supportedClaims": [
+          "Formal BPSec analysis addresses secure-channel goals and message-component loss detection"
+        ],
+        "limitations": [
+          "Full proof not audited",
+          "Publisher says published 2025-01-13; old ePrint note CIC 2024 is superseded by publisher citation",
+          "Article number omitted because landing-path 21 and deposited article-number cc1-4-42 differ; publisher recommended citation supplies no article number"
+        ],
+        "evidenceUrls": [
+          "https://cic.iacr.org/p/1/4/21",
+          "https://api.crossref.org/works/10.62056%2Fa39qudhdj"
+        ]
+      },
+      "recencyCaveat": "Use publisher-confirmed 2025, not 2024 acceptance/issue labeling. Within five years.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    },
+    {
+      "key": "kwon",
+      "authors": [
+        "Kwon, D. K.",
+        "Son, S.",
+        "Park, K.",
+        "Das, A. K.",
+        "Park, Y."
+      ],
+      "year": 2025,
+      "title": "An efficient handover authentication scheme for 6G-enabled space-terrestrial integrated networks with mobile edge computing",
+      "source": "IEEE Transactions on Information Forensics and Security, 20, 12157–12172",
+      "doi": "10.1109/TIFS.2025.3628470",
+      "url": "https://research.knu.ac.kr/en/publications/an-efficient-handover-authentication-scheme-for-6g-enabled-space-/",
+      "apa": "Kwon, D. K., Son, S., Park, K., Das, A. K., & Park, Y. (2025). An efficient handover authentication scheme for 6G-enabled space-terrestrial integrated networks with mobile edge computing. IEEE Transactions on Information Forensics and Security, 20, 12157–12172. https://doi.org/10.1109/TIFS.2025.3628470",
+      "sourceVerification": {
+        "checkedAt": "2026-10-28",
+        "metadataStatus": "verified_primary_or_publisher_deposit",
+        "inspectionDepth": "Author-institution abstract and full publication metadata",
+        "supportedClaims": [
+          "Initial ECC authentication is separated from lightweight handover computations"
+        ],
+        "limitations": [
+          "Full protocol proof not reviewed",
+          "Institutional record supplies Scopus accession 105020927427, but live database record and Web of Science inclusion were not verified"
+        ],
+        "evidenceUrls": [
+          "https://research.knu.ac.kr/en/publications/an-efficient-handover-authentication-scheme-for-6g-enabled-space-/"
+        ]
+      },
+      "recencyCaveat": "2025 is within five years.",
+      "indexVerification": "Scopus and Web of Science item-level inclusion not verified"
+    }
+  ],
+  "integrationNotes": [
+    "Use [@key] placeholders until the parent assigns numbers by first mention. Every retained reference must be cited substantively in the integrated manuscript.",
+    "Exactly 20 records are supplied; TRAP is excluded because its author list was not verified from a primary record.",
+    "Metadata resolved after the earlier requirements report: Dowling et al. is publisher-confirmed 2025; omit ambiguous article number. Madoery author/year/page metadata is now verified through the IEEE deposit in Crossref. BERMUDA editors are verified on Springer.",
+    "CelesTrak explicitly gives original 2020 publication and 2026-06-23 update. Cite the updated documentation honestly, not as newly published research.",
+    "Orekit content was checked on official test.orekit.org after canonical-host challenge; reference remains canonical, undated and version-specific integration is required.",
+    "Older standards, DTKA, Zhao, the 2021 CGR tutorial and especially Mattingley 2010 retain recency caveats. This pool is not certified compliant with AITU recency rules.",
+    "Scopus/Web of Science share remains unverified. KNU's accession/link is a lead, not confirmation of database-share compliance.",
+    "No experiments, JVM processes or manuscript edits were performed for this writing task."
+  ],
+  "wordCounts": {
+    "introduction": 181,
+    "literatureReviewAndProblemStatement": 336,
+    "method": "Whitespace tokens after removing citation placeholders"
+  }
+}

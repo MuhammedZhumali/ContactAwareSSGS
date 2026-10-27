@@ -1,0 +1,4088 @@
+{
+  "models": [
+    {
+      "path": "target/final-research/models/demand-none.json",
+      "sha256": "0dae2b6dd98fc66ae9e4b04bfeb0fb499bb674190947dfef944f1a4c98b16b64",
+      "name": "SE2.4-ISS-0-3-none",
+      "start": "2026-10-12T00:08:35.296295166Z",
+      "end": "2026-10-12T01:49:19.758453369Z",
+      "contacts": [
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T00:08:37.296295166Z",
+            "end": "2026-10-12T00:14:59.990386963Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 39000,
+            "offeredDownlinkBytes": 39000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-2987-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987",
+            "start": "2026-10-12T00:25:53.554229736Z",
+            "end": "2026-10-12T00:30:27.284088135Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-2",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T01:47:18.202056885Z",
+            "end": "2026-10-12T01:49:19.758453369Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        }
+      ],
+      "constraints": {
+        "cryptoperiod": 5400.0,
+        "maxMaterialAge": 172800.0,
+        "maxReuseGap": 86400.0,
+        "authorizedContexts": [
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987"
+          }
+        ],
+        "blockedKeyIds": []
+      },
+      "costs": {
+        "name": "se2-synthetic-notice-duration-1",
+        "provenance": "SYNTHETIC_ASSUMPTION",
+        "source": "docs/formal-cost-model-and-horizon/main.tex; assumed 400 B/s management channel, not hardware measurements; SE2 notice: base phase durations multiplied by 1, 96 bytes unchanged",
+        "operations": {
+          "PREPARE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.8,
+                "bytes": 0
+              }
+            ]
+          },
+          "INSTALL": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 1.5,
+                "bytes": 600
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.5,
+                "bytes": 200
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.7,
+                "bytes": 0
+              }
+            ]
+          },
+          "SWITCH": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.05,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.35,
+                "bytes": 0
+              }
+            ]
+          },
+          "OPEN": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "REUSE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "STOP": {
+            "phases": []
+          },
+          "EXPIRE_CONTEXT": {
+            "phases": []
+          },
+          "NOTIFY_REVOCATION": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.16,
+                "bytes": 64
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.08,
+                "bytes": 32
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.12,
+                "bytes": 0
+              }
+            ]
+          }
+        }
+      },
+      "initialState": {
+        "satelliteId": "NORAD-25544",
+        "asOf": "2026-10-12T00:08:35.296295166Z",
+        "contexts": {
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-2987]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-2987"
+            },
+            "uplink": {
+              "id": "SATNOGS-2987-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-2987-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          },
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-3634]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-3634"
+            },
+            "uplink": {
+              "id": "SATNOGS-3634-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-3634-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          }
+        },
+        "keys": {}
+      },
+      "preparedPairs": 0,
+      "prescribedPlan": [],
+      "disclosures": [],
+      "channelInterruptionsField": "NOT_PRESENT_IN_INPUT",
+      "inputMetadata": null,
+      "provenance": {
+        "availableSelectedContacts": "45",
+        "costScale": "1",
+        "costScaling": "Every security phase duration and management-byte count multiplied by the same positive integer; management radio B/s unchanged, CPU and elapsed overhead increase together. Payload unchanged. Model sensitivity, not hardware calibration.",
+        "datasetKind": "OREKIT_GEOMETRIC_WINDOWS",
+        "datasetSha256": "cc68d988e645a1958c44e8cd2812eb897d10382f37e414db399b0f876f34afcf",
+        "datasetSource": "../orekit/dataset.json",
+        "fragmentCount": "3",
+        "fragmentStartIndex": "0",
+        "noticeDurationScale": "1",
+        "payloadOnlyServiceCeiling": "3",
+        "payloadOnlyServiceCeilingMeaning": "Required complete frames fit the original window without any security overhead; optimistic geometry-only bound, not achieved service or a key-feasibility guarantee",
+        "referenceFixture": "schedule3-cp5400-cost1",
+        "schedulePath": "C:\\Users\\Muhalek\\ContactAwareSS\\target\\security-evaluation-new-days\\day2\\schedule\\schedule.json",
+        "scheduleSha256": "c05d41702c4e3977e73bc99504fd788b6d85ddba8ff58324eb8c8562325c4cc1",
+        "selection": "First 3 windows in the verified chronological schedule; original IDs and nanosecond timestamps unchanged",
+        "traffic": "SYNTHETIC_ASSUMPTION: 100 B/s, 1000 B complete frames (10 s). One frame offered and required per direction per contact. Useful time is demand-capped at 20 s/contact, not link utilization.",
+        "trafficWorkload": "LIGHT"
+      }
+    },
+    {
+      "path": "target/final-research/models/demand-late-detected.json",
+      "sha256": "9d4411d840ba42e593182b0b4265e9b1dcba44ff12d3c6199226e30d9383ee21",
+      "name": "SE2.4-ISS-0-3-detected-2026-10-12T00:14:21.720977783Z",
+      "start": "2026-10-12T00:08:35.296295166Z",
+      "end": "2026-10-12T01:49:19.758453369Z",
+      "contacts": [
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T00:08:37.296295166Z",
+            "end": "2026-10-12T00:14:59.990386963Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 39000,
+            "offeredDownlinkBytes": 39000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-2987-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987",
+            "start": "2026-10-12T00:25:53.554229736Z",
+            "end": "2026-10-12T00:30:27.284088135Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-2",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T01:47:18.202056885Z",
+            "end": "2026-10-12T01:49:19.758453369Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        }
+      ],
+      "constraints": {
+        "cryptoperiod": 5400.0,
+        "maxMaterialAge": 172800.0,
+        "maxReuseGap": 86400.0,
+        "authorizedContexts": [
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987"
+          }
+        ],
+        "blockedKeyIds": []
+      },
+      "costs": {
+        "name": "se2-synthetic-notice-duration-1",
+        "provenance": "SYNTHETIC_ASSUMPTION",
+        "source": "docs/formal-cost-model-and-horizon/main.tex; assumed 400 B/s management channel, not hardware measurements; SE2 notice: base phase durations multiplied by 1, 96 bytes unchanged",
+        "operations": {
+          "PREPARE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.8,
+                "bytes": 0
+              }
+            ]
+          },
+          "INSTALL": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 1.5,
+                "bytes": 600
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.5,
+                "bytes": 200
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.7,
+                "bytes": 0
+              }
+            ]
+          },
+          "SWITCH": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.05,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.35,
+                "bytes": 0
+              }
+            ]
+          },
+          "OPEN": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "REUSE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "STOP": {
+            "phases": []
+          },
+          "EXPIRE_CONTEXT": {
+            "phases": []
+          },
+          "NOTIFY_REVOCATION": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.16,
+                "bytes": 64
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.08,
+                "bytes": 32
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.12,
+                "bytes": 0
+              }
+            ]
+          }
+        }
+      },
+      "initialState": {
+        "satelliteId": "NORAD-25544",
+        "asOf": "2026-10-12T00:08:35.296295166Z",
+        "contexts": {
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-2987]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-2987"
+            },
+            "uplink": {
+              "id": "SATNOGS-2987-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-2987-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          },
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-3634]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-3634"
+            },
+            "uplink": {
+              "id": "SATNOGS-3634-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-3634-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          }
+        },
+        "keys": {}
+      },
+      "preparedPairs": 0,
+      "prescribedPlan": [],
+      "disclosures": [
+        {
+          "id": "disclosure-1",
+          "contextId": {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          "at": "2026-10-12T00:14:21.720977783Z",
+          "detectionAt": "2026-10-12T00:14:23.720977783Z"
+        }
+      ],
+      "channelInterruptionsField": "NOT_PRESENT_IN_INPUT",
+      "inputMetadata": null,
+      "provenance": {
+        "availableSelectedContacts": "45",
+        "costScale": "1",
+        "costScaling": "Every security phase duration and management-byte count multiplied by the same positive integer; management radio B/s unchanged, CPU and elapsed overhead increase together. Payload unchanged. Model sensitivity, not hardware calibration.",
+        "datasetKind": "OREKIT_GEOMETRIC_WINDOWS",
+        "datasetSha256": "cc68d988e645a1958c44e8cd2812eb897d10382f37e414db399b0f876f34afcf",
+        "datasetSource": "../orekit/dataset.json",
+        "fragmentCount": "3",
+        "fragmentStartIndex": "0",
+        "noticeDurationScale": "1",
+        "payloadOnlyServiceCeiling": "3",
+        "payloadOnlyServiceCeilingMeaning": "Required complete frames fit the original window without any security overhead; optimistic geometry-only bound, not achieved service or a key-feasibility guarantee",
+        "referenceFixture": "schedule3-cp5400-cost1",
+        "schedulePath": "C:\\Users\\Muhalek\\ContactAwareSS\\target\\security-evaluation-new-days\\day2\\schedule\\schedule.json",
+        "scheduleSha256": "c05d41702c4e3977e73bc99504fd788b6d85ddba8ff58324eb8c8562325c4cc1",
+        "selection": "First 3 windows in the verified chronological schedule; original IDs and nanosecond timestamps unchanged",
+        "traffic": "SYNTHETIC_ASSUMPTION: 100 B/s, 1000 B complete frames (10 s). One frame offered and required per direction per contact. Useful time is demand-capped at 20 s/contact, not link utilization.",
+        "trafficWorkload": "LIGHT"
+      }
+    },
+    {
+      "path": "target/aitu-revision/stage4-models/Eminus20-delay0.json",
+      "sha256": "3c5b86ad9d97cd1f72aa486008fb859dfd8e3f4ae8671b5603a3dd69746b5e45",
+      "name": "SE2.4-ISS-0-3-detected-2026-10-12T00:14:21.720977783Z",
+      "start": "2026-10-12T00:08:35.296295166Z",
+      "end": "2026-10-12T01:49:19.758453369Z",
+      "contacts": [
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T00:08:37.296295166Z",
+            "end": "2026-10-12T00:14:59.990386963Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 39000,
+            "offeredDownlinkBytes": 39000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-2987-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987",
+            "start": "2026-10-12T00:25:53.554229736Z",
+            "end": "2026-10-12T00:30:27.284088135Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-2",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T01:47:18.202056885Z",
+            "end": "2026-10-12T01:49:19.758453369Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        }
+      ],
+      "constraints": {
+        "cryptoperiod": 5400.0,
+        "maxMaterialAge": 172800.0,
+        "maxReuseGap": 86400.0,
+        "authorizedContexts": [
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987"
+          }
+        ],
+        "blockedKeyIds": []
+      },
+      "costs": {
+        "name": "se2-synthetic-notice-duration-1",
+        "provenance": "SYNTHETIC_ASSUMPTION",
+        "source": "docs/formal-cost-model-and-horizon/main.tex; assumed 400 B/s management channel, not hardware measurements; SE2 notice: base phase durations multiplied by 1, 96 bytes unchanged",
+        "operations": {
+          "PREPARE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.8,
+                "bytes": 0
+              }
+            ]
+          },
+          "INSTALL": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 1.5,
+                "bytes": 600
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.5,
+                "bytes": 200
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.7,
+                "bytes": 0
+              }
+            ]
+          },
+          "SWITCH": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.05,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.35,
+                "bytes": 0
+              }
+            ]
+          },
+          "OPEN": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "REUSE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "STOP": {
+            "phases": []
+          },
+          "EXPIRE_CONTEXT": {
+            "phases": []
+          },
+          "NOTIFY_REVOCATION": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.16,
+                "bytes": 64
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.08,
+                "bytes": 32
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.12,
+                "bytes": 0
+              }
+            ]
+          }
+        }
+      },
+      "initialState": {
+        "satelliteId": "NORAD-25544",
+        "asOf": "2026-10-12T00:08:35.296295166Z",
+        "contexts": {
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-2987]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-2987"
+            },
+            "uplink": {
+              "id": "SATNOGS-2987-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-2987-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          },
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-3634]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-3634"
+            },
+            "uplink": {
+              "id": "SATNOGS-3634-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-3634-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          }
+        },
+        "keys": {}
+      },
+      "preparedPairs": 0,
+      "prescribedPlan": [],
+      "disclosures": [
+        {
+          "id": "disclosure-1",
+          "contextId": {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          "at": "2026-10-12T00:14:39.990386963Z",
+          "detectionAt": "2026-10-12T00:14:39.990386963Z"
+        }
+      ],
+      "channelInterruptionsField": "NOT_PRESENT_IN_INPUT",
+      "inputMetadata": null,
+      "provenance": {
+        "availableSelectedContacts": "45",
+        "costScale": "1",
+        "costScaling": "Every security phase duration and management-byte count multiplied by the same positive integer; management radio B/s unchanged, CPU and elapsed overhead increase together. Payload unchanged. Model sensitivity, not hardware calibration.",
+        "datasetKind": "OREKIT_GEOMETRIC_WINDOWS",
+        "datasetSha256": "cc68d988e645a1958c44e8cd2812eb897d10382f37e414db399b0f876f34afcf",
+        "datasetSource": "../orekit/dataset.json",
+        "fragmentCount": "3",
+        "fragmentStartIndex": "0",
+        "noticeDurationScale": "1",
+        "payloadOnlyServiceCeiling": "3",
+        "payloadOnlyServiceCeilingMeaning": "Required complete frames fit the original window without any security overhead; optimistic geometry-only bound, not achieved service or a key-feasibility guarantee",
+        "referenceFixture": "schedule3-cp5400-cost1",
+        "schedulePath": "C:\\Users\\Muhalek\\ContactAwareSS\\target\\security-evaluation-new-days\\day2\\schedule\\schedule.json",
+        "scheduleSha256": "c05d41702c4e3977e73bc99504fd788b6d85ddba8ff58324eb8c8562325c4cc1",
+        "selection": "First 3 windows in the verified chronological schedule; original IDs and nanosecond timestamps unchanged",
+        "traffic": "SYNTHETIC_ASSUMPTION: 100 B/s, 1000 B complete frames (10 s). One frame offered and required per direction per contact. Useful time is demand-capped at 20 s/contact, not link utilization.",
+        "trafficWorkload": "LIGHT"
+      }
+    },
+    {
+      "path": "target/aitu-revision/stage4-models/Eminus20-delay2.json",
+      "sha256": "c1eb11fcb442cd294a3e18fc7b2c213456cb3d2e932cc2843043abbe82daa006",
+      "name": "SE2.4-ISS-0-3-detected-2026-10-12T00:14:21.720977783Z",
+      "start": "2026-10-12T00:08:35.296295166Z",
+      "end": "2026-10-12T01:49:19.758453369Z",
+      "contacts": [
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T00:08:37.296295166Z",
+            "end": "2026-10-12T00:14:59.990386963Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 39000,
+            "offeredDownlinkBytes": 39000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-2987-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987",
+            "start": "2026-10-12T00:25:53.554229736Z",
+            "end": "2026-10-12T00:30:27.284088135Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-2",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T01:47:18.202056885Z",
+            "end": "2026-10-12T01:49:19.758453369Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        }
+      ],
+      "constraints": {
+        "cryptoperiod": 5400.0,
+        "maxMaterialAge": 172800.0,
+        "maxReuseGap": 86400.0,
+        "authorizedContexts": [
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987"
+          }
+        ],
+        "blockedKeyIds": []
+      },
+      "costs": {
+        "name": "se2-synthetic-notice-duration-1",
+        "provenance": "SYNTHETIC_ASSUMPTION",
+        "source": "docs/formal-cost-model-and-horizon/main.tex; assumed 400 B/s management channel, not hardware measurements; SE2 notice: base phase durations multiplied by 1, 96 bytes unchanged",
+        "operations": {
+          "PREPARE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.8,
+                "bytes": 0
+              }
+            ]
+          },
+          "INSTALL": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 1.5,
+                "bytes": 600
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.5,
+                "bytes": 200
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.7,
+                "bytes": 0
+              }
+            ]
+          },
+          "SWITCH": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.05,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.35,
+                "bytes": 0
+              }
+            ]
+          },
+          "OPEN": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "REUSE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "STOP": {
+            "phases": []
+          },
+          "EXPIRE_CONTEXT": {
+            "phases": []
+          },
+          "NOTIFY_REVOCATION": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.16,
+                "bytes": 64
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.08,
+                "bytes": 32
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.12,
+                "bytes": 0
+              }
+            ]
+          }
+        }
+      },
+      "initialState": {
+        "satelliteId": "NORAD-25544",
+        "asOf": "2026-10-12T00:08:35.296295166Z",
+        "contexts": {
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-2987]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-2987"
+            },
+            "uplink": {
+              "id": "SATNOGS-2987-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-2987-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          },
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-3634]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-3634"
+            },
+            "uplink": {
+              "id": "SATNOGS-3634-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-3634-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          }
+        },
+        "keys": {}
+      },
+      "preparedPairs": 0,
+      "prescribedPlan": [],
+      "disclosures": [
+        {
+          "id": "disclosure-1",
+          "contextId": {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          "at": "2026-10-12T00:14:39.990386963Z",
+          "detectionAt": "2026-10-12T00:14:41.990386963Z"
+        }
+      ],
+      "channelInterruptionsField": "NOT_PRESENT_IN_INPUT",
+      "inputMetadata": null,
+      "provenance": {
+        "availableSelectedContacts": "45",
+        "costScale": "1",
+        "costScaling": "Every security phase duration and management-byte count multiplied by the same positive integer; management radio B/s unchanged, CPU and elapsed overhead increase together. Payload unchanged. Model sensitivity, not hardware calibration.",
+        "datasetKind": "OREKIT_GEOMETRIC_WINDOWS",
+        "datasetSha256": "cc68d988e645a1958c44e8cd2812eb897d10382f37e414db399b0f876f34afcf",
+        "datasetSource": "../orekit/dataset.json",
+        "fragmentCount": "3",
+        "fragmentStartIndex": "0",
+        "noticeDurationScale": "1",
+        "payloadOnlyServiceCeiling": "3",
+        "payloadOnlyServiceCeilingMeaning": "Required complete frames fit the original window without any security overhead; optimistic geometry-only bound, not achieved service or a key-feasibility guarantee",
+        "referenceFixture": "schedule3-cp5400-cost1",
+        "schedulePath": "C:\\Users\\Muhalek\\ContactAwareSS\\target\\security-evaluation-new-days\\day2\\schedule\\schedule.json",
+        "scheduleSha256": "c05d41702c4e3977e73bc99504fd788b6d85ddba8ff58324eb8c8562325c4cc1",
+        "selection": "First 3 windows in the verified chronological schedule; original IDs and nanosecond timestamps unchanged",
+        "traffic": "SYNTHETIC_ASSUMPTION: 100 B/s, 1000 B complete frames (10 s). One frame offered and required per direction per contact. Useful time is demand-capped at 20 s/contact, not link utilization.",
+        "trafficWorkload": "LIGHT"
+      }
+    },
+    {
+      "path": "target/aitu-revision/stage4-models/Eminus20-delay20.json",
+      "sha256": "e83eeae898a18c369d82a44f9121a01843b926d5cf047285fe310b8b1f9967ae",
+      "name": "SE2.4-ISS-0-3-detected-2026-10-12T00:14:21.720977783Z",
+      "start": "2026-10-12T00:08:35.296295166Z",
+      "end": "2026-10-12T01:49:19.758453369Z",
+      "contacts": [
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T00:08:37.296295166Z",
+            "end": "2026-10-12T00:14:59.990386963Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 39000,
+            "offeredDownlinkBytes": 39000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-2987-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987",
+            "start": "2026-10-12T00:25:53.554229736Z",
+            "end": "2026-10-12T00:30:27.284088135Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-2",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T01:47:18.202056885Z",
+            "end": "2026-10-12T01:49:19.758453369Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        }
+      ],
+      "constraints": {
+        "cryptoperiod": 5400.0,
+        "maxMaterialAge": 172800.0,
+        "maxReuseGap": 86400.0,
+        "authorizedContexts": [
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987"
+          }
+        ],
+        "blockedKeyIds": []
+      },
+      "costs": {
+        "name": "se2-synthetic-notice-duration-1",
+        "provenance": "SYNTHETIC_ASSUMPTION",
+        "source": "docs/formal-cost-model-and-horizon/main.tex; assumed 400 B/s management channel, not hardware measurements; SE2 notice: base phase durations multiplied by 1, 96 bytes unchanged",
+        "operations": {
+          "PREPARE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.8,
+                "bytes": 0
+              }
+            ]
+          },
+          "INSTALL": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 1.5,
+                "bytes": 600
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.5,
+                "bytes": 200
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.7,
+                "bytes": 0
+              }
+            ]
+          },
+          "SWITCH": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.05,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.35,
+                "bytes": 0
+              }
+            ]
+          },
+          "OPEN": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "REUSE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "STOP": {
+            "phases": []
+          },
+          "EXPIRE_CONTEXT": {
+            "phases": []
+          },
+          "NOTIFY_REVOCATION": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.16,
+                "bytes": 64
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.08,
+                "bytes": 32
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.12,
+                "bytes": 0
+              }
+            ]
+          }
+        }
+      },
+      "initialState": {
+        "satelliteId": "NORAD-25544",
+        "asOf": "2026-10-12T00:08:35.296295166Z",
+        "contexts": {
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-2987]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-2987"
+            },
+            "uplink": {
+              "id": "SATNOGS-2987-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-2987-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          },
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-3634]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-3634"
+            },
+            "uplink": {
+              "id": "SATNOGS-3634-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-3634-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          }
+        },
+        "keys": {}
+      },
+      "preparedPairs": 0,
+      "prescribedPlan": [],
+      "disclosures": [
+        {
+          "id": "disclosure-1",
+          "contextId": {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          "at": "2026-10-12T00:14:39.990386963Z",
+          "detectionAt": "2026-10-12T00:14:59.990386963Z"
+        }
+      ],
+      "channelInterruptionsField": "NOT_PRESENT_IN_INPUT",
+      "inputMetadata": null,
+      "provenance": {
+        "availableSelectedContacts": "45",
+        "costScale": "1",
+        "costScaling": "Every security phase duration and management-byte count multiplied by the same positive integer; management radio B/s unchanged, CPU and elapsed overhead increase together. Payload unchanged. Model sensitivity, not hardware calibration.",
+        "datasetKind": "OREKIT_GEOMETRIC_WINDOWS",
+        "datasetSha256": "cc68d988e645a1958c44e8cd2812eb897d10382f37e414db399b0f876f34afcf",
+        "datasetSource": "../orekit/dataset.json",
+        "fragmentCount": "3",
+        "fragmentStartIndex": "0",
+        "noticeDurationScale": "1",
+        "payloadOnlyServiceCeiling": "3",
+        "payloadOnlyServiceCeilingMeaning": "Required complete frames fit the original window without any security overhead; optimistic geometry-only bound, not achieved service or a key-feasibility guarantee",
+        "referenceFixture": "schedule3-cp5400-cost1",
+        "schedulePath": "C:\\Users\\Muhalek\\ContactAwareSS\\target\\security-evaluation-new-days\\day2\\schedule\\schedule.json",
+        "scheduleSha256": "c05d41702c4e3977e73bc99504fd788b6d85ddba8ff58324eb8c8562325c4cc1",
+        "selection": "First 3 windows in the verified chronological schedule; original IDs and nanosecond timestamps unchanged",
+        "traffic": "SYNTHETIC_ASSUMPTION: 100 B/s, 1000 B complete frames (10 s). One frame offered and required per direction per contact. Useful time is demand-capped at 20 s/contact, not link utilization.",
+        "trafficWorkload": "LIGHT"
+      }
+    },
+    {
+      "path": "target/aitu-revision/stage4-models/Eminus40-delay0.json",
+      "sha256": "ba4756a0320ece744858086057389b40fcc30a38b8ce3286a326ed620cdcc2a5",
+      "name": "SE2.4-ISS-0-3-detected-2026-10-12T00:14:21.720977783Z",
+      "start": "2026-10-12T00:08:35.296295166Z",
+      "end": "2026-10-12T01:49:19.758453369Z",
+      "contacts": [
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T00:08:37.296295166Z",
+            "end": "2026-10-12T00:14:59.990386963Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 39000,
+            "offeredDownlinkBytes": 39000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-2987-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987",
+            "start": "2026-10-12T00:25:53.554229736Z",
+            "end": "2026-10-12T00:30:27.284088135Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-2",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T01:47:18.202056885Z",
+            "end": "2026-10-12T01:49:19.758453369Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        }
+      ],
+      "constraints": {
+        "cryptoperiod": 5400.0,
+        "maxMaterialAge": 172800.0,
+        "maxReuseGap": 86400.0,
+        "authorizedContexts": [
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987"
+          }
+        ],
+        "blockedKeyIds": []
+      },
+      "costs": {
+        "name": "se2-synthetic-notice-duration-1",
+        "provenance": "SYNTHETIC_ASSUMPTION",
+        "source": "docs/formal-cost-model-and-horizon/main.tex; assumed 400 B/s management channel, not hardware measurements; SE2 notice: base phase durations multiplied by 1, 96 bytes unchanged",
+        "operations": {
+          "PREPARE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.8,
+                "bytes": 0
+              }
+            ]
+          },
+          "INSTALL": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 1.5,
+                "bytes": 600
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.5,
+                "bytes": 200
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.7,
+                "bytes": 0
+              }
+            ]
+          },
+          "SWITCH": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.05,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.35,
+                "bytes": 0
+              }
+            ]
+          },
+          "OPEN": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "REUSE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "STOP": {
+            "phases": []
+          },
+          "EXPIRE_CONTEXT": {
+            "phases": []
+          },
+          "NOTIFY_REVOCATION": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.16,
+                "bytes": 64
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.08,
+                "bytes": 32
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.12,
+                "bytes": 0
+              }
+            ]
+          }
+        }
+      },
+      "initialState": {
+        "satelliteId": "NORAD-25544",
+        "asOf": "2026-10-12T00:08:35.296295166Z",
+        "contexts": {
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-2987]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-2987"
+            },
+            "uplink": {
+              "id": "SATNOGS-2987-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-2987-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          },
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-3634]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-3634"
+            },
+            "uplink": {
+              "id": "SATNOGS-3634-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-3634-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          }
+        },
+        "keys": {}
+      },
+      "preparedPairs": 0,
+      "prescribedPlan": [],
+      "disclosures": [
+        {
+          "id": "disclosure-1",
+          "contextId": {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          "at": "2026-10-12T00:14:19.990386963Z",
+          "detectionAt": "2026-10-12T00:14:19.990386963Z"
+        }
+      ],
+      "channelInterruptionsField": "NOT_PRESENT_IN_INPUT",
+      "inputMetadata": null,
+      "provenance": {
+        "availableSelectedContacts": "45",
+        "costScale": "1",
+        "costScaling": "Every security phase duration and management-byte count multiplied by the same positive integer; management radio B/s unchanged, CPU and elapsed overhead increase together. Payload unchanged. Model sensitivity, not hardware calibration.",
+        "datasetKind": "OREKIT_GEOMETRIC_WINDOWS",
+        "datasetSha256": "cc68d988e645a1958c44e8cd2812eb897d10382f37e414db399b0f876f34afcf",
+        "datasetSource": "../orekit/dataset.json",
+        "fragmentCount": "3",
+        "fragmentStartIndex": "0",
+        "noticeDurationScale": "1",
+        "payloadOnlyServiceCeiling": "3",
+        "payloadOnlyServiceCeilingMeaning": "Required complete frames fit the original window without any security overhead; optimistic geometry-only bound, not achieved service or a key-feasibility guarantee",
+        "referenceFixture": "schedule3-cp5400-cost1",
+        "schedulePath": "C:\\Users\\Muhalek\\ContactAwareSS\\target\\security-evaluation-new-days\\day2\\schedule\\schedule.json",
+        "scheduleSha256": "c05d41702c4e3977e73bc99504fd788b6d85ddba8ff58324eb8c8562325c4cc1",
+        "selection": "First 3 windows in the verified chronological schedule; original IDs and nanosecond timestamps unchanged",
+        "traffic": "SYNTHETIC_ASSUMPTION: 100 B/s, 1000 B complete frames (10 s). One frame offered and required per direction per contact. Useful time is demand-capped at 20 s/contact, not link utilization.",
+        "trafficWorkload": "LIGHT"
+      }
+    },
+    {
+      "path": "target/aitu-revision/stage4-models/Eminus40-delay2.json",
+      "sha256": "7f797cd4e3313453f8641d83ade467cb68e41fbc0408231808a1fe129985d70f",
+      "name": "SE2.4-ISS-0-3-detected-2026-10-12T00:14:21.720977783Z",
+      "start": "2026-10-12T00:08:35.296295166Z",
+      "end": "2026-10-12T01:49:19.758453369Z",
+      "contacts": [
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T00:08:37.296295166Z",
+            "end": "2026-10-12T00:14:59.990386963Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 39000,
+            "offeredDownlinkBytes": 39000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-2987-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987",
+            "start": "2026-10-12T00:25:53.554229736Z",
+            "end": "2026-10-12T00:30:27.284088135Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-2",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T01:47:18.202056885Z",
+            "end": "2026-10-12T01:49:19.758453369Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        }
+      ],
+      "constraints": {
+        "cryptoperiod": 5400.0,
+        "maxMaterialAge": 172800.0,
+        "maxReuseGap": 86400.0,
+        "authorizedContexts": [
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987"
+          }
+        ],
+        "blockedKeyIds": []
+      },
+      "costs": {
+        "name": "se2-synthetic-notice-duration-1",
+        "provenance": "SYNTHETIC_ASSUMPTION",
+        "source": "docs/formal-cost-model-and-horizon/main.tex; assumed 400 B/s management channel, not hardware measurements; SE2 notice: base phase durations multiplied by 1, 96 bytes unchanged",
+        "operations": {
+          "PREPARE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.8,
+                "bytes": 0
+              }
+            ]
+          },
+          "INSTALL": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 1.5,
+                "bytes": 600
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.5,
+                "bytes": 200
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.7,
+                "bytes": 0
+              }
+            ]
+          },
+          "SWITCH": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.05,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.35,
+                "bytes": 0
+              }
+            ]
+          },
+          "OPEN": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "REUSE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "STOP": {
+            "phases": []
+          },
+          "EXPIRE_CONTEXT": {
+            "phases": []
+          },
+          "NOTIFY_REVOCATION": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.16,
+                "bytes": 64
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.08,
+                "bytes": 32
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.12,
+                "bytes": 0
+              }
+            ]
+          }
+        }
+      },
+      "initialState": {
+        "satelliteId": "NORAD-25544",
+        "asOf": "2026-10-12T00:08:35.296295166Z",
+        "contexts": {
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-2987]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-2987"
+            },
+            "uplink": {
+              "id": "SATNOGS-2987-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-2987-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          },
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-3634]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-3634"
+            },
+            "uplink": {
+              "id": "SATNOGS-3634-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-3634-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          }
+        },
+        "keys": {}
+      },
+      "preparedPairs": 0,
+      "prescribedPlan": [],
+      "disclosures": [
+        {
+          "id": "disclosure-1",
+          "contextId": {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          "at": "2026-10-12T00:14:19.990386963Z",
+          "detectionAt": "2026-10-12T00:14:21.990386963Z"
+        }
+      ],
+      "channelInterruptionsField": "NOT_PRESENT_IN_INPUT",
+      "inputMetadata": null,
+      "provenance": {
+        "availableSelectedContacts": "45",
+        "costScale": "1",
+        "costScaling": "Every security phase duration and management-byte count multiplied by the same positive integer; management radio B/s unchanged, CPU and elapsed overhead increase together. Payload unchanged. Model sensitivity, not hardware calibration.",
+        "datasetKind": "OREKIT_GEOMETRIC_WINDOWS",
+        "datasetSha256": "cc68d988e645a1958c44e8cd2812eb897d10382f37e414db399b0f876f34afcf",
+        "datasetSource": "../orekit/dataset.json",
+        "fragmentCount": "3",
+        "fragmentStartIndex": "0",
+        "noticeDurationScale": "1",
+        "payloadOnlyServiceCeiling": "3",
+        "payloadOnlyServiceCeilingMeaning": "Required complete frames fit the original window without any security overhead; optimistic geometry-only bound, not achieved service or a key-feasibility guarantee",
+        "referenceFixture": "schedule3-cp5400-cost1",
+        "schedulePath": "C:\\Users\\Muhalek\\ContactAwareSS\\target\\security-evaluation-new-days\\day2\\schedule\\schedule.json",
+        "scheduleSha256": "c05d41702c4e3977e73bc99504fd788b6d85ddba8ff58324eb8c8562325c4cc1",
+        "selection": "First 3 windows in the verified chronological schedule; original IDs and nanosecond timestamps unchanged",
+        "traffic": "SYNTHETIC_ASSUMPTION: 100 B/s, 1000 B complete frames (10 s). One frame offered and required per direction per contact. Useful time is demand-capped at 20 s/contact, not link utilization.",
+        "trafficWorkload": "LIGHT"
+      }
+    },
+    {
+      "path": "target/aitu-revision/stage4-models/Eminus40-delay20.json",
+      "sha256": "3b00febb50e451f44a625b0953efb17eb66ac44b9f40d021be8d57644a7fe0a0",
+      "name": "SE2.4-ISS-0-3-detected-2026-10-12T00:14:21.720977783Z",
+      "start": "2026-10-12T00:08:35.296295166Z",
+      "end": "2026-10-12T01:49:19.758453369Z",
+      "contacts": [
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T00:08:37.296295166Z",
+            "end": "2026-10-12T00:14:59.990386963Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 39000,
+            "offeredDownlinkBytes": 39000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-2987-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987",
+            "start": "2026-10-12T00:25:53.554229736Z",
+            "end": "2026-10-12T00:30:27.284088135Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-2",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T01:47:18.202056885Z",
+            "end": "2026-10-12T01:49:19.758453369Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        }
+      ],
+      "constraints": {
+        "cryptoperiod": 5400.0,
+        "maxMaterialAge": 172800.0,
+        "maxReuseGap": 86400.0,
+        "authorizedContexts": [
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987"
+          }
+        ],
+        "blockedKeyIds": []
+      },
+      "costs": {
+        "name": "se2-synthetic-notice-duration-1",
+        "provenance": "SYNTHETIC_ASSUMPTION",
+        "source": "docs/formal-cost-model-and-horizon/main.tex; assumed 400 B/s management channel, not hardware measurements; SE2 notice: base phase durations multiplied by 1, 96 bytes unchanged",
+        "operations": {
+          "PREPARE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.8,
+                "bytes": 0
+              }
+            ]
+          },
+          "INSTALL": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 1.5,
+                "bytes": 600
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.5,
+                "bytes": 200
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.7,
+                "bytes": 0
+              }
+            ]
+          },
+          "SWITCH": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.05,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.35,
+                "bytes": 0
+              }
+            ]
+          },
+          "OPEN": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "REUSE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "STOP": {
+            "phases": []
+          },
+          "EXPIRE_CONTEXT": {
+            "phases": []
+          },
+          "NOTIFY_REVOCATION": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.16,
+                "bytes": 64
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.08,
+                "bytes": 32
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.12,
+                "bytes": 0
+              }
+            ]
+          }
+        }
+      },
+      "initialState": {
+        "satelliteId": "NORAD-25544",
+        "asOf": "2026-10-12T00:08:35.296295166Z",
+        "contexts": {
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-2987]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-2987"
+            },
+            "uplink": {
+              "id": "SATNOGS-2987-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-2987-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          },
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-3634]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-3634"
+            },
+            "uplink": {
+              "id": "SATNOGS-3634-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-3634-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          }
+        },
+        "keys": {}
+      },
+      "preparedPairs": 0,
+      "prescribedPlan": [],
+      "disclosures": [
+        {
+          "id": "disclosure-1",
+          "contextId": {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          "at": "2026-10-12T00:14:19.990386963Z",
+          "detectionAt": "2026-10-12T00:14:39.990386963Z"
+        }
+      ],
+      "channelInterruptionsField": "NOT_PRESENT_IN_INPUT",
+      "inputMetadata": null,
+      "provenance": {
+        "availableSelectedContacts": "45",
+        "costScale": "1",
+        "costScaling": "Every security phase duration and management-byte count multiplied by the same positive integer; management radio B/s unchanged, CPU and elapsed overhead increase together. Payload unchanged. Model sensitivity, not hardware calibration.",
+        "datasetKind": "OREKIT_GEOMETRIC_WINDOWS",
+        "datasetSha256": "cc68d988e645a1958c44e8cd2812eb897d10382f37e414db399b0f876f34afcf",
+        "datasetSource": "../orekit/dataset.json",
+        "fragmentCount": "3",
+        "fragmentStartIndex": "0",
+        "noticeDurationScale": "1",
+        "payloadOnlyServiceCeiling": "3",
+        "payloadOnlyServiceCeilingMeaning": "Required complete frames fit the original window without any security overhead; optimistic geometry-only bound, not achieved service or a key-feasibility guarantee",
+        "referenceFixture": "schedule3-cp5400-cost1",
+        "schedulePath": "C:\\Users\\Muhalek\\ContactAwareSS\\target\\security-evaluation-new-days\\day2\\schedule\\schedule.json",
+        "scheduleSha256": "c05d41702c4e3977e73bc99504fd788b6d85ddba8ff58324eb8c8562325c4cc1",
+        "selection": "First 3 windows in the verified chronological schedule; original IDs and nanosecond timestamps unchanged",
+        "traffic": "SYNTHETIC_ASSUMPTION: 100 B/s, 1000 B complete frames (10 s). One frame offered and required per direction per contact. Useful time is demand-capped at 20 s/contact, not link utilization.",
+        "trafficWorkload": "LIGHT"
+      }
+    },
+    {
+      "path": "target/aitu-revision/stage4-models/Eminus5-delay0.json",
+      "sha256": "37bd48eed1a5446e6521337ef3a766dc6f86743a491f8b7aab5810e95849f23e",
+      "name": "SE2.4-ISS-0-3-detected-2026-10-12T00:14:21.720977783Z",
+      "start": "2026-10-12T00:08:35.296295166Z",
+      "end": "2026-10-12T01:49:19.758453369Z",
+      "contacts": [
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T00:08:37.296295166Z",
+            "end": "2026-10-12T00:14:59.990386963Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 39000,
+            "offeredDownlinkBytes": 39000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-2987-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987",
+            "start": "2026-10-12T00:25:53.554229736Z",
+            "end": "2026-10-12T00:30:27.284088135Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-2",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T01:47:18.202056885Z",
+            "end": "2026-10-12T01:49:19.758453369Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        }
+      ],
+      "constraints": {
+        "cryptoperiod": 5400.0,
+        "maxMaterialAge": 172800.0,
+        "maxReuseGap": 86400.0,
+        "authorizedContexts": [
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987"
+          }
+        ],
+        "blockedKeyIds": []
+      },
+      "costs": {
+        "name": "se2-synthetic-notice-duration-1",
+        "provenance": "SYNTHETIC_ASSUMPTION",
+        "source": "docs/formal-cost-model-and-horizon/main.tex; assumed 400 B/s management channel, not hardware measurements; SE2 notice: base phase durations multiplied by 1, 96 bytes unchanged",
+        "operations": {
+          "PREPARE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.8,
+                "bytes": 0
+              }
+            ]
+          },
+          "INSTALL": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 1.5,
+                "bytes": 600
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.5,
+                "bytes": 200
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.7,
+                "bytes": 0
+              }
+            ]
+          },
+          "SWITCH": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.05,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.35,
+                "bytes": 0
+              }
+            ]
+          },
+          "OPEN": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "REUSE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "STOP": {
+            "phases": []
+          },
+          "EXPIRE_CONTEXT": {
+            "phases": []
+          },
+          "NOTIFY_REVOCATION": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.16,
+                "bytes": 64
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.08,
+                "bytes": 32
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.12,
+                "bytes": 0
+              }
+            ]
+          }
+        }
+      },
+      "initialState": {
+        "satelliteId": "NORAD-25544",
+        "asOf": "2026-10-12T00:08:35.296295166Z",
+        "contexts": {
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-2987]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-2987"
+            },
+            "uplink": {
+              "id": "SATNOGS-2987-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-2987-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          },
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-3634]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-3634"
+            },
+            "uplink": {
+              "id": "SATNOGS-3634-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-3634-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          }
+        },
+        "keys": {}
+      },
+      "preparedPairs": 0,
+      "prescribedPlan": [],
+      "disclosures": [
+        {
+          "id": "disclosure-1",
+          "contextId": {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          "at": "2026-10-12T00:14:54.990386963Z",
+          "detectionAt": "2026-10-12T00:14:54.990386963Z"
+        }
+      ],
+      "channelInterruptionsField": "NOT_PRESENT_IN_INPUT",
+      "inputMetadata": null,
+      "provenance": {
+        "availableSelectedContacts": "45",
+        "costScale": "1",
+        "costScaling": "Every security phase duration and management-byte count multiplied by the same positive integer; management radio B/s unchanged, CPU and elapsed overhead increase together. Payload unchanged. Model sensitivity, not hardware calibration.",
+        "datasetKind": "OREKIT_GEOMETRIC_WINDOWS",
+        "datasetSha256": "cc68d988e645a1958c44e8cd2812eb897d10382f37e414db399b0f876f34afcf",
+        "datasetSource": "../orekit/dataset.json",
+        "fragmentCount": "3",
+        "fragmentStartIndex": "0",
+        "noticeDurationScale": "1",
+        "payloadOnlyServiceCeiling": "3",
+        "payloadOnlyServiceCeilingMeaning": "Required complete frames fit the original window without any security overhead; optimistic geometry-only bound, not achieved service or a key-feasibility guarantee",
+        "referenceFixture": "schedule3-cp5400-cost1",
+        "schedulePath": "C:\\Users\\Muhalek\\ContactAwareSS\\target\\security-evaluation-new-days\\day2\\schedule\\schedule.json",
+        "scheduleSha256": "c05d41702c4e3977e73bc99504fd788b6d85ddba8ff58324eb8c8562325c4cc1",
+        "selection": "First 3 windows in the verified chronological schedule; original IDs and nanosecond timestamps unchanged",
+        "traffic": "SYNTHETIC_ASSUMPTION: 100 B/s, 1000 B complete frames (10 s). One frame offered and required per direction per contact. Useful time is demand-capped at 20 s/contact, not link utilization.",
+        "trafficWorkload": "LIGHT"
+      }
+    },
+    {
+      "path": "target/aitu-revision/stage4-models/Eminus5-delay2.json",
+      "sha256": "153a9aee9b4d0bbc3e93c03a1b1b6231820ebfd74d63a069f9abd61b9b271df3",
+      "name": "SE2.4-ISS-0-3-detected-2026-10-12T00:14:21.720977783Z",
+      "start": "2026-10-12T00:08:35.296295166Z",
+      "end": "2026-10-12T01:49:19.758453369Z",
+      "contacts": [
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T00:08:37.296295166Z",
+            "end": "2026-10-12T00:14:59.990386963Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 39000,
+            "offeredDownlinkBytes": 39000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-2987-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987",
+            "start": "2026-10-12T00:25:53.554229736Z",
+            "end": "2026-10-12T00:30:27.284088135Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-2",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T01:47:18.202056885Z",
+            "end": "2026-10-12T01:49:19.758453369Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        }
+      ],
+      "constraints": {
+        "cryptoperiod": 5400.0,
+        "maxMaterialAge": 172800.0,
+        "maxReuseGap": 86400.0,
+        "authorizedContexts": [
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987"
+          }
+        ],
+        "blockedKeyIds": []
+      },
+      "costs": {
+        "name": "se2-synthetic-notice-duration-1",
+        "provenance": "SYNTHETIC_ASSUMPTION",
+        "source": "docs/formal-cost-model-and-horizon/main.tex; assumed 400 B/s management channel, not hardware measurements; SE2 notice: base phase durations multiplied by 1, 96 bytes unchanged",
+        "operations": {
+          "PREPARE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.8,
+                "bytes": 0
+              }
+            ]
+          },
+          "INSTALL": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 1.5,
+                "bytes": 600
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.5,
+                "bytes": 200
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.7,
+                "bytes": 0
+              }
+            ]
+          },
+          "SWITCH": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.05,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.35,
+                "bytes": 0
+              }
+            ]
+          },
+          "OPEN": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "REUSE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "STOP": {
+            "phases": []
+          },
+          "EXPIRE_CONTEXT": {
+            "phases": []
+          },
+          "NOTIFY_REVOCATION": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.16,
+                "bytes": 64
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.08,
+                "bytes": 32
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.12,
+                "bytes": 0
+              }
+            ]
+          }
+        }
+      },
+      "initialState": {
+        "satelliteId": "NORAD-25544",
+        "asOf": "2026-10-12T00:08:35.296295166Z",
+        "contexts": {
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-2987]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-2987"
+            },
+            "uplink": {
+              "id": "SATNOGS-2987-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-2987-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          },
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-3634]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-3634"
+            },
+            "uplink": {
+              "id": "SATNOGS-3634-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-3634-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          }
+        },
+        "keys": {}
+      },
+      "preparedPairs": 0,
+      "prescribedPlan": [],
+      "disclosures": [
+        {
+          "id": "disclosure-1",
+          "contextId": {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          "at": "2026-10-12T00:14:54.990386963Z",
+          "detectionAt": "2026-10-12T00:14:56.990386963Z"
+        }
+      ],
+      "channelInterruptionsField": "NOT_PRESENT_IN_INPUT",
+      "inputMetadata": null,
+      "provenance": {
+        "availableSelectedContacts": "45",
+        "costScale": "1",
+        "costScaling": "Every security phase duration and management-byte count multiplied by the same positive integer; management radio B/s unchanged, CPU and elapsed overhead increase together. Payload unchanged. Model sensitivity, not hardware calibration.",
+        "datasetKind": "OREKIT_GEOMETRIC_WINDOWS",
+        "datasetSha256": "cc68d988e645a1958c44e8cd2812eb897d10382f37e414db399b0f876f34afcf",
+        "datasetSource": "../orekit/dataset.json",
+        "fragmentCount": "3",
+        "fragmentStartIndex": "0",
+        "noticeDurationScale": "1",
+        "payloadOnlyServiceCeiling": "3",
+        "payloadOnlyServiceCeilingMeaning": "Required complete frames fit the original window without any security overhead; optimistic geometry-only bound, not achieved service or a key-feasibility guarantee",
+        "referenceFixture": "schedule3-cp5400-cost1",
+        "schedulePath": "C:\\Users\\Muhalek\\ContactAwareSS\\target\\security-evaluation-new-days\\day2\\schedule\\schedule.json",
+        "scheduleSha256": "c05d41702c4e3977e73bc99504fd788b6d85ddba8ff58324eb8c8562325c4cc1",
+        "selection": "First 3 windows in the verified chronological schedule; original IDs and nanosecond timestamps unchanged",
+        "traffic": "SYNTHETIC_ASSUMPTION: 100 B/s, 1000 B complete frames (10 s). One frame offered and required per direction per contact. Useful time is demand-capped at 20 s/contact, not link utilization.",
+        "trafficWorkload": "LIGHT"
+      }
+    },
+    {
+      "path": "target/aitu-revision/stage4-models/Eminus5-delay20.json",
+      "sha256": "e423fa9d24b30adc3d66988e287b8fb275e441cac9ef28d3a144b605ccee25e3",
+      "name": "SE2.4-ISS-0-3-detected-2026-10-12T00:14:21.720977783Z",
+      "start": "2026-10-12T00:08:35.296295166Z",
+      "end": "2026-10-12T01:49:19.758453369Z",
+      "contacts": [
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T00:08:37.296295166Z",
+            "end": "2026-10-12T00:14:59.990386963Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 39000,
+            "offeredDownlinkBytes": 39000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-2987-1",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987",
+            "start": "2026-10-12T00:25:53.554229736Z",
+            "end": "2026-10-12T00:30:27.284088135Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        },
+        {
+          "window": {
+            "id": "orekit-25544-SATNOGS-3634-2",
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634",
+            "start": "2026-10-12T01:47:18.202056885Z",
+            "end": "2026-10-12T01:49:19.758453369Z",
+            "linkRateBps": null,
+            "expectedDataBytes": null,
+            "sourceRecordIds": []
+          },
+          "payload": {
+            "bytesPerSecond": 100,
+            "frameBytes": 1000,
+            "offeredUplinkBytes": 1000,
+            "offeredDownlinkBytes": 1000,
+            "minimumUplinkBytes": 1000,
+            "minimumDownlinkBytes": 1000
+          }
+        }
+      ],
+      "constraints": {
+        "cryptoperiod": 5400.0,
+        "maxMaterialAge": 172800.0,
+        "maxReuseGap": 86400.0,
+        "authorizedContexts": [
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-2987"
+          }
+        ],
+        "blockedKeyIds": []
+      },
+      "costs": {
+        "name": "se2-synthetic-notice-duration-1",
+        "provenance": "SYNTHETIC_ASSUMPTION",
+        "source": "docs/formal-cost-model-and-horizon/main.tex; assumed 400 B/s management channel, not hardware measurements; SE2 notice: base phase durations multiplied by 1, 96 bytes unchanged",
+        "operations": {
+          "PREPARE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.8,
+                "bytes": 0
+              }
+            ]
+          },
+          "INSTALL": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 1.5,
+                "bytes": 600
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.2,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.5,
+                "bytes": 200
+              },
+              {
+                "resource": "WAIT",
+                "duration": 1.7,
+                "bytes": 0
+              }
+            ]
+          },
+          "SWITCH": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.05,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.1,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.25,
+                "bytes": 100
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.35,
+                "bytes": 0
+              }
+            ]
+          },
+          "OPEN": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "REUSE": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.04,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.1,
+                "bytes": 40
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.74,
+                "bytes": 0
+              }
+            ]
+          },
+          "STOP": {
+            "phases": []
+          },
+          "EXPIRE_CONTEXT": {
+            "phases": []
+          },
+          "NOTIFY_REVOCATION": {
+            "phases": [
+              {
+                "resource": "GROUND_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "UPLINK",
+                "duration": 0.16,
+                "bytes": 64
+              },
+              {
+                "resource": "SPACECRAFT_CPU",
+                "duration": 0.02,
+                "bytes": 0
+              },
+              {
+                "resource": "DOWNLINK",
+                "duration": 0.08,
+                "bytes": 32
+              },
+              {
+                "resource": "WAIT",
+                "duration": 0.12,
+                "bytes": 0
+              }
+            ]
+          }
+        }
+      },
+      "initialState": {
+        "satelliteId": "NORAD-25544",
+        "asOf": "2026-10-12T00:08:35.296295166Z",
+        "contexts": {
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-2987]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-2987"
+            },
+            "uplink": {
+              "id": "SATNOGS-2987-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-2987-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-2987"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          },
+          "ContextId[satelliteId=NORAD-25544, groundStationId=SATNOGS-3634]": {
+            "id": {
+              "satelliteId": "NORAD-25544",
+              "groundStationId": "SATNOGS-3634"
+            },
+            "uplink": {
+              "id": "SATNOGS-3634-SA-up",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "UPLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "downlink": {
+              "id": "SATNOGS-3634-SA-down",
+              "contextId": {
+                "satelliteId": "NORAD-25544",
+                "groundStationId": "SATNOGS-3634"
+              },
+              "direction": "DOWNLINK",
+              "status": "UNKEYED",
+              "keyId": null,
+              "generation": 0,
+              "nextSequenceNumber": 0,
+              "peerSynchronized": false
+            },
+            "activeContact": null,
+            "openedAt": null,
+            "uplinkFramesInSession": 0,
+            "downlinkFramesInSession": 0
+          }
+        },
+        "keys": {}
+      },
+      "preparedPairs": 0,
+      "prescribedPlan": [],
+      "disclosures": [
+        {
+          "id": "disclosure-1",
+          "contextId": {
+            "satelliteId": "NORAD-25544",
+            "groundStationId": "SATNOGS-3634"
+          },
+          "at": "2026-10-12T00:14:54.990386963Z",
+          "detectionAt": "2026-10-12T00:15:14.990386963Z"
+        }
+      ],
+      "channelInterruptionsField": "NOT_PRESENT_IN_INPUT",
+      "inputMetadata": null,
+      "provenance": {
+        "availableSelectedContacts": "45",
+        "costScale": "1",
+        "costScaling": "Every security phase duration and management-byte count multiplied by the same positive integer; management radio B/s unchanged, CPU and elapsed overhead increase together. Payload unchanged. Model sensitivity, not hardware calibration.",
+        "datasetKind": "OREKIT_GEOMETRIC_WINDOWS",
+        "datasetSha256": "cc68d988e645a1958c44e8cd2812eb897d10382f37e414db399b0f876f34afcf",
+        "datasetSource": "../orekit/dataset.json",
+        "fragmentCount": "3",
+        "fragmentStartIndex": "0",
+        "noticeDurationScale": "1",
+        "payloadOnlyServiceCeiling": "3",
+        "payloadOnlyServiceCeilingMeaning": "Required complete frames fit the original window without any security overhead; optimistic geometry-only bound, not achieved service or a key-feasibility guarantee",
+        "referenceFixture": "schedule3-cp5400-cost1",
+        "schedulePath": "C:\\Users\\Muhalek\\ContactAwareSS\\target\\security-evaluation-new-days\\day2\\schedule\\schedule.json",
+        "scheduleSha256": "c05d41702c4e3977e73bc99504fd788b6d85ddba8ff58324eb8c8562325c4cc1",
+        "selection": "First 3 windows in the verified chronological schedule; original IDs and nanosecond timestamps unchanged",
+        "traffic": "SYNTHETIC_ASSUMPTION: 100 B/s, 1000 B complete frames (10 s). One frame offered and required per direction per contact. Useful time is demand-capped at 20 s/contact, not link utilization.",
+        "trafficWorkload": "LIGHT"
+      }
+    }
+  ],
+  "sameNominalInputsAcrossAll": true,
+  "codeSourceHashesMatchFrozen": {
+    "src/main/java/org/contactaware/security/simulation/SecurityActionGenerator.java": "bd362f69a2d986d12abc996f262fe0a8a0d5800d6487d3feaf2dcf2704d38b9c",
+    "src/main/java/org/contactaware/security/simulation/SimulationEngine.java": "f214ae1a3f93915898ffad5275e3263f3644015b68a77555f3ec067ce2a631fd",
+    "src/main/java/org/contactaware/security/LifecycleTransitions.java": "7bff3fd1f1d5e3af1e10cb19a6ee25b052b38d2fe0ca7120a4e12922311b47ee",
+    "src/main/java/org/contactaware/security/simulation/FeasibleSeedPlanBuilder.java": "f2333892d1a973e2732c38ad67cd0fa0e9373ae640cbd924ea4d815691f3efbc",
+    "src/main/java/org/contactaware/security/simulation/PlanningResultComparator.java": "3be967a9ffff5b6db926a5fddd771e92eeeeb4064bace8973139838589270bc0",
+    "src/main/java/org/contactaware/security/simulation/PlanTieBreak.java": "476605145d461353a5ab1f25703ec373b0229df4acee1c476ea4e1352074f7c4",
+    "src/main/java/org/contactaware/security/simulation/PlannerOptions.java": "c25c99c3936d1599afecdb5b290ef3a428c7aa8256e8c189a502909c6d0c1a45",
+    "src/main/java/org/contactaware/security/simulation/PracticalPlanPortfolio.java": "8aa6985608a61a887fd88ef4b3e49f2210d7c0d2449d89d5b907afccdb2f56c4",
+    "src/main/java/org/contactaware/security/simulation/PlanningLatencyController.java": "15580005d3d7e2be7ae52414360789d4d01e78e318448db204fb35618e31cd08"
+  },
+  "resources": {
+    "source": "frozen Java rules, not JSON capacity parameters",
+    "phaseExclusive": [
+      "ground:<stationId>",
+      "spacecraft",
+      "radio"
+    ],
+    "radio": "One shared uplink/downlink management/payload radio; per-phase reservations rechecked by executor",
+    "spare": "Generator blocks PREPARE when any PRE_ACTIVE material or pending PREPARE exists for that context; one spare pair on generated paths, not a total storage/RAM bound",
+    "waiting": "WAIT reserves no resource; already committed work is preserved"
+  },
+  "boundary": "bytesPerSecond is modeled payload throughput; null window.linkRateBps is not replaced by a measured radio bitrate. SATNOGS IDs are identifiers, not inferred station names."
+}

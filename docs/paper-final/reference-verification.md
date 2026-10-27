@@ -1,0 +1,46 @@
+# Final manuscript reference verification
+
+Checked 2026-10-25. This is a bounded claim-to-source check for the eight references retained in [main.tex](main.tex), not a systematic literature review. Six official standards/RFC sources and the IOTA publisher full text were opened successfully in this subtask. Detke's previously retrieved conference full text was read locally; its file identity was rechecked during the preceding inventory subtask. No external implementation or benchmark was reproduced.
+
+The new manuscript is a separate foundation derived from `docs/paper-r1/main.tex`. R1 sources, results, PDFs and source audits remain unchanged. Final empirical sections deliberately contain `FINAL_EVIDENCE_REQUIRED` markers; this reference check does not certify the final experiment or paper as complete.
+
+## Retained citations
+
+| Key and bibliographic identity | Primary source and checked locator | Claim permitted in the manuscript |
+| --- | --- | --- |
+| `sdls`: CCSDS 355.0-B-2, *Space Data Link Security Protocol*, July 2022 | [Official PDF](https://ccsds.org/Pubs/355x0b2.pdf), cover/authority and Secs. 1.1-1.2; successfully opened now. | Data-link authentication/confidentiality and associated processing already exist. This model is not an SDLS conformance implementation. July is the identified PDF cover date; no assertion is made that this is the latest edition. |
+| `ep`: CCSDS 355.1-B-1, *Space Data Link Security Protocol—Extended Procedures*, February 2020 | [Official PDF](https://ccsds.org/Pubs/355x1b1.pdf), Sec. 2.3; Sec. 3.2 key-management services; Sec. 3.3 SA services, particularly Start/Stop/Rekey/Expire SA; successfully opened now. | Key and SA lifecycle procedures predate this study. The source supports mechanism/state provenance, not the simulator's synthetic operation durations, costs, coordinator architecture or complete protocol realization. |
+| `skm`: CCSDS 354.0-M-1, *Symmetric Key Management*, December 2023 | [Official PDF](https://ccsds.org/Pubs/354x0m1.pdf), cover; Sec. 3.2 lifecycle, especially 3.2.3 activation lifetime; Sec. 4 management services; successfully opened now. | Existing lifecycle abstraction includes activation, retirement and key-management procedures. Operational lifetime starts with activation. The simulator's exact three-term deadline formula and numeric timers remain its own declared model. |
+| `iota`: D. Bernal, O. Ledesma, P. Lamo, J. Bermejo, *IOTA-Based Authentication for IoT Devices in Satellite Networks*, CMC 86(1), 1-39, 2026; DOI 10.32604/cmc.2025.069746 | [Publisher full text](https://www.techscience.com/cmc/v86n1/64479/html), metadata header; subsection “Reducing Revocation Latency through Local Mechanisms and Prevalidation”; discussion of ground-contact allowlist refresh; successfully opened now. | Identity/access authorization uses contact-refreshed onboard allowlists, revocation handling and short-lived tokens. Thus connectivity-aware authorization is established. Traffic-key/paired-SA timing is the distinction used here. The publisher lists the issue date as 10 Nov. 2025 and bibliographic volume year as 2026; they are not contradictory dates. |
+| `bp`: S. Burleigh, K. Fall, E. Birrane III, *Bundle Protocol Version 7*, RFC 9171, January 2022 | [RFC Editor](https://www.rfc-editor.org/rfc/rfc9171.html), title/authors and Sec. 1; successfully opened now. | BPv7 supports bundle delivery across challenged/intermittent networks through store-carry-forward operation. The present direct-link frame model is not a multi-hop BP implementation. |
+| `bpsec`: E. Birrane III, K. McKeever, *Bundle Protocol Security (BPSec)*, RFC 9172, January 2022 | [RFC Editor](https://www.rfc-editor.org/rfc/rfc9172.html), abstract/Sec. 1.1 and Sec. 6; successfully opened now. | BPSec supplies bundle integrity/confidentiality; Sec. 6 leaves key management to network management and mandates no strategy. This does not mean DTN research ignores key provisioning. |
+| `sabr`: CCSDS 734.3-B-1, *Schedule-Aware Bundle Routing*, July 2019 | [Official PDF](https://ccsds.org/Pubs/734x3b1.pdf), cover; Secs. 1.1 and 2.1; successfully opened now. | SABR computes forwarding from scheduled connectivity/contact plans with CGR. The main table now says scheduled-contact routing: the standard distinguishes scheduled connectivity from probabilistic predictions. |
+| `detke`: R. Detke, P. G. Madoery, R. Cherini, J. A. Fraire, J. M. Finochietto, *Security-Aware Route Selection in DTNs: Towards Optimal Key Provisioning*, STINT/WiSEE 2026 | [Conference paper](https://stintworkshops.org/papers/stint2026-19-detke.pdf), local physical pp. 1, 4-6; title/authors, route/scope/pair variables and scope-count objective, conclusion. Local files listed below. | Offline route and key-scope selection is close prior work. The displayed MILP has no operation-start-time variables; p. 6 names contact-plan key scheduling as future work. This distinction is limited to the retrieved formulation. No DOI or proceedings pagination was verified, and neither is invented. |
+
+The distinction between this simulator and each cited work is an inference from the checked source and the stated simulator scope. The manuscript makes no claim that all previous work lacks multi-contact lifecycle scheduling, that it is the first contact-aware security method, or that it outperforms any cited external protocol.
+
+## Local Detke evidence
+
+- [Retrieved paper](../../target/research-validation/literature/stint2026-19-detke.pdf): six physical pages, SHA-256 `ea5c0e5ec5e65f2c23b1b12aa78c7b443879d6f4f31d1f796e2d8525f8436b89`.
+- [Page-delimited extraction](../../target/research-validation/literature/stint2026-19-detke.txt): this subtask checked the title/authors on physical p. 1, model on pp. 4-5 and future-work statement on p. 6.
+- [Conference slides](https://stintworkshops.org/slides/stint2026-slides-detke.pdf), [local copy](../../target/research-validation/literature/stint2026-slides-detke.pdf): eight physical pages, SHA-256 `486fe5c50b43c4bd88ce55a8d11aa203ed2580467f61289553ad7acea30458cb`. The prior source audit also identified the scheduling statement on slide 7; the manuscript relies on the paper itself.
+- [Access record](../../target/research-validation/literature/detke-access.json): prior 2026-10-25 HTTP 200 retrievals, URLs, lengths and hashes. Both local PDFs matched these hashes in the preceding inventory check.
+
+The event identity is supported by the prior author/conference-source check in [related-work.md](../research-audit/related-work.md). No new DOI lookup, conference-proceedings pagination, DTKA/BERMUDA review, or Detke repository audit was completed here.
+
+## Access-limited references excluded from manuscript claims
+
+The R1 manuscript named FHAP and LK-AKA without bibliography entries. This foundation resolves that omission by removing their comparison claims from the main text. It does not create bibliographic certainty from secondary snippets.
+
+- **FHAP:** [DOI 10.1109/JIOT.2023.3262933](https://doi.org/10.1109/JIOT.2023.3262933). The immediately preceding inventory subtask retried this URL on 2026-10-25 and received an inaccessible/internal-error response. The older audit's inherited metadata remains in [related-work.md](../research-audit/related-work.md), explicitly unverified against primary full text. Obtain an IEEE/author copy before restoring detailed protocol/performance comparisons or claiming complete verification.
+- **LK-AKA:** [Publisher record](https://www.sciencedirect.com/science/article/abs/pii/S0140366422004169), DOI [10.1016/j.comcom.2022.10.028](https://doi.org/10.1016/j.comcom.2022.10.028). A fresh open in the preceding inventory subtask returned HTTP 403. Prior publisher-search evidence supported only the S2S/location-key scope. No negative feature claim or detailed experimental comparison is retained.
+
+Failure to access these sources is not evidence that their approaches omit a feature. Excluding these detailed comparisons narrows the literature scope; it is not a declaration that all relevant literature has been evaluated.
+
+## Main-agent integration boundary
+
+Replace every `FINAL_EVIDENCE_REQUIRED` marker from final audited evidence: Abstract, budgets, design, Results/figures, verification, Discussion and Conclusion. The optional results input is now `final-results.tex`, not R1's fragment. Add final figure includes only after generating the final files. The conditional installation-chain formula is retained under the model as an analytical statement, without claiming an observed final gain.
+
+Before delivery, remove the pending-evidence macro and draft metadata after filling every marker; compile the final main and supplement, check citations/references, and inspect all rendered pages. This subtask performs static source checks only; it does not claim fresh TeX compilation, final experiment validation or visual QA.
+
+Static checks on this foundation passed: eight bibliography entries, no unresolved citation/reference keys, balanced LaTeX environments, no missing local links in this verification file, and no trailing whitespace. Seven explicit final-evidence markers remain intentionally. The stale R1 metric/fragment patterns were absent, and the historical R1 main source still matched its saved SHA-256.

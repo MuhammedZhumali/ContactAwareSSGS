@@ -135,7 +135,8 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
                         }
                         SearchControl.checkpoint("initialization.root");
                         var root = engine.create(origin);
-                        stack.push(new Visit(root, PlanningStateKey.from(root.snapshot())));
+                        var journal = PlanningJournalSummary.from(root.snapshot());
+                        stack.push(new Visit(root, PlanningStateKey.from(root.snapshot(), journal), journal));
                         SearchControl.checkpoint("initialization.end");
                     }
                     return search();
@@ -179,7 +180,7 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
                         BranchEvaluation optimistic;
                         try (var phase = runtime.phase("bound")) {
                             SearchControl.checkpoint("bound.begin");
-                            optimistic = bound.upperBound(visit.branch);
+                            optimistic = bound.upperBound(visit.branch, visit.journal);
                             SearchControl.checkpoint("bound.end");
                         } finally { stats.boundNanos += System.nanoTime() - beforeBound; }
                         int metricOrder = comparator.compareMetrics(optimistic, best.evaluation());
@@ -240,7 +241,7 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
                             SearchControl.checkpoint("candidateProcessing.action");
                             if (options.collapseEquivalentWaits() && action.kind() == PlanningAction.Kind.WAIT) {
                                 if (representatives.containsKey(action)) candidates.add(representatives.get(action));
-                            } else candidates.add(new Candidate(action, null, null));
+                            } else candidates.add(new Candidate(action, null, null, null));
                         }
                         visit.actions = candidates.iterator();
                         if (stack.size() == 1) stats.rootCandidateCount = candidates.size();
@@ -251,7 +252,7 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
                 checkBudget();
                 var candidate = visit.actions.next();
                 if (candidate.branch == null) candidate = execute(visit, candidate.action);
-                stack.push(new Visit(candidate.branch, candidate.key));
+                stack.push(new Visit(candidate.branch, candidate.key, candidate.journal));
             }
             SearchControl.checkpoint("search.complete");
             return result(best == null ? HorizonPlanResult.Status.INFEASIBLE : HorizonPlanResult.Status.COMPLETE);
@@ -268,13 +269,15 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
             stats.executedTransitions++;
             stats.executedByAction.merge(action.kind(), 1L, Long::sum);
             PlanningStateKey key;
+            PlanningJournalSummary journal;
             try (var phase = runtime.phase("stateKey")) {
                 SearchControl.checkpoint("stateKey.begin");
-                key = PlanningStateKey.from(branch.snapshot());
+                journal = PlanningJournalSummary.from(branch.snapshot());
+                key = PlanningStateKey.from(branch.snapshot(), journal);
                 SearchControl.checkpoint("stateKey.end");
             }
             if (!visit.children.add(key)) stats.repeatedTransitions++;
-            return new Candidate(action, branch, key);
+            return new Candidate(action, branch, key, journal);
         }
 
         void finish(PlanningResult solved) {
@@ -381,16 +384,20 @@ public final class ExactHorizonPlanner implements HorizonPlanner {
         return List.copyOf(result);
     }
     private record Solved(BranchEvaluation evaluation, List<PlanningAction> suffix) {}
-    private record Candidate(PlanningAction action, PlanningBranch branch, PlanningStateKey key) {}
+    private record Candidate(PlanningAction action, PlanningBranch branch, PlanningStateKey key,
+                             PlanningJournalSummary journal) {}
     private static final class Visit {
         final PlanningBranch branch;
         final PlanningStateKey key;
+        final PlanningJournalSummary journal;
         final Set<PlanningStateKey> children = new HashSet<>();
         PlanningObservation observation;
         Iterator<Candidate> actions;
         PlanningResult best;
         boolean cacheable = true;
-        Visit(PlanningBranch branch, PlanningStateKey key) { this.branch = branch; this.key = key; }
+        Visit(PlanningBranch branch, PlanningStateKey key, PlanningJournalSummary journal) {
+            this.branch = branch; this.key = key; this.journal = journal;
+        }
     }
 }
 

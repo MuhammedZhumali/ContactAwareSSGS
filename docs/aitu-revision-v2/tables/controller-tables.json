@@ -1,0 +1,134 @@
+[
+  {
+    "id": "controller-CANONICAL-N150000-H1",
+    "rule": "CANONICAL",
+    "horizon": 1,
+    "nodes": 150000,
+    "status": "FINISHED",
+    "processSeconds": "5.063",
+    "finalScore": {
+      "servedContacts": 2,
+      "usefulSecureTime": "38.000000000",
+      "controlCpu": "0.120000000",
+      "managementBytes": "160",
+      "newKeys": 0
+    },
+    "prefixScore": {
+      "servedContacts": 2,
+      "usefulSecureTime": "38.000000000",
+      "controlCpu": "0.120000000",
+      "managementBytes": "160",
+      "newKeys": 0
+    },
+    "stoppedAt": "2026-01-01T00:01:25Z",
+    "controllerSeconds": "3.49532",
+    "hostCpuSeconds": "3.453125",
+    "searches": 13,
+    "searchNodes": 3738,
+    "searchSeconds": "1.1300075",
+    "stops": {
+      "NONE": 13
+    },
+    "decisions": 163,
+    "chargedDecisionDelay": 0,
+    "deadlineMisses": 0
+  },
+  {
+    "id": "controller-CANONICAL-N150000-H2",
+    "rule": "CANONICAL",
+    "horizon": 2,
+    "nodes": 150000,
+    "status": "CONTROLLER_TIME_LIMIT",
+    "processSeconds": "181.531",
+    "finalScore": null,
+    "prefixScore": {
+      "servedContacts": 1,
+      "usefulSecureTime": "3.750000000",
+      "controlCpu": "0.060000000",
+      "managementBytes": "80",
+      "newKeys": 0
+    },
+    "stoppedAt": "2026-01-01T00:00:04.750Z",
+    "controllerSeconds": "180.0153904",
+    "hostCpuSeconds": "176.34375",
+    "searches": 19,
+    "searchNodes": 2659545,
+    "searchSeconds": "179.1975836",
+    "stops": {
+      "NONE": 1,
+      "NODE_LIMIT": 17,
+      "CONTROLLER_TIME_LIMIT": 1
+    },
+    "decisions": 18,
+    "chargedDecisionDelay": 0,
+    "deadlineMisses": 0
+  },
+  {
+    "id": "controller-CONTINUE_WAIT-N150000-H1",
+    "rule": "CONTINUE_WAIT",
+    "horizon": 1,
+    "nodes": 150000,
+    "status": "FINISHED",
+    "processSeconds": "3.609",
+    "finalScore": {
+      "servedContacts": 2,
+      "usefulSecureTime": "38.000000000",
+      "controlCpu": "0.120000000",
+      "managementBytes": "160",
+      "newKeys": 0
+    },
+    "prefixScore": {
+      "servedContacts": 2,
+      "usefulSecureTime": "38.000000000",
+      "controlCpu": "0.120000000",
+      "managementBytes": "160",
+      "newKeys": 0
+    },
+    "stoppedAt": "2026-01-01T00:01:25Z",
+    "controllerSeconds": "2.5365499",
+    "hostCpuSeconds": "2.53125",
+    "searches": 13,
+    "searchNodes": 3738,
+    "searchSeconds": "0.8239898",
+    "stops": {
+      "NONE": 13
+    },
+    "decisions": 163,
+    "chargedDecisionDelay": 0,
+    "deadlineMisses": 0
+  },
+  {
+    "id": "controller-CONTINUE_WAIT-N150000-H2",
+    "rule": "CONTINUE_WAIT",
+    "horizon": 2,
+    "nodes": 150000,
+    "status": "FINISHED",
+    "processSeconds": "33.547",
+    "finalScore": {
+      "servedContacts": 3,
+      "usefulSecureTime": "37.000000000",
+      "controlCpu": "0.830000000",
+      "managementBytes": "1240",
+      "newKeys": 2
+    },
+    "prefixScore": {
+      "servedContacts": 3,
+      "usefulSecureTime": "37.000000000",
+      "controlCpu": "0.830000000",
+      "managementBytes": "1240",
+      "newKeys": 2
+    },
+    "stoppedAt": "2026-01-01T00:01:25Z",
+    "controllerSeconds": "32.4259253",
+    "hostCpuSeconds": "31.609375",
+    "searches": 28,
+    "searchNodes": 420002,
+    "searchSeconds": "30.6626863",
+    "stops": {
+      "NONE": 28
+    },
+    "decisions": 165,
+    "chargedDecisionDelay": 0,
+    "deadlineMisses": 0
+  }
+]

@@ -1,0 +1,11 @@
+# Stage 4: key-disclosure robustness
+
+Written before this block. Use the unchanged frozen demand-late-detected model except disclosure timing. Original geometry, payload, initial state, emergency handling and target rule remain intact. The attacked context is the first contact's spacecraft/ground-station pair. Its end E=2026-10-12T00:14:59.990386963Z. Verified payload:1000B/frame,100B/s; f=10s.
+
+Compromise instants E-40s,E-20s,E-5s. Detection delays0s,2s,20s. All instants selected from geometry before outcomes, independent of policy actions. The common executor discloses the active directional traffic-key pair at that instant; DISCLOSURE_NO_TARGET is a separate result. Future incidents stay excluded from PlanningObservation. Nine models x H1/H2 x CANONICAL/CONTINUE_WAIT=36 new attempts. The historical late-disclosure pair is context only, not a replacement cell.
+
+Practical SEED_AND_RETENTION,5,000 nodes,1s/search,2s/decision,existing350ms seed/retention caps and10,000 transitions,120s/controller,150s watchdog,1GiB heap. Offline,one JVM at a time,no retries/budget escalation. Preserve every attempt and available prefix; FINISHED and recovery are orthogonal.
+
+Postprocess actual journals with the existing versioned recovery and confidentiality functions. Report compromise-to-ground notice, ground-to-spacecraft notice, independent activation, independent SA opening, first independent delivered frame, and total compromise-to-independent-frame delay. Preserve milestone status and event evidence, CENSORED/ALREADY_READY/no-target/unavailable distinctions. Missing events are not zeros or infinity. Retain independent readiness intervals and subsequent expiry/closure events; first activation does not establish continuous readiness.
+
+Report final confidential delivered bytes separately from decryptable emitted bytes, split retrospectively before disclosure and emitted after disclosure (including aborted prefixes). Preserve actual observed cutoff for incomplete executions. No recovered-only average without explicit selection denominator; default to per-cell values and counts. This is a consequences-of-key-disclosure model, not a probability-of-compromise study or general security proof.

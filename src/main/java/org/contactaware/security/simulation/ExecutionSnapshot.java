@@ -48,6 +48,17 @@ public record ExecutionSnapshot(SimulationScenario scenario, Instant at, Securit
 
     public enum ExecutionMode { PREDEFINED_PLAN, PLANNING_BRANCH, CONTROLLED_REAL }
 
+    /** Only factual past events reveal availability; restoration time remains privileged queue data. */
+    public boolean channelUnavailable(String contactId) {
+        for (int i = journal.size() - 1; i >= 0; i--) {
+            var event = journal.get(i);
+            if (event.at().isAfter(at) || !Objects.equals(contactId, event.contactId())) continue;
+            if (event.type() == SimulationEvent.Type.CHANNEL_DOWN) return true;
+            if (event.type() == SimulationEvent.Type.CHANNEL_UP) return false;
+        }
+        return false;
+    }
+
     /** Charges already committed to the journal by completed, failed or interrupted steps. */
     public ResourceUsage recordedCosts() {
         return journal.stream().map(SimulationEvent::usage).reduce(carriedRecordedCosts, ResourceUsage::plus);
@@ -117,10 +128,14 @@ public record ExecutionSnapshot(SimulationScenario scenario, Instant at, Securit
         }
     }
 
-    /** Priorities are part of the v1 execution contract, including deadline-before-ACK ordering. */
+    /**
+     * A frame ending at an event boundary completes first. Expiry and contact closure precede
+     * channel events; channel loss precedes ACK/action admission. UP precedes DOWN so adjacent
+     * half-open outages remain unavailable after their shared timestamp has settled.
+     */
     public enum EventKind {
         FRAME_COMPLETE(0), DISCLOSURE(5), KEY_DEADLINE(10), REVOCATION_NOTICE(15), CONTACT_END(20), INTERRUPT(25),
-        CONTACT_START(30), STEP_COMPLETE(40), ACTION_START(50);
+        CHANNEL_UP(21), CHANNEL_DOWN(22), CONTACT_START(30), STEP_COMPLETE(40), ACTION_START(50);
         private final int priority;
         EventKind(int priority) { this.priority = priority; }
         public int priority() { return priority; }

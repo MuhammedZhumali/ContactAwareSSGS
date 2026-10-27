@@ -1,0 +1,262 @@
+case,stage,selected,status,contactId,minimumUplinkBytes,minimumDownlinkBytes,uplinkBytes,downlinkBytes,confidentialUplinkBytes,confidentialDownlinkBytes,served,confidentialServed
+C3-3-X-next-none-canonical,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,3800,3800,True,True
+C3-3-X-next-none-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-3-X-next-none-canonical,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-3-X-multi-none-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C1,400,400,,,,,,
+C3-3-X-multi-none-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C2,400,400,,,,,,
+C3-3-X-multi-none-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C3,400,400,,,,,,
+C3-3-X-next-none-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,3800,3800,True,True
+C3-3-X-next-none-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-3-X-next-none-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-3-X-multi-none-continue_wait,SE2.3 table,True,SEARCH_INCOMPLETE,C1,400,400,,,,,,
+C3-3-X-multi-none-continue_wait,SE2.3 table,True,SEARCH_INCOMPLETE,C2,400,400,,,,,,
+C3-3-X-multi-none-continue_wait,SE2.3 table,True,SEARCH_INCOMPLETE,C3,400,400,,,,,,
+C3-3-X-next-original-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,2200,2200,0,0,True,False
+C3-3-X-next-original-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-3-X-next-original-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,400,400,400,400,True,True
+C3-3-X-multi-original-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C1,400,400,,,,,,
+C3-3-X-multi-original-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C2,400,400,,,,,,
+C3-3-X-multi-original-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C3,400,400,,,,,,
+C3-3-X-next-original-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,2200,2200,0,0,True,False
+C3-3-X-next-original-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-3-X-next-original-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,400,400,400,400,True,True
+C3-3-X-multi-original-detected-continue_wait,SE2.3 table,True,SEARCH_INCOMPLETE,C1,400,400,,,,,,
+C3-3-X-multi-original-detected-continue_wait,SE2.3 table,True,SEARCH_INCOMPLETE,C2,400,400,,,,,,
+C3-3-X-multi-original-detected-continue_wait,SE2.3 table,True,SEARCH_INCOMPLETE,C3,400,400,,,,,,
+C3-3-X-next-p70-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,3000,3000,0,0,True,False
+C3-3-X-next-p70-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-3-X-next-p70-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-3-X-multi-p70-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C1,400,400,,,,,,
+C3-3-X-multi-p70-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C2,400,400,,,,,,
+C3-3-X-multi-p70-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C3,400,400,,,,,,
+C3-3-X-next-p70-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3000,3000,0,0,True,False
+C3-3-X-next-p70-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-3-X-next-p70-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-3-X-multi-p70-detected-continue_wait,SE2.3 table,True,SEARCH_INCOMPLETE,C1,400,400,,,,,,
+C3-3-X-multi-p70-detected-continue_wait,SE2.3 table,True,SEARCH_INCOMPLETE,C2,400,400,,,,,,
+C3-3-X-multi-p70-detected-continue_wait,SE2.3 table,True,SEARCH_INCOMPLETE,C3,400,400,,,,,,
+C3-3-X-next-p90-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,0,0,True,False
+C3-3-X-next-p90-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-3-X-next-p90-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-3-X-multi-p90-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C1,400,400,,,,,,
+C3-3-X-multi-p90-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C2,400,400,,,,,,
+C3-3-X-multi-p90-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C3,400,400,,,,,,
+C3-3-X-next-p90-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,0,0,True,False
+C3-3-X-next-p90-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-3-X-next-p90-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-3-X-multi-p90-detected-continue_wait,SE2.3 table,True,SEARCH_INCOMPLETE,C1,400,400,,,,,,
+C3-3-X-multi-p90-detected-continue_wait,SE2.3 table,True,SEARCH_INCOMPLETE,C2,400,400,,,,,,
+C3-3-X-multi-p90-detected-continue_wait,SE2.3 table,True,SEARCH_INCOMPLETE,C3,400,400,,,,,,
+C3-3-X-next-gap-midpoint-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,0,0,True,False
+C3-3-X-next-gap-midpoint-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-3-X-next-gap-midpoint-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-3-X-multi-gap-midpoint-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C1,400,400,,,,,,
+C3-3-X-multi-gap-midpoint-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C2,400,400,,,,,,
+C3-3-X-multi-gap-midpoint-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C3,400,400,,,,,,
+C3-3-X-next-gap-midpoint-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,0,0,True,False
+C3-3-X-next-gap-midpoint-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-3-X-next-gap-midpoint-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-3-X-multi-gap-midpoint-detected-continue_wait,SE2.3 table,True,SEARCH_INCOMPLETE,C1,400,400,,,,,,
+C3-3-X-multi-gap-midpoint-detected-continue_wait,SE2.3 table,True,SEARCH_INCOMPLETE,C2,400,400,,,,,,
+C3-3-X-multi-gap-midpoint-detected-continue_wait,SE2.3 table,True,SEARCH_INCOMPLETE,C3,400,400,,,,,,
+C3-5-X-next-none-canonical,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,3800,3800,True,True
+C3-5-X-next-none-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-next-none-canonical,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-5-X-multi-none-canonical,SE2.3 table,True,FINISHED,C1,400,400,3000,3000,3000,3000,True,True
+C3-5-X-multi-none-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-multi-none-canonical,SE2.3 table,True,FINISHED,C3,400,400,600,600,600,600,True,True
+C3-5-X-next-none-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,3800,3800,True,True
+C3-5-X-next-none-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-next-none-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-5-X-multi-none-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3000,3000,3000,3000,True,True
+C3-5-X-multi-none-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-multi-none-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,600,600,600,600,True,True
+C3-5-X-next-original-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,2200,2200,0,0,True,False
+C3-5-X-next-original-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-next-original-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,800,800,800,800,True,True
+C3-5-X-multi-original-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,2500,2500,1100,1100,True,True
+C3-5-X-multi-original-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-multi-original-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,800,800,800,800,True,True
+C3-5-X-next-original-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,2200,2200,0,0,True,False
+C3-5-X-next-original-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-next-original-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,800,800,800,800,True,True
+C3-5-X-multi-original-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,2200,2200,0,0,True,False
+C3-5-X-multi-original-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-multi-original-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,800,800,800,800,True,True
+C3-5-X-next-p70-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,3000,3000,0,0,True,False
+C3-5-X-next-p70-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-next-p70-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-5-X-multi-p70-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,2500,2500,300,300,True,False
+C3-5-X-multi-p70-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-multi-p70-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,800,800,800,800,True,True
+C3-5-X-next-p70-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3000,3000,0,0,True,False
+C3-5-X-next-p70-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-next-p70-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-5-X-multi-p70-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3000,2900,0,0,True,False
+C3-5-X-multi-p70-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-multi-p70-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,500,500,500,500,True,True
+C3-5-X-next-p90-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,0,0,True,False
+C3-5-X-next-p90-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-next-p90-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-5-X-multi-p90-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,3000,3000,0,0,True,False
+C3-5-X-multi-p90-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-multi-p90-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,500,500,500,500,True,True
+C3-5-X-next-p90-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,0,0,True,False
+C3-5-X-next-p90-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-next-p90-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-5-X-multi-p90-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3000,3000,0,0,True,False
+C3-5-X-multi-p90-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-multi-p90-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,500,500,500,500,True,True
+C3-5-X-next-gap-midpoint-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,0,0,True,False
+C3-5-X-next-gap-midpoint-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-next-gap-midpoint-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-5-X-multi-gap-midpoint-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,3000,3000,0,0,True,False
+C3-5-X-multi-gap-midpoint-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-multi-gap-midpoint-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,500,500,500,500,True,True
+C3-5-X-next-gap-midpoint-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,0,0,True,False
+C3-5-X-next-gap-midpoint-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-next-gap-midpoint-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,0,0,0,0,False,False
+C3-5-X-multi-gap-midpoint-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3000,3000,0,0,True,False
+C3-5-X-multi-gap-midpoint-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-5-X-multi-gap-midpoint-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,500,500,500,500,True,True
+C3-9-X-next-none-canonical,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,3800,3800,True,True
+C3-9-X-next-none-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-9-X-next-none-canonical,SE2.3 table,True,FINISHED,C3,400,400,600,600,600,600,True,True
+C3-9-X-multi-none-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C1,400,400,,,,,,
+C3-9-X-multi-none-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C2,400,400,,,,,,
+C3-9-X-multi-none-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C3,400,400,,,,,,
+C3-9-X-next-none-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,3800,3800,True,True
+C3-9-X-next-none-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-9-X-next-none-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,600,600,600,600,True,True
+C3-9-X-multi-none-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,3800,3800,True,True
+C3-9-X-multi-none-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-9-X-multi-none-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,600,600,600,600,True,True
+C3-9-X-next-original-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,2200,2200,0,0,True,False
+C3-9-X-next-original-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-9-X-next-original-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,1600,1600,1600,1600,True,True
+C3-9-X-multi-original-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C1,400,400,,,,,,
+C3-9-X-multi-original-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C2,400,400,,,,,,
+C3-9-X-multi-original-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C3,400,400,,,,,,
+C3-9-X-next-original-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,2200,2200,0,0,True,False
+C3-9-X-next-original-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-9-X-next-original-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,1600,1600,1600,1600,True,True
+C3-9-X-multi-original-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,2200,2200,0,0,True,False
+C3-9-X-multi-original-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-9-X-multi-original-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,1600,1600,1600,1600,True,True
+C3-9-X-next-p70-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,3000,3000,0,0,True,False
+C3-9-X-next-p70-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-9-X-next-p70-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,600,600,600,600,True,True
+C3-9-X-multi-p70-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C1,400,400,,,,,,
+C3-9-X-multi-p70-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C2,400,400,,,,,,
+C3-9-X-multi-p70-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C3,400,400,,,,,,
+C3-9-X-next-p70-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3000,3000,0,0,True,False
+C3-9-X-next-p70-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-9-X-next-p70-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,600,600,600,600,True,True
+C3-9-X-multi-p70-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3000,3000,0,0,True,False
+C3-9-X-multi-p70-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-9-X-multi-p70-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,600,600,600,600,True,True
+C3-9-X-next-p90-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,0,0,True,False
+C3-9-X-next-p90-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-9-X-next-p90-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,500,500,500,500,True,True
+C3-9-X-multi-p90-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C1,400,400,,,,,,
+C3-9-X-multi-p90-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C2,400,400,,,,,,
+C3-9-X-multi-p90-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C3,400,400,,,,,,
+C3-9-X-next-p90-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,0,0,True,False
+C3-9-X-next-p90-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-9-X-next-p90-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,500,500,500,500,True,True
+C3-9-X-multi-p90-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,0,0,True,False
+C3-9-X-multi-p90-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-9-X-multi-p90-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,500,500,500,500,True,True
+C3-9-X-next-gap-midpoint-detected-canonical,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,0,0,True,False
+C3-9-X-next-gap-midpoint-detected-canonical,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-9-X-next-gap-midpoint-detected-canonical,SE2.3 table,True,FINISHED,C3,400,400,500,500,500,500,True,True
+C3-9-X-multi-gap-midpoint-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C1,400,400,,,,,,
+C3-9-X-multi-gap-midpoint-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C2,400,400,,,,,,
+C3-9-X-multi-gap-midpoint-detected-canonical,SE2.3 table,True,SEARCH_INCOMPLETE,C3,400,400,,,,,,
+C3-9-X-next-gap-midpoint-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,0,0,True,False
+C3-9-X-next-gap-midpoint-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-9-X-next-gap-midpoint-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,500,500,500,500,True,True
+C3-9-X-multi-gap-midpoint-detected-continue_wait,SE2.3 table,True,FINISHED,C1,400,400,3800,3800,0,0,True,False
+C3-9-X-multi-gap-midpoint-detected-continue_wait,SE2.3 table,True,FINISHED,C2,400,400,3800,3800,3800,3800,True,True
+C3-9-X-multi-gap-midpoint-detected-continue_wait,SE2.3 table,True,FINISHED,C3,400,400,500,500,500,500,True,True
+day1-next-none-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-4856-1,1000,1000,1000,1000,1000,1000,True,True
+day1-next-none-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-6-1,1000,1000,1000,1000,1000,1000,True,True
+day1-next-none-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-4856-2,1000,1000,1000,1000,1000,1000,True,True
+day1-multi-none-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-4856-1,1000,1000,1000,1000,1000,1000,True,True
+day1-multi-none-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-6-1,1000,1000,1000,1000,1000,1000,True,True
+day1-multi-none-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-4856-2,1000,1000,1000,1000,1000,1000,True,True
+day1-next-none-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-4856-1,1000,1000,1000,1000,1000,1000,True,True
+day1-next-none-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-6-1,1000,1000,1000,1000,1000,1000,True,True
+day1-next-none-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-4856-2,1000,1000,1000,1000,1000,1000,True,True
+day1-multi-none-continue_wait,SE2.4,True,SEARCH_INCOMPLETE,orekit-25544-SATNOGS-4856-1,1000,1000,,,,,,
+day1-multi-none-continue_wait,SE2.4,True,SEARCH_INCOMPLETE,orekit-25544-SATNOGS-6-1,1000,1000,,,,,,
+day1-multi-none-continue_wait,SE2.4,True,SEARCH_INCOMPLETE,orekit-25544-SATNOGS-4856-2,1000,1000,,,,,,
+day1-next-late-detected-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-4856-1,1000,1000,1000,1000,0,0,True,False
+day1-next-late-detected-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-6-1,1000,1000,1000,1000,1000,1000,True,True
+day1-next-late-detected-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-4856-2,1000,1000,1000,1000,1000,1000,True,True
+day1-multi-late-detected-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-4856-1,1000,1000,1000,1000,0,0,True,False
+day1-multi-late-detected-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-6-1,1000,1000,1000,1000,1000,1000,True,True
+day1-multi-late-detected-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-4856-2,1000,1000,1000,1000,1000,1000,True,True
+day1-next-late-detected-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-4856-1,1000,1000,1000,1000,0,0,True,False
+day1-next-late-detected-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-6-1,1000,1000,1000,1000,1000,1000,True,True
+day1-next-late-detected-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-4856-2,1000,1000,1000,1000,1000,1000,True,True
+day1-multi-late-detected-continue_wait,SE2.4,True,CONTROLLER_TIME_LIMIT,orekit-25544-SATNOGS-4856-1,1000,1000,,,,,,
+day1-multi-late-detected-continue_wait,SE2.4,True,CONTROLLER_TIME_LIMIT,orekit-25544-SATNOGS-6-1,1000,1000,,,,,,
+day1-multi-late-detected-continue_wait,SE2.4,True,CONTROLLER_TIME_LIMIT,orekit-25544-SATNOGS-4856-2,1000,1000,,,,,,
+day2-next-none-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-1,1000,1000,1000,1000,1000,1000,True,True
+day2-next-none-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-2987-1,1000,1000,1000,1000,1000,1000,True,True
+day2-next-none-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-2,1000,1000,1000,1000,1000,1000,True,True
+day2-multi-none-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-1,1000,1000,1000,1000,1000,1000,True,True
+day2-multi-none-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-2987-1,1000,1000,1000,1000,1000,1000,True,True
+day2-multi-none-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-2,1000,1000,1000,1000,1000,1000,True,True
+day2-next-none-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-1,1000,1000,1000,1000,1000,1000,True,True
+day2-next-none-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-2987-1,1000,1000,1000,1000,1000,1000,True,True
+day2-next-none-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-2,1000,1000,1000,1000,1000,1000,True,True
+day2-multi-none-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-1,1000,1000,1000,1000,1000,1000,True,True
+day2-multi-none-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-2987-1,1000,1000,1000,1000,1000,1000,True,True
+day2-multi-none-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-2,1000,1000,1000,1000,1000,1000,True,True
+day2-next-late-detected-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-1,1000,1000,1000,1000,0,0,True,False
+day2-next-late-detected-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-2987-1,1000,1000,1000,1000,1000,1000,True,True
+day2-next-late-detected-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-2,1000,1000,1000,1000,1000,1000,True,True
+day2-multi-late-detected-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-1,1000,1000,1000,1000,0,0,True,False
+day2-multi-late-detected-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-2987-1,1000,1000,1000,1000,1000,1000,True,True
+day2-multi-late-detected-canonical,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-2,1000,1000,1000,1000,1000,1000,True,True
+day2-next-late-detected-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-1,1000,1000,1000,1000,0,0,True,False
+day2-next-late-detected-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-2987-1,1000,1000,1000,1000,1000,1000,True,True
+day2-next-late-detected-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-2,1000,1000,1000,1000,1000,1000,True,True
+day2-multi-late-detected-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-1,1000,1000,1000,1000,0,0,True,False
+day2-multi-late-detected-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-2987-1,1000,1000,1000,1000,1000,1000,True,True
+day2-multi-late-detected-continue_wait,SE2.4,True,FINISHED,orekit-25544-SATNOGS-3634-2,1000,1000,1000,1000,1000,1000,True,True
+demand-day2-next-none-canonical,SE2.5,True,FINISHED,orekit-25544-SATNOGS-3634-1,1000,1000,19000,18000,19000,18000,True,True
+demand-day2-next-none-canonical,SE2.5,True,FINISHED,orekit-25544-SATNOGS-2987-1,1000,1000,1000,1000,1000,1000,True,True
+demand-day2-next-none-canonical,SE2.5,True,FINISHED,orekit-25544-SATNOGS-3634-2,1000,1000,1000,1000,1000,1000,True,True
+demand-day2-multi-none-canonical,SE2.5,True,SEARCH_INCOMPLETE,orekit-25544-SATNOGS-3634-1,1000,1000,,,,,,
+demand-day2-multi-none-canonical,SE2.5,True,SEARCH_INCOMPLETE,orekit-25544-SATNOGS-2987-1,1000,1000,,,,,,
+demand-day2-multi-none-canonical,SE2.5,True,SEARCH_INCOMPLETE,orekit-25544-SATNOGS-3634-2,1000,1000,,,,,,
+demand-day2-next-none-continue_wait,SE2.5,True,FINISHED,orekit-25544-SATNOGS-3634-1,1000,1000,19000,18000,19000,18000,True,True
+demand-day2-next-none-continue_wait,SE2.5,True,FINISHED,orekit-25544-SATNOGS-2987-1,1000,1000,1000,1000,1000,1000,True,True
+demand-day2-next-none-continue_wait,SE2.5,True,FINISHED,orekit-25544-SATNOGS-3634-2,1000,1000,1000,1000,1000,1000,True,True
+demand-day2-multi-none-continue_wait,SE2.5,True,SEARCH_INCOMPLETE,orekit-25544-SATNOGS-3634-1,1000,1000,,,,,,
+demand-day2-multi-none-continue_wait,SE2.5,True,SEARCH_INCOMPLETE,orekit-25544-SATNOGS-2987-1,1000,1000,,,,,,
+demand-day2-multi-none-continue_wait,SE2.5,True,SEARCH_INCOMPLETE,orekit-25544-SATNOGS-3634-2,1000,1000,,,,,,
+demand-day2-next-late-detected-canonical,SE2.5,True,FINISHED,orekit-25544-SATNOGS-3634-1,1000,1000,18000,18000,1000,1000,True,True
+demand-day2-next-late-detected-canonical,SE2.5,True,FINISHED,orekit-25544-SATNOGS-2987-1,1000,1000,1000,1000,1000,1000,True,True
+demand-day2-next-late-detected-canonical,SE2.5,True,FINISHED,orekit-25544-SATNOGS-3634-2,1000,1000,1000,1000,1000,1000,True,True
+demand-day2-multi-late-detected-canonical,SE2.5,True,SEARCH_INCOMPLETE,orekit-25544-SATNOGS-3634-1,1000,1000,,,,,,
+demand-day2-multi-late-detected-canonical,SE2.5,True,SEARCH_INCOMPLETE,orekit-25544-SATNOGS-2987-1,1000,1000,,,,,,
+demand-day2-multi-late-detected-canonical,SE2.5,True,SEARCH_INCOMPLETE,orekit-25544-SATNOGS-3634-2,1000,1000,,,,,,
+demand-day2-next-late-detected-continue_wait,SE2.5,True,FINISHED,orekit-25544-SATNOGS-3634-1,1000,1000,18000,17000,1000,1000,True,True
+demand-day2-next-late-detected-continue_wait,SE2.5,True,FINISHED,orekit-25544-SATNOGS-2987-1,1000,1000,1000,1000,1000,1000,True,True
+demand-day2-next-late-detected-continue_wait,SE2.5,True,FINISHED,orekit-25544-SATNOGS-3634-2,1000,1000,1000,1000,1000,1000,True,True
+demand-day2-multi-late-detected-continue_wait,SE2.5,True,SEARCH_INCOMPLETE,orekit-25544-SATNOGS-3634-1,1000,1000,,,,,,
+demand-day2-multi-late-detected-continue_wait,SE2.5,True,SEARCH_INCOMPLETE,orekit-25544-SATNOGS-2987-1,1000,1000,,,,,,
+demand-day2-multi-late-detected-continue_wait,SE2.5,True,SEARCH_INCOMPLETE,orekit-25544-SATNOGS-3634-2,1000,1000,,,,,,
+C3-9-X-next-original-detected-continue_wait:original-attempt-1,SE2.3 table,False,CONTROLLER_TIME_LIMIT,C1,400,400,,,,,,
+C3-9-X-next-original-detected-continue_wait:original-attempt-1,SE2.3 table,False,CONTROLLER_TIME_LIMIT,C2,400,400,,,,,,
+C3-9-X-next-original-detected-continue_wait:original-attempt-1,SE2.3 table,False,CONTROLLER_TIME_LIMIT,C3,400,400,,,,,,
+C3-9-X-multi-original-detected-continue_wait:original-attempt-1,SE2.3 table,False,CONTROLLER_TIME_LIMIT,C1,400,400,,,,,,
+C3-9-X-multi-original-detected-continue_wait:original-attempt-1,SE2.3 table,False,CONTROLLER_TIME_LIMIT,C2,400,400,,,,,,
+C3-9-X-multi-original-detected-continue_wait:original-attempt-1,SE2.3 table,False,CONTROLLER_TIME_LIMIT,C3,400,400,,,,,,
+C3-9-X-next-p70-detected-canonical:original-attempt-1,SE2.3 table,False,CONTROLLER_TIME_LIMIT,C1,400,400,,,,,,
+C3-9-X-next-p70-detected-canonical:original-attempt-1,SE2.3 table,False,CONTROLLER_TIME_LIMIT,C2,400,400,,,,,,
+C3-9-X-next-p70-detected-canonical:original-attempt-1,SE2.3 table,False,CONTROLLER_TIME_LIMIT,C3,400,400,,,,,,

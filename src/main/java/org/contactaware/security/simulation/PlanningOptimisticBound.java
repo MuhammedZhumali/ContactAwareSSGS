@@ -45,9 +45,14 @@ final class PlanningOptimisticBound {
     }
 
     BranchEvaluation upperBound(PlanningBranch branch) {
+        return upperBound(branch, PlanningJournalSummary.from(branch.snapshot()));
+    }
+
+    BranchEvaluation upperBound(PlanningBranch branch, PlanningJournalSummary journal) {
         Objects.requireNonNull(branch);
         var root = branch.origin();
         var snapshot = branch.snapshot();
+        journal.requireSource(snapshot);
         var eligibleContacts = root == cachedOrigin ? cachedEligibleContacts : geometricallyEligibleContacts(root);
         var quantum = root == cachedOrigin ? cachedFrameQuantum : frameQuantum(root);
         long initiallyServed = 0;
@@ -118,11 +123,11 @@ final class PlanningOptimisticBound {
                     && capacity.compareTo(missingUp.add(missingDown)) >= 0) possiblyServed++;
         }
 
-        BigInteger useful = nanos(snapshot.usefulSecureTime().minus(root.usefulSecureTime())).add(futureUseful);
-        var accrued = snapshot.accruedCosts();
+        BigInteger useful = nanos(journal.usefulSecureTime().minus(root.usefulSecureTime())).add(futureUseful);
+        var accrued = journal.accruedCosts();
         Duration cpu = accrued.totalCpu().minus(root.accruedCosts().totalCpu());
         long bytes = Math.subtractExact(accrued.managementBytes(), root.accruedCosts().managementBytes());
-        long keys = Math.subtractExact(snapshot.createdKeys(), root.createdKeys());
+        long keys = Math.subtractExact(journal.createdKeys(), root.createdKeys());
         var committedPreparationCpu = new HashMap<ContextId, Duration>();
         var committedPreparationKeys = new HashMap<ContextId, Long>();
         // A standalone PREPARE already started in a nominal branch cannot be cancelled by
@@ -153,7 +158,7 @@ final class PlanningOptimisticBound {
         if (possiblyServed == eligibleContacts.size()) {
             var allServed = root == cachedOrigin ? cachedRootBound : eligibleContactsServedRootBound(root, eligibleContacts);
             if (allServed != null) {
-                var onlineByContext = consumedOnlineByContext(snapshot);
+                var onlineByContext = consumedOnlineByContext(snapshot, journal);
                 BigInteger contextualFuture = ZERO;
                 for (var entry : allServed.onlineByContext().entrySet()) {
                     SearchControl.checkpoint("bound.loop");
@@ -171,7 +176,7 @@ final class PlanningOptimisticBound {
                     contextualFuture = contextualFuture.add(partialFrame).add(remaining.subtract(remainingOnline).max(ZERO));
                 }
                 useful = useful.min(allServed.usefulNanos());
-                useful = useful.min(nanos(snapshot.usefulSecureTime().minus(root.usefulSecureTime())).add(contextualFuture));
+                useful = useful.min(nanos(journal.usefulSecureTime().minus(root.usefulSecureTime())).add(contextualFuture));
                 // All served plans require at least M online work. If A is all consumed work
                 // and O its online part, A + max(0, M - O) is a lower bound. Unlike max(A,M),
                 // this does not let an unrelated ground PREPARE pay for a future OPEN/INSTALL.
@@ -181,7 +186,7 @@ final class PlanningOptimisticBound {
                 // constant root cap, this tracks already wasted idle time: past useful + elapsed
                 // part of the committed frame + remaining windows - unavoidable remaining work.
                 BigInteger remainingOnline = allServed.onlineNanos().subtract(nanos(online.elapsed())).max(ZERO);
-                BigInteger residualCap = nanos(snapshot.usefulSecureTime().minus(root.usefulSecureTime()))
+                BigInteger residualCap = nanos(journal.usefulSecureTime().minus(root.usefulSecureTime()))
                         .add(inFlightElapsed).add(remainingContactTime.subtract(remainingOnline).max(ZERO));
                 useful = useful.min(residualCap);
                 // Work at B cannot pay A's mandatory CPU or management bytes. Coordinatewise
@@ -199,12 +204,8 @@ final class PlanningOptimisticBound {
                 // Charge only the still-missing CPU/key creation, never the root's sunk work
                 // again; an unrelated context's preparation cannot satisfy this requirement.
                 if (!allServed.preparationContexts().isEmpty()) {
-                    var preparationByContext = consumedPreparationByContext(snapshot);
-                    var createdByContext = new HashMap<ContextId, Long>();
-                    for (var event : snapshot.journal()) {
-                        SearchControl.checkpoint("bound.journal");
-                        if (event.createdKeys() > 0) createdByContext.merge(event.contextId(), event.createdKeys(), Math::addExact);
-                    }
+                    var preparationByContext = consumedPreparationByContext(snapshot, journal);
+                    var createdByContext = journal.createdByContext();
                     var mandatoryCpu = root.costs().cost(SecurityAction.PREPARE).total().totalCpu();
                     for (var context : allServed.preparationContexts()) {
                         SearchControl.checkpoint("bound.loop");
@@ -436,12 +437,8 @@ final class PlanningOptimisticBound {
         return delay;
     }
 
-    private Map<ContextId, ResourceUsage> consumedOnlineByContext(ExecutionSnapshot snapshot) {
-        var usage = new HashMap<ContextId, ResourceUsage>();
-        for (var event : snapshot.journal()) {
-            SearchControl.checkpoint("bound.journal");
-            if (event.action() != null && event.action().requiresContact()) usage.merge(event.contextId(), event.usage(), ResourceUsage::plus);
-        }
+    private Map<ContextId, ResourceUsage> consumedOnlineByContext(ExecutionSnapshot snapshot, PlanningJournalSummary journal) {
+        var usage = new HashMap<>(journal.onlineByContext());
         for (var operation : snapshot.pendingOperations()) {
             SearchControl.checkpoint("bound.operation");
             if (operation.step().requiresContact()) usage.merge(operation.planned().intent().contextId(), snapshot.scenario().costs().cost(operation.step())
@@ -450,12 +447,8 @@ final class PlanningOptimisticBound {
         return usage;
     }
 
-    private Map<ContextId, ResourceUsage> consumedPreparationByContext(ExecutionSnapshot snapshot) {
-        var usage = new HashMap<ContextId, ResourceUsage>();
-        for (var event : snapshot.journal()) {
-            SearchControl.checkpoint("bound.journal");
-            if (event.action() == SecurityAction.PREPARE) usage.merge(event.contextId(), event.usage(), ResourceUsage::plus);
-        }
+    private Map<ContextId, ResourceUsage> consumedPreparationByContext(ExecutionSnapshot snapshot, PlanningJournalSummary journal) {
+        var usage = new HashMap<>(journal.preparationByContext());
         for (var operation : snapshot.pendingOperations()) {
             SearchControl.checkpoint("bound.operation");
             if (operation.step() == SecurityAction.PREPARE)

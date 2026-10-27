@@ -1,0 +1,1283 @@
+{
+  "tableSha256": "799b9b816bb8778fc6f67b081bde99dcd09be4e4d38ff6b00b14ef47f1806f94",
+  "protocolSha256": "2c406eb1c13dd88cea8fc7731736678e8fd3f5fae2b343a48395b5666a878cb8",
+  "figures": {
+    "service_matrix": [
+      {
+        "id": "019-core-ISS46-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "020-core-ISS46-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "021-core-ISS46-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "022-core-ISS46-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "023-core-ISS46-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "024-core-ISS46-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "025-core-ISS46-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "026-core-ISS46-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "027-core-ISS46-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "028-core-ISS46-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "029-core-ISS46-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "030-core-ISS46-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "031-core-ISS46-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "032-core-ISS46-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "033-core-ISS46-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "034-core-ISS46-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "035-core-ISS46-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "036-core-ISS46-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "037-core-NOAA38-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "038-core-NOAA38-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "039-core-NOAA38-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "040-core-NOAA38-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "041-core-NOAA38-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "042-core-NOAA38-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "043-core-NOAA38-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "044-core-NOAA38-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "045-core-NOAA38-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "046-core-NOAA38-medium-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "047-core-NOAA38-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "048-core-NOAA38-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "049-core-NOAA38-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "050-core-NOAA38-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "051-core-NOAA38-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "052-core-NOAA38-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "053-core-NOAA38-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "054-core-NOAA38-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "055-core-HST48-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "056-core-HST48-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "057-core-HST48-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "058-core-HST48-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "059-core-HST48-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "060-core-HST48-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "061-core-HST48-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "062-core-HST48-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "063-core-HST48-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "064-core-HST48-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "065-core-HST48-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "066-core-HST48-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "067-core-HST48-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "068-core-HST48-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "069-core-HST48-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "070-core-HST48-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "071-core-HST48-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "072-core-HST48-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      }
+    ],
+    "cost_matrix": [
+      {
+        "id": "019-core-ISS46-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "020-core-ISS46-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "021-core-ISS46-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "022-core-ISS46-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "023-core-ISS46-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "024-core-ISS46-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "025-core-ISS46-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "026-core-ISS46-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "027-core-ISS46-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "028-core-ISS46-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "029-core-ISS46-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "030-core-ISS46-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "031-core-ISS46-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "032-core-ISS46-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "033-core-ISS46-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "034-core-ISS46-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "035-core-ISS46-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "036-core-ISS46-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "037-core-NOAA38-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "038-core-NOAA38-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "039-core-NOAA38-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "040-core-NOAA38-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "041-core-NOAA38-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "042-core-NOAA38-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "043-core-NOAA38-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "044-core-NOAA38-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "045-core-NOAA38-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "046-core-NOAA38-medium-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "047-core-NOAA38-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "048-core-NOAA38-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "049-core-NOAA38-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "050-core-NOAA38-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "051-core-NOAA38-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "052-core-NOAA38-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "053-core-NOAA38-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "054-core-NOAA38-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "055-core-HST48-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "056-core-HST48-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "057-core-HST48-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "058-core-HST48-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "059-core-HST48-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "060-core-HST48-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "061-core-HST48-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "062-core-HST48-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "063-core-HST48-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "064-core-HST48-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "065-core-HST48-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "066-core-HST48-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "067-core-HST48-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "068-core-HST48-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "069-core-HST48-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "070-core-HST48-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "071-core-HST48-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "072-core-HST48-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "019-core-ISS46-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "020-core-ISS46-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "021-core-ISS46-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "022-core-ISS46-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "023-core-ISS46-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "024-core-ISS46-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "025-core-ISS46-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "026-core-ISS46-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "027-core-ISS46-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "028-core-ISS46-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "029-core-ISS46-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "030-core-ISS46-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "031-core-ISS46-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "032-core-ISS46-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "033-core-ISS46-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "034-core-ISS46-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "035-core-ISS46-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "036-core-ISS46-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "037-core-NOAA38-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "038-core-NOAA38-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "039-core-NOAA38-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "040-core-NOAA38-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "041-core-NOAA38-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "042-core-NOAA38-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "043-core-NOAA38-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "044-core-NOAA38-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "045-core-NOAA38-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "046-core-NOAA38-medium-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "047-core-NOAA38-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "048-core-NOAA38-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "049-core-NOAA38-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "050-core-NOAA38-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "051-core-NOAA38-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "052-core-NOAA38-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "053-core-NOAA38-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "054-core-NOAA38-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "055-core-HST48-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "056-core-HST48-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "057-core-HST48-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "058-core-HST48-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "059-core-HST48-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "060-core-HST48-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "061-core-HST48-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "062-core-HST48-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "063-core-HST48-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "064-core-HST48-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "065-core-HST48-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "066-core-HST48-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "067-core-HST48-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "068-core-HST48-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "069-core-HST48-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "070-core-HST48-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "071-core-HST48-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "072-core-HST48-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "019-core-ISS46-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "020-core-ISS46-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "021-core-ISS46-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "022-core-ISS46-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "023-core-ISS46-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "024-core-ISS46-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "025-core-ISS46-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "026-core-ISS46-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "027-core-ISS46-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "028-core-ISS46-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "029-core-ISS46-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "030-core-ISS46-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "031-core-ISS46-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "032-core-ISS46-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "033-core-ISS46-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "034-core-ISS46-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "035-core-ISS46-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "036-core-ISS46-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "037-core-NOAA38-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "038-core-NOAA38-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "039-core-NOAA38-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "040-core-NOAA38-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "041-core-NOAA38-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "042-core-NOAA38-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "043-core-NOAA38-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "044-core-NOAA38-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "045-core-NOAA38-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "046-core-NOAA38-medium-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "047-core-NOAA38-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "048-core-NOAA38-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "049-core-NOAA38-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "050-core-NOAA38-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "051-core-NOAA38-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "052-core-NOAA38-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "053-core-NOAA38-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "054-core-NOAA38-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "055-core-HST48-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "056-core-HST48-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "057-core-HST48-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "058-core-HST48-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "059-core-HST48-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "060-core-HST48-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "061-core-HST48-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "062-core-HST48-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "063-core-HST48-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "064-core-HST48-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "065-core-HST48-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "066-core-HST48-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "067-core-HST48-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "068-core-HST48-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "069-core-HST48-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "070-core-HST48-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "071-core-HST48-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "072-core-HST48-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      }
+    ],
+    "runtime_completion": [
+      {
+        "id": "019-core-ISS46-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "025-core-ISS46-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "031-core-ISS46-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "020-core-ISS46-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "026-core-ISS46-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "032-core-ISS46-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "021-core-ISS46-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "027-core-ISS46-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "033-core-ISS46-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "022-core-ISS46-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "028-core-ISS46-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "034-core-ISS46-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "023-core-ISS46-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "029-core-ISS46-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "035-core-ISS46-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "024-core-ISS46-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "030-core-ISS46-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "036-core-ISS46-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "037-core-NOAA38-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "043-core-NOAA38-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "049-core-NOAA38-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "038-core-NOAA38-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "044-core-NOAA38-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "050-core-NOAA38-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "039-core-NOAA38-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "045-core-NOAA38-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "051-core-NOAA38-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "040-core-NOAA38-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "046-core-NOAA38-medium-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "052-core-NOAA38-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "041-core-NOAA38-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "047-core-NOAA38-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "053-core-NOAA38-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "042-core-NOAA38-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "048-core-NOAA38-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "054-core-NOAA38-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "055-core-HST48-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "061-core-HST48-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "067-core-HST48-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "056-core-HST48-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "062-core-HST48-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "068-core-HST48-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "057-core-HST48-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "063-core-HST48-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "069-core-HST48-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "058-core-HST48-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "064-core-HST48-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "070-core-HST48-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "059-core-HST48-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "065-core-HST48-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "071-core-HST48-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "060-core-HST48-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "066-core-HST48-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "072-core-HST48-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED"
+      }
+    ],
+    "measured_iss": [
+      {
+        "id": "019-core-ISS46-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "073-measured-ISS46-low-measured-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "020-core-ISS46-low-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "074-measured-ISS46-low-measured-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "021-core-ISS46-low-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "075-measured-ISS46-low-measured-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "022-core-ISS46-low-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "076-measured-ISS46-low-measured-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "023-core-ISS46-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "077-measured-ISS46-low-measured-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "025-core-ISS46-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "078-measured-ISS46-medium-measured-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "026-core-ISS46-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "079-measured-ISS46-medium-measured-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "027-core-ISS46-medium-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "080-measured-ISS46-medium-measured-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "028-core-ISS46-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "081-measured-ISS46-medium-measured-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "029-core-ISS46-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "082-measured-ISS46-medium-measured-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "031-core-ISS46-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "083-measured-ISS46-high-measured-fixedperiod-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "032-core-ISS46-high-offline-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "084-measured-ISS46-high-measured-percontact-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "033-core-ISS46-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "085-measured-ISS46-high-measured-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "034-core-ISS46-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "086-measured-ISS46-high-measured-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT"
+      },
+      {
+        "id": "035-core-ISS46-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "087-measured-ISS46-high-measured-seed-h1-H1-canonical",
+        "status": "FINISHED"
+      }
+    ],
+    "detected_exposure": [
+      {
+        "id": "097-security-X-undetected-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "098-security-X-undetected-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "099-security-X-detected2-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "100-security-X-detected2-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "101-security-X-gap-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "102-security-X-gap-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "103-security-X-channel-temporary-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "104-security-X-channel-temporary-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "105-security-demand-late-detected-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "106-security-demand-late-detected-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      }
+    ],
+    "recovery": [
+      {
+        "id": "099-security-X-detected2-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "100-security-X-detected2-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "101-security-X-gap-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "102-security-X-gap-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "105-security-demand-late-detected-offline-next-H1-canonical",
+        "status": "FINISHED"
+      },
+      {
+        "id": "106-security-demand-late-detected-offline-multi-H2-canonical",
+        "status": "FINISHED"
+      }
+    ]
+  },
+  "interpretation": "Redesigned figures from the same audited rows. Hatched or \"timeout\" cells are unavailable final results, not zero; censored recovery milestones are not reached before run end."
+}

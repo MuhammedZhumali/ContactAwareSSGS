@@ -1,0 +1,115 @@
+--- main(1).tex
++++ main.tex
+@@ -44,7 +44,6 @@
+ 
+ \newcommand{\op}[1]{\texttt{#1}}
+ \newcommand{\missing}{\textit{I}}
+-\newcommand{\authorcheck}[1]{\textbf{[VERIFY: #1]}}
+ 
+ \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+ 
+@@ -80,24 +79,26 @@
+ }
+ 
+ % ============================================================
+-% AUTHOR CHECKS
++% VERIFIED PARAMETERS (October 27, 2026)
+ %
+-% Replace these three values only after checking the frozen
+-% final-campaign model JSON and environment manifest.
+-%
+-% Do not infer them from older SE2/R1/PC2 configurations.
++% Material age and reuse gap match all nine registered primary models.
++% OS is recorded in the frozen build manifest. CPU and installed RAM
++% were documented separately by a post-campaign system query.
+ % ============================================================
+ 
+ \newcommand{\CoreMaterialAge}{%
+-    \authorcheck{final-model value}%
++    172\,800~s (48~h)%
+ }
+ 
+ \newcommand{\CoreReuseGap}{%
+-    \authorcheck{final-model value}%
++    86\,400~s (24~h)%
+ }
+ 
+ \newcommand{\FinalHostHardware}{%
+-    \authorcheck{final host CPU, RAM, and OS}%
++    AMD Ryzen~7 5800HS;
++    8 cores, 16 logical processors;
++    16~GiB RAM;
++    Windows~11 (64-bit)%
+ }
+ 
+ \begin{document}
+@@ -1052,8 +1053,6 @@
+ 
+     \caption{
+         Final-campaign parameters and their interpretation.
+-        VERIFY fields must be copied from the frozen final-model
+-        and environment records before submission.
+     }
+     \label{tab:parameters}
+ 
+@@ -1095,17 +1094,16 @@
+         &
+         \CoreMaterialAge
+         &
+-        Measured from creation, not activation.
+-        Copy the final per-model setting; do not infer it from
+-        $C_{\max}$.
++        Measured from key creation, not activation;
++        identical across the nine primary mission/load models.
+         \\
+ 
+         Primary reuse-gap bound $G_{\max}$
+         &
+         \CoreReuseGap
+         &
+-        Bound on the permitted gap since successful use.
+-        Retain any per-model differences explicitly.
++        Maximum permitted inter-contact reuse gap;
++        identical across the nine primary mission/load models.
+         \\
+ 
+         Primary payload profile
+@@ -1200,6 +1198,10 @@
+         \bottomrule
+     \end{tabularx}
+ \end{table*}
++
++The CPU and installed physical memory were documented
++in a post-campaign system query on October 25, 2026.
++The operating system was recorded in the frozen build manifest.
+ 
+ For a contact of duration $L_i$, high demand offers
+ \begin{equation}
+@@ -1387,10 +1389,13 @@
+ tables.
+ A repeated deterministic replay is a reproducibility check,
+ not an independent policy-effectiveness sample.
+-
+-% AUTHOR CHECK:
+-% Add the permanent public repository or archive DOI here when
+-% it actually exists. Do not invent a deposit URL.
++Wall-time limits and measured decision delays depend on
++the host and its load; identical inputs need not produce
++identical time-limited search paths.
++
++% PUBLIC ARTIFACT LINK STILL REQUIRED:
++% Insert the verified public GitHub Release URL or archival DOI here
++% after publication. No public identifier was supplied for verification.
+ 
+ \FloatBarrier
+ 
+@@ -1883,7 +1888,8 @@
+ The journal identifies the timing mechanism.
+ Multi completes independent preparation before disclosure
+ and begins INSTALL before ground notice.
+-It finishes that operation before notification.
++It completes INSTALL after ground notice but before
++spacecraft notification.
+ 
+ Spacecraft notice is later for Multi:
+ 3.9753 rather than 0.4~s after ground notice.

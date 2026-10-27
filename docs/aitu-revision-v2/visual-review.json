@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "date": "2026-10-28",
+  "documents": {
+    "article": {
+      "docxSha256": "f6ec27dae06d9085a53a189ea35477aabf8cef883230a48d9d8e47390b3e9a7b",
+      "pages": 13,
+      "renderDirectory": "target/aitu-revision-v2/document-qa/wording-final-20261028",
+      "renderer": "Word16 read-only COM plus Poppler",
+      "pageImageHashes": {
+        "1": "7f3617ac67a558583d9cff61cb3434008f775ca867c9f2e4638d59f9337b4b14",
+        "2": "ad12a0e548384948fd88549f0a500c57627b63ad68a001c4c5f43a6494898d7a",
+        "3": "7f888ca64c27cae4b31c65ee917bb649e52dade71ffc6b56eddc82dba2602ce3",
+        "4": "b53ebc2198590503fa675553f07df42b5f7f0a437310bdb3189cfa9af8d70ff9",
+        "5": "6eb4455d48a8f7f4a0c2313eb42f6e9773b86582c0dea749445d3e78bc6d6d57",
+        "6": "3b1a0d500bd906f386629b5df9438e050a89db48774db7e8be947c1084918fbb",
+        "7": "6b9b76becaf0d9a9839ffb55d79938825719e36ff9c9817d815e8453be2ffcf8",
+        "8": "9556f501a827e8c21e594c44965375358ce3541b1477ea4493c4ab711cf96253",
+        "9": "dab3eabe213a69a3ead4b1756a233b6f5d824eccd9cde662530de22084ab8f5a",
+        "10": "ca486039e2db51adb5b201c165493b5780c87932cb22831c66384b8ee9da44ec",
+        "11": "ccdc6588bfd1c0425497fa809e888b4761d2b21e67ba648fd475efda970d04f9",
+        "12": "43921b5cd8b31a0c7a1633ab77559b536f56708b1735f7b605b91a7717c69db3",
+        "13": "ce21bbd303a8a9b886cde224bc3d92127ef0a54e02278e3cd7648e78ddc8be46"
+      },
+      "review": "Viewed changed pages [9, 12]; all remaining pages identical to previously reviewed final4."
+    },
+    "supplement": {
+      "docxSha256": "789c7a4f48f55339efce57b5dd5f536d6023e1a4ac9f38d6fdd32908feffbc1d",
+      "pages": 14,
+      "renderDirectory": "target/aitu-revision-v2/document-qa/wording-checked-20261028",
+      "renderer": "Word16 read-only COM plus Poppler",
+      "pageImageHashes": {
+        "1": "4bec58fe7435e06f965303a2e90da69af83832d23f89fbfc1b5c0f200d7b6596",
+        "2": "366f35c160211c99f7d507a24038700867a1a1cbc09833432593fd6acd97dc2f",
+        "3": "a53e7c250181dc844c3414ae6de48f5863ac391147a8b1a2986868d2bda2edf4",
+        "4": "ce233658dec65aa553e61d5c9dd18d813fbf62abaa85ba457eae808a8ed82433",
+        "5": "99874b99266adab8ea6cb83cfb9f2cfeb150fffaf75d59376cee0bcf5b0ed19d",
+        "6": "ab480884cc960fa09203ca8313e764de952e0339ee93e1578b53022b1cd5275c",
+        "7": "4d9f5adbd55c4ab7b2f71a0dc2ff467c9c17df2e56186fab4de7d9789ed66c61",
+        "8": "c7eac6d50432eb31508c673ed117d8d9ca930f9fec490445c6935245dbfa3b6c",
+        "9": "ef81e2e44542b19acc3f1383425395ddc20f469515558a49647eb783b500881c",
+        "10": "925e2cf22383a5982e7dfd8653e4c2025f24849be0b0cc85dddddbc61d43d8ec",
+        "11": "c95e59d2e01ad25128a2bc0136735b69754025a3d97dc9116409326b5502e331",
+        "12": "29e71fb04bbad54e9cb81bae29cd50e4afba465b9ac92b9717a10e370419f26b",
+        "13": "4210ec37216657d803fc8102f1450a5cd04adbe2a0bf89d51f09184e813e9f38",
+        "14": "2f10b14ba36b4900729f416bc4d143f8dc6b0ebac6f0e69767f393c531fd4b24"
+      },
+      "review": "Viewed changed pages [11, 12, 13, 14]; all remaining pages identical to previously reviewed final3."
+    }
+  },
+  "latex": {
+    "article": {
+      "sha256": "607a491feb47c299b0d60be13541e1264da04cd9829ae4ab3d81af3c2b90c4b7",
+      "status": "success",
+      "compiler": "Codex built-in LaTeX compiler",
+      "date": "2026-10-28"
+    },
+    "supplement": {
+      "sha256": "06f767c3ea52bf6aeb189f6644c7fa3dbeb998b2b2fbc9a406c1d7a45785b826",
+      "status": "success",
+      "compiler": "Codex built-in LaTeX compiler",
+      "date": "2026-10-28"
+    }
+  },
+  "boundary": "Three requested wording changes, plus a layout-only hash wrap and its display instruction. Existing experiments unchanged. Changed pages viewed; other pages SHA-identical to previously reviewed renders."
+}

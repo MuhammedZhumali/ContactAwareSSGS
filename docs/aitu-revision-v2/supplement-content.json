@@ -1,0 +1,2267 @@
+{
+  "title": "Supplementary evidence for satellite security lifecycle planning",
+  "author": "Mukhammed Zhumali",
+  "email": "262937@astanait.edu.kz",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Scope and evidence identity"
+    },
+    {
+      "type": "p",
+      "text": "This supplement belongs to the AITU revision of When Future Contacts Improve Satellite Key and Security Association Management. It documents a new bounded campaign and preserves the prior final-v2 campaign separately. Full per-cell tables are provided as CSV and JSON; raw events, checkpoints, observations, plans, candidate portfolios, invocations and process logs are in the reproduction package. Rounded values here do not replace the machine-readable precision."
+    },
+    {
+      "type": "p",
+      "text": "The prior campaign has 108 attempts,93 FINISHED and 15 PROCESS_TIMEOUT. First-revision execution comprises 110 full-controller attempts: 105 FINISHED and 5 SEARCH_INCOMPLETE. Twelve additional paired-root diagnostics have 11 exact COMPLETE and 1 exact INCOMPLETE. Six reused logical cells have explicit origins: four prepared exact X01 cells in the synthetic family and two autonomous practical X/CANONICAL/5000-node cells in the budget series. No registered new attempt is missing."
+    },
+    {
+      "type": "p",
+      "text": "The frozen final-v2 JAR and its SHA256 are identified in the reproduction manifest. A separate harness exports matched initial states. A separate root-only planner overlay records incumbent changes; normal controllers never load it. Focused validation matched the frozen planner’s complete plan, score, first action, status and node count on a fixed-node example. This is a bounded instrumentation check, not universal zero-overhead equivalence."
+    },
+    {
+      "type": "heading",
+      "text": "Matched initialization and diagnostic replay"
+    },
+    {
+      "type": "p",
+      "text": "Table S1 reports full controller outcomes. Values are S, U seconds, C modeled CPU seconds, B management bytes, K newly created directional keys. Preparation at −2 through 0 is actual execution and remains charged. CAN=CANONICAL; CW=CONTINUE_WAIT; E=exact; P=practical. Unfinished scores are unavailable, not the best incumbent projected as a final mission result."
+    },
+    {
+      "type": "table",
+      "caption": "Table S1. Matched full-controller runs.",
+      "headers": [
+        "Initial",
+        "E/P",
+        "H",
+        "Rule",
+        "Status",
+        "S, U, C, B, K"
+      ],
+      "rows": [
+        [
+          "prepared",
+          "E",
+          "1",
+          "CAN",
+          "FINISHED",
+          "2, 38, 0.32, 160, 2"
+        ],
+        [
+          "prepared",
+          "E",
+          "1",
+          "CW",
+          "FINISHED",
+          "2, 38, 0.32, 160, 2"
+        ],
+        [
+          "prepared",
+          "E",
+          "2",
+          "CAN",
+          "FINISHED",
+          "3, 37, 0.83, 1240, 2"
+        ],
+        [
+          "prepared",
+          "E",
+          "2",
+          "CW",
+          "FINISHED",
+          "3, 37, 0.83, 1240, 2"
+        ],
+        [
+          "prepared",
+          "P",
+          "1",
+          "CAN",
+          "FINISHED",
+          "2, 38, 0.32, 160, 2"
+        ],
+        [
+          "prepared",
+          "P",
+          "1",
+          "CW",
+          "FINISHED",
+          "2, 38, 0.32, 160, 2"
+        ],
+        [
+          "prepared",
+          "P",
+          "2",
+          "CAN",
+          "FINISHED",
+          "3, 37, 0.83, 1240, 2"
+        ],
+        [
+          "prepared",
+          "P",
+          "2",
+          "CW",
+          "FINISHED",
+          "3, 37, 0.83, 1240, 2"
+        ],
+        [
+          "autonomous",
+          "E",
+          "1",
+          "CAN",
+          "FINISHED",
+          "2, 38, 0.12, 160, 0"
+        ],
+        [
+          "autonomous",
+          "E",
+          "1",
+          "CW",
+          "FINISHED",
+          "2, 38, 0.12, 160, 0"
+        ],
+        [
+          "autonomous",
+          "E",
+          "2",
+          "CAN",
+          "INCOMPLETE",
+          "unavailable"
+        ],
+        [
+          "autonomous",
+          "E",
+          "2",
+          "CW",
+          "FINISHED",
+          "3, 37, 0.83, 1240, 2"
+        ],
+        [
+          "autonomous",
+          "P",
+          "1",
+          "CAN",
+          "FINISHED",
+          "2, 38, 0.12, 160, 0"
+        ],
+        [
+          "autonomous",
+          "P",
+          "1",
+          "CW",
+          "FINISHED",
+          "2, 38, 0.12, 160, 0"
+        ],
+        [
+          "autonomous",
+          "P",
+          "2",
+          "CAN",
+          "FINISHED",
+          "2, 38, 0.12, 160, 0"
+        ],
+        [
+          "autonomous",
+          "P",
+          "2",
+          "CW",
+          "FINISHED",
+          "2, 38, 0.12, 160, 0"
+        ]
+      ],
+      "widths": [
+        2.8,
+        1.2,
+        0.7,
+        1.3,
+        3,
+        7.5
+      ]
+    },
+    {
+      "type": "p",
+      "text": "The analyzer checks eight exact/practical initial snapshot pairs and eight observation pairs at fixed H/rule. All state values and ordered lists are retained; only explicitly Set-valued fields are normalized for JSON ordering. Four actual t=0 controller observations also equal the corresponding autonomous H2 diagnostic observations. This is stronger than comparing SecurityState or five scores alone."
+    },
+    {
+      "type": "p",
+      "text": "At autonomous t=0/H2, the first five-score improvement occurs at node 134269: from (2,38,0.12,160,0) to (3,37,0.83,1240,2). It takes 8.1449003 s CAN and 8.2851468 s CW with instrumentation. Practical searches stop at NODE_LIMIT 5000 after 0.4964998 s and 0.5750573 s; their one-second timer has not fired. CW proves COMPLETE at 134638 nodes. CAN remains INCOMPLETE at 30 s after 507296 nodes, despite finding the service-improving tuple. Its 1027 incumbent updates contain only two distinct five-tuples; later updates improve the full plan order. This does not establish tie handling as the sole source of runtime."
+    },
+    {
+      "type": "p",
+      "text": "The COMPLETE 164-action CW exact plan passes ordinary BranchEngine admissibility and ContinuationEvaluator with identical score and plan. The selected comparator prefers it to the ordinary practical result. A disposable diagnostic portfolio accepts it as FEASIBLE_RETAINED; ordinary controllers receive no oracle. Actual practical t=0 seed and retained candidates both score (2,38,0.32,160,2); its selected search candidate scores (2,38,0.12,160,0)."
+    },
+    {
+      "type": "p",
+      "text": "The t=0 first actions are both OPEN. The first actual disagreement is decision 54 at 13.75 s: exact PREPARE(A,g1) until 15.75, practical CONTINUE until 14. Observations are equal. Exact uses SUFFIX_REUSE from decision 3, suffixOffset 51, checkedOffset 50, guard ALLOWED/ONE_FRAME_NOMINAL. Full per-decision snapshots are not exported, so this observation equality is not relabeled a fresh snapshot-equality proof. Evidence: stage1/runs/run-autonomous-{exact,practical}-H2-CONTINUE_WAIT/actual.full-trace.json."
+    },
+    {
+      "type": "heading",
+      "text": "Finite synthetic family"
+    },
+    {
+      "type": "p",
+      "text": "All settings were chosen from executor rules before outcomes. Base C1=A[0,20], C2=B[30,50], C3=A[T,T+L], age 400, reuse gap 200 seconds. The 2-second window is below even the 3-second already-active REUSE chain; the 430-second return is after the age deadline of every key created by C1’s end. Initial deadlines and new-key deadlines are independently checked against creation/activation history. Both tie rules agree in status and final five-tuples for every listed row."
+    },
+    {
+      "type": "table",
+      "caption": "Table S2. Synthetic configuration and final five-tuples; both rules.",
+      "headers": [
+        "Case",
+        "T/L/P (s)",
+        "Next",
+        "Multi"
+      ],
+      "rows": [
+        [
+          "X01",
+          "80/5/150",
+          "2, 38, 0.32, 160, 2",
+          "3, 37, 0.83, 1240, 2"
+        ],
+        [
+          "X02",
+          "80/2/150",
+          "2, 38, 0.32, 160, 2",
+          "2, 38, 0.32, 160, 2"
+        ],
+        [
+          "X03",
+          "80/9/150",
+          "3, 41, 0.83, 1240, 2",
+          "3, 41, 0.83, 1240, 2"
+        ],
+        [
+          "X04",
+          "60/5/150",
+          "3, 42, 0.38, 240, 2",
+          "3, 42, 0.38, 240, 2"
+        ],
+        [
+          "X05",
+          "180/5/150",
+          "2, 38, 0.32, 160, 2",
+          "SEARCH_INCOMPLETE"
+        ],
+        [
+          "X06",
+          "80/5/180",
+          "3, 42, 0.38, 240, 2",
+          "3, 42, 0.38, 240, 2"
+        ],
+        [
+          "X07",
+          "80/5/90",
+          "3, 37, 0.83, 1240, 2",
+          "3, 37, 0.83, 1240, 2"
+        ],
+        [
+          "X08",
+          "180/5/240",
+          "2, 38, 0.32, 160, 2",
+          "3, 37, 0.83, 1240, 2"
+        ],
+        [
+          "X09",
+          "430/5/150",
+          "2, 38, 0.32, 160, 2",
+          "SEARCH_INCOMPLETE"
+        ]
+      ],
+      "widths": [
+        1.3,
+        2.5,
+        6.35,
+        6.35
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Computational budget and timing"
+    },
+    {
+      "type": "p",
+      "text": "Exact:2,000,000 nodes/30 s; practical: specified node allowance/1 s search/2 s decision. Seed construction and retained replay/extension each have 350 ms; the 10,000-transition cap applies to seed rollout and retained extension, not the replay loop. Controller 120 s; independent process watchdog 150 s. Root diagnostic watchdog 60 s. Single JVM, 1 GiB heap, no outcome-driven budget escalation. The zero-node control has DFS disabled while preserving seeds and naturally retained suffixes. The original SEED_WITHOUT_SEARCH setting was unsuitable because it also disabled retention; a named separate adapter passed zero-planner-call and ordinary-portfolio equivalence checks. Its first compile failure and corrected v2 artifacts are retained, not treated as experiment attempts."
+    },
+    {
+      "type": "p",
+      "text": "The budget series is CANONICAL only. X is autonomous; long is the three-contact original-window ISS demand control, not a full-day campaign. Table S3 separates modeled CPU from host CPU. Host figures are single-run observations, not a statistical speed benchmark. Search node counts are summed across actual decisions; a nominal per-search limit is not a total-run budget."
+    },
+    {
+      "type": "table",
+      "caption": "Table S3. Full-run objective and charged decision delay.",
+      "headers": [
+        "Case",
+        "Delay",
+        "Node cap",
+        "H",
+        "S, U, C, B, K",
+        "Charged (s)"
+      ],
+      "rows": [
+        [
+          "X5",
+          "offline",
+          "0",
+          "1",
+          "2, 38, 0.32, 160, 2",
+          "0"
+        ],
+        [
+          "X5",
+          "offline",
+          "0",
+          "2",
+          "2, 38, 0.32, 160, 2",
+          "0"
+        ],
+        [
+          "X5",
+          "offline",
+          "1000",
+          "1",
+          "2, 38, 0.12, 160, 0",
+          "0"
+        ],
+        [
+          "X5",
+          "offline",
+          "1000",
+          "2",
+          "2, 38, 0.12, 160, 0",
+          "0"
+        ],
+        [
+          "X5",
+          "offline",
+          "5000",
+          "1",
+          "2, 38, 0.12, 160, 0",
+          "0"
+        ],
+        [
+          "X5",
+          "offline",
+          "5000",
+          "2",
+          "2, 38, 0.12, 160, 0",
+          "0"
+        ],
+        [
+          "X5",
+          "offline",
+          "20000",
+          "1",
+          "2, 38, 0.12, 160, 0",
+          "0"
+        ],
+        [
+          "X5",
+          "offline",
+          "20000",
+          "2",
+          "2, 38, 0.12, 160, 0",
+          "0"
+        ],
+        [
+          "X5",
+          "offline",
+          "100000",
+          "1",
+          "2, 38, 0.12, 160, 0",
+          "0"
+        ],
+        [
+          "X5",
+          "offline",
+          "100000",
+          "2",
+          "2, 38, 0.12, 160, 0",
+          "0"
+        ],
+        [
+          "X5",
+          "measured",
+          "1000",
+          "1",
+          "2, 33.5, 0.12, 160, 0",
+          "4.746"
+        ],
+        [
+          "X5",
+          "measured",
+          "1000",
+          "2",
+          "2, 32.25, 0.12, 160, 0",
+          "6.647"
+        ],
+        [
+          "X5",
+          "measured",
+          "20000",
+          "1",
+          "2, 33.5, 0.12, 160, 0",
+          "4.826"
+        ],
+        [
+          "X5",
+          "measured",
+          "20000",
+          "2",
+          "2, 23, 0.12, 160, 0",
+          "16.206"
+        ],
+        [
+          "long",
+          "offline",
+          "0",
+          "1",
+          "3, 410, 2.13, 3240, 6",
+          "0"
+        ],
+        [
+          "long",
+          "offline",
+          "0",
+          "2",
+          "3, 410, 2.13, 3240, 6",
+          "0"
+        ],
+        [
+          "long",
+          "offline",
+          "1000",
+          "1",
+          "3, 410, 2.13, 3240, 6",
+          "0"
+        ],
+        [
+          "long",
+          "offline",
+          "1000",
+          "2",
+          "3, 410, 2.13, 3240, 6",
+          "0"
+        ],
+        [
+          "long",
+          "offline",
+          "5000",
+          "1",
+          "3, 410, 2.13, 3240, 6",
+          "0"
+        ],
+        [
+          "long",
+          "offline",
+          "5000",
+          "2",
+          "3, 410, 2.13, 3240, 6",
+          "0"
+        ],
+        [
+          "long",
+          "offline",
+          "20000",
+          "1",
+          "3, 410, 2.13, 3240, 6",
+          "0"
+        ],
+        [
+          "long",
+          "offline",
+          "20000",
+          "2",
+          "3, 410, 2.13, 3240, 6",
+          "0"
+        ],
+        [
+          "long",
+          "offline",
+          "100000",
+          "1",
+          "3, 410, 2.13, 3240, 6",
+          "0"
+        ],
+        [
+          "long",
+          "offline",
+          "100000",
+          "2",
+          "3, 410, 2.13, 3240, 6",
+          "0"
+        ],
+        [
+          "long",
+          "measured",
+          "1000",
+          "1",
+          "3, 410, 2.13, 3240, 6",
+          "5.234"
+        ],
+        [
+          "long",
+          "measured",
+          "1000",
+          "2",
+          "3, 410, 2.13, 3240, 6",
+          "6.323"
+        ],
+        [
+          "long",
+          "measured",
+          "20000",
+          "1",
+          "3, 410, 2.13, 3240, 6",
+          "2.777"
+        ],
+        [
+          "long",
+          "measured",
+          "20000",
+          "2",
+          "3, 400, 2.13, 3240, 6",
+          "15.172"
+        ]
+      ],
+      "widths": [
+        1.3,
+        2,
+        2,
+        0.7,
+        8,
+        2.5
+      ]
+    },
+    {
+      "type": "table",
+      "caption": "Table S4. Search and controller measurements for the same cells; O=offline, M=measured.",
+      "headers": [
+        "Case",
+        "Mode/cap/H",
+        "Calls",
+        "Nodes",
+        "Host (s)",
+        "CPU (s)",
+        "Stops"
+      ],
+      "rows": [
+        [
+          "X5",
+          "O/0/1",
+          "0",
+          "0",
+          "4.161",
+          "4.172",
+          ""
+        ],
+        [
+          "X5",
+          "O/0/2",
+          "0",
+          "0",
+          "3.663",
+          "3.734",
+          ""
+        ],
+        [
+          "X5",
+          "O/1000/1",
+          "13",
+          "3738",
+          "2.634",
+          "2.688",
+          "NONE:13"
+        ],
+        [
+          "X5",
+          "O/1000/2",
+          "82",
+          "74148",
+          "8.58",
+          "8.562",
+          "NONE:11, NODE:71"
+        ],
+        [
+          "X5",
+          "O/5000/1",
+          "13",
+          "3738",
+          "2.692",
+          "2.672",
+          "NONE:13"
+        ],
+        [
+          "X5",
+          "O/5000/2",
+          "78",
+          "340069",
+          "26.329",
+          "25.828",
+          "NONE:11, TIME:1, NODE:66"
+        ],
+        [
+          "X5",
+          "O/20000/1",
+          "13",
+          "3738",
+          "2.489",
+          "2.469",
+          "NONE:13"
+        ],
+        [
+          "X5",
+          "O/20000/2",
+          "74",
+          "978146",
+          "66.531",
+          "65.281",
+          "NONE:11, TIME:63"
+        ],
+        [
+          "X5",
+          "O/100000/1",
+          "13",
+          "3738",
+          "2.586",
+          "2.453",
+          "NONE:13"
+        ],
+        [
+          "X5",
+          "O/100000/2",
+          "74",
+          "968767",
+          "66.647",
+          "65.094",
+          "NONE:11, TIME:63"
+        ],
+        [
+          "X5",
+          "M/1000/1",
+          "148",
+          "43674",
+          "5.619",
+          "5.641",
+          "NONE:148"
+        ],
+        [
+          "X5",
+          "M/1000/2",
+          "142",
+          "69723",
+          "7.446",
+          "7.422",
+          "NONE:90, NODE:52"
+        ],
+        [
+          "X5",
+          "M/20000/1",
+          "147",
+          "43291",
+          "5.697",
+          "5.734",
+          "NONE:147"
+        ],
+        [
+          "X5",
+          "M/20000/2",
+          "105",
+          "218672",
+          "16.83",
+          "16.422",
+          "NONE:91, TIME:14"
+        ],
+        [
+          "long",
+          "O/0/1",
+          "0",
+          "0",
+          "1.648",
+          "1.797",
+          ""
+        ],
+        [
+          "long",
+          "O/0/2",
+          "0",
+          "0",
+          "2.081",
+          "2.141",
+          ""
+        ],
+        [
+          "long",
+          "O/1000/1",
+          "56",
+          "32287",
+          "5.109",
+          "5.125",
+          "NONE:27, NODE:29"
+        ],
+        [
+          "long",
+          "O/1000/2",
+          "68",
+          "50031",
+          "7.454",
+          "7.406",
+          "NONE:21, NODE:47"
+        ],
+        [
+          "long",
+          "O/5000/1",
+          "32",
+          "7878",
+          "2.956",
+          "3.078",
+          "NONE:32"
+        ],
+        [
+          "long",
+          "O/5000/2",
+          "68",
+          "241616",
+          "22.132",
+          "21.578",
+          "NONE:20, TIME:1, NODE:47"
+        ],
+        [
+          "long",
+          "O/20000/1",
+          "32",
+          "12070",
+          "3.892",
+          "3.812",
+          "NONE:31, TIME:1"
+        ],
+        [
+          "long",
+          "O/20000/2",
+          "68",
+          "556026",
+          "50.01",
+          "48.938",
+          "NONE:20, TIME:48"
+        ],
+        [
+          "long",
+          "O/100000/1",
+          "32",
+          "11489",
+          "4.329",
+          "4.109",
+          "NONE:31, TIME:1"
+        ],
+        [
+          "long",
+          "O/100000/2",
+          "68",
+          "562584",
+          "50.102",
+          "48.656",
+          "NONE:20, TIME:48"
+        ],
+        [
+          "long",
+          "M/1000/1",
+          "74",
+          "34052",
+          "5.822",
+          "5.828",
+          "NONE:44, NODE:30"
+        ],
+        [
+          "long",
+          "M/1000/2",
+          "74",
+          "45741",
+          "6.899",
+          "6.875",
+          "NONE:32, NODE:42"
+        ],
+        [
+          "long",
+          "M/20000/1",
+          "73",
+          "11381",
+          "3.476",
+          "3.531",
+          "NONE:73"
+        ],
+        [
+          "long",
+          "M/20000/2",
+          "72",
+          "131701",
+          "15.679",
+          "15.359",
+          "NONE:61, TIME:11"
+        ]
+      ],
+      "widths": [
+        1.2,
+        3,
+        1.5,
+        2.3,
+        2,
+        2,
+        4.5
+      ]
+    },
+    {
+      "type": "p",
+      "text": "Detailed tables additionally retain search elapsed/thread CPU, search statuses, decisions, process elapsed, untruncated computed latency and charged decision intervals. No-search cells have 0 search calls, not a claim of exact completion. Charged delay sums model availability minus decision origin, clipped by actual execution; it is distinct from total host runtime. CPU telemetry may differ slightly from elapsed at short durations because of measurement resolution."
+    },
+    {
+      "type": "heading",
+      "text": "Disclosure model and metric definitions"
+    },
+    {
+      "type": "p",
+      "text": "E=2026-10-12T00:14:59.990386963Z. Compromise E−40/E−20/E−5, delay 0/2/20 seconds, same active-pair target rule and geometry for all policies. All 36 runs FINISHED, all 36 targets DISCLOSED, all 36 independent-frame milestones observed. No NO_TARGET or censored values occurred in this grid. The measurement implementation still represents missing events explicitly and does not extrapolate incomplete runs."
+    },
+    {
+      "type": "p",
+      "text": "Each milestone’s origin is actual ground notice. Spacecraft notice is confirmed revocation receipt. Independent pair requires both directional keys to be agreed active, valid, and outside the disclosed set. Independent SA requires those materials bound to an open admissible context. Independent frame requires complete actual delivery. Earlier readiness is marked already_ready when applicable, never imputed from a missing event. Full delay is compromise-to-ground plus ground-to-frame, using actual timestamps. Subsequent expiration and closure delimit readiness; the first milestone is not continuous readiness."
+    },
+    {
+      "type": "p",
+      "text": "Confidential delivered bytes count complete delivered frames whose keys are not disclosed during the modeled run. Exposure instead integrates emitted byte ranges, including incomplete frames, split before and after compromise. Retrospective disclosure can therefore invalidate confidentiality of earlier deliveries. These metrics do not measure attack probability or implementation-level cryptographic security. Directional replacements are modeled independent, and the management channel remains protected."
+    },
+    {
+      "type": "table",
+      "caption": "Table S5a.1. CANONICAL: notice and activation, seconds after ground notice.",
+      "headers": [
+        "E offset / delay / H",
+        "SC notice",
+        "Independent pair"
+      ],
+      "rows": [
+        [
+          "−40/0/1",
+          "3.706",
+          "10.706"
+        ],
+        [
+          "−40/0/2",
+          "3.706",
+          "8.706"
+        ],
+        [
+          "−40/2/1",
+          "1.706",
+          "8.706"
+        ],
+        [
+          "−40/2/2",
+          "1.706",
+          "6.706"
+        ],
+        [
+          "−40/20/1",
+          "3.706",
+          "10.706"
+        ],
+        [
+          "−40/20/2",
+          "7.706",
+          "8.706"
+        ],
+        [
+          "−20/0/1",
+          "3.706",
+          "10.706"
+        ],
+        [
+          "−20/0/2",
+          "7.706",
+          "8.706"
+        ],
+        [
+          "−20/2/1",
+          "1.706",
+          "8.706"
+        ],
+        [
+          "−20/2/2",
+          "5.706",
+          "6.706"
+        ],
+        [
+          "−20/20/1",
+          "5538.612",
+          "5543.612"
+        ],
+        [
+          "−20/20/2",
+          "5538.612",
+          "5539.612"
+        ],
+        [
+          "−5/0/1",
+          "0.4",
+          "5548.212"
+        ],
+        [
+          "−5/0/2",
+          "0.4",
+          "1.4"
+        ],
+        [
+          "−5/2/1",
+          "0.4",
+          "5546.212"
+        ],
+        [
+          "−5/2/2",
+          "0.4",
+          "1.4"
+        ],
+        [
+          "−5/20/1",
+          "5523.612",
+          "5528.612"
+        ],
+        [
+          "−5/20/2",
+          "5523.612",
+          "5524.612"
+        ]
+      ],
+      "widths": [
+        4.5,
+        6,
+        6
+      ]
+    },
+    {
+      "type": "table",
+      "caption": "Table S5a.2. CANONICAL: SA and frame delays after ground notice; total starts at compromise.",
+      "headers": [
+        "E offset / delay / H",
+        "Independent SA",
+        "Independent frame",
+        "Total"
+      ],
+      "rows": [
+        [
+          "−40/0/1",
+          "11.706",
+          "21.706",
+          "21.706"
+        ],
+        [
+          "−40/0/2",
+          "9.706",
+          "19.706",
+          "19.706"
+        ],
+        [
+          "−40/2/1",
+          "9.706",
+          "19.706",
+          "21.706"
+        ],
+        [
+          "−40/2/2",
+          "7.706",
+          "17.706",
+          "19.706"
+        ],
+        [
+          "−40/20/1",
+          "5564.212",
+          "5574.212",
+          "5594.212"
+        ],
+        [
+          "−40/20/2",
+          "9.706",
+          "19.706",
+          "39.706"
+        ],
+        [
+          "−20/0/1",
+          "5564.212",
+          "5574.212",
+          "5574.212"
+        ],
+        [
+          "−20/0/2",
+          "9.706",
+          "19.706",
+          "19.706"
+        ],
+        [
+          "−20/2/1",
+          "5562.212",
+          "5572.212",
+          "5574.212"
+        ],
+        [
+          "−20/2/2",
+          "7.706",
+          "17.706",
+          "19.706"
+        ],
+        [
+          "−20/20/1",
+          "5544.612",
+          "5554.612",
+          "5574.612"
+        ],
+        [
+          "−20/20/2",
+          "5540.612",
+          "5550.612",
+          "5570.612"
+        ],
+        [
+          "−5/0/1",
+          "5549.212",
+          "5559.212",
+          "5559.212"
+        ],
+        [
+          "−5/0/2",
+          "5549.212",
+          "5559.212",
+          "5559.212"
+        ],
+        [
+          "−5/2/1",
+          "5547.212",
+          "5557.212",
+          "5559.212"
+        ],
+        [
+          "−5/2/2",
+          "5547.212",
+          "5557.212",
+          "5559.212"
+        ],
+        [
+          "−5/20/1",
+          "5529.612",
+          "5539.612",
+          "5559.612"
+        ],
+        [
+          "−5/20/2",
+          "5525.612",
+          "5535.612",
+          "5555.612"
+        ]
+      ],
+      "widths": [
+        3.6,
+        4.3,
+        4.3,
+        4.3
+      ]
+    },
+    {
+      "type": "table",
+      "caption": "Table S6a.1. CANONICAL: five-component objective (U and C in seconds; B in bytes).",
+      "headers": [
+        "Offset / delay / H",
+        "S",
+        "U",
+        "C",
+        "B",
+        "K"
+      ],
+      "rows": [
+        [
+          "−40/0/1",
+          "3",
+          "390",
+          "2.88",
+          "4416",
+          "8"
+        ],
+        [
+          "−40/0/2",
+          "3",
+          "400",
+          "2.88",
+          "4416",
+          "8"
+        ],
+        [
+          "−40/2/1",
+          "3",
+          "390",
+          "2.88",
+          "4416",
+          "8"
+        ],
+        [
+          "−40/2/2",
+          "3",
+          "400",
+          "2.88",
+          "4416",
+          "8"
+        ],
+        [
+          "−40/20/1",
+          "3",
+          "390",
+          "2.82",
+          "4336",
+          "8"
+        ],
+        [
+          "−40/20/2",
+          "3",
+          "400",
+          "2.88",
+          "4416",
+          "8"
+        ],
+        [
+          "−20/0/1",
+          "3",
+          "390",
+          "2.82",
+          "4336",
+          "8"
+        ],
+        [
+          "−20/0/2",
+          "3",
+          "400",
+          "2.88",
+          "4416",
+          "8"
+        ],
+        [
+          "−20/2/1",
+          "3",
+          "390",
+          "2.82",
+          "4336",
+          "8"
+        ],
+        [
+          "−20/2/2",
+          "3",
+          "400",
+          "2.88",
+          "4416",
+          "8"
+        ],
+        [
+          "−20/20/1",
+          "3",
+          "410",
+          "2.17",
+          "3336",
+          "6"
+        ],
+        [
+          "−20/20/2",
+          "3",
+          "410",
+          "2.17",
+          "3336",
+          "6"
+        ],
+        [
+          "−5/0/1",
+          "3",
+          "410",
+          "2.17",
+          "3336",
+          "6"
+        ],
+        [
+          "−5/0/2",
+          "3",
+          "400",
+          "2.82",
+          "4336",
+          "8"
+        ],
+        [
+          "−5/2/1",
+          "3",
+          "410",
+          "2.17",
+          "3336",
+          "6"
+        ],
+        [
+          "−5/2/2",
+          "3",
+          "400",
+          "2.82",
+          "4336",
+          "8"
+        ],
+        [
+          "−5/20/1",
+          "3",
+          "410",
+          "2.17",
+          "3336",
+          "6"
+        ],
+        [
+          "−5/20/2",
+          "3",
+          "410",
+          "2.17",
+          "3336",
+          "6"
+        ]
+      ],
+      "widths": [
+        4,
+        1.3,
+        2.5,
+        3,
+        3.7,
+        2
+      ]
+    },
+    {
+      "type": "table",
+      "caption": "Table S6a.2. CANONICAL: confidential delivery and exposed emitted traffic, bytes.",
+      "headers": [
+        "Offset / delay / H",
+        "Confidential",
+        "Exposed before",
+        "Exposed after"
+      ],
+      "rows": [
+        [
+          "−40/0/1",
+          "6000",
+          "33669",
+          "331"
+        ],
+        [
+          "−40/0/2",
+          "7000",
+          "33669",
+          "331"
+        ],
+        [
+          "−40/2/1",
+          "6000",
+          "33669",
+          "331"
+        ],
+        [
+          "−40/2/2",
+          "7000",
+          "33669",
+          "331"
+        ],
+        [
+          "−40/20/1",
+          "4000",
+          "33669",
+          "2331"
+        ],
+        [
+          "−40/20/2",
+          "5000",
+          "33669",
+          "2331"
+        ],
+        [
+          "−20/0/1",
+          "4000",
+          "35669",
+          "331"
+        ],
+        [
+          "−20/0/2",
+          "5000",
+          "35269",
+          "731"
+        ],
+        [
+          "−20/2/1",
+          "4000",
+          "35669",
+          "331"
+        ],
+        [
+          "−20/2/2",
+          "5000",
+          "35269",
+          "731"
+        ],
+        [
+          "−20/20/1",
+          "4000",
+          "35669",
+          "1331"
+        ],
+        [
+          "−20/20/2",
+          "4000",
+          "35269",
+          "1731"
+        ],
+        [
+          "−5/0/1",
+          "4000",
+          "37000",
+          "0"
+        ],
+        [
+          "−5/0/2",
+          "4000",
+          "36769",
+          "0"
+        ],
+        [
+          "−5/2/1",
+          "4000",
+          "37000",
+          "0"
+        ],
+        [
+          "−5/2/2",
+          "4000",
+          "36769",
+          "200"
+        ],
+        [
+          "−5/20/1",
+          "4000",
+          "37000",
+          "0"
+        ],
+        [
+          "−5/20/2",
+          "4000",
+          "36769",
+          "231"
+        ]
+      ],
+      "widths": [
+        4.5,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "type": "table",
+      "caption": "Table S5b.1. CONTINUE_WAIT: notice and activation, seconds after ground notice.",
+      "headers": [
+        "E offset / delay / H",
+        "SC notice",
+        "Independent pair"
+      ],
+      "rows": [
+        [
+          "−40/0/1",
+          "7.706",
+          "14.706"
+        ],
+        [
+          "−40/0/2",
+          "7.706",
+          "14.706"
+        ],
+        [
+          "−40/2/1",
+          "5.706",
+          "12.706"
+        ],
+        [
+          "−40/2/2",
+          "5.706",
+          "12.706"
+        ],
+        [
+          "−40/20/1",
+          "7.706",
+          "14.706"
+        ],
+        [
+          "−40/20/2",
+          "7.706",
+          "14.706"
+        ],
+        [
+          "−20/0/1",
+          "7.706",
+          "14.706"
+        ],
+        [
+          "−20/0/2",
+          "7.706",
+          "14.706"
+        ],
+        [
+          "−20/2/1",
+          "5.706",
+          "12.706"
+        ],
+        [
+          "−20/2/2",
+          "5.706",
+          "12.706"
+        ],
+        [
+          "−20/20/1",
+          "5538.612",
+          "5543.612"
+        ],
+        [
+          "−20/20/2",
+          "5538.612",
+          "5543.612"
+        ],
+        [
+          "−5/0/1",
+          "0.4",
+          "5548.212"
+        ],
+        [
+          "−5/0/2",
+          "0.4",
+          "5548.212"
+        ],
+        [
+          "−5/2/1",
+          "0.4",
+          "5546.212"
+        ],
+        [
+          "−5/2/2",
+          "0.4",
+          "5546.212"
+        ],
+        [
+          "−5/20/1",
+          "5523.612",
+          "5528.612"
+        ],
+        [
+          "−5/20/2",
+          "5523.612",
+          "5528.612"
+        ]
+      ],
+      "widths": [
+        4.5,
+        6,
+        6
+      ]
+    },
+    {
+      "type": "table",
+      "caption": "Table S5b.2. CONTINUE_WAIT: SA and frame delays after ground notice; total starts at compromise.",
+      "headers": [
+        "E offset / delay / H",
+        "Independent SA",
+        "Independent frame",
+        "Total"
+      ],
+      "rows": [
+        [
+          "−40/0/1",
+          "15.706",
+          "25.706",
+          "25.706"
+        ],
+        [
+          "−40/0/2",
+          "15.706",
+          "25.706",
+          "25.706"
+        ],
+        [
+          "−40/2/1",
+          "13.706",
+          "23.706",
+          "25.706"
+        ],
+        [
+          "−40/2/2",
+          "13.706",
+          "23.706",
+          "25.706"
+        ],
+        [
+          "−40/20/1",
+          "5564.212",
+          "5574.212",
+          "5594.212"
+        ],
+        [
+          "−40/20/2",
+          "5564.212",
+          "5574.212",
+          "5594.212"
+        ],
+        [
+          "−20/0/1",
+          "5564.212",
+          "5574.212",
+          "5574.212"
+        ],
+        [
+          "−20/0/2",
+          "5564.212",
+          "5574.212",
+          "5574.212"
+        ],
+        [
+          "−20/2/1",
+          "5562.212",
+          "5572.212",
+          "5574.212"
+        ],
+        [
+          "−20/2/2",
+          "5562.212",
+          "5572.212",
+          "5574.212"
+        ],
+        [
+          "−20/20/1",
+          "5544.612",
+          "5554.612",
+          "5574.612"
+        ],
+        [
+          "−20/20/2",
+          "5544.612",
+          "5554.612",
+          "5574.612"
+        ],
+        [
+          "−5/0/1",
+          "5549.212",
+          "5559.212",
+          "5559.212"
+        ],
+        [
+          "−5/0/2",
+          "5549.212",
+          "5559.212",
+          "5559.212"
+        ],
+        [
+          "−5/2/1",
+          "5547.212",
+          "5557.212",
+          "5559.212"
+        ],
+        [
+          "−5/2/2",
+          "5547.212",
+          "5557.212",
+          "5559.212"
+        ],
+        [
+          "−5/20/1",
+          "5529.612",
+          "5539.612",
+          "5559.612"
+        ],
+        [
+          "−5/20/2",
+          "5529.612",
+          "5539.612",
+          "5559.612"
+        ]
+      ],
+      "widths": [
+        3.6,
+        4.3,
+        4.3,
+        4.3
+      ]
+    },
+    {
+      "type": "table",
+      "caption": "Table S6b.1. CONTINUE_WAIT: five-component objective (U and C in seconds; B in bytes).",
+      "headers": [
+        "Offset / delay / H",
+        "S",
+        "U",
+        "C",
+        "B",
+        "K"
+      ],
+      "rows": [
+        [
+          "−40/0/1",
+          "3",
+          "390",
+          "2.88",
+          "4416",
+          "8"
+        ],
+        [
+          "−40/0/2",
+          "3",
+          "390",
+          "2.88",
+          "4416",
+          "8"
+        ],
+        [
+          "−40/2/1",
+          "3",
+          "390",
+          "2.88",
+          "4416",
+          "8"
+        ],
+        [
+          "−40/2/2",
+          "3",
+          "390",
+          "2.88",
+          "4416",
+          "8"
+        ],
+        [
+          "−40/20/1",
+          "3",
+          "390",
+          "2.82",
+          "4336",
+          "8"
+        ],
+        [
+          "−40/20/2",
+          "3",
+          "390",
+          "2.82",
+          "4336",
+          "8"
+        ],
+        [
+          "−20/0/1",
+          "3",
+          "390",
+          "2.82",
+          "4336",
+          "8"
+        ],
+        [
+          "−20/0/2",
+          "3",
+          "390",
+          "2.82",
+          "4336",
+          "8"
+        ],
+        [
+          "−20/2/1",
+          "3",
+          "390",
+          "2.82",
+          "4336",
+          "8"
+        ],
+        [
+          "−20/2/2",
+          "3",
+          "390",
+          "2.82",
+          "4336",
+          "8"
+        ],
+        [
+          "−20/20/1",
+          "3",
+          "410",
+          "2.17",
+          "3336",
+          "6"
+        ],
+        [
+          "−20/20/2",
+          "3",
+          "410",
+          "2.17",
+          "3336",
+          "6"
+        ],
+        [
+          "−5/0/1",
+          "3",
+          "400",
+          "2.17",
+          "3336",
+          "6"
+        ],
+        [
+          "−5/0/2",
+          "3",
+          "400",
+          "2.17",
+          "3336",
+          "6"
+        ],
+        [
+          "−5/2/1",
+          "3",
+          "400",
+          "2.17",
+          "3336",
+          "6"
+        ],
+        [
+          "−5/2/2",
+          "3",
+          "400",
+          "2.17",
+          "3336",
+          "6"
+        ],
+        [
+          "−5/20/1",
+          "3",
+          "410",
+          "2.17",
+          "3336",
+          "6"
+        ],
+        [
+          "−5/20/2",
+          "3",
+          "410",
+          "2.17",
+          "3336",
+          "6"
+        ]
+      ],
+      "widths": [
+        4,
+        1.3,
+        2.5,
+        3,
+        3.7,
+        2
+      ]
+    },
+    {
+      "type": "table",
+      "caption": "Table S6b.2. CONTINUE_WAIT: confidential delivery and exposed emitted traffic, bytes.",
+      "headers": [
+        "Offset / delay / H",
+        "Confidential",
+        "Exposed before",
+        "Exposed after"
+      ],
+      "rows": [
+        [
+          "−40/0/1",
+          "6000",
+          "33269",
+          "731"
+        ],
+        [
+          "−40/0/2",
+          "6000",
+          "33269",
+          "731"
+        ],
+        [
+          "−40/2/1",
+          "6000",
+          "33269",
+          "731"
+        ],
+        [
+          "−40/2/2",
+          "6000",
+          "33269",
+          "731"
+        ],
+        [
+          "−40/20/1",
+          "4000",
+          "33269",
+          "2731"
+        ],
+        [
+          "−40/20/2",
+          "4000",
+          "33269",
+          "2731"
+        ],
+        [
+          "−20/0/1",
+          "4000",
+          "35269",
+          "731"
+        ],
+        [
+          "−20/0/2",
+          "4000",
+          "35269",
+          "731"
+        ],
+        [
+          "−20/2/1",
+          "4000",
+          "35269",
+          "731"
+        ],
+        [
+          "−20/2/2",
+          "4000",
+          "35269",
+          "731"
+        ],
+        [
+          "−20/20/1",
+          "4000",
+          "35269",
+          "1731"
+        ],
+        [
+          "−20/20/2",
+          "4000",
+          "35269",
+          "1731"
+        ],
+        [
+          "−5/0/1",
+          "4000",
+          "36769",
+          "0"
+        ],
+        [
+          "−5/0/2",
+          "4000",
+          "36769",
+          "0"
+        ],
+        [
+          "−5/2/1",
+          "4000",
+          "36769",
+          "200"
+        ],
+        [
+          "−5/2/2",
+          "4000",
+          "36769",
+          "200"
+        ],
+        [
+          "−5/20/1",
+          "4000",
+          "36769",
+          "231"
+        ],
+        [
+          "−5/20/2",
+          "4000",
+          "36769",
+          "231"
+        ]
+      ],
+      "widths": [
+        4.5,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "type": "p",
+      "text": "CANONICAL Multi has earlier independent delivery in 7/9 pairs and 1,000 additional confidential bytes in 5/9; CONTINUE_WAIT ties both metrics in 9/9. Spacecraft notice is later for Multi in three CANONICAL pairs, demonstrating that the stages need not improve together. All original served counts are 3. Complete search-cost columns and raw timestamps for every disclosure run remain in stage4/tables.csv rather than duplicating those columns here."
+    },
+    {
+      "type": "heading",
+      "text": "Readiness and overlapping waits"
+    },
+    {
+      "type": "p",
+      "text": "At E−5/delay 0/CANONICAL/H2, ground notice is 00:14:54.990386963. Spacecraft notice follows 0.4 s later; g2 activates at 00:14:56.390386963,1.4 s after detection. It remains valid until 01:44:56.390386963 and expires before return. Generation g3 activates at 01:47:23.202056885; its SA opens one second later; first frame arrives 01:47:34.202056885. Total ground-to-frame is 5559.211669922 s, identical to Next. Table S7 gives all independent readiness intervals for this example; the complete per-run interval records are in stage4/audit.json."
+    },
+    {
+      "type": "table",
+      "caption": "Table S7. Independent readiness in the expiry-before-return example.",
+      "headers": [
+        "Kind / generation",
+        "From UTC",
+        "Until UTC",
+        "Duration (s)",
+        "End"
+      ],
+      "rows": [
+        [
+          "pair / g2",
+          "00:14:56.390386963Z",
+          "01:44:56.390386963Z",
+          "5400",
+          "key-deadline"
+        ],
+        [
+          "pair / g3",
+          "01:47:23.202056885Z",
+          "01:49:19.758453369Z",
+          "116.556",
+          "observation-end"
+        ],
+        [
+          "sa / g3",
+          "01:47:24.202056885Z",
+          "01:49:19.758453369Z",
+          "115.556",
+          "session-closed"
+        ]
+      ],
+      "widths": [
+        3,
+        4,
+        4,
+        2,
+        3.5
+      ]
+    },
+    {
+      "type": "p",
+      "text": "Condition intervals are simultaneous predicates, not additive independent causes. In this example no target contact lasts 5538.211669922 s and no offered target frame 5633.768066406 s across the full observation window, overlapping each other and the material/SA waits. The lack of independent material lasts 145.811669922 s. Summing these values would double count intervals and mix pre-delivery and post-delivery observation. Readiness/condition CSVs retain explicit interval endpoints for every run."
+    },
+    {
+      "type": "heading",
+      "text": "Analytical boundaries and scientific interpretation"
+    },
+    {
+      "type": "p",
+      "text": "The installed/prepared timing totals apply to the named chains with the declared profile and full-frame service thresholds. They do not prove a universal minimum contact length. The Knew≥2S bound assumes empty initial keys, two positive directional thresholds, and no valid cross-return reuse. It constrains created directional keys, not the remaining objective coordinates. COMPLETE refers to the finite root problem; neither practical FINISHED nor a receding sequence of root optima proves global mission optimality."
+    },
+    {
+      "type": "p",
+      "text": "Common preparation removes the observed prepared exact/practical gap. In the first revision, the autonomous CW case established a feasible improvement that was not discovered under the original 5,000-node/one-second practical budget. Autonomous CAN remains unresolved under its exact budget. Seven complete exact settings with prescribed PREPARE yield two gains and five ties; two settings remain unknown. The first-revision offline budget cases with a one-second search cap do not justify Multi; selected measured delays worsen three pairs. Disclosure gains are not robust across the two tested tie orders, and two rules cannot characterize all possible tie-breaking schemes."
+    },
+    {
+      "type": "heading",
+      "text": "Reproduction and publication boundaries"
+    },
+    {
+      "type": "p",
+      "text": "Registered input models, budget files, runtime identities, all process statuses and diagnostics, and postprocessing code are provided separately from the historical archives. See report.md, REPRODUCE.md and manifest.json. New source adapters do not modify the production controller or frozen JAR. Independent event accounting reconstructs costs, complete-frame service, confidentiality and recovery; full comparator checks cover saved portfolio candidates. Historical preservation hashes are checked again at packaging. No full Maven campaign or new orbital propagation was required for this harness-based revision."
+    },
+    {
+      "type": "p",
+      "text": "Only Mukhammed Zhumali and 262937@astanait.edu.kz are confirmed by the supplied manuscript. Degree, position, department, organization, country, ORCID, corresponding-author designation, funding and competing interests require author confirmation. The bibliography has 20 relevant entries, but the Scopus/Web of Science share has not been certified and several necessary older sources exceed age guidance. Native editable Word equations are not MathType objects. These issues, listed in submission-checklist.md, prevent a claim that the article is submission-ready."
+    },
+    {
+      "type": "subheading",
+      "text": "Revision 2 root budget and controller results"
+    },
+    {
+      "type": "p",
+      "text": "This additional series contains six practical root searches, separate from the twelve prior paired-root diagnostics. Four conditional full-controller executions are also separate from the prior 110 attempts and six reused logical cells. No disclosure attempts were added. Search/decision/process limits are 30/32/45 seconds; full-controller/process limits are 180/210 seconds. The executable, comparator and model remain frozen. Registered protocol and all raw plans/incumbents are in target/aitu-revision-v2."
+    },
+    {
+      "type": "table",
+      "caption": "Table S8. Revision 2 autonomous H2 root diagnostics; allowed/visited nodes. All selected plans pass common replay.",
+      "headers": [
+        "Rule",
+        "Allowed / visited",
+        "Search status",
+        "Selected S, U, C, B, K"
+      ],
+      "rows": [
+        [
+          "CAN",
+          "100000 /\n100000",
+          "INCOMPLETE",
+          "2, 38, 0.12, 160, 0"
+        ],
+        [
+          "CAN",
+          "150000 /\n150000",
+          "INCOMPLETE",
+          "3, 37, 0.83, 1240, 2"
+        ],
+        [
+          "CAN",
+          "200000 /\n200000",
+          "INCOMPLETE",
+          "3, 37, 0.83, 1240, 2"
+        ],
+        [
+          "CW",
+          "100000 /\n100000",
+          "INCOMPLETE",
+          "2, 38, 0.12, 160, 0"
+        ],
+        [
+          "CW",
+          "150000 /\n134638",
+          "COMPLETE",
+          "3, 37, 0.83, 1240, 2"
+        ],
+        [
+          "CW",
+          "200000 /\n134638",
+          "COMPLETE",
+          "3, 37, 0.83, 1240, 2"
+        ]
+      ],
+      "widths": [
+        1.7,
+        3,
+        3.2,
+        8.6
+      ]
+    },
+    {
+      "type": "table",
+      "caption": "Table S9. Root timing, seed state and certificate. Seconds are observed instrumented host time.",
+      "headers": [
+        "Rule / cap",
+        "Search s",
+        "First better node / s",
+        "Seed",
+        "Cert."
+      ],
+      "rows": [
+        [
+          "CAN/100000",
+          "8.417",
+          "none",
+          "feasible",
+          "no"
+        ],
+        [
+          "CAN/150000",
+          "10.512",
+          "134269 / 9.13",
+          "feasible",
+          "no"
+        ],
+        [
+          "CAN/200000",
+          "14.535",
+          "134269 / 9.654",
+          "feasible",
+          "no"
+        ],
+        [
+          "CW/100000",
+          "7.437",
+          "none",
+          "feasible",
+          "no"
+        ],
+        [
+          "CW/150000",
+          "9.642",
+          "134269 / 9.602",
+          "feasible",
+          "yes"
+        ],
+        [
+          "CW/200000",
+          "9.306",
+          "134269 / 9.284",
+          "feasible",
+          "yes"
+        ]
+      ],
+      "widths": [
+        3.3,
+        2.5,
+        4.5,
+        4.2,
+        2
+      ]
+    },
+    {
+      "type": "p",
+      "text": "The first-better column compares five metrics with the frozen ordinary practical winner, not merely with a seed. All initial retained candidates are absent. Complete incumbent histories, seed evaluations (including unavailable timed-out rollouts), source selection, first action, complete plan and independent replay are retained per search. First improvement of an incumbent, improvement over the current seed and improvement over the frozen practical result are separate exported fields. The old 134,269 observation is not a general lower bound; only three registered allowances are tested."
+    },
+    {
+      "type": "table",
+      "caption": "Table S10. Conditional full executions at 150,000 nodes; controller limit denotes CONTROLLER_TIME_LIMIT.",
+      "headers": [
+        "Rule / H",
+        "Status",
+        "Final S, U, C, B, K",
+        "Host s"
+      ],
+      "rows": [
+        [
+          "CAN/1",
+          "FINISHED",
+          "2, 38, 0.12, 160, 0",
+          "3.495"
+        ],
+        [
+          "CAN/2",
+          "controller limit",
+          "unavailable",
+          "180.015"
+        ],
+        [
+          "CW/1",
+          "FINISHED",
+          "2, 38, 0.12, 160, 0",
+          "2.537"
+        ],
+        [
+          "CW/2",
+          "FINISHED",
+          "3, 37, 0.83, 1240, 2",
+          "32.426"
+        ]
+      ],
+      "widths": [
+        2,
+        3.8,
+        8,
+        2.7
+      ]
+    },
+    {
+      "type": "p",
+      "text": "Under CANONICAL, Next is FINISHED and Multi is CONTROLLER_TIME_LIMIT; their full-run comparison remains unresolved. Under CONTINUE_WAIT, the full Next and Multi runs finish with (2, 38, 0.12, 160, 0) and (3, 37, 0.83, 1240, 2), respectively. A stopped run has only prefix metrics in machine tables. Prefix values are not substituted for a final mission score. Root-only improvement is therefore not a completed-controller advantage. Search node counts, stop distributions and CPU are in the controller table exports."
+    },
+    {
+      "type": "p",
+      "text": "Two CANONICAL cells show an efficiency loss without a delivery-security gain: compromise at E−5 with detection delay 0 or 2 seconds gives Next (3, 410, 2.17, 3336, 6) and Multi (3, 400, 2.82, 4336, 8). Both deliver 4,000 confidential bytes and their compromise-to-first-independent-frame delay is 5,559.211669922 seconds. Multi loses at useful time, and also spends more CPU, bytes and keys. Its earlier first independent activation improves neither SA opening nor independent delivery in these cells. Objective, recovery and confidential-delivery gains are separate comparisons."
+    },
+    {
+      "type": "subheading",
+      "text": "Reconstructing the method"
+    },
+    {
+      "type": "p",
+      "text": "CONTINUE_WAIT prepends (group, until) to the canonical tuple: group is CONTINUE=0, WAIT=1, all service operations=2. Thus until is compared before operation kind even within the service group. This complete order differs from tree visitation: SERVICE_FIRST visits CONTINUE, SWITCH, INSTALL, OPEN, REUSE, WAIT, PREPARE, with canonical secondary ordering. Seeds and retained plans are not injected as DFS incumbents."
+    },
+    {
+      "type": "p",
+      "text": "Practical controller pseudocode\n1. At an event, construct the permitted observation and admissible actions.\n2. Build a terminal seed; check, replay and extend any matching retained suffix from the same root.\n3. Run bounded unrestricted search; propagate global stops.\n4. Compare feasible terminal candidates by the five criteria, then the full-plan rule.\n5. If a plan exists, save its suffix with the predicted first-action child.\n6. In measured-delay mode, advance committed work/events during computation, rebuild admissibility, and recheck the chosen intent; discard stale or late decisions.\n7. Execute only the admissible first action and repeat. Mandatory incident response takes precedence."
+    },
+    {
+      "type": "p",
+      "text": "The seed waits while a frame or operation is already in flight. With complete-frame demand in the current contact, it prefers CONTINUE, OPEN, REUSE, SWITCH, INSTALL, PREPARE, subject to ordinary feasibility and an optimistic remaining-chain-plus-one-frame fit. Between contacts, it inspects the first eligible visible demand and prepares only an UNKEYED context at or after its just-in-time preparation boundary. Otherwise it takes the earliest generated WAIT. Retention replays from the new root, checking state, progress, costs, counters and issued IDs; it does not reuse the previous score. If no terminal candidate exists, an admissible local fallback is used. Supplement gives the full seed filters and source tie handling."
+    },
+    {
+      "type": "p",
+      "text": "Seed service-fit remainder is zero for CONTINUE, one frame for OPEN/REUSE, OPEN plus one frame for SWITCH, SWITCH+OPEN+one frame for INSTALL, and INSTALL+SWITCH+OPEN+one frame for PREPARE. This filter requires action.until plus the remainder to fit in the contact and rejects uncertain contexts. Between contacts it stops at the first eligible visible full-frame demand even if that keyed context needs no PREPARE; it does not prepare a farther context instead. At a current contact without full-frame demand it waits. On exact equality of score and complete plan, the portfolio prefers SEARCH; otherwise an identical seed precedes an identical retained candidate. This source choice is not a sixth objective."
+    },
+    {
+      "type": "subheading",
+      "text": "Exact ISS long and late inputs"
+    },
+    {
+      "type": "table",
+      "caption": "Table S11. Common ISS long and late geometry; UTC on 12 October 2026. IDs have prefix orekit-25544-SATNOGS-.",
+      "headers": [
+        "ID suffix",
+        "Station ID",
+        "Start UTC",
+        "End UTC"
+      ],
+      "rows": [
+        [
+          "3634-1",
+          "3634",
+          "00:08:37.296295166",
+          "00:14:59.990386963"
+        ],
+        [
+          "2987-1",
+          "2987",
+          "00:25:53.554229736",
+          "00:30:27.284088135"
+        ],
+        [
+          "3634-2",
+          "3634",
+          "01:47:18.202056885",
+          "01:49:19.758453369"
+        ]
+      ],
+      "widths": [
+        2.2,
+        2,
+        6.1,
+        6.2
+      ]
+    },
+    {
+      "type": "p",
+      "text": "Spacecraft NORAD-25544 uses stations SATNOGS-3634 and SATNOGS-2987. For all three ISS contacts, modeled payload throughput is 100 bytes/s and frames are 1,000 bytes (10 seconds). Offered UL/DL bytes are 39,000/39,000 in the first contact and 1,000/1,000 in each later contact; minimum UL/DL service is 1,000/1,000 in every contact. Window linkRateBps and expectedDataBytes are null; no measured physical link rate is inferred. Both station contexts start with no keys or prepared pairs, two UNKEYED SAs, zero counters and no open session. The scenario starts at 00:08:35.296295166 UTC and ends at the last listed contact end."
+    },
+    {
+      "type": "p",
+      "text": "The ISS cryptoperiod is 5,400 seconds, material-age limit 172,800 seconds, and maximum reuse gap 86,400 seconds. Only the two listed station contexts are authorized; the blocked-key set and prescribed operation plan are empty. Phase reservations enforce exclusive spacecraft CPU, station-local CPU and shared UL/DL radio occupancy. The generator permits one spare pair per context by rejecting PREPARE while PRE_ACTIVE material or pending preparation exists; this is not a total storage-capacity parameter. Exact file paths, SHA256 hashes, complete initial states and the nine derived late-disclosure configurations are in Supplement and input-descriptors.json."
+    },
+    {
+      "type": "p",
+      "text": "The historical late input contains compromise at 00:14:21.720977783 and detection at 00:14:23.720977783 UTC. The first-revision nine-configuration disclosure series replaces only these times by E minus 40, 20 or 5 seconds and detection delays 0, 2 or 20 seconds. The following inventories distinguish the historical base from the actually used derived configurations. Read each SHA256 without whitespace; paths are relative to the package root."
+    },
+    {
+      "type": "p",
+      "text": "target/final-research/models/demand-none.json\nSHA256: 0dae2b6dd98fc66ae9e4b04bfeb0fb49\n9bb674190947dfef944f1a4c98b16b64"
+    },
+    {
+      "type": "p",
+      "text": "target/final-research/models/demand-late-detected.json\nSHA256: 9d4411d840ba42e593182b0b4265e9b1\ndcba44ff12d3c6199226e30d9383ee21"
+    },
+    {
+      "type": "p",
+      "text": "target/aitu-revision/stage4-models/Eminus20-delay0.json\nSHA256: 3c5b86ad9d97cd1f72aa486008fb859d\nfd8e3f4ae8671b5603a3dd69746b5e45"
+    },
+    {
+      "type": "p",
+      "text": "target/aitu-revision/stage4-models/Eminus20-delay2.json\nSHA256: c1eb11fcb442cd294a3e18fc7b2c2134\n56cb3d2e932cc2843043abbe82daa006"
+    },
+    {
+      "type": "p",
+      "text": "target/aitu-revision/stage4-models/Eminus20-delay20.json\nSHA256: e83eeae898a18c369d82a44f9121a018\n43b926d5cf047285fe310b8b1f9967ae"
+    },
+    {
+      "type": "p",
+      "text": "target/aitu-revision/stage4-models/Eminus40-delay0.json\nSHA256: ba4756a0320ece744858086057389b40\nfcc30a38b8ce3286a326ed620cdcc2a5"
+    },
+    {
+      "type": "p",
+      "text": "target/aitu-revision/stage4-models/Eminus40-delay2.json\nSHA256: 7f797cd4e3313453f8641d83ade467cb\n68e41fbc0408231808a1fe129985d70f"
+    },
+    {
+      "type": "p",
+      "text": "target/aitu-revision/stage4-models/Eminus40-delay20.json\nSHA256: 3b00febb50e451f44a625b0953efb17e\nb66ac44b9f40d021be8d57644a7fe0a0"
+    },
+    {
+      "type": "p",
+      "text": "target/aitu-revision/stage4-models/Eminus5-delay0.json\nSHA256: 37bd48eed1a5446e6521337ef3a766dc\n6f86743a491f8b7aab5810e95849f23e"
+    },
+    {
+      "type": "p",
+      "text": "target/aitu-revision/stage4-models/Eminus5-delay2.json\nSHA256: 153a9aee9b4d0bbc3e93c03a1b1b6231\n820ebfd74d63a069f9abd61b9b271df3"
+    },
+    {
+      "type": "p",
+      "text": "target/aitu-revision/stage4-models/Eminus5-delay20.json\nSHA256: e423fa9d24b30adc3d66988e287b8fb2\n75e441cac9ef28d3a144b605ccee25e3"
+    },
+    {
+      "type": "p",
+      "text": "The descriptor JSON and frozen files retain complete states and provenance. The 39,000-byte offers are demand, not delivery. The payload model uses 100 bytes/s; window bitrate is null. Resource and spare rules come from the hashed Java sources."
+    },
+    {
+      "type": "subheading",
+      "text": "Revision 2 availability and unresolved submission items"
+    },
+    {
+      "type": "p",
+      "text": "The new reproduction archive is a separate version and is not present in the historical research release. Public URL: [TO BE ADDED AFTER PUBLIC DEPOSITION]. Native Word OMML equations remain editable; no MathType conversion or complete journal compliance is claimed. Author declarations, source-age exceptions and the Scopus/Web of Science criterion remain subject to the documented submission checklist."
+    }
+  ],
+  "references": []
+}

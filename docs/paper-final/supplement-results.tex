@@ -1,0 +1,426 @@
+\subsection{Complete Registered Outcome Matrix}
+
+All 108 registered attempts appear below, including process failures and unfinished executions. Case numbers 001--108 are the exact numeric prefixes of the full case IDs in \path{docs/final-research/runs.csv}; that table maps each number to its full ID, frozen model, rule, horizon and invocation identity. Group labels retain block, scenario, load, execution mode and tie rule. Fixed = FixedPeriod; Contact = PerContact. H denotes the registered horizon.
+
+Execution codes: F = FINISHED; PT = PROCESS\_\allowbreak{}TIMEOUT. Codes retain distinct process and controller outcomes.
+
+F means completed physical execution, not a global optimality certificate. I means unavailable final quality for an unfinished execution; NA means the indicated measurement was not exported/available. Neither is zero. Seconds are rounded to two decimal places; positive values below 0.005 s are shown as such. Counts and bytes are integers.
+
+The five objective components are served contacts, useful secure transmission seconds, modeled lifecycle-operation CPU seconds, management bytes, and new directional keys. Controller time is host wall time over the controller call, not the modeled operation CPU.
+
+\begingroup\footnotesize
+\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{8mm}>{\raggedright\arraybackslash}p{20mm}>{\centering\arraybackslash}p{10mm}>{\raggedleft\arraybackslash}p{10mm}>{\raggedleft\arraybackslash}p{18mm}>{\raggedleft\arraybackslash}p{16mm}>{\raggedleft\arraybackslash}p{20mm}>{\raggedleft\arraybackslash}p{10mm}>{\raggedleft\arraybackslash}p{18mm}@{}}
+\caption{All registered outcomes}\label{tab:supp-all-outcomes}\\
+\toprule
+Case & Policy & Exec. & Served & Useful\newline s & Oper. CPU\newline s & Mgmt.\newline B & Keys & Controller\newline s \\
+\midrule\endfirsthead
+\multicolumn{9}{l}{\textit{Continued: All registered outcomes}}\\
+\toprule
+Case & Policy & Exec. & Served & Useful\newline s & Oper. CPU\newline s & Mgmt.\newline B & Keys & Controller\newline s \\
+\midrule\endhead
+\midrule\multicolumn{9}{r}{\textit{Continued on next page}}\\\endfoot
+\bottomrule\endlastfoot
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{regression / X5 / historical / offline / CANONICAL}}\\*
+001 & Next H1 & F & 2 & 38 & 0.12 & 160 & 0 & 2.34 \\
+002 & Multi H2 & F & 2 & 38 & 0.12 & 160 & 0 & 19.63 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{regression / X5 / historical / offline / CONTINUE\_\allowbreak{}WAIT}}\\*
+003 & Next H1 & F & 2 & 38 & 0.12 & 160 & 0 & 2.36 \\
+004 & Multi H2 & F & 2 & 38 & 0.12 & 160 & 0 & 21.2 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{regression / Y / historical / offline / CANONICAL}}\\*
+005 & Next H1 & F & 3 & 42 & 0.18 & 240 & 0 & 2.78 \\
+006 & Multi H2 & F & 3 & 42 & 0.18 & 240 & 0 & 2.98 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{regression / Y / historical / offline / CONTINUE\_\allowbreak{}WAIT}}\\*
+007 & Next H1 & F & 3 & 42 & 0.18 & 240 & 0 & 2.84 \\
+008 & Multi H2 & F & 3 & 42 & 0.18 & 240 & 0 & 2.8 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{regression / demand-none / historical / offline / CANONICAL}}\\*
+009 & Next H1 & F & 3 & 410 & 2.13 & 3240 & 6 & 2.94 \\
+010 & Multi H2 & F & 3 & 410 & 2.13 & 3240 & 6 & 17.9 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{regression / demand-none / historical / offline / CONTINUE\_\allowbreak{}WAIT}}\\*
+011 & Next H1 & F & 3 & 410 & 2.13 & 3240 & 6 & 2.14 \\
+012 & Multi H2 & F & 3 & 410 & 2.13 & 3240 & 6 & 5.75 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{regression / X5 / historical / measured / CANONICAL}}\\*
+013 & Next H1 & F & 2 & 33.75 & 0.12 & 160 & 0 & 5.61 \\
+014 & Multi H2 & F & 2 & 27.5 & 0.12 & 160 & 0 & 12.12 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{regression / Y / historical / measured / CANONICAL}}\\*
+015 & Next H1 & F & 3 & 37 & 0.18 & 240 & 0 & 6.4 \\
+016 & Multi H2 & F & 3 & 37 & 0.18 & 240 & 0 & 6.63 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{regression / demand-none / historical / measured / CANONICAL}}\\*
+017 & Next H1 & F & 3 & 410 & 2.13 & 3240 & 6 & 3.98 \\
+018 & Multi H2 & F & 3 & 410 & 2.13 & 3240 & 6 & 7.33 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{core / ISS46 / low / offline / CANONICAL}}\\*
+019 & Fixed & F & 46 & 920 & 35.66 & 49680 & 122 & 7.56 \\
+020 & Contact & F & 46 & 920 & 32.66 & 49680 & 92 & 6.59 \\
+021 & Next H1 & F & 46 & 920 & 32.66 & 49680 & 92 & 213.28 \\
+022 & Multi H2 & F & 46 & 920 & 32.66 & 49680 & 92 & 521.23 \\
+023 & Seed H1 & F & 46 & 920 & 32.66 & 49680 & 92 & 16.29 \\
+024 & Seed H2 & F & 46 & 920 & 32.66 & 49680 & 92 & 23.17 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{core / ISS46 / medium / offline / CANONICAL}}\\*
+025 & Fixed & F & 46 & 2740 & 35.66 & 49680 & 122 & 11.72 \\
+026 & Contact & F & 46 & 2740 & 32.66 & 49680 & 92 & 10.04 \\
+027 & Next H1 & F & 46 & 2740 & 32.66 & 49680 & 92 & 527.78 \\
+028 & Multi H2 & PT & I & I & I & I & I & NA \\
+029 & Seed H1 & F & 46 & 2740 & 32.66 & 49680 & 92 & 25.38 \\
+030 & Seed H2 & F & 46 & 2740 & 32.66 & 49680 & 92 & 35.94 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{core / ISS46 / high / offline / CANONICAL}}\\*
+031 & Fixed & F & 46 & 14390 & 35.66 & 49680 & 122 & 37.7 \\
+032 & Contact & F & 46 & 14390 & 32.66 & 49680 & 92 & 33.68 \\
+033 & Next H1 & PT & I & I & I & I & I & NA \\
+034 & Multi H2 & PT & I & I & I & I & I & NA \\
+035 & Seed H1 & F & 46 & 14390 & 32.66 & 49680 & 92 & 132.68 \\
+036 & Seed H2 & F & 46 & 14390 & 32.66 & 49680 & 92 & 191.42 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{core / NOAA38 / low / offline / CANONICAL}}\\*
+037 & Fixed & F & 38 & 760 & 29.78 & 41040 & 104 & 6.82 \\
+038 & Contact & F & 38 & 760 & 26.98 & 41040 & 76 & 5.59 \\
+039 & Next H1 & F & 38 & 760 & 26.98 & 41040 & 76 & 139.61 \\
+040 & Multi H2 & F & 38 & 760 & 26.98 & 41040 & 76 & 389.14 \\
+041 & Seed H1 & F & 38 & 760 & 26.98 & 41040 & 76 & 11.53 \\
+042 & Seed H2 & F & 38 & 760 & 26.98 & 41040 & 76 & 15.84 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{core / NOAA38 / medium / offline / CANONICAL}}\\*
+043 & Fixed & F & 38 & 2280 & 29.78 & 41040 & 104 & 8.61 \\
+044 & Contact & F & 38 & 2280 & 26.98 & 41040 & 76 & 7.24 \\
+045 & Next H1 & F & 38 & 2280 & 26.98 & 41040 & 76 & 337.17 \\
+046 & Multi H2 & F & 38 & 2280 & 26.98 & 41040 & 76 & 569.84 \\
+047 & Seed H1 & F & 38 & 2280 & 26.98 & 41040 & 76 & 17.86 \\
+048 & Seed H2 & F & 38 & 2280 & 26.98 & 41040 & 76 & 24.92 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{core / NOAA38 / high / offline / CANONICAL}}\\*
+049 & Fixed & F & 38 & 19210 & 29.78 & 41040 & 104 & 42 \\
+050 & Contact & F & 38 & 19210 & 26.98 & 41040 & 76 & 40.69 \\
+051 & Next H1 & PT & I & I & I & I & I & NA \\
+052 & Multi H2 & PT & I & I & I & I & I & NA \\
+053 & Seed H1 & F & 38 & 19210 & 26.98 & 41040 & 76 & 168.14 \\
+054 & Seed H2 & F & 38 & 19210 & 26.98 & 41040 & 76 & 251.68 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{core / HST48 / low / offline / CANONICAL}}\\*
+055 & Fixed & F & 48 & 960 & 36.28 & 51840 & 118 & 8.96 \\
+056 & Contact & F & 48 & 960 & 34.08 & 51840 & 96 & 7.52 \\
+057 & Next H1 & F & 48 & 960 & 34.08 & 51840 & 96 & 97.57 \\
+058 & Multi H2 & F & 48 & 960 & 34.08 & 51840 & 96 & 453.39 \\
+059 & Seed H1 & F & 48 & 960 & 34.08 & 51840 & 96 & 15.46 \\
+060 & Seed H2 & F & 48 & 960 & 34.08 & 51840 & 96 & 21.58 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{core / HST48 / medium / offline / CANONICAL}}\\*
+061 & Fixed & F & 48 & 2880 & 36.28 & 51840 & 118 & 12.05 \\
+062 & Contact & F & 48 & 2880 & 34.08 & 51840 & 96 & 10.81 \\
+063 & Next H1 & F & 48 & 2880 & 34.08 & 51840 & 96 & 319.17 \\
+064 & Multi H2 & PT & I & I & I & I & I & NA \\
+065 & Seed H1 & F & 48 & 2880 & 34.08 & 51840 & 96 & 23.63 \\
+066 & Seed H2 & F & 48 & 2880 & 34.08 & 51840 & 96 & 34.31 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{core / HST48 / high / offline / CANONICAL}}\\*
+067 & Fixed & F & 48 & 15560 & 36.28 & 51840 & 118 & 37.23 \\
+068 & Contact & F & 48 & 15560 & 34.08 & 51840 & 96 & 35.35 \\
+069 & Next H1 & PT & I & I & I & I & I & NA \\
+070 & Multi H2 & PT & I & I & I & I & I & NA \\
+071 & Seed H1 & F & 48 & 15560 & 34.08 & 51840 & 96 & 118.73 \\
+072 & Seed H2 & F & 48 & 15560 & 34.08 & 51840 & 96 & 172.56 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{measured / ISS46 / low / measured / CANONICAL}}\\*
+073 & Fixed & F & 46 & 920 & 35.66 & 49680 & 122 & 9.38 \\
+074 & Contact & F & 46 & 920 & 32.66 & 49680 & 92 & 8.55 \\
+075 & Next H1 & F & 46 & 920 & 32.66 & 49680 & 92 & 245.48 \\
+076 & Multi H2 & F & 46 & 920 & 32.66 & 49680 & 92 & 544 \\
+077 & Seed H1 & F & 46 & 920 & 32.66 & 49680 & 92 & 17.91 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{measured / ISS46 / medium / measured / CANONICAL}}\\*
+078 & Fixed & F & 46 & 2740 & 35.66 & 49680 & 122 & 12.44 \\
+079 & Contact & F & 46 & 2740 & 32.66 & 49680 & 92 & 11.22 \\
+080 & Next H1 & F & 46 & 2720 & 32.66 & 49680 & 92 & 517.06 \\
+081 & Multi H2 & PT & I & I & I & I & I & NA \\
+082 & Seed H1 & F & 46 & 2740 & 32.66 & 49680 & 92 & 28.35 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{measured / ISS46 / high / measured / CANONICAL}}\\*
+083 & Fixed & F & 46 & 14390 & 35.66 & 49680 & 122 & 36.29 \\
+084 & Contact & F & 46 & 14390 & 32.66 & 49680 & 92 & 34.64 \\
+085 & Next H1 & PT & I & I & I & I & I & NA \\
+086 & Multi H2 & PT & I & I & I & I & I & NA \\
+087 & Seed H1 & F & 46 & 14290 & 32.66 & 49680 & 92 & 132.28 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{sensitivity / ISS46 / medium / offline / CANONICAL; factor/model ISS46-medium-install0.5}}\\*
+088 & Next H1 & F & 46 & 2740 & 25.76 & 49680 & 92 & 514.33 \\
+089 & Multi H2 & PT & I & I & I & I & I & NA \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{sensitivity / ISS46 / medium / offline / CANONICAL; factor/model ISS46-medium-install2}}\\*
+090 & Next H1 & F & 46 & 2730 & 46.46 & 49680 & 92 & 509.22 \\
+091 & Multi H2 & PT & I & I & I & I & I & NA \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{sensitivity / ISS46 / medium / offline / CANONICAL; factor/model ISS46-medium-cp2700}}\\*
+092 & Next H1 & F & 46 & 2740 & 32.66 & 49680 & 92 & 506.22 \\
+093 & Multi H2 & PT & I & I & I & I & I & NA \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{sensitivity / ISS46 / medium / offline / CANONICAL; factor/model ISS46-medium-cp10800}}\\*
+094 & Next H1 & F & 46 & 2740 & 22.91 & 34680 & 62 & 266.51 \\
+095 & Multi H2 & F & 46 & 2740 & 22.91 & 34680 & 62 & 462.1 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{sensitivity / ISS46 / medium / offline / CANONICAL; factor/model ISS46-medium}}\\*
+096 & Multi H3 & PT & I & I & I & I & I & NA \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{security / X-undetected / historical / offline / CANONICAL}}\\*
+097 & Next H1 & F & 2 & 38 & 0.12 & 160 & 0 & 3.07 \\
+098 & Multi H2 & F & 2 & 38 & 0.12 & 160 & 0 & 24.03 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{security / X-detected2 / historical / offline / CANONICAL}}\\*
+099 & Next H1 & F & 3 & 33.5 & 0.93 & 1416 & 2 & 3.35 \\
+100 & Multi H2 & F & 3 & 33.5 & 0.93 & 1416 & 2 & 16.31 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{security / X-gap / historical / offline / CANONICAL}}\\*
+101 & Next H1 & F & 2 & 38 & 0.66 & 1056 & 2 & 2.73 \\
+102 & Multi H2 & F & 2 & 38 & 0.66 & 1056 & 2 & 22.45 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{security / X-channel-temporary / historical / offline / CANONICAL}}\\*
+103 & Next H1 & F & 3 & 32 & 0.89 & 1320 & 2 & 3.62 \\
+104 & Multi H2 & F & 3 & 32 & 0.89 & 1320 & 2 & 10.34 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{security / demand-late-detected / historical / offline / CANONICAL}}\\*
+105 & Next H1 & F & 3 & 400 & 2.88 & 4416 & 8 & 3.35 \\
+106 & Multi H2 & F & 3 & 410 & 2.88 & 4416 & 8 & 18.71 \\
+\addlinespace[2pt]\multicolumn{9}{@{}p{149mm}@{}}{\textbf{management / ISS3 / low / offline / CANONICAL}}\\*
+107 & Next H1 & F & 3 & 60 & 2.23 & 3600 & 6 & 3.9 \\
+108 & Multi H2 & F & 3 & 60 & 2.23 & 3600 & 6 & 9.14 \\
+\end{longtable}\endgroup
+
+
+\subsection{Actual Computational Work}
+
+Calls, incomplete calls, nodes and search seconds come from the exported actual-search ledger, including complete and incomplete invocations. They are not the count of certified selections. A genuine empty ledger can report zero; an unexported ledger after process termination remains NA. Process wall time includes startup and export/termination. Search CPU covers the calling thread during search; it is separate from aggregate harness CPU/GC with its different sampling interval. Miss denotes decision deadline misses. These are single host observations, not onboard timing estimates.
+
+\begingroup\footnotesize
+\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{8mm}>{\centering\arraybackslash}p{10mm}>{\raggedleft\arraybackslash}p{16mm}>{\raggedleft\arraybackslash}p{12mm}>{\raggedleft\arraybackslash}p{12mm}>{\raggedleft\arraybackslash}p{18mm}>{\raggedleft\arraybackslash}p{18mm}>{\raggedleft\arraybackslash}p{18mm}>{\raggedleft\arraybackslash}p{12mm}@{}}
+\caption{Process and search-ledger diagnostics}\label{tab:supp-search}\\
+\toprule
+Case & Exec. & Process\newline s & Calls & Incomp.\newline calls & Nodes & Search\newline s & Search CPU\newline s & Miss \\
+\midrule\endfirsthead
+\multicolumn{9}{l}{\textit{Continued: Process and search-ledger diagnostics}}\\
+\toprule
+Case & Exec. & Process\newline s & Calls & Incomp.\newline calls & Nodes & Search\newline s & Search CPU\newline s & Miss \\
+\midrule\endhead
+\midrule\multicolumn{9}{r}{\textit{Continued on next page}}\\\endfoot
+\bottomrule\endlastfoot
+001 & F & 3.03 & 13 & 0 & 3738 & 0.66 & 0.67 & 0 \\
+002 & F & 20.41 & 78 & 67 & 340824 & 17.69 & 17.48 & 0 \\
+003 & F & 3.09 & 13 & 0 & 3738 & 0.68 & 0.66 & 0 \\
+004 & F & 21.97 & 78 & 67 & 340824 & 19.18 & 18.77 & 0 \\
+005 & F & 3.55 & 15 & 0 & 4215 & 0.82 & 0.75 & 0 \\
+006 & F & 3.73 & 15 & 0 & 4932 & 0.93 & 0.88 & 0 \\
+007 & F & 3.66 & 15 & 0 & 4215 & 0.82 & 0.81 & 0 \\
+008 & F & 3.56 & 15 & 0 & 4932 & 0.91 & 0.91 & 0 \\
+009 & F & 3.8 & 32 & 0 & 7878 & 1.67 & 1.59 & 0 \\
+010 & F & 18.67 & 68 & 48 & 241778 & 16.8 & 16.41 & 0 \\
+011 & F & 2.94 & 33 & 0 & 3390 & 0.86 & 0.88 & 0 \\
+012 & F & 6.48 & 33 & 8 & 41546 & 4.86 & 4.8 & 0 \\
+013 & F & 6.56 & 148 & 0 & 43379 & 3.3 & 3.27 & 0 \\
+014 & F & 13.08 & 124 & 31 & 177633 & 10.59 & 10.48 & 0 \\
+015 & F & 7.45 & 163 & 0 & 47574 & 3.72 & 3.59 & 0 \\
+016 & F & 7.69 & 163 & 0 & 52701 & 4.04 & 3.86 & 0 \\
+017 & F & 5.16 & 74 & 1 & 15845 & 2.67 & 2.56 & 0 \\
+018 & F & 8.22 & 73 & 11 & 61214 & 6.34 & 6.17 & 0 \\
+019 & F & 8.76 & 0 & 0 & 0 & 0 & 0 & 0 \\
+020 & F & 7.74 & 0 & 0 & 0 & 0 & 0 & 0 \\
+021 & F & 214.84 & 570 & 209 & 1019808 & 191.59 & 189.55 & 0 \\
+022 & F & 523.12 & 614 & 593 & 2470275 & 484.57 & 478.8 & 0 \\
+023 & F & 17.67 & 0 & 0 & 0 & 0 & 0 & 0 \\
+024 & F & 24.55 & 0 & 0 & 0 & 0 & 0 & 0 \\
+025 & F & 13.36 & 0 & 0 & 0 & 0 & 0 & 0 \\
+026 & F & 11.36 & 0 & 0 & 0 & 0 & 0 & 0 \\
+027 & F & 529.45 & 734 & 561 & 2278035 & 487.78 & 481.58 & 0 \\
+028 & PT & 600.05 & NA & NA & NA & NA & NA & NA \\
+029 & F & 26.84 & 0 & 0 & 0 & 0 & 0 & 0 \\
+030 & F & 37.61 & 0 & 0 & 0 & 0 & 0 & 0 \\
+031 & F & 40.55 & 0 & 0 & 0 & 0 & 0 & 0 \\
+032 & F & 35.97 & 0 & 0 & 0 & 0 & 0 & 0 \\
+033 & PT & 600.03 & NA & NA & NA & NA & NA & NA \\
+034 & PT & 600.05 & NA & NA & NA & NA & NA & NA \\
+035 & F & 135.67 & 0 & 0 & 0 & 0 & 0 & 0 \\
+036 & F & 195.05 & 0 & 0 & 0 & 0 & 0 & 0 \\
+037 & F & 7.94 & 0 & 0 & 0 & 0 & 0 & 0 \\
+038 & F & 6.64 & 0 & 0 & 0 & 0 & 0 & 0 \\
+039 & F & 140.88 & 456 & 125 & 634298 & 122.54 & 121.47 & 0 \\
+040 & F & 390.72 & 513 & 467 & 2139796 & 364.19 & 359.31 & 0 \\
+041 & F & 12.72 & 0 & 0 & 0 & 0 & 0 & 0 \\
+042 & F & 16.95 & 0 & 0 & 0 & 0 & 0 & 0 \\
+043 & F & 10.17 & 0 & 0 & 0 & 0 & 0 & 0 \\
+044 & F & 8.31 & 0 & 0 & 0 & 0 & 0 & 0 \\
+045 & F & 338.62 & 590 & 391 & 1847650 & 312.15 & 308.58 & 0 \\
+046 & F & 571.56 & 663 & 655 & 2874947 & 529.26 & 522.62 & 0 \\
+047 & F & 19.09 & 0 & 0 & 0 & 0 & 0 & 0 \\
+048 & F & 26.26 & 0 & 0 & 0 & 0 & 0 & 0 \\
+049 & F & 44.86 & 0 & 0 & 0 & 0 & 0 & 0 \\
+050 & F & 43.05 & 0 & 0 & 0 & 0 & 0 & 0 \\
+051 & PT & 600.03 & NA & NA & NA & NA & NA & NA \\
+052 & PT & 600.03 & NA & NA & NA & NA & NA & NA \\
+053 & F & 172.11 & 0 & 0 & 0 & 0 & 0 & 0 \\
+054 & F & 256.33 & 0 & 0 & 0 & 0 & 0 & 0 \\
+055 & F & 10.17 & 0 & 0 & 0 & 0 & 0 & 0 \\
+056 & F & 8.69 & 0 & 0 & 0 & 0 & 0 & 0 \\
+057 & F & 99.03 & 576 & 35 & 386357 & 76.83 & 75.88 & 0 \\
+058 & F & 454.97 & 650 & 511 & 2301201 & 421.14 & 416.3 & 0 \\
+059 & F & 16.7 & 0 & 0 & 0 & 0 & 0 & 0 \\
+060 & F & 22.88 & 0 & 0 & 0 & 0 & 0 & 0 \\
+061 & F & 13.59 & 0 & 0 & 0 & 0 & 0 & 0 \\
+062 & F & 12.06 & 0 & 0 & 0 & 0 & 0 & 0 \\
+063 & F & 320.83 & 655 & 338 & 1581737 & 288.17 & 285.11 & 0 \\
+064 & PT & 600.03 & NA & NA & NA & NA & NA & NA \\
+065 & F & 25.08 & 0 & 0 & 0 & 0 & 0 & 0 \\
+066 & F & 35.86 & 0 & 0 & 0 & 0 & 0 & 0 \\
+067 & F & 39.86 & 0 & 0 & 0 & 0 & 0 & 0 \\
+068 & F & 37.5 & 0 & 0 & 0 & 0 & 0 & 0 \\
+069 & PT & 600.03 & NA & NA & NA & NA & NA & NA \\
+070 & PT & 600.03 & NA & NA & NA & NA & NA & NA \\
+071 & F & 121.66 & 0 & 0 & 0 & 0 & 0 & 0 \\
+072 & F & 176.17 & 0 & 0 & 0 & 0 & 0 & 0 \\
+073 & F & 11.31 & 0 & 0 & 0 & 0 & 0 & 0 \\
+074 & F & 10.2 & 0 & 0 & 0 & 0 & 0 & 0 \\
+075 & F & 247.28 & 636 & 229 & 1089372 & 224.59 & 222.41 & 0 \\
+076 & F & 545.92 & 632 & 611 & 2524221 & 516.18 & 510.34 & 0 \\
+077 & F & 19.61 & 0 & 0 & 0 & 0 & 0 & 0 \\
+078 & F & 14.73 & 0 & 0 & 0 & 0 & 0 & 0 \\
+079 & F & 13.05 & 0 & 0 & 0 & 0 & 0 & 0 \\
+080 & F & 519.24 & 819 & 573 & 2481749 & 486.49 & 480.64 & 0 \\
+081 & PT & 600.05 & NA & NA & NA & NA & NA & NA \\
+082 & F & 30.36 & 0 & 0 & 0 & 0 & 0 & 0 \\
+083 & F & 40.42 & 0 & 0 & 0 & 0 & 0 & 0 \\
+084 & F & 37.98 & 0 & 0 & 0 & 0 & 0 & 0 \\
+085 & PT & 600.03 & NA & NA & NA & NA & NA & NA \\
+086 & PT & 600.03 & NA & NA & NA & NA & NA & NA \\
+087 & F & 136.97 & 0 & 0 & 0 & 0 & 0 & 0 \\
+088 & F & 516.03 & 733 & 555 & 2330193 & 476.45 & 470.44 & 0 \\
+089 & PT & 600.05 & NA & NA & NA & NA & NA & NA \\
+090 & F & 510.92 & 729 & 551 & 2310270 & 472.21 & 465.64 & 0 \\
+091 & PT & 600.05 & NA & NA & NA & NA & NA & NA \\
+092 & F & 507.86 & 734 & 553 & 2410550 & 469.35 & 463.28 & 0 \\
+093 & PT & 600.05 & NA & NA & NA & NA & NA & NA \\
+094 & F & 267.92 & 551 & 312 & 1571855 & 245.24 & 242.47 & 0 \\
+095 & F & 463.72 & 636 & 537 & 2493989 & 427.87 & 422.55 & 0 \\
+096 & PT & 600.03 & NA & NA & NA & NA & NA & NA \\
+097 & F & 3.92 & 13 & 0 & 3738 & 0.94 & 0.86 & 0 \\
+098 & F & 25.06 & 78 & 67 & 340680 & 21.47 & 21.23 & 0 \\
+099 & F & 4.16 & 20 & 0 & 6210 & 1.16 & 1.09 & 0 \\
+100 & F & 17.55 & 55 & 38 & 195794 & 13.78 & 13.59 & 0 \\
+101 & F & 3.53 & 15 & 0 & 3764 & 0.78 & 0.73 & 0 \\
+102 & F & 23.33 & 80 & 67 & 340293 & 20.02 & 19.88 & 0 \\
+103 & F & 4.44 & 24 & 0 & 8405 & 1.43 & 1.34 & 0 \\
+104 & F & 11.14 & 39 & 18 & 99999 & 8.23 & 8.12 & 0 \\
+105 & F & 4.14 & 38 & 1 & 8054 & 1.85 & 1.89 & 0 \\
+106 & F & 19.5 & 73 & 45 & 230766 & 17.36 & 16.98 & 0 \\
+107 & F & 4.69 & 35 & 0 & 18224 & 2.73 & 2.59 & 0 \\
+108 & F & 9.89 & 35 & 14 & 77606 & 8.1 & 7.98 & 0 \\
+\end{longtable}\endgroup
+
+
+Measured decision host seconds sum the actual decision intervals charged to the model. They exclude checkpoint I/O and actual executor work and are not interchangeable with controller wall time. Recorded diagnostics can describe a stopped execution; they do not supply its unavailable final service result.
+
+\begingroup\footnotesize
+\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{12mm}>{\centering\arraybackslash}p{14mm}>{\raggedleft\arraybackslash}p{22mm}>{\raggedleft\arraybackslash}p{35mm}>{\raggedleft\arraybackslash}p{22mm}@{}}
+\caption{Measured decision-delay diagnostics}\label{tab:supp-delay}\\
+\toprule
+Case & Exec. & Decisions & Decision host\newline s & Deadline\newline misses \\
+\midrule\endfirsthead
+\multicolumn{5}{l}{\textit{Continued: Measured decision-delay diagnostics}}\\
+\toprule
+Case & Exec. & Decisions & Decision host\newline s & Deadline\newline misses \\
+\midrule\endhead
+\midrule\multicolumn{5}{r}{\textit{Continued on next page}}\\\endfoot
+\bottomrule\endlastfoot
+013 & F & 148 & 4.62 & 0 \\
+014 & F & 124 & 11.39 & 0 \\
+015 & F & 163 & 5.22 & 0 \\
+016 & F & 163 & 5.54 & 0 \\
+017 & F & 74 & 3.24 & 0 \\
+018 & F & 73 & 6.77 & 0 \\
+073 & F & 713 & 0.78 & 0 \\
+074 & F & 639 & 0.94 & 0 \\
+075 & F & 636 & 238.54 & 0 \\
+076 & F & 632 & 537.02 & 0 \\
+077 & F & 639 & 10.74 & 0 \\
+078 & F & 894 & 0.99 & 0 \\
+079 & F & 821 & 1.15 & 0 \\
+080 & F & 819 & 507.56 & 0 \\
+081 & PT & NA & NA & NA \\
+082 & F & 821 & 17.65 & 0 \\
+083 & F & 2060 & 2.08 & 0 \\
+084 & F & 1986 & 2.74 & 0 \\
+085 & PT & NA & NA & NA \\
+086 & PT & NA & NA & NA \\
+087 & F & 1975 & 101.23 & 0 \\
+\end{longtable}\endgroup
+
+
+\subsection{Disclosure and Interruption Outcomes}
+
+The following tables retain every registered security and management-interruption case. UL/DL denote uplink/downlink. Delivered bytes and frame counts include complete delivered frames only. Confidential bytes are retrospective through experiment end. Decryptable emitted bytes include recorded traffic before disclosure and traffic emitted afterward, including aborted prefixes. Exposure and confidential delivery are therefore not a partition of delivered traffic. Only FINISHED executions receive final traffic totals.
+
+\begingroup\footnotesize
+\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{8mm}>{\centering\arraybackslash}p{10mm}>{\raggedleft\arraybackslash}p{30mm}>{\raggedleft\arraybackslash}p{24mm}>{\raggedleft\arraybackslash}p{30mm}>{\raggedleft\arraybackslash}p{30mm}@{}}
+\caption{Final delivered traffic and emitted exposure}\label{tab:supp-traffic}\\
+\toprule
+Case & Exec. & Delivered B\newline UL/DL & Frames\newline UL/DL & Confidential B\newline UL/DL & Decryptable B\newline before/after \\
+\midrule\endfirsthead
+\multicolumn{6}{l}{\textit{Continued: Final delivered traffic and emitted exposure}}\\
+\toprule
+Case & Exec. & Delivered B\newline UL/DL & Frames\newline UL/DL & Confidential B\newline UL/DL & Decryptable B\newline before/after \\
+\midrule\endhead
+\midrule\multicolumn{6}{r}{\textit{Continued on next page}}\\\endfoot
+\bottomrule\endlastfoot
+097 & F & 7600/\allowbreak{}7600 & 76/\allowbreak{}76 & 3800/\allowbreak{}3800 & 2800/\allowbreak{}4800 \\
+098 & F & 7600/\allowbreak{}7600 & 76/\allowbreak{}76 & 3800/\allowbreak{}3800 & 2800/\allowbreak{}4800 \\
+099 & F & 6700/\allowbreak{}6700 & 67/\allowbreak{}67 & 4900/\allowbreak{}4900 & 2800/\allowbreak{}800 \\
+100 & F & 6700/\allowbreak{}6700 & 67/\allowbreak{}67 & 4900/\allowbreak{}4900 & 2800/\allowbreak{}800 \\
+101 & F & 7600/\allowbreak{}7600 & 76/\allowbreak{}76 & 3800/\allowbreak{}3800 & 7600/\allowbreak{}0 \\
+102 & F & 7600/\allowbreak{}7600 & 76/\allowbreak{}76 & 3800/\allowbreak{}3800 & 7600/\allowbreak{}0 \\
+103 & F & 6400/\allowbreak{}6400 & 64/\allowbreak{}64 & 6400/\allowbreak{}6400 & 0/\allowbreak{}0 \\
+104 & F & 6400/\allowbreak{}6400 & 64/\allowbreak{}64 & 6400/\allowbreak{}6400 & 0/\allowbreak{}0 \\
+105 & F & 20000/\allowbreak{}20000 & 20/\allowbreak{}20 & 3000/\allowbreak{}3000 & 33842/\allowbreak{}200 \\
+106 & F & 21000/\allowbreak{}20000 & 21/\allowbreak{}20 & 4000/\allowbreak{}3000 & 33842/\allowbreak{}158 \\
+107 & F & 3000/\allowbreak{}3000 & 3/\allowbreak{}3 & 3000/\allowbreak{}3000 & 0/\allowbreak{}0 \\
+108 & F & 3000/\allowbreak{}3000 & 3/\allowbreak{}3 & 3000/\allowbreak{}3000 & 0/\allowbreak{}0 \\
+\end{longtable}\endgroup
+
+
+Milestones are seconds after GS notice: E = observed event, AR = already ready at the origin, C = right-censored in a completed execution, U = unavailable origin or missing evidence, N/A = not applicable (no attack, no target or undetected incident). I retains an unfinished execution without presenting its prefix as final recovery or final censoring. Incident state is reported separately. First readiness does not imply continuous availability.
+
+\begingroup\footnotesize
+\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{8mm}>{\centering\arraybackslash}p{10mm}>{\raggedright\arraybackslash}p{30mm}>{\raggedleft\arraybackslash}p{22mm}>{\raggedleft\arraybackslash}p{22mm}>{\raggedleft\arraybackslash}p{22mm}>{\raggedleft\arraybackslash}p{22mm}@{}}
+\caption{Four distinct recovery milestones}\label{tab:supp-recovery}\\
+\toprule
+Case & Exec. & Incident state & SC notice\newline s & Indep. keys\newline s & Open SA\newline s & Indep. frame\newline s \\
+\midrule\endfirsthead
+\multicolumn{7}{l}{\textit{Continued: Four distinct recovery milestones}}\\
+\toprule
+Case & Exec. & Incident state & SC notice\newline s & Indep. keys\newline s & Open SA\newline s & Indep. frame\newline s \\
+\midrule\endhead
+\midrule\multicolumn{7}{r}{\textit{Continued on next page}}\\\endfoot
+\bottomrule\endlastfoot
+097 & F & UNDETECTED & N/A & N/A & N/A & N/A \\
+098 & F & UNDETECTED & N/A & N/A & N/A & N/A \\
+099 & F & RECOVERED & E:0.4 & E:7.4 & E:8.4 & E:8.65 \\
+100 & F & RECOVERED & E:0.4 & E:7.4 & E:8.4 & E:8.65 \\
+101 & F & CENSORED\_\allowbreak{}NO\_\allowbreak{}RECOVERY & E:18.4 & C & C & C \\
+102 & F & CENSORED\_\allowbreak{}NO\_\allowbreak{}RECOVERY & E:18.4 & C & C & C \\
+103 & F & NO\_\allowbreak{}ATTACK & N/A & N/A & N/A & N/A \\
+104 & F & NO\_\allowbreak{}ATTACK & N/A & N/A & N/A & N/A \\
+105 & F & RECOVERED & E:0.4 & E:7.4 & E:8.4 & E:18.4 \\
+106 & F & RECOVERED & E:3.98 & E:4.98 & E:5.98 & E:15.98 \\
+107 & F & NO\_\allowbreak{}ATTACK & N/A & N/A & N/A & N/A \\
+108 & F & NO\_\allowbreak{}ATTACK & N/A & N/A & N/A & N/A \\
+\end{longtable}\endgroup
+
+
+Interruption diagnostics below describe actually recorded events and consumed partial operation resources, not unused budgets or additional costs to add to the final five scores. For an unfinished execution they remain prefix diagnostics; absent exports remain NA. The fixed outage is not shifted to target a different operation. Full action counts remain in runs.csv.
+
+\begingroup\footnotesize
+\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{8mm}>{\centering\arraybackslash}p{10mm}>{\raggedright\arraybackslash}p{53mm}>{\raggedleft\arraybackslash}p{18mm}>{\raggedleft\arraybackslash}p{23mm}>{\raggedleft\arraybackslash}p{23mm}@{}}
+\caption{Observed interruption diagnostics}\label{tab:supp-interruption}\\
+\toprule
+Case & Exec. & Interrupted actions/counts & Aborted\newline frames & Partial oper.\newline CPU s & Partial mgmt.\newline B \\
+\midrule\endfirsthead
+\multicolumn{6}{l}{\textit{Continued: Observed interruption diagnostics}}\\
+\toprule
+Case & Exec. & Interrupted actions/counts & Aborted\newline frames & Partial oper.\newline CPU s & Partial mgmt.\newline B \\
+\midrule\endhead
+\midrule\multicolumn{6}{r}{\textit{Continued on next page}}\\\endfoot
+\bottomrule\endlastfoot
+097 & F & \{\} & 0 & 0 & 0 \\
+098 & F & \{\} & 0 & 0 & 0 \\
+099 & F & \{\} & 0 & 0 & 0 \\
+100 & F & \{\} & 0 & 0 & 0 \\
+101 & F & \{\} & 0 & 0 & 0 \\
+102 & F & \{\} & 0 & 0 & 0 \\
+103 & F & \{\} & 0 & 0 & 0 \\
+104 & F & \{\} & 0 & 0 & 0 \\
+105 & F & \{\} & 1 & 0 & 0 \\
+106 & F & \{\} & 0 & 0 & 0 \\
+107 & F & \{"INSTALL": 1\} & 0 & 0.1 & 360 \\
+108 & F & \{"INSTALL": 1\} & 0 & 0.1 & 360 \\
+\end{longtable}\endgroup
+
+
+The full IDs, model identities, factor-baseline comparisons, status values, source journal paths and unrounded measurements remain in the audited CSV/JSON supplement. No unfinished case enters a completed-quality comparison.

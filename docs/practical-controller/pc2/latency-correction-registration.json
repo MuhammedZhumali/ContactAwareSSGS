@@ -1,0 +1,12 @@
+{
+  "stage": "PC2 measured temporal-intent correction",
+  "reason": "Run 07 decision 61 selected WAIT to a SWITCH completion already reached during computation. sameIntent ignored WAIT's effective wake and rebound it to contact close, losing the remaining window.",
+  "evidenceRun": "target/practical-controller-pc2/iss46-v1/runs/07-measured-practical-H1-CANONICAL-SEED_AND_RETENTION",
+  "evidence": {"origin": "2026-10-10T04:42:14.021522789Z", "effectiveWake": "2026-10-10T04:42:15.021522789Z", "availableAt": "2026-10-10T04:42:15.038813189Z", "executedUntil": "2026-10-10T04:45:16.919403076Z"},
+  "change": "Do not reinterpret an elapsed WAIT wake as a later WAIT. Reobserve/replan with all computation charged again. Revalidate other stale intents through a new decision if measured time advanced. No model, objective, comparator, candidate-space or budget change.",
+  "validation": "Controlled-clock regression: a committed operation completes during calculation of WAIT; no replacement WAIT to LOS; next decision is timed and can select OPEN. Preserve committed work and global stop behavior.",
+  "reviewExtensionBeforeBuild": "A committed interruption may remove the old effective wake before its nominal time. Also replan on a changed effective wake, using only the fresh permitted observation; add a controlled-clock unit test, no attack experiment series.",
+  "reruns": "Only four measured Next/Multi combinations plus measured FixedPeriod T3600 and PerContact JUST_IN_TIME. Preserve all initial 16 attempts, including regressions. No offline rerun because its execution path is unchanged.",
+  "limits": {"searchNodes": 5000, "searchMilliseconds": 1000, "decisionMilliseconds": 2000, "processSeconds": 600, "controllerSeconds": 0, "hostScale": 1, "fixedMilliseconds": 0},
+  "freeze": "Bind the tested new JAR/source hashes in a separate protocol before these six attempts. No budget increases or automatic retries."
+}

@@ -1,827 +1,98 @@
-# ContactAwareSS: contact datasets and security lifecycle simulation
+# ContactAwareSS
 
-Java 21 исследовательский проект: сбор контактных интервалов SatNOGS, геометрические окна Orekit, выбор расписания, анализ интервалов между контактами и управление ключами/SA в синтетической модели. Реализованы модель состояний, модель затрат, детерминированный событийный симулятор, снимки исполнения, ограниченное наблюдение, генератор допустимых действий, номинальное исполнение/оценка независимых ветвей и эталонный `ExactHorizonPlanner`. Общий `SecurityPolicyController` исполняет одно действие и пересматривает решение после событий. Адаптер `RecedingHorizonController` подключает Next/Multi, которые отличаются только горизонтом; FixedPeriod и PerContact используют тот же исполнитель с явно заданными правилами. Спецификация baseline — [docs/baseline-policies.md](docs/baseline-policies.md).
+Java 21 research simulator for joint cryptographic-key and Security Association
+lifecycle planning across predicted spacecraft–ground-station contacts.
 
-Первый этап security-модели: ключи, направленные SA, контексты КА–НС, ограничения и неизменяемые переходы жизненного цикла — описан в [docs/security-model-stage-1.md](docs/security-model-stage-1.md). Модель затрат и проверочный C1/C2/C3-пример заданы в [формальной спецификации](docs/formal-cost-model-and-horizon/main.tex) и [объяснении на русском](docs/formal-cost-model-and-horizon/explanation-ru.txt). Документы от 19 октября описывают постановку до реализации; исполняемое состояние на 22 октября 2026 приведено ниже. Контракт планировщика и границы этапов 1–3 зафиксированы в [docs/planner-foundations.md](docs/planner-foundations.md).
+Repository: https://github.com/MuhammedZhumali/ContactAwareSSGS
 
-## SE2.2.1: checkpoint и ограниченное ускорение X
+The research question is when a longer visible contact horizon changes feasible
+service, and when a bounded controller can find and execute that improvement.
+Next and Multi share actions, constraints, costs and tie-breaking; their visible
+horizons differ. FixedPeriod and PerContact use the same executor.
 
-[Отчёт](docs/security-evaluation-se221/report.md),
-[12 повторов со ссылками на исходные попытки](docs/security-evaluation-se221/retry-table.md),
-[команды и классы](docs/security-evaluation-se221/README.txt).
+## Current article and evidence
 
-Семь PROCESS_ERROR повторены отдельно: **7 FINISHED**. Checkpoint сохраняет
-предыдущий файл при отказе, ограниченно повторяет AccessDenied и пишет диагностику.
-Исправление — отдельный commit `c5a301c`. Исходная причина Windows-отказов неизвестна;
-в повторах отказ не повторился, контролируемые отказы и восстановление проверены тестами.
+The current manuscript is **AITU revision 2, wording corrected on 28 October 2026**.
 
-Все пять проблемных наблюдений X при t=0 эквивалентны. SERVICE_FIRST меняет только
-порядок обхода, сохраняя оба итоговых правила. Представительный поиск:
-**INCOMPLETE, 30 s / 286413 узлов → COMPLETE, 11.601 s / 134638 узлов**.
-Пять показателей совпали; неполный прежний план не является эталоном полного победителя.
-Полные планы проверены на малых задачах полным DFS и обратным обходом.
+- [Article DOCX](docs/aitu-revision-v2/article.docx) and [LaTeX](docs/aitu-revision-v2/article-tex/main.tex)
+- [Supplement DOCX](docs/aitu-revision-v2/supplement.docx) and [LaTeX](docs/aitu-revision-v2/article-tex/supplement.tex)
+- [Results and limitations](docs/aitu-revision-v2/report.md)
+- [Reproduction instructions](docs/aitu-revision-v2/REPRODUCE.md)
+- [Protocol](docs/aitu-revision-v2/protocol.md), [tables](docs/aitu-revision-v2/tables/) and [submission checklist](docs/aitu-revision-v2/submission-checklist.md)
 
-Пять новых контроллеров остановились по общему лимиту **60 s**, достигнув только
-t=1.75–2 s: повторные поиски после событий остаются дорогими. Поздние атаки X
-при альтернативном правиле всё ещё не имеют завершённого сравнения. Бюджеты не повышались.
-Сохранены все 2441 прежних файла; новые JAR/результаты имеют отдельные версии A/B.
-Чистая сборка B: **374 Maven-теста**, дополнительно **14 Python-тестов**, все прошли.
+Six additional practical root searches produced two COMPLETE and four INCOMPLETE
+results. Four conditional full controller attempts produced three FINISHED results
+and one CONTROLLER_TIME_LIMIT. These are separate from the earlier campaigns.
 
-## SE2.2: зависимость от разрешения равенства
+At 150,000 nodes and a 30-second search limit, the completed offline CONTINUE_WAIT
+pair serves three contacts with Multi versus two with Next. Useful time is 37 versus
+38 seconds; Multi spends more operation resources. Observed controller elapsed time
+is 32.426 versus 2.537 seconds and is not charged to contact time. Whether this new
+benefit survives charging computation time remains untested. CANONICAL Multi's
+full-run comparison remains unresolved. General Multi superiority, onboard
+feasibility and reduced compromise probability are not established.
 
-[Отчёт SE2.2](docs/security-evaluation-se22/report.md),
-[четыре сочетания Next/Multi × CANONICAL/CONTINUE_WAIT](docs/security-evaluation-se22/comparison-tables.md),
-[протокол](docs/security-evaluation-se22/protocol.md),
-[версия, классы и команды](docs/security-evaluation-se22/README.txt).
+## Build and tests
 
-Ограниченная серия: **52 попытки, 40 FINISHED, 5 SEARCH_INCOMPLETE,
-7 PROCESS_ERROR**. Исходные SE2/SE2.1 и аудит сохранены; версия исходников
-`a206f6a29732`, новый отдельный JAR и manifest. Чистая сборка в отдельном
-каталоге: **361 Maven-тест**, дополнительно **14 Python-тестов**, все прошли.
-
-Оба правила применяются после равенства пяти показателей, включая comparator,
-отсечения и memo. Диагностика X доказала равные оптимальные продолжения с ранней
-и отложенной установкой. В ISS CP5400 прежние выигрыши Multi по восстановлению
-исчезли при альтернативном выборе. Положительного преимущества при обоих
-правилах в полностью завершённых четырёх сочетаниях не установлено;
-поздние атаки X остались незавершёнными. Изменения целевой функции не было.
-
-Пять Multi CONTINUE_WAIT X остановлены по 30 s; семь других попыток — по
-Windows AccessDeniedException при записи checkpoint. Их нельзя считать
-проигрышами политик. Логи и последние снимки сохранены, бюджеты не повышались.
-Следующий шаг — отдельное исправление checkpoint I/O и доказуемое ускорение
-поиска перед новой ограниченной регистрацией незавершённых сравнений.
-
-## SE2.1: отдельные метрики восстановления и контроль поиска
-
-[Отчёт SE2.1](docs/security-evaluation-se21/report.md),
-[определения метрик](docs/security-evaluation-se21/metrics-spec.md),
-[фиксированный протокол](docs/security-evaluation-se21/protocol.md),
-[классы и команды](docs/security-evaluation-se21/README.txt).
-
-Все 488 журналов SE2 обработаны отдельно: уведомление КА, активация независимой
-пары, открытие SA, первый доставленный кадр. Для ISS CP5400 p30 Multi/Next
-активируют пару за **1.4/7.4 s**, а кадр доставляют через **5667/5671 s**;
-между ними есть исчерпание предложенных данных, перерыв контактов и expiry первой
-замены. Эти интервалы не считаются одним временем замены ключей.
-
-Добавлены CPU/GC/phase telemetry, кооперативная отмена, общий бюджет контроллера,
-сериализуемые checkpoints и внешний watchdog. Из 24 изолированных повторов
-16 COMPLETE, 8 INCOMPLETE; четыре полных X совпали с SE2 по метрикам, действиям
-и журналам. Общий лимит и восстановление после принудительной остановки проверены.
-Причина прежних **42/3361 s остаётся неизвестной**: изолированно они не повторились.
-Поиск не расходует модельное время контакта; новые проверки не являются
-ускорением или доказательством бортовой выполнимости.
-
-Проверки: **Maven verify — 344 теста; Python SE2.1 — 14 тестов**, все прошли.
-Исходные результаты/JAR/ZIP SE2 сохранены; SE2.1 находится в
-`target/security-evaluation-se21/` и `docs/security-evaluation-se21/`.
-Новый [detected exposure PDF](docs/security-evaluation-se21/figures/detected_exposure_se21.pdf)
-содержит отдельные легенды политик и штриховки; доступны SVG и PNG.
-
-## Устойчивость security-результатов: SE2
-
-SE2 проверяет зависимость результатов от момента раскрытия traffic keys, нагрузки,
-повторного контакта с атакованной НС и временных допущений. Протокол и все 488 запусков
-в 26 конфигурациях зарегистрированы до исполнения. Политики, пять приоритетов,
-ограничения и семантика компрометации сохранены; Next и Multi отличаются горизонтом.
-
-`SecurityEvaluationSe2Fixtures` задаёт физические конфигурации, точки атаки из расписания
-и явную историю ключей. `SecurityEvaluationSe2Main` разделяет регистрацию и исполнение,
-проверяет хеши входов/JAR и сохраняет незавершённые исходы без итоговых оценок качества.
-Независимый Python-аудит проверяет журналы и собственные контроли политик. Раскрытие
-до/после атаки, конфиденциальная доставка, цензурирование и вычислительные расходы
-экспортируются раздельно.
-
-Выполнены все **488** зарегистрированных попыток: **474 FINISHED, 14 SEARCH_INCOMPLETE**,
-без ошибок исполнения и незапущенных конфигураций. Maven verify: **324 теста**,
-Python: **25 тестов**, все пройдены. В основной сетке X Multi восстановил независимую
-доставку в **6/6** обнаруженных атак против **3/6** у Next. На Y и ISS CP7200
-преимущества горизонта нет; более редкое обновление может экономить ресурсы и увеличивать
-раскрываемый трафик. Дополнительный WAIT порождает тысячи решений на разрывах ISS;
-незавершённые поиски и аномальные elapsed-интервалы сохранены в отчёте без подмены нулями.
-Независимый аудит проверил журналы всех 488 попыток и совпадение **41 310** решений
-до получения сведений об атаке с соответствующими контрольными запусками.
-
-[Отчёт SE2](docs/security-evaluation-se2/report.md),
-[протокол](docs/security-evaluation-se2/protocol.md),
-[manifest](docs/security-evaluation-se2/manifest.json),
-[разбор причин на журналах](docs/security-evaluation-se2/mechanisms.md),
-[команды воспроизведения и созданные классы](docs/security-evaluation-se2/README.txt).
-Таблицы находятся в `docs/security-evaluation-se2/tables/`, векторные PDF/SVG и PNG —
-в `figures/`. Локальные архивы: `research-figures-se2.zip` и `experiment-evidence-se2.zip`.
-
-Цель этапа — определить условия выигрыша, равенства и ухудшения. Доли внутри заданной
-сетки не являются вероятностями реального восстановления. Время поиска не вычитается
-из контактных окон; завершённый расчёт не доказывает пригодность контроллера для работы
-в реальном времени. Результаты SE1 и v2 сохранены отдельно.
-
-## Оценка раскрытия ключей: se1
-
-Реализован минимальный security evaluation: однократное раскрытие активной пары traffic keys,
-отдельное знание атакующего и контроллера, уведомление сначала GS, оплачиваемый контактный
-`NOTIFY_REVOCATION` на КА и одинаковое аварийное восстановление для четырёх политик.
-`TrafficKeyDisclosure` задаёт скрытый инцидент; `IncidentResponse` реагирует только на полученные
-уведомления; `SimulationEvent.FrameEvidence` фиксирует реально излучённые/доставленные байты
-и направленный ключ; `SecurityMetricsCollector` вычисляет раскрытие прошлого и будущего
-трафика, конфиденциальную доставку, задержки и парные потери. Будущие атаки не входят в
-`PlanningObservation` и не меняют прежние пять приоритетов планировщика.
-
-Полный Maven: **317 тестов, без ошибок и пропусков**. Зарегистрированные **104/104** запуска
-завершены; независимый Python-аудит подтвердил метрики и 4062 решения до уведомления.
-В X Multi восстановил передачу за 2.65 s против 69.25 s у Next. Однако на ISS CP=7200 s
-без обнаружения Next/Multi раскрыли по 4000 B против 2000 B у FixedPeriod/PerContact при
-одинаковой доставке 6000 B. Выигрыш в затратах не равен преимуществу безопасности.
-
-[Отчёт и ограничения](docs/security-evaluation/report.md), [протокол](docs/security-evaluation/protocol.md),
-[нормативная основа NIST](docs/security-evaluation/normative-basis.md),
-[команды и форматы экспорта](docs/security-evaluation/README.txt).
-Таблицы CSV и четыре набора PDF/SVG/PNG: `docs/security-evaluation/tables/`, `figures/`.
-Векторные PDF/SVG пригодны для статьи. Архивы: `research-figures-se1.zip` и `experiment-evidence-se1.zip`.
+Install JDK21. The included Maven wrapper selects Maven; no global Maven installation
+is required. From PowerShell in the repository root:
 
 ```powershell
 .\mvnw.cmd verify
-java -Xmx1024m -cp target/contact-aware-contacts.jar org.contactaware.security.simulation.SecurityEvaluationMain --out target/security-evaluation-repeat
-python -X utf8 scripts/audit_security_evaluation.py target/security-evaluation-repeat --out target/security-evaluation-repeat-audit
-python -X utf8 scripts/plot_security_evaluation.py --audit target/security-evaluation-repeat-audit/independent-audit.json --output target/security-evaluation-repeat-figures
+java -jar target/contact-aware-contacts.jar --help
 ```
 
-Выходной каталог Java должен быть новым/пустым. Для ISS нужен сохранённый проверяемый
-dataset; evidence-архив включает его и обязательные исходные snapshots. Python-графики
-используют зависимости из `scripts/requirements-figures.txt`.
+Some contact-data tests require archived inputs under
+`data/sources/earth-20261011`, `data/sources/celestrak-iss-20261011` and
+`data/runs/iss-20261010`. These local datasets are intentionally excluded from Git.
+Restore the matching data before running the complete suite; a source clone alone
+is not the full experimental artifact.
 
-Ключи пока представлены метаданными, расходы синтетические; независимый защищённый
-management-канал — допущение, не реализованный криптопротокол. Уже начатый downlink
-может продолжать излучаться после уведомления только GS, пока КА ещё не уведомлён.
-Невосстановленные случаи явно цензурированы. Время поиска измеряется отдельно и не
-вычитается из контактов. Следующий этап — чувствительность к моментам атак/нагрузке,
-более длинные последовательности и проверка management-защиты на стенде.
+In the research workspace, `target/` also contains frozen JARs, saved observations,
+raw journals and the retained document template. Do not run `mvn clean` or delete
+that whole directory before archiving/restoring those materials. Use a separate
+checkout for a genuinely clean build. Test totals in historical reports describe
+their recorded versions, not a fresh test run during repository cleanup.
 
-Отдельный `DecisionTimeModel.PREPARE_DURATION_WAIT` проверяет зависимость от моментов
-решений: в маленьком контрпримере убирает необходимость PREPARE как таймера; в 16 X/Y
-запусках прежние пять результатов сохраняются. [Отчёт](docs/security-evaluation/time-model/report.md).
-Штатная временная модель и замороженные v2 результаты не заменены.
+## Reproduce the article
 
-## Security Cost Model и SimulationEngine
+The source repository contains code, tests, current documents, compact results and
+historical specifications. Large raw evidence and frozen executables belong in a
+separate release asset. Extract the matching reproduction ZIP into its own directory
+and follow its `docs/aitu-revision-v2/REPRODUCE.md`; it includes the necessary
+`target/` inputs for table reconstruction and adapter rebuilds.
 
-Симулятор получает `SimulationScenario`: исходный `SecurityState`, ограничения, профиль затрат, контакты с явной нагрузкой и список `PlannedOperation`. В предписанном режиме он исполняет этот список, не выбирая альтернативы и не оптимизируя расписание. Названия `NEXT`/`MULTI` в этой демонстрации обозначают **вручную заданные планы**; автоматический контроллер описан в отдельном разделе ниже.
+The existing [research release](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/research)
+contains the historical final-v2 package. It does **not** contain the latest AITU
+experiments. The current AITU reproduction ZIP is prepared locally but has not yet
+been publicly deposited. Its public URL/DOI remains unset.
 
-Новые классы находятся в `src/main/java/org/contactaware/security/simulation/`:
+[Publication steps and exact archive identity](docs/github-publication.md) distinguish
+committing sources from uploading the full reproduction artifact.
 
-| Класс | Ответственность |
+## Project layout
+
+| Path | Purpose |
 |---|---|
-| `SecurityCostProfile`, `ResourceUsage` | Упорядоченные фазы CPU земли, CPU КА, uplink, downlink и ожидания; отдельные elapsed time, radio occupancy и байты. Метка происхождения и источник параметров обязательны. |
-| `SecurityActionExecutor` | Проверка допуска и применение подтверждённых переходов через существующие `SecurityConstraintChecker` и `LifecycleTransitions`. Предварительная проверка не публикует изменённое состояние. |
-| `PlannedOperation` | Идентификатор, существующий `ScheduledSecurityAction`, привязка к контакту и детерминированные условия прерывания/отсутствия ACK. |
-| `SimulationScenario`, `SimulationContact` | Входы, временной диапазон, исходное состояние, выбранные контакты и отдельный `PayloadProfile`: скорость, размер кадра, объём очереди и пороги обслуживания по направлениям. |
-| `SimulationEngine` | Единая очередь событий, ресурсы, выполнение составных действий, сроки ключей, подтверждения и защищённые кадры. Каждый запуск имеет собственное состояние. |
-| `SimulationEvent`, `SimulationResult`, `MetricsCollector` | Неизменяемый журнал, итоговое состояние, неопределённые контексты и метрики, заново вычисляемые из фактических событий. |
-| `HorizonWitness`, `WitnessSimulationMain` | Синтетические входы X/Y, фиксированные планы и отдельная команда запуска с экспортом JSON. |
-
-В существующий `SecurityAction` добавлены `INSTALL`, `SWITCH`, `OPEN`; `ScheduledSecurityAction` принимает ID кандидата для этих действий. В `LifecycleTransitions` добавлен только недостающий `expireUnboundKey`: истечение отдельного непривязанного материала. Существующие правила активации, привязки, reuse, счётчиков и парного истечения повторно используются. Подготовка контактных данных и её CLI не изменены.
-
-### Операции, время и ресурсы
-
-`PREPARE` создаёт два направленных ключа на земле при завершении подготовки. `INSTALL` подтверждает установку, оставляя ключи `PRE_ACTIVE`. `SWITCH` подтверждает переключение: старые ключи отвязываются и выводятся из использования, новые активируются и привязываются к SA. `OPEN` открывает допустимый контекст, а `REUSE` дополнительно требует предыдущего успешного использования.
-
-`ROTATE`/`ESTABLISH` разворачиваются в недостающие шаги `PREPARE → INSTALL → SWITCH → OPEN`. Если кандидат уже подготовлен или установлен, соответствующие шаги пропускаются. Отдельной дополнительной платы за `ROTATE` нет. Каждая завершённая или прерванная примитивная операция начисляет свою фактически выполненную работу ровно один раз; составное действие повторно затраты не начисляет.
-
-Синтетический профиль `syntheticWitness()` имеет происхождение `SYNTHETIC_ASSUMPTION`:
-
-| Операция | Elapsed, s | CPU GS, s | CPU SC, s | Radio, s | Uplink, B | Downlink, B |
-|---|---:|---:|---:|---:|---:|---:|
-| PREPARE | 2 | 0.20 | 0 | 0 | 0 | 0 |
-| INSTALL | 4 | 0.10 | 0.20 | 2.00 | 600 | 200 |
-| SWITCH | 1 | 0.05 | 0.10 | 0.50 | 100 | 100 |
-| OPEN / REUSE | 1 | 0.02 | 0.04 | 0.20 | 40 | 40 |
-| Локальный STOP / EXPIRE_CONTEXT | 0 | 0 | 0 | 0 | 0 | 0 |
-
-Например, прерванный через 2 s `INSTALL` расходует 0.10 CPU-s земли, 0.20 CPU-s КА, 1.70 s радио, 600 uplink-байт и 80 downlink-байт. Установка не подтверждается. Стоимость вычисляется по выполненным фазам, а не как половина полной стоимости операции.
-
-Один радиоканал и один CPU КА общие; CPU каждой GS учитывается отдельно. Независимая наземная подготовка может выполняться параллельно передаче данных и работам на другой GS. Пересекающиеся резервации одного ресурса отклоняются с `RESOURCE_BUSY`, без автоматического переноса времени. Внутри одной операции фазы последовательны. Сумма elapsed time операций не является длительностью эксперимента, поскольку независимые работы могут перекрываться.
-
-При совпадении времени события обрабатываются в порядке: завершение допустимого кадра; истечение ключа; конец контакта; явное прерывание; начало контакта; подтверждение операции; запуск заданного действия; окончание симуляции. Далее используются стабильные ID. Поэтому кадр `[t, deadline)` допустим, а онлайн-подтверждение точно в deadline или в конце контакта — нет. При совпадении прерывания и ACK прерывание имеет приоритет.
-
-Контакты валидируются существующим `ScheduleValidator`, а `SecurityState.asOf` остаётся временем последнего перехода: он не заменяет часы симулятора. Истечение старой пары не уничтожает отдельно подготовленный/установленный кандидат. Успешные кадры сохраняют nonce/sequence progress, который не сбрасывается при reuse.
-
-Отсутствующий ACK не создаёт успешный checkpoint. После неопределённого `SWITCH` или `OPEN/REUSE` контекст попадает в `SimulationResult.uncertainContexts`, полезная передача и новые онлайн-действия блокируются. Подтверждённая ранее установка сохраняется; фиктивного отката состояния удалённого узла нет. После неудачного staging `INSTALL` старый допустимый контекст может продолжать работу.
-
-### Запуск и фактические результаты
-
-Полная сборка и демонстрация из корня проекта:
-
-~~~powershell
-$env:JAVA_HOME = 'C:\Program Files\Java\jdk-21.0.10'
-.\mvnw.cmd '-Dmaven.repo.local=.tools/m2' -o -B -ntp verify
-& "$env:JAVA_HOME/bin/java.exe" -cp target/contact-aware-contacts.jar `
-    org.contactaware.security.simulation.WitnessSimulationMain `
-    target/security-simulation-20261021
-~~~
-
-`-o` требует ранее скачанных зависимостей; при первой сборке его нужно убрать. Выходной каталог должен быть новым или пустым. Команда создаёт `summary.json` и четыре файла `X-NEXT.json`, `X-MULTI.json`, `Y-NEXT.json`, `Y-MULTI.json` с полными журналами, итоговыми состояниями и метриками. `target/` — генерируемые файлы, не исходные данные для тестов.
-
-Отдельный запуск новых тестов, не требующий контактных снимков ISS и loopback-сервера:
-
-~~~powershell
-.\mvnw.cmd '-Dmaven.repo.local=.tools/m2' -o -B -ntp `
-    '-Dtest=SecurityCostProfileTest,SecurityActionExecutorTest,SimulationEngineTest,HorizonWitnessIntegrationTest' test
-~~~
-
-Эти тесты требуют [исходный verification.json](docs/formal-cost-model-and-horizon/verification.json); документ должен быть включён в checkout вместе с кодом. Сам движок и демонстрационная команда файл с ожидаемыми значениями не читают.
-
-Результат запуска собранного JAR 21 октября 2026:
-
-| Scenario | Заданный план | Served | Useful time, s | CPU GS+SC, s | Management bytes |
-|---|---|---:|---:|---:|---:|
-| X: A → B → A | Next | 2 | 38 | 0.32 | 160 |
-| X: A → B → A | Multi | 3 | 37 | 0.83 | 1240 |
-| Y: A → B → B | Next | 3 | 42 | 0.38 | 240 |
-| Y: A → B → B | Multi | 3 | 42 | 0.38 | 240 |
-
-Все значения совпали с `verification.json`. В каждой строке исполнена общая подготовка `[-2,0]`: 0.20 CPU-s земли и два созданных ключа, включая неиспользованные. Создание четырёх старых ключей относится к одинаковой исходной истории за пределами учёта. CPU управления разделён по GS/SC в JSON; для X/Multi это 0.41/0.42 s, для X/Next — 0.24/0.08 s.
-
-В X старый A истекает в t=70. Multi устанавливает и активирует новый A в C1, после B возвращается к A с действующей парой. Next оставляет A без установки: C3 длится 5 s, а установка, переключение и открытие требуют 6 s. В Y третьим идёт B, чей старый ключ ещё допустим; оба плана обходятся reuse. Это преимущество обслуживания дополнительного контакта в синтетическом примере, а не экономия всех ресурсов или доказательство повышения безопасности.
-
-Проверен и равный вариант X: `INSTALL` в C1, reuse старой пары и `SWITCH/OPEN` в C3. Он даёт те же 3 контакта, 37 s, 0.83 CPU-s и 1240 B, но активацию нового A в t=81 вместо t=5. Отрицательные контроли также совпали с формальной спецификацией: при действующем до t=100 старом A получается 3/42/0.38/240; при расширенном C3 оба способа обновления дают 3/52/0.83/1240.
-
-До добавления baseline полный Maven `verify` на 22 октября 2026: **236 tests, 0 failures, 0 errors, 0 skipped**, `BUILD SUCCESS`; создан `target/contact-aware-contacts.jar`. Это 38 контактных тестов, 31 тест модели ключей/SA, 38 тестовых случаев затрат/исполнения, 32 случая snapshot/observation, 41 случай генерации/исполнения/оценки ветвей, 16 проверок точного поиска/его CLI, 24 проверки эквивалентности/ускорений/границы, 15 проверок контроллера и один интеграционный тест всех четырёх исходных X/Y через CLI. Полный прогон занял около 1 min 55 s; около 102 s пришлось на точные повторные поиски исходного witness. Для пяти существующих `HttpImportTest` нужен локальный loopback-сервер; полный `verify` с доступным loopback прошёл все тесты. Внешние API не вызывались.
-
-После этого добавлена ещё одна регрессия контроллера — событие PREPARE другой НС посреди уже передаваемого кадра. Повторный focused-прогон `RecedingHorizonControllerTest` прошёл **16 tests, 0 failures/errors/skipped**. Всего проверено 237 различных тестовых случаев; полный `verify` выше содержал 236, дополнительный прогон не менял production-код.
-
-Новые тесты проверяют затраты по фазам, подтверждения, сохранность частично завершённой ротации, отсутствие ACK, истечение во время контакта/установки, границы времени, недопустимые reuse и маршрут A через B, nonce exhaustion, параллельную подготовку, конфликты ресурсов, ограниченную очередь полезных данных, контрольные сценарии и побайтовую детерминированность JSON после перестановки входного списка действий. Отчёты Maven находятся в `target/surefire-reports/`.
-
-### Метрики, ограничения и следующий этап
-
-`MetricsCollector` считает данные из событий, не из ожидаемой стоимости плана. Он возвращает обслуженные контакты, фактическое useful secure time, направленные полезные байты/кадры, CPU/радио/служебные байты, созданные ключи и причины отказов. `startedOperations`/`completedOperations` относятся к примитивным операциям, включая автоматические STOP/EXPIRE; `completedActions` отдельно считает завершённые запросы, например ROTATE. Эти два уровня не нужно складывать. Отказ составного действия считается один раз, хотя журнал сохраняет и событие отказа его шага.
-
-Границы текущей реализации:
-
-- Есть исполнение фиксированных планов, точный решатель ограниченного номинального горизонта и контроллер Next/Multi с фактическим исполнением первого действия. FixedPeriod/PerContact реализованы; выбранные ранее окна Orekit читаются из проверенного расписания для офлайн-экспериментов. Атак, Spring Boot API и выполнения security-протокола на оборудовании пока нет.
-- Числа профиля — модельные, не измерения бортового процессора. CPU полезного шифрования, RAM/энергия и аппаратные ограничения хранения не моделируются. Время поиска измеряется на машине запуска отдельно от control CPU КА/НС.
-- Полезная передача идёт целыми кадрами с чередованием направлений. В witness: 100 B на кадр, 400 B/s, минимум 400 B в каждом направлении для обслуживания. Кадр, который не успеет до известной границы управления/контакта/deadline, не запускается; остаток интервала не считается полезным. При других размерах кадров возможен эффект дискретизации, которого нет в непрерывной формуле статьи.
-- Во время онлайн-управления полезная передача данного контакта приостановлена, включая ожидание ACK. Внутренний DAG параллельных фаз операции и передача payload в management wait пока не поддерживаются.
-- PREPARE остаётся наземным; A устанавливается только через A. Provisioned management channel предполагается отдельно от traffic keys, его обмен входит в профиль. Реальный криптопротокол и секретный материал здесь не реализуются.
-- STOP/EXPIRE — мгновенные локальные операции с нулевой модельной стоимостью. Профиль с ненулевой стоимостью этих операций пока отклоняется: удалённая очистка/подтверждение удаления требует отдельного исполнения, а не начисления выдуманной мгновенной работы.
-- Есть консервативная блокировка неопределённого контекста, но нет протокола reconciliation, восстановления сессии после разрыва или автоматического retry. Существующее ограничение reuse после STOP внутри того же контактного окна сохраняется.
-- Ключи, оставшиеся после конца опыта, не считаются уничтоженными. Более ранняя/поздняя активация и последствия компрометации требуют отдельного анализа; в этих результатах сравнивается обслуживание и overhead.
-
-FixedPeriod/PerContact и команда сравнения четырёх политик описаны ниже. Следующий исследовательский этап — расширение завершённых сравнений на ISS, чувствительность к параметрам и ускорение поиска с проверкой эквивалентности. Профили затрат пока синтетические; исходные фиксированные планы остаются проверочным набором.
-
-## Снимки исполнения и ограниченный прогноз: этапы 1–3
-
-Исследовательский вопрос — даёт ли знание нескольких будущих контактов преимущество в совместном управлении ключами и SA по сравнению со знанием одного следующего контакта, если действия, ограничения, затраты, поиск и tie-break одинаковы? Предполагаемая новизна относится к такому совместному планированию с учётом времени контактов, смены НС, cryptoperiod и overhead. Сама contact-awareness не заявляется новой: IOTA [20] уже учитывает контакты при управлении авторизацией и отзывом доступа. Улучшение обслуживания или расходов не доказывает снижение риска компрометации.
-
-| Компонент | Что реализовано |
-|---|---|
-| [Спецификация](docs/planner-foundations.md) | Определение H, моменты пересчёта, конечные старты, WAIT/CONTINUE, полный перебор, пять приоритетов и канонический tie-break. Контроллер перепланирования отделён от выполненных этапов. |
-| [ExecutionSnapshot](src/main/java/org/contactaware/security/simulation/ExecutionSnapshot.java) | Неизменяемое полное состояние: время, ключи/SA, выполняемые шаги и ресурсы, типизированная очередь, журнал, неопределённость, доставка и незавершённый кадр. |
-| [SimulationEngine](src/main/java/org/contactaware/security/simulation/SimulationEngine.java) | `start(scenario)`, `advance(snapshot, until)`, `resume(snapshot)` и прежний `run(scenario)` используют одну логику исполнения. Очередь больше не содержит callback, удерживающих исходную ветвь. |
-| [PlanningObservation](src/main/java/org/contactaware/security/simulation/PlanningObservation.java) | `from(snapshot, H)` выдаёт только допустимый прогноз, известное состояние, текущую работу, накопленные затраты и моменты пробуждения. Нет полного сценария, будущего плана и условий отказов. |
-
-Пример использования из Java:
-
-~~~java
-var engine = new SimulationEngine();
-var scenario = HorizonWitness.scenario(HorizonWitness.Sequence.X, HorizonWitness.Plan.MULTI);
-var initial = engine.start(scenario);
-var paused = engine.advance(initial, HorizonWitness.at(2)); // INSTALL ещё выполняется
-var nextView = PlanningObservation.from(paused, 1);        // C1 и C2
-var multiView = PlanningObservation.from(paused, 2);       // C1, C2 и C3
-var resumed = new SimulationEngine().resume(paused);
-assert resumed.equals(engine.run(scenario));
-~~~
-
-Это демонстрация API наблюдения над фиксированным планом, а не выбор решения политикой. Для проверки неразличимости X/Y тесты используют одинаковую фактически исполненную историю.
-
-`H` — число будущих контактов сверх текущего: внутри C1 при `H=1` видны C1/C2, при `H=2` — C1/C2/C3. Между контактами видны только H ближайших контактов. `H=0` означает текущий контакт либо пустой прогноз в промежутке. Список наблюдения фиксирован и сам не расширяется при продолжении симуляции. Пробуждения вычисляются только из видимых границ, начала PREPARE за его длительность до видимого AOS, известных дедлайнов и ожидаемого завершения текущей работы.
-
-Пауза не означает отмену: она не подтверждает INSTALL, не закрывает контекст и не добавляет failure. Даже `advance(snapshot, scenario.end())` возвращает снимок без фиктивного завершения; `resume` отдельно завершает реальный опыт. Снимок включает незавершённый кадр, а nonce и доставка меняются ровно один раз при его завершении. Коллекции неизменяемы; продолжения одного снимка независимы.
-
-`recordedCosts()` содержит начисленные затраты журнала и, для ветви, перенесённый итог прошлого. `accruedCosts()` уже включает их **и** выполненную часть текущих шагов. Эти величины нельзя складывать. Частичные байты вычисляются от исходного начала фазы: дробление на несколько пауз не теряет байты из-за повторного округления.
-
-Фокусированные проверки и полный запуск:
-
-~~~powershell
-$env:JAVA_HOME = 'C:\Program Files\Java\jdk-21.0.10'
-.\mvnw.cmd '-Dmaven.repo.local=.tools/m2' -o -B -ntp '-Dtest=ExecutionSnapshotTest,PlanningObservationTest' test
-.\mvnw.cmd '-Dmaven.repo.local=.tools/m2' -o -B -ntp verify
-~~~
-
-`-o` предполагает уже заполненный локальный Maven-кеш; для первого получения зависимостей его следует убрать. Новые проверки: **21** snapshot-case и **11** observation-case. Они проверяют совпадение полного журнала и состояния после пауз посреди фаз/кадров, неизменяемость и независимость ветвей, ACK/interruption, expiry, одновременные события, ресурсы, частичные байты и границы H. Изменение скрытого C3, будущего плана и ещё не произошедших отказов не меняет наблюдение Next или его пробуждения при одинаковом фактическом префиксе. Multi видит отличие C3.
-
-Повторная демонстрация из собранного JAR сохранена в `target/security-snapshot-20261022/`. Все четыре JSON X/Y и `summary.json` побайтово совпали по SHA-256 с `docs/simulation-figures/source/`. Прежние результаты 2/38/0.32/160 для X-Next, 3/37/0.83/1240 для X-Multi и 3/42/0.38/240 для обоих Y сохранены, включая общую подготовку. Интеграционные тесты также сверяют независимый `verification.json`.
-
-Восстановление поддерживается в памяти процесса; формат долговременного хранения/межпроцессного восстановления не реализован. Полный `ExecutionSnapshot` реального опыта — привилегированные данные симулятора. Ограниченная ветвь создаётся только из `PlanningObservation`, как описано ниже. Граница наблюдения проверена при одинаковой фактической истории; разные уже исполненные действия могут закономерно дать разные наблюдения.
-
-## Генерация действий и оценка ветвей
-
-`BranchEngine` не выбирает лучший план. Он создаёт из разрешённого наблюдения независимую ветвь и исполняет явно выбранное действие через общую логику `SimulationEngine`. Внутри ветви есть только исходно видимые контакты. Время может двигаться вперёд, но горизонт не пополняется скрытыми контактами.
-
-| Класс | Ответственность |
-|---|---|
-| `PlanningBranch`, `BranchEngine` | Неизменяемая ветвь, восстановление известных операций/кадра, исполнение допустимой команды и остановка на границе решения. |
-| `PlanningAction`, `SecurityActionGenerator` | PREPARE, INSTALL, SWITCH, OPEN/REUSE, CONTINUE и WAIT; проверки через существующие ограничения/переходы, ресурсы по фазам и одно место запасного кандидата на контекст. |
-| `KeyGenerationIds` | Чистое вычисление следующего поколения по фактически выданным ID; независимость от порядка обхода. |
-| `BranchEvaluation`, `ContinuationEvaluator` | Прирост обслуженных контактов, полезного времени, control CPU, management bytes и новых направленных ключей от исходного наблюдения. |
-| `PlanningResult`, `PlanningResultComparator` | Оценка и план; общий лексикографический порядок пяти показателей, затем канонический порядок действий. `decisiveCriterion` сообщает критерий различия. |
-
-`issuedKeyIds` и `issuedOperationIds` сохраняют выданные при фактических запросах идентификаторы, в том числе после неудачного PREPARE. Будущий ещё не исполненный план не резервирует ID. Просмотр кандидатов ничего не расходует. Повторное использование ID материала после неудачной подготовки отклоняется исполнителем с `KEY_ID_ALREADY_ISSUED`.
-
-Будущие операции в ветви получают номинальные подтверждения. Приватные interruption/no-ACK из полного сценария в прогноз не переносятся. Уже случившаяся неопределённость сохраняется, и номинальное допущение не отменяет security constraints. Контроллер сохраняет фактические исходы операций и после случившегося отказа строит новое наблюдение; протокол reconciliation при этом не появляется.
-
-Служебная команда запускает операцию и возвращает состояние в том же времени: можно запустить независимую работу другой GS перед продвижением часов. WAIT продвигает уже начатые операции/кадр, но не запускает новый payload. CONTINUE разрешает ровно один новый кадр и продвигает время не дальше его конца либо более раннего события. После каждого полного кадра есть решение **до следующего старта**, включая кадр достижения порога обслуживания или исчерпания счётчика. Прерывать начатую работу этими командами нельзя.
-
-Генератор выдаёт немедленные команды и WAIT до конечного набора видимых событий/JIT-стартов. Отложенный PREPARE — WAIT до разрешённого момента, затем новая команда. WAIT к далёкой границе останавливается раньше, если встретилось событие или разрешённое пробуждение. Связная операция должна подтвердиться строго раньше LOS/deadline; полный полезный кадр может завершиться ровно на границе.
-
-Пример явного выбора двух команд из Java, без поиска:
-
-~~~java
-var simulation = new SimulationEngine();
-var scenario = HorizonWitness.scenario(HorizonWitness.Sequence.X, HorizonWitness.Plan.NEXT);
-var snapshot = simulation.advance(simulation.start(scenario), HorizonWitness.at(0));
-var branches = new BranchEngine();
-var root = branches.create(PlanningObservation.from(snapshot, 2));
-var generator = new SecurityActionGenerator();
-var waitForOpen = generator.candidates(root.observation()).stream()
-        .filter(a -> a.kind() == PlanningAction.Kind.WAIT && a.until().equals(HorizonWitness.at(1)))
-        .findFirst().orElseThrow();
-var opened = branches.execute(root, waitForOpen);
-var oneFrame = generator.candidates(opened.observation()).stream()
-        .filter(a -> a.kind() == PlanningAction.Kind.CONTINUE).findFirst().orElseThrow();
-var sent = branches.execute(opened, oneFrame);
-var evaluated = new ContinuationEvaluator().evaluate(sent);
-// Delta: served=0, useful=0.25 s, control CPU=0.06 s, bytes=80, new keys=0.
-~~~
-
-Оценка использует `final.accruedCosts() - origin.accruedCosts()`. Например, после INSTALL, частично выполненного к t=2, его завершение в t=4 добавляет **120 B и 0 CPU-s**, поскольку CPU и первые 680 B уже были израсходованы. Прогресс текущего контакта сохраняется; достижение минимума с помощью прошлых и новых кадров даёт один обслуженный контакт. Созданные, но не использованные ключи учитываются.
-
-Снимок содержит `executionMode`. Обычный `PREDEFINED_PLAN` сохраняет прежний автоматический payload. `PLANNING_BRANCH` сохраняет ручной режим даже после `SimulationEngine.advance` для диагностической отсечки; `resume` для него отклоняется. Действия ветви исполняются через `BranchEngine`, итог оценивается через `ContinuationEvaluator`. Отсечка в конце видимого горизонта не отменяет оставшуюся подготовку и не создаёт фиктивное завершение опыта.
-
-Проверка этого этапа:
-
-~~~powershell
-.\mvnw.cmd '-Dmaven.repo.local=.tools/m2' -o -B -ntp '-Dtest=SecurityActionGeneratorTest,PlanningBranchTest,ContinuationEvaluatorTest,PlanningResultComparatorTest,PlanningContinuationIntegrationTest' test
-.\mvnw.cmd '-Dmaven.repo.local=.tools/m2' -o -B -ntp verify
-~~~
-
-**41 новый тест:** генератор 11, ветви 12, оценка 8, компаратор 6, полные вручную заданные продолжения 4. Проверены равные кандидаты и оценки при изменении скрытого расписания/будущих отказов; перестановка обхода; неудачные поколения; WAIT/CONTINUE и ресурсы; границы порогов, nonce, LOS и expiry; частичные расходы и отсутствие отмены на отсечке.
-
-Полные продолжения из действий генератора воспроизводят:
-
-| Вручную выбранное продолжение | Served | Useful, s | CPU с общей подготовкой, s | Bytes |
-|---|---:|---:|---:|---:|
-| X: INSTALL + ранний SWITCH в C1 | 3 | 37 | 0.83 | 1240 |
-| X: INSTALL в C1, SWITCH в C3 | 3 | 37 | 0.83 | 1240 |
-| Y: REUSE в C1/C2/C3 | 3 | 42 | 0.38 | 240 |
-
-Наблюдение в этих проверках снято после общей подготовки: evaluator возвращает прирост CPU **0.63 / 0.63 / 0.18 s** и ноль новых ключей; **0.20 s CPU и два ключа** уже входят в прошлое. Таблица показывает полный учёт. Отдельный тест выполняет новую цепочку PREPARE → INSTALL → SWITCH → OPEN и проверяет создание двух ключей. Это исполнение выбранных тестом продолжений, а не доказательство нахождения оптимума.
-
-Оценка отдельной ветви относится к достигнутой отсечке. `ExactHorizonPlanner` использует её для выбора победителя только на общей `evaluationEnd`; частичные оценки на разных временах не сравниваются как полные решения.
-
-## Точный поиск в конечном горизонте
-
-`ExactHorizonPlanner.plan(PlanningObservation)` обходит дерево в глубину с явным стеком. Он исследует цепочки действий, включая INSTALL → SWITCH → OPEN → CONTINUE, через существующий `BranchEngine`. Исходные контакты и `evaluationEnd` остаются неизменными. Каждый терминальный план оценивается относительно одного корня, с сохранением прошлого прогресса текущего контакта. Незавершённая к отсечке работа учитывается фактически; фиктивные STOP/отмена не добавляются.
-
-Сохранён режим `reference`: исходный DFS без объединений, кэша и отсечений. Режим `reuse-only` объединяет эквивалентные WAIT одного родителя, переиспользует полностью решённые суффиксы и сначала обходит действия обслуживания. Режим по умолчанию `accelerated` дополнительно объединяет WAIT до исполнения, применяет доказанную оптимистическую границу и проверяет уже проигрывающий канонический префикс при равенстве пяти оценок. Допустимые действия и конечный набор стартов одинаковы во всех режимах; Next/Multi различаются только наблюдаемым горизонтом.
-
-WAIT сохраняет наименьшего канонического представителя, независимо от порядка обхода. Ключ эквивалентности сохраняет время, состояния и историю ключей/SA, дедлайны, счётчики, прогресс, текущие операции/кадр, ресурсы, очередь, неопределённость, выданные ID и накопленные показатели. Текст/порядковые номера событий заменяются достаточными для продолжения агрегатами. Кэш хранит точный суффикс и присоединяет его к текущему префиксу, а не переносит старый префикс. По умолчанию сохраняется не более 50 000 записей: насыщение уменьшает повторное использование, но не полноту поиска.
-
-Сохранён прежний порядок `SERVICE_FIRST`; новый `RENEWAL_FIRST` раньше проверяет установку и подготовку обновления, необходимость которого видна в разрешённом горизонте. Это только порядок обхода, а итоговый `PlanningResultComparator` прежний. Оптимистическая граница учитывает максимально возможную доставку, обязательные OPEN/INSTALL/SWITCH/PREPARE, уже потреблённые части операций и оставшееся время каждого контекста. При равенстве пяти оценок отсекается только префикс с уже существующим первым канонически худшим отличием. Поддерево с глобальным отсечением и его предки не публикуются как независимо решённые суффиксы. Формулы и доказательства приведены в [спецификации](docs/planner-foundations.md).
-
-| Класс | Назначение |
-|---|---|
-| `ExactHorizonPlanner` | Точный DFS с переключаемыми ускорениями; единый `PlanningResultComparator` для терминальных планов. |
-| `PlannerOptions` | Независимые настройки объединения WAIT, memoization, порядка обхода, размера кэша и границы. |
-| `PlanningStateKey` | Консервативная эквивалентность состояния и накопленного результата внутри одного поиска. |
-| `PlanningOptimisticBound` | Оптимистичная лексикографическая оценка; общая граница и более сильный вариант при доказанных условиях корня. |
-| `SearchDiagnostics` | Листья, глубина, распределение действий, повторные переходы, кэш, отсечения, время генерации/исполнения/границы. |
-| `SearchLimits` | Лимиты числа узлов и времени; ноль означает отсутствие соответствующего лимита. |
-| `HorizonPlanResult` | `bestPlan`, `score`, `firstAction`, `status`, `exploredNodes`, `elapsedNanos`, `diagnostics`. |
-| `HorizonPlannerMain` | Отдельный офлайн-эксперимент на исходных X/Y с общим warmup и невыбранным первым действием; JSON и проверка повторного исполнения найденного плана. |
-
-`COMPLETE` подтверждает лучший план в конечном пространстве генератора при номинальных будущих исходах. `INCOMPLETE` означает остановку по лимиту: найденный план является только лучшим среди просмотренных терминальных продолжений. Если до листа не дошли, `score` и `firstAction` равны `null`, а план пуст. `INFEASIBLE` означает полный обход без допустимого терминального продолжения; это отличается от нехватки бюджета. Пустой горизонт даёт `COMPLETE` с пустым планом и нулевой оценкой.
-
-`exploredNodes` включает корень, терминальные, отвергнутые, переиспользованные и отсечённые состояния. Диагностика считает фактическую работу: число листьев не равно числу всех представленных полных планов. `preExecutionWaitSkips` считает WAIT, удалённые без построения снимка; прежние счётчики исполненных повторов сохраняют свой смысл. Экспортируются корневые кандидаты, `NODE_LIMIT`/`TIME_LIMIT`, глубина, листья, кэш и время генерации/исполнения/границы. Эти таймеры не обязаны суммироваться в полное время поиска. Поиск измеряется отдельно от security CPU и не продвигает модельное время. Лимит времени проверяется между операциями Java. Для воспроизводимой ограниченной выборки используйте лимит узлов без лимита времени. При `INCOMPLETE` порядок обхода может менять промежуточный план; после полного поиска канонический победитель и пять показателей от порядка не зависят.
-
-~~~java
-var observation = HorizonPlannerMain.observation(HorizonWitness.Sequence.X, 2);
-var result = new ExactHorizonPlanner(new SearchLimits(2_000_000, Duration.ofSeconds(60)),
-        PlannerOptions.accelerated()).plan(observation);
-// Check result.status() before making any optimality claim.
-// new ExactHorizonPlanner() removes both limits; large trees can take a very long time.
-~~~
-
-~~~powershell
-.\mvnw.cmd '-Dmaven.repo.local=.tools/m2' -o -B -ntp '-Dtest=ExactHorizonPlannerTest,HorizonPlannerMainTest,PlanningStateKeyTest,PlannerAccelerationTest,PlanningOptimisticBoundTest' test
-.\mvnw.cmd '-Dmaven.repo.local=.tools/m2' -o -B -ntp verify
-java -Xmx1024m -cp target/contact-aware-contacts.jar org.contactaware.security.simulation.HorizonPlannerMain target/new-reference-run 10000 0 reference
-java -Xmx1024m -cp target/contact-aware-contacts.jar org.contactaware.security.simulation.HorizonPlannerMain target/new-reuse-run 100000 0 reuse-only
-java -Xmx1024m -cp target/contact-aware-contacts.jar org.contactaware.security.simulation.HorizonPlannerMain target/new-accelerated-run 2000000 60000 accelerated
-~~~
-
-Выходной каталог должен быть новым или пустым. Для каждого X/Y и H=1/H=2 сохраняются исходное наблюдение, лимиты/настройки, полный найденный план, статус, оценка, диагностика и расходы с добавлением общей подготовки ровно один раз. Каждый найденный план повторно исполняется публичным `BranchEngine`, с проверкой оценки и достижения `evaluationEnd`. В корне уже потрачено 0.20 s CPU и создано два ключа; это прошлое, а `score` содержит только прирост. H=1 оценивает C1/C2 до t=50, H=2 — C1/C2/C3 до t=85. Их оценки нельзя выдавать за сравнение завершённых запусков двух policies.
-
-Проверки включают независимый ручной расчёт цепочки в одном контакте, полный перебор уменьшенного X/Y, перестановку обхода, каноническое равенство OPEN/REUSE, сохранение прогресса, пустой горизонт, недопустимое продолжение, частичную операцию на отсечке, лимит до/после первого терминального плана, детерминированный тест времени и экспорт CLI. Новые проверки сравнивают отдельные ускорения и их сочетания с `reference` по пяти показателям и всему каноническому плану. На малых деревьях граница каждого узла сопоставляется со всеми допустимыми терминальными потомками независимого полного обхода без кэша/отсечений, включая частичные операции/кадры, expiry, ограниченный payload и раннюю установку. Проверены насыщение кэша, независимость запусков и сохранение правильного префикса при повторном использовании суффикса.
-
-**Уменьшенный X/Y — отдельная синтетическая проверка причинности:** C1=[0,4], C2=[4,6], C3=[6,8]; C3 относится к A в X и B в Y. Старый A истекает в t=6. Каждая связная операция стоит 1 s ground CPU, в контакте требуется один uplink-кадр длительностью 1 s, downlink не требуется. Общий подготовленный запас A известен в корне; новая PREPARE длится 100 s и в этот горизонт не помещается. Служебные байты здесь равны нулю. Это не исходный профиль стоимости и не сравнение четырёх policies.
-
-| Наблюдение | Статус | Узлы reference | Узлы accelerated | Served в горизонте | Useful, s | CPU прирост, s | Первое действие |
-|---|---|---:|---:|---:|---:|---:|---|
-| Next X | COMPLETE | 8751 | 70 | 2 | 2 | 2 | OPEN |
-| Next Y | COMPLETE | 8751 | 70 | 2 | 2 | 2 | OPEN |
-| Multi X | COMPLETE | 293103 | 72 | 3 | 3 | 5 | INSTALL A |
-| Multi Y | COMPLETE | 531963 | 158 | 3 | 3 | 3 | OPEN |
-
-В X перебор выбирает INSTALL и SWITCH для A в C1 ради короткого C3. В Y дополнительной INSTALL нет. Next получает одинаковые наблюдения и возвращает одинаковые полные планы. Оценки Next и Multi заканчиваются в разное время; доказуемый результат этой проверки — изменение **раннего решения** при изменении доступного C3. Заявлять преимущество полного скользящего управления по этой таблице нельзя.
-
-**Исходный профиль X/Y.** Исторический [DFS с 10 000 узлов](docs/exact-horizon/original-10000/summary.json) был `INCOMPLETE` во всех случаях. Повторный [reference с диагностикой](docs/exact-horizon/diagnostic-reference-10000/summary.json) сохранил его планы, оценки, статусы и число узлов. Только объединение WAIT, кэш и порядок обслуживания также оказались недостаточны: при [100 000 узлов без границы](docs/exact-horizon/reuse-only-100000/summary.json) все четыре поиска остались `INCOMPLETE`. У этого промежуточного запуска был также лимит 15 s; JSON сохранён в прежней схеме до добавления `optimisticBounds` и таймеров/счётчиков отсечения. Команда `reuse-only` выше запускает новый опыт без лимита времени. Поэтому добавлена описанная выше доказанная граница.
-
-[Итоговый запуск собранного JAR](docs/exact-horizon/accelerated/summary.json), Java 21, `-Xmx1024m`, лимиты 2 000 000 узлов / 60 s на наблюдение, 22 октября 2026:
-
-| Наблюдение | Статус | Узлы | Время поиска, s | Served в горизонте | Useful, s | CPU с warmup, s | Служебные B | Первое действие |
-|---|---|---:|---:|---:|---:|---:|---:|---|
-| Next X | COMPLETE | 8425 | 1.886 | 2 | 38 | 0.32 | 160 | OPEN |
-| Next Y | COMPLETE | 8425 | 0.496 | 2 | 38 | 0.32 | 160 | OPEN |
-| Multi X | COMPLETE | 163151 | 15.798 | 3 | 37 | 0.83 | 1240 | INSTALL A |
-| Multi Y | COMPLETE | 10331 | 0.887 | 3 | 42 | 0.38 | 240 | OPEN |
-
-Все четыре плана прошли повторное исполнение; [сведения о проверке](docs/exact-horizon/accelerated/validation.json) сохраняют команду, результаты тестов и SHA-256 JAR/JSON. Next X/Y имеют одинаковые полные планы и оценки; различие времени связано с исполнением на машине, в том числе прогревом JVM, а не разными наблюдениями. Это единичные измерения, не статистический benchmark. В X Multi устанавливает и переключает A в C1 ради C3; в Y нет лишней установки. `score.newKeys = 0`, но с общей предварительной подготовкой создано два ключа во всех случаях. Next Y здесь заканчивается после C2: его 2/38/0.32/160 нельзя подменять полным результатом заданного ранее плана Y/Next 3/42/0.38/240.
-
-| Наблюдение | Оценённые листья | Макс. глубина | Удалённые WAIT-продолжения | Попадания в кэш | Отсечения |
-|---|---:|---:|---:|---:|---:|
-| Next X / Next Y | 239 | 158 | 7513 | 503 | 4261 |
-| Multi X | 39 | 163 | 335419 | 2961 | 91932 |
-| Multi Y | 59 | 179 | 21343 | 204 | 5874 |
-
-Основная нагрузка осталась в Multi X: из 498 569 исполненных переходов 403 638 — WAIT. Генерация заняла 1.984 s, исполнение 6.068 s, вычисление границ 3.296 s; остальное — ключи эквивалентности, сравнения, стек и прочая работа. Объединение убирает повторный обход поддеревьев, но пока требует построить одинаковые дочерние снимки. Это конкретная следующая возможность ускорения при необходимости. Сильная граница применяется только при явно перечисленных условиях корня; вне них используется более слабая общая граница. Этот исторический замер не охватывал 46 контактов; результаты новых пилотов приведены в разделе сравнения четырёх политик.
-
-Эти JSON и количества узлов сохранены для версии одного горизонта до подключения контроллера. Уточнение границы первого оставшегося окна станции, описанное ниже, может уменьшать количество узлов нового запуска, сохраняя канонический план и оценку. `COMPLETE` подтверждает оптимум конечного разрешённого номинального горизонта; он не доказывает глобальную оптимальность управления во времени, преимущество на реальных расписаниях или снижение риска компрометации.
-
-## Автоматическое исполнение Next/Multi с перепланированием
-
-`RecedingHorizonController` строит ограниченное наблюдение, вызывает решатель и исполняет **только первое действие**. Новый вызов поиска происходит после старта операции, полного пакета событий, завершённого кадра либо разрешённого отложенного старта. Предыдущий план не ставится в очередь исполнения. `HorizonPolicy.next()` означает H=1, `HorizonPolicy.multi(2)` — H=2; остальные алгоритмы и настройки общие.
-
-| Компонент | Что делает |
-|---|---|
-| `HorizonPlanner` | Интерфейс поиска, принимающий только `PlanningObservation`; реализован `ExactHorizonPlanner`. |
-| `HorizonPolicy` | Конфигурации NEXT/MULTI, отличающиеся только числом будущих контактов. |
-| `RecedingHorizonController` | Общий цикл первого действия и нового поиска, поддержка старта/возобновления из реального снимка. |
-| `ExecutionMode.CONTROLLED_REAL` | Полная реальная очередь и исходы операций, без автоматического запуска следующего кадра. |
-| `OperationOutcomes` | Исходы фактически выбранных операций: прерывание/отсутствие ACK; не вызывается поиском и не раскрывается в наблюдении. |
-| `ControlledSimulationResult` | Итоговый статус, реальный снимок, фактические метрики завершённого опыта и журнал наблюдений/поисков/исполненных действий. |
-| `ControlledWitnessMain` | Экспорт четырёх полных X/Y с общей подготовкой, лимитами на каждый пересчёт и отдельной статистикой поиска. |
-
-WAIT сохраняет начатые операции/кадры, CONTINUE допускает ровно один новый кадр. Реальное событие может остановить продвижение посреди кадра: его остаток сохраняется до завершения. Отменённые таймеры завершения/прерывания не становятся новыми моментами решения и не раскрывают приватные controls. Исходный снимок должен быть фактическим, без ещё не выполненных предписанных команд; уже начатая работа допустима. Warmup берётся из того же реального журнала и входит в итог ровно один раз.
-
-Контроллер исполняет только результат завершённого поиска. При `INCOMPLETE` возвращается `SEARCH_INCOMPLETE` и восстанавливаемый checkpoint, без исполнения найденного частичного победителя и без фиктивного завершения симуляции. `NO_FEASIBLE_PLAN` означает отсутствие допустимого продолжения; `EXECUTION_STALLED` защищает от бесконечного повтора немедленно отклоняемой команды в том же времени. Только `FINISHED` содержит окончательный `simulation`. Пустой прогноз сам по себе не завершает опыт: исполнитель ждёт следующего реального события или конца эксперимента.
-
-Для последовательных пересчётов уточнена оптимистическая граница: перед **первым оставшимся** окном контекста связную установку нельзя выполнить через другую НС. Если активная пара не доживает до начала окна, к минимальному OPEN добавляются SWITCH и при необходимости INSTALL; подготовка считается бесплатной. При доступном более раннем окне той же станции допускается предварительная установка, а при собственной выполняемой online-операции остаётся консервативное послабление. Генератор действий не меняется. Граница проверена против всех терминальных потомков на малом B → A примере и прежних исчерпывающих тестах; [обоснование](docs/planner-foundations.md) фиксирует условия применения.
-
-Команды (Java 21):
-
-~~~powershell
-.\mvnw.cmd '-Dmaven.repo.local=.tools/m2' -o -B -ntp '-DargLine=-Xmx1024m' verify
-.\mvnw.cmd '-Dmaven.repo.local=.tools/m2' -o -B -ntp '-DargLine=-Xmx1024m' '-Dtest=RecedingHorizonControllerTest' test
-java -Xmx1024m -cp target/contact-aware-contacts.jar org.contactaware.security.simulation.ControlledWitnessMain target/new-controlled-run 2000000 0
-# Необязательный четвёртый аргумент выбирает один опыт: X-NEXT, X-MULTI, Y-NEXT или Y-MULTI.
-~~~
-
-Последние два числовых аргумента — лимит узлов и миллисекунд **на каждый поиск**, ноль отключает соответствующий лимит. Это не общий бюджет полного запуска. Выходной каталог должен быть новым/пустым. Полные JSON включают наблюдения и полные прогнозы каждого решения, поэтому существенно больше итоговой таблицы. Тест `ControlledWitnessIntegrationTest` сохраняет проверенные результаты в новом каталоге `target/controlled-witness-*` и выводит его путь.
-
-Фактические результаты интеграционного Maven-прогона, весь интервал `[-2,85]`, включая подготовку:
-
-| Сценарий | Политика | Статус | Served | Useful, s | CPU КА+НС, s | Служебные B | Созданные ключи |
-|---|---|---|---:|---:|---:|---:|---:|
-| X: A → B → A | Next | FINISHED | 2 | 38 | 0.32 | 160 | 2 |
-| X: A → B → A | Multi | FINISHED | 3 | 37 | 0.83 | 1240 | 2 |
-| Y: A → B → B | Next | FINISHED | 3 | 42 | 0.38 | 240 | 2 |
-| Y: A → B → B | Multi | FINISHED | 3 | 42 | 0.38 | 240 | 2 |
-
-В X Multi устанавливает A в C1 ради C3. Next в C1 ещё не знает C3; при его появлении в прогнозе на начале C2 окна A уже не осталось до короткого C3. В Y дополнительной установки нет. Next X/Y до начала C2 получают одинаковые наблюдения и выбирают одинаковые действия. Все поиски завершены `COMPLETE`, все фактические запуски — `FINISHED`; итоговые метрики совпали с независимыми значениями проверочного примера. Здесь уже сравниваются **полные автоматические запуски** на общей временной шкале.
-
-| Запуск | Число поисков | Сумма рассмотренных узлов | Суммарное время поиска, s |
-|---|---:|---:|---:|
-| X/Next | 162 | 109076 | 9.038 |
-| X/Multi | 162 | 775665 | 75.429 |
-| Y/Next | 179 | 117764 | 6.062 |
-| Y/Multi | 179 | 141948 | 10.756 |
-
-Сохранены [итоговые метрики](docs/controlled-horizon/summary.json), [полные JSON запусков и решений](docs/controlled-horizon/full-traces.zip) и [протокол проверок с SHA-256](docs/controlled-horizon/validation.json). Это один последовательный прогон JVM с прогревом, не статистическая оценка производительности. **Время поиска пока не продвигает модельное время**, не уменьшает контактные окна и не входит в CPU КА/НС. Поэтому 75 s суммарного поиска X/Multi нельзя выдавать за готовность к бортовому управлению в реальном времени. Прогнозы отдельных решений перекрываются и содержат неисполненные действия: их `score` нельзя складывать; фактический результат восстанавливается из общего журнала событий.
-
-Проверки контроллера охватывают уменьшенный и исходный X/Y, исполнение только первого действия с заведомо непригодным прежним суффиксом, обновление горизонта, решения после порога обслуживания, сохранность операций/кадров, warmup, неизвестные будущие interruption/no-ACK, отсутствие ложных пробуждений от отменённых таймеров, пустой горизонт, остановку/восстановление после `INCOMPLETE` и детерминизм. Исходные X/Y запускаются в интеграционном тесте через CLI, с независимой проверкой чисел и отказом перезаписать непустой каталог.
-
-Следующее расширение — FixedPeriod/PerContact и сравнительные эксперименты — описано в разделе ниже. Аппаратная калибровка стоимости, задержка вычисления планов и модель атак остаются отдельными задачами. Успех синтетического X/Y подтверждает механизм multi-contact horizon; он не доказывает общее преимущество во всех расписаниях или снижение риска компрометации.
-
-## Четыре политики: FixedPeriod, PerContact, Next и Multi
-
-Исторический Maven `verify` после добавления baseline: **261 tests, 0 failures/errors/skipped**, `BUILD SUCCESS`. Результаты последующего ускорения и расширенных экспериментов приведены в разделе ниже. Внешние API не вызывались; HTTP-тесты используют локальный loopback.
-
-`SecurityPolicyController` теперь общий для всех четырёх политик. `SecurityPolicy` возвращает одно допустимое действие; `PolicySelection` отличает правило от настоящего результата поиска. `PolicyConfiguration` сохраняет параметры. `FixedPeriodPolicy` / `FixedPeriodConfiguration` задают период относительно успешного SWITCH. `PerContactPolicy` / `PerContactConfiguration` требуют новой активации для каждого контакта и задают `CONTACT_ONLY` либо оплачиваемую `JUST_IN_TIME` подготовку. Точные правила, включая случай T > cryptoperiod, — в [спецификации baseline](docs/baseline-policies.md).
-
-`PolicyExperimentFixtures` создаёт одинаковые входы для политик: X/Y с общей подготовкой либо без неё и префиксы из 1–46 исходных окон `ScheduleFiles.readVerified`. `FourPolicyExperimentMain` экспортирует модель, manifest с параметрами и JVM/OS, пять итоговых метрик, реальные события и журнал стоимости каждого решения. Незавершённые запуски имеют `finalMetrics=null` и отдельный `partialProgress`. У baseline `source=RULE`, `search=null`, без фиктивного сертификата оптимальности.
-
-~~~powershell
-$env:JAVA_HOME = 'C:\Program Files\Java\jdk-21.0.10'
-.\mvnw.cmd '-Dmaven.repo.local=.tools/m2' -o -B -ntp '-DargLine=-Xmx1024m' verify
-& "$env:JAVA_HOME/bin/java.exe" '-Xmx1024m' -cp target/contact-aware-contacts.jar `
-    org.contactaware.security.simulation.FourPolicyExperimentMain `
-    --scope xy --mode both --fixed-period-seconds 60 --per-contact just-in-time `
-    --max-nodes 2000000 --max-seconds 60 --out target/four-policy-new-run
-& "$env:JAVA_HOME/bin/java.exe" '-Xmx1024m' -cp target/contact-aware-contacts.jar `
-    org.contactaware.security.simulation.FourPolicyExperimentMain `
-    --scope schedule3 --cryptoperiod-seconds 5400 --fixed-period-seconds 3600 `
-    --multi-horizon 2 --cost-scale 1 --max-nodes 100000 --max-seconds 30 `
-    --out target/schedule3-new-run
-~~~
-
-Выходной каталог должен быть новым/пустым. `--policies fixed,percontact,next,multi` выбирает подмножество; `--mode prepared|autonomous|both` относится к X/Y. `--scope schedule --contact-count 12 --traffic moderate` задаёт произвольный префикс и нагрузку; прежние `schedule3`/`schedule46` сохранены. `--trace true` сохраняет полные прогнозы. По умолчанию бюджет одного поиска — 100000 узлов/5 s; для зарегистрированной сетки явно задаются 100000/10 s, затем 2000000/60 s. Нулевой лимит снимает соответствующее ограничение. `INCOMPLETE` не исполняется как точное решение.
-
-`--cost-scale` доступен только для расписаний: целый множитель фазовых длительностей и management bytes при неизменной скорости радио. Это синтетическая чувствительность, не аппаратная калибровка. Начало опыта равно первому AOS минус PREPARE; начальных ключей нет. Нагрузка `light` предлагает и требует по одному кадру 10 s в каждом направлении, `moderate` — по три; `saturated` предлагает объём для заполнения окна, сохраняя минимум один кадр на направление. Экспорт содержит геометрический потолок обслуживания без security overhead.
-
-Первоначальные пилоты и их ограничения сохранены в [историческом отчёте](docs/policy-experiments/report.md). После ускорения получены завершённый автономный Multi-X и сравнение всех четырёх политик на 46 light-контактах. Новые измерения и границы применимости — в [отчёте масштабирования](docs/search-scaling/report.md).
-
-Независимый аудит журналов без Java/MetricsCollector и построение фигур:
-
-~~~powershell
-python scripts/verify_policy_experiments.py target/four-policy-new-run --out target/policy-audit.json
-python scripts/plot_policy_comparison.py --input target/four-policy-new-run --output target/policy-figures
-~~~
-
-Для графиков используется та же Python 3.12 / `.tools/figure-python` среда, что для предыдущего набора рисунков. Экспорт — PDF/SVG/PNG 300 dpi, таблица, подписи и SHA-256. Режим с хотя бы одним незавершённым запуском целиком пропускается и отмечается в provenance; пропущенные результаты не рисуются как нулевые. Старые `simulation-figures` ниже относятся к заданным вручную планам; новый набор использует решения реальных контроллеров.
-
-## Масштабирование точного поиска и зарегистрированная сетка
-
-[Протокол](docs/experiment-grid.md) заранее фиксирует префиксы 3/6/12/24/46, три нагрузки, cryptoperiod 5400/7200 s, FixedPeriod T1800/T3600/T7200 и H1/H2/H3. Полная сетка содержит 210 конфигураций; статус выполнения каждой хранится отдельно от плана.
-
-`PlanningActionReduction` объединяет эквивалентные WAIT до построения снимков и проверяет проигрывающий канонический префикс. `PlanningOptimisticBound` учитывает неизбежную подготовку, текущие операции/кадры, геометрически достижимые контакты и дискретность полезных кадров. PREPARE невидимых станций сохраняются: их завершение может добавить полезный момент решения. Режим `reference` остаётся эталоном для полного перебора малых сценариев.
-
-~~~powershell
-python scripts/run_experiment_grid.py --output target/grid-new --mode growth
-python scripts/run_experiment_grid.py --output target/grid-new --mode demand --resume
-python scripts/run_experiment_grid.py --output target/grid-new --mode horizon --resume
-python scripts/summarize_search_scaling.py --input target/example-run --output target/example-summary --figures
-~~~
-
-Исполнитель сетки запускает JVM последовательно, сохраняет SHA-256 JAR/расписания/протокола, все попытки и причины остановки. `--plan-only` создаёт план без запусков; `--mode all` включает всю сетку. `--resume` требует тех же исходных файлов и сборки. При исчерпании обоих бюджетов большие префиксы той же конфигурации могут получить явный `NOT_RUN_AFTER_BUDGET_LIMIT`. Отчётный скрипт экспортирует таблицы запусков/решений, win/tie/loss по пяти критериям, PDF/SVG/PNG и provenance. Незавершённые итоги остаются пустыми, а конфигурации T/H не смешиваются.
-
-**Проверенный срез 22 октября 2026, сборка v2:** Maven `verify` — **294 tests, 0 failures/errors/skipped**, BUILD SUCCESS. Из 134 конфигураций стадий 1–4 завершены 111; 14 остановлены по бюджету поиска, 9 больших префиксов не запускались по зарегистрированному правилу. Ещё 76 конфигураций расширенной сетки не запрашивались. Независимый Python-аудит проверил 156 фактических запусков/попыток (140 попыток сетки и 16 X/Y), включая частичный учёт незавершённой работы. В CSV сохранены 22007 решений; полные итоговые метрики есть только у FINISHED.
-
-Автономный Multi-X завершает все 165 точных решений: **3 контакта / 37 s / 0.83 s CPU / 1240 B / 2 новых ключа**. Next-X получает 2 / 38 s / 0.12 s / 160 B / 0; в Y обе политики совпадают. На 46 light-контактах при cryptoperiod=7200 s Next/Multi совпали по всем пяти метрикам (46 / 920 s / 22.91 s / 34680 B / 62), но поиск занял соответственно 14.531/23.230 s. В 11 сопоставимых завершённых ISS-конфигурациях H2 не улучшил итог H1; незавершённые случаи не включены в это сравнение. При росте префикса также растёт каталог известных контекстов: 2/5/9/14/17, поэтому это не изолированный эксперимент по длине расписания.
-
-Полные результаты и границы выводов: [отчёт](docs/search-scaling/report.md), [причины оставшегося роста поиска](docs/search-scaling/remaining-search-limits.md), [все попытки CSV](docs/search-scaling/tables/runs.csv), [каждое решение CSV](docs/search-scaling/tables/decisions.csv), [покрытие 210 конфигураций](docs/search-scaling/tables/grid-coverage.csv). Рисунки для статьи собраны в [research-figures-v2.zip](docs/search-scaling/research-figures-v2.zip): пять PDF/SVG/PNG, подписи, таблицы и инструкция для Overleaf. [experiment-evidence-v2.zip](docs/search-scaling/experiment-evidence-v2.zip) содержит замороженный JAR, исходники, журналы и проверки; [хеши архивов](docs/search-scaling/artifact-manifest.json). Генерируемые таблицы, рисунки и ZIP хранятся локально и исключены из Git; скрипты, спецификации, отчёты и компактные результаты проверки остаются доступными для версионирования. Исходные `data/` по-прежнему восстанавливаются отдельно.
-
-~~~powershell
-python scripts/plot_policy_comparison.py --input target/search-scaling-xy-v2 --output target/xy-figures-new
-python scripts/plot_experiment_coverage.py --plan target/search-scaling-grid-v2/plan.json --registry target/search-scaling-grid-v2/registry.json --output target/grid-coverage-new
-~~~
-
-Следующее ускорение требует доказанных границ для полезного трафика в контактах вне множества обслуживаемых и для отдельных окон при незавершённом INSTALL. Приближённый режим пока не добавлен: незавершённый результат не исполняется как точный. Для отдельной оценки влияния длины расписания нужен опыт с неизменным каталогом разрешённых станций.
-
-Превосходство по ресурсам/обслуживанию не означает меньшего риска компрометации. Вычислительное время поиска измеряется отдельно и пока не вычитается из контактных окон. Следующий исследовательский вывод должен опираться на сопоставимые завершённые клетки: где дополнительный прогноз меняет результат, где даёт равенство, и какой вычислительной ценой.
-
-## Графики для статьи
-
-Набор [simulation-figures](docs/simulation-figures/README.txt) содержит четыре рисунка по фактическим журналам X/Y: итоговое сравнение, временную диаграмму, разбивку затрат и накопленные результаты. Экспорт: **векторные PDF, SVG с редактируемым текстом и PNG 600 dpi**, английские подписи, CSV, LaTeX-рисунки/таблица и исходные JSON с SHA-256. Общая предварительная подготовка включена; планы остаются заранее заданными, параметры — синтетическими.
-
-~~~powershell
-python -m pip install --target .tools/figure-python -r scripts/requirements-figures.txt
-python scripts/plot_security_simulation.py --input docs/simulation-figures/source --output target/figure-reproduction
-~~~
-
-Использована Python 3.12. Скрипт до построения сверяет журнал событий, `metrics`, `summary.json` и независимый `verification.json`. Проверяются CPU по каждому узлу, направления трафика, полезное время, обслуживание и общий PREPARE. Новые данные можно передать через `--input` после запуска `WitnessSimulationMain`; Java-код и подготовка контактов для визуализации не менялись. Инструкции для Overleaf и ограничения интерпретации находятся в README набора.
-
-Генерируемые каталоги `docs/simulation-figures/{figures,data,latex}`, `manifest.json` и ZIP для Overleaf исключены из Git и хранятся локально. Исходные JSON, подписи и протокол проверки остаются доступными для версионирования. Для сборки набора и архива после клонирования:
-
-~~~powershell
-python scripts/plot_security_simulation.py --input docs/simulation-figures/source --output docs/simulation-figures
-Compress-Archive -LiteralPath docs/simulation-figures -DestinationPath docs/simulation-figures.zip -Force
-~~~
-
-Архив `docs/simulation-figures.zip` содержит все рисунки и данные. Проверено: четыре PDF без растровых изображений со встроенными шрифтами; редактируемый текст SVG; разрешение PNG; побайтовая повторяемость всех 12 файлов рисунков, CSV и LaTeX; обнаружение намеренно внесённого расхождения итоговой CPU. Результаты проверки сохранены в `docs/simulation-figures/quality-check.json`.
-
-## Первый реальный запуск
-
-Выбран ISS, NORAD **25544**, период **2026-10-10 00:00:00Z — 2026-10-11 00:00:00Z**. Все даты внутри данных — UTC. Данные получены 11 октября 2026. Координаты **32 станций** взяты из публичных observation records SatNOGS за эти сутки, включая высоту и ссылку на конкретную запись. В Orekit используется тот же набор станций.
-
-Файлы результата:
-
-- `data/runs/iss-20261010/satnogs/dataset.json` — нормализованные окна, станции, параметры отбора, происхождение и ограничения.
-- `data/runs/iss-20261010/satnogs/raw/` — все 4 страницы исходного ответа API с URL, временем получения, HTTP-заголовками и SHA-256.
-- `data/runs/iss-20261010/orekit/dataset.json` — геометрические окна и все использованные исходные снимки.
-- `data/runs/iss-20261010/comparison/comparison.json` — полные распределения и определения метрик; рядом `comparison.csv`.
-- `data/runs/iss-20261010/schedule/` — выбранное расписание, отчёт отбора и отдельный анализ исходных и выбранных окон; определения и результаты ниже.
-- `data/runs/iss-20261010/verification.json` — результаты автономного воспроизведения и проверки численной сходимости.
-- `data/sources/celestrak-iss-20261011/gp.json` — публичные GP JSON элементы CelesTrak, эпоха **2026-10-10T18:56:31.282080Z**.
-- `data/sources/earth-20261011/` — снимки UTC/TAI и IERS EOP. Для выбранного периода значения EOP прогнозные; это отражено в исходных флагах `P`.
-
-Из 81 полученной observation record 67 соответствуют выбранным завершённым статусам; 14 исключены. После нормализации остаются 67 окон. Фактические результаты при постоянной геометрической маске **10°** и определении короткого окна **duration < 300 s**:
-
-| Показатель | SatNOGS | CelesTrak + Orekit |
-|---|---:|---:|
-| Число окон | 67 | 146 |
-| Средняя длительность, s | 442.99 | 329.89 |
-| Медианная длительность, s | 432.00 | 358.02 |
-| Средний signed gap соседних записей, s | 754.21 | 252.92 |
-| Средний gap повторных окон одной GS, s | 18152.17 | 10133.31 |
-| Смены GS в хронологическом списке | 66 / 66 пар | 144 / 145 пар |
-| Пересекающиеся соседние пары | 37 | 103 |
-| Короткие окна | 13 / 67 (19.40%) | 32 / 146 (21.92%) |
-
-82 геометрических окна не пересекаются ни с одной выбранной observation той же станции; у 3 observation нет пересечения с геометрическими окнами при маске 10°. Это диагностическое сравнение доступности записей, **не оценка точности орбит или качества радиоканала**. У SatNOGS собственные границы записи/маски, расписание наблюдений и selection bias. Нельзя приписать всю разницу только отсутствующим наблюдениям.
-
-## Сборка и запуск
-
-Нужен JDK 21. Maven Wrapper фиксирует Maven 3.9.9, Orekit 13.1.9 задан в `pom.xml`.
-
-```powershell
-# Указать путь к своему JDK, если JAVA_HOME не настроен:
-$env:JAVA_HOME = 'C:\Program Files\Java\jdk-21.0.10'
-.\mvnw.cmd '-Dmaven.repo.local=.tools/m2' verify
-& "$env:JAVA_HOME/bin/java.exe" -jar target/contact-aware-contacts.jar help
-```
-
-Первое скачивание Maven/зависимостей требует сети. Тесты не обращаются к внешним API; HTTP-тесты поднимают только локальный сервер. Каталог `data/` хранится локально и исключён из Git вместе с приватными файлами и локальными настройками. После клонирования перед полным запуском тестов и офлайн-воспроизведением необходимо отдельно восстановить исходные снимки в `data/sources` и наборы в `data/runs/iss-20261010`: геометрические и CLI-тесты используют эти файлы.
-
-Воспроизведение опубликованного здесь примера **без внешней сети**:
-
-```powershell
-.\scripts\reproduce.ps1 -JavaCommand "$env:JAVA_HOME/bin/java.exe" -OutputDirectory target/reproduction
-```
-
-Скрипт повторно строит SatNOGS dataset из сырых страниц, генерирует Orekit dataset, пересчитывает сравнение, выбирает расписание с guard 0 s и анализирует исходный и выбранный наборы. Проверяется точное совпадение SHA-256 13 файлов: обоих `contacts.json`, двух результатов сравнения, трёх файлов расписания и шести файлов анализа. Затем проверяется весь набор из 32 станций с шагом контроля событий 7 s вместо 30 s. При повторном запуске укажите новый `OutputDirectory`. Снимки не перезаписываются. После первой загрузки Maven и зависимостей сборка также доступна без сети: `.\mvnw.cmd '-Dmaven.repo.local=.tools/m2' -o verify`.
-
-Новый онлайн-импорт (используйте завершённый период и новый каталог):
-
-```powershell
-java -jar target/contact-aware-contacts.jar satnogs --norad 25544 --start 2026-10-10T00:00:00Z --end 2026-10-11T00:00:00Z --out data/new-run/satnogs
-```
-
-Опции: `--stations SATNOGS-2987,SATNOGS-3905`, `--statuses good,bad,unknown`, `--max-pages 1000`. Фильтр станций необязателен. По умолчанию сохраняются завершённые good/bad/unknown; failed и future исключаются. `good` не означает взаимную аутентификацию или полноценную сессию КА–НС.
-
-Получение свежих орбитальных/земных данных:
-
-```powershell
-java -jar target/contact-aware-contacts.jar fetch-orbit --norad 25544 --format json --out data/new-sources/orbit
-java -jar target/contact-aware-contacts.jar fetch-earth-data --out data/new-sources/earth
-```
-
-CelesTrak выдаёт текущий набор элементов, **не историю на произвольную дату**. Не используйте сегодняшние элементы для старых периодов. Выбирайте период рядом с эпохой элементов либо передавайте сохранённый публичный TLE/GP JSON нужной эпохи. Использованный `fetch-orbit` каталог служит двухчасовым кэшем; новый снимок сохраняйте в новый каталог не чаще одного раза за обновление. При любом HTTP-ответе, отличном от 200, клиент останавливается без повторов/редиректов. То же относится к 429 и 5xx.
-
-Пример генерации из сохранённых снимков (другой выходной каталог):
-
-```powershell
-java -jar target/contact-aware-contacts.jar orekit --norad 25544 --start 2026-10-10T00:00:00Z --end 2026-10-11T00:00:00Z --orbit data/sources/celestrak-iss-20261011/gp.json --stations data/runs/iss-20261010/satnogs/stations.json --orekit-data data/sources/earth-20261011 --min-elevation-deg 10 --out data/new-run/orekit
-java -jar target/contact-aware-contacts.jar compare --satnogs data/runs/iss-20261010/satnogs/dataset.json --orekit data/new-run/orekit/dataset.json --short-seconds 300 --out data/new-run/comparison
-```
-
-Можно передать собственный `stations.json`: массив объектов `id`, `name`, `latitudeDeg`, `longitudeDeg`, `altitudeMeters`, `coordinateSource`. Координаты должны иметь документированный источник. Генератор не требует наличия наблюдений для этих станций. Для сравнения проверяются одинаковые NORAD, период, ID и координаты станций.
-
-## Контракт данных и нормализация
-
-`ContactWindow`: `id`, `satelliteId`, `groundStationId`, `start`, `end`, `linkRateBps`, `expectedDataBytes`, `sourceRecordIds`. ID — строки (`NORAD-25544`, `SATNOGS-2987`, `satnogs-15175981`). Производные gap/duration не дублируются в JSON. `contacts.json` содержит чистый массив; `dataset.json` — этот же массив с метаданными. Это версия схемы 1.0.
-
-`linkRateBps` и `expectedDataBytes` остаются `null`: передатчик baud не равен измеренной скорости полезных данных, а спрос на передачу из API не известен. Симулятор получает явные скорость, кадры и нагрузку через `SimulationContact.PayloadProfile`; неизвестные значения из геометрических данных автоматически не заполняются. Для будущего сравнения policies профиль должен быть одинаковым.
-
-SatNOGS запрос использует `norad_cat_id`, `start__lt=end`, `end__gt=start`, обходит `Link: rel="next"` до конца и повторно проверяет NORAD, GS, статус и даты локально. Временной диапазон полуоткрытый `[start,end)`; пересекающие его записи обрезаются по границе. Дубли ID удаляются, конфликтующие версии и изменившиеся координаты GS вызывают ошибку. Пересекающиеся/соприкасающиеся записи **одной** станции объединяются с сохранением всех source IDs, чтобы несколько transmitter observations не создавать фиктивные переходы GS. Исходные записи всегда остаются в `raw/`. Если достигнут `max-pages`, готовый dataset не публикуется.
-
-Окна **разных** станций могут пересекаться. Импортёр сохраняет их как альтернативные возможности. Команда `schedule-select` выполняет отдельный детерминированный выбор непересекающейся последовательности для эксперимента с одним радиоканалом. Будущие security policies должны использовать одинаковое выбранное расписание. Передавать отсортированный набор альтернатив как уже выполненное расписание нельзя. Исходный пользовательский `data/contacts.json` не используется: это отдельный старый синтетический пример с опечатками `satellitedId`/`exceptedDataBytes`.
-
-## Выбор расписания и анализ multi-contact характеристик
-
-Допущения первой модели: один спутник, не более одной одновременной связи с GS; выбираются **целые исходные окна**, без обрезки, разделения или сдвига. Все станции из входного набора считаются доступными в своих геометрических окнах. Технический `switchGuardSeconds` нужен только при смене GS: `next.start − previous.end >= guard`; при той же GS достаточно непересечения. По умолчанию guard равен 0 s. Соприкасающиеся границы допустимы при нулевом guard. Ни длительность окна, ни этот guard не задают время криптографического handshake.
-
-Цели сравниваются последовательно, без весовых коэффициентов:
-
-1. Максимальная сумма длительностей выбранных окон.
-2. Минимальное число смен GS среди расписаний с той же длительностью.
-3. Лексикографически минимальная последовательность контактов по `(start, end, id)`, строки ID сравниваются через Java `String.compareTo`. При равном префиксе короче последовательность считается первой.
-
-DP хранит лучшее расписание, заканчивающееся каждым контактом. Для очередного окна проверяются **все** совместимые предшественники и вариант начать с этого окна. Допустимость следующего перехода и дополнительная смена GS зависят только от последнего контакта; поэтому лучший путь к этому контакту достаточен. Финал — лучший из всех путей и пустого расписания. Окна сортируются по `(start, end, id)`, то есть образуют ациклический граф. Длительности и guard сравниваются точно с наносекундной точностью через `Duration` и десятичное представление guard; округление статистик не влияет на отбор. Проверяются O(n²) переходов; текущая простая реализация копирует пути, поэтому худшая оценка времени O(n³), памяти O(n²). Для набора 146 окон это небольшой расчёт.
-
-Оптимальность относится к выбору целых окон при перечисленных ограничениях, а не к произвольному переключению станций внутри окна. `linkRateBps` и `expectedDataBytes` остаются неизвестными. Security state, стоимость управления ключами и будущие результаты policies не участвуют в отборе.
-
-Команды для нового каталога (сохранённый baseline уже находится в `data/runs/iss-20261010/schedule`):
-
-```powershell
-java -jar target/contact-aware-contacts.jar schedule-select --dataset data/runs/iss-20261010/orekit/dataset.json --switch-guard-seconds 0 --out data/new-run/schedule
-java -jar target/contact-aware-contacts.jar analyze-gaps --dataset data/new-run/schedule/schedule.json --out data/new-run/schedule/analysis
-java -jar target/contact-aware-contacts.jar analyze-gaps --dataset data/runs/iss-20261010/orekit/dataset.json --out data/new-run/schedule/candidate-analysis
-```
-
-`analyze-gaps` также принимает SatNOGS `dataset.json`; необязательный `--short-seconds` по умолчанию равен 300. Выходные каталоги должны быть новыми или пустыми. `--switch-guard-seconds` принимает неотрицательные числа с точностью до 9 знаков после запятой; отдельные запуски с 30 и 60 s можно использовать для будущего sensitivity analysis.
-
-В `schedule/` сохраняются:
-
-- `selected-contacts.json`: исходные `ContactWindow` без изменений контракта.
-- `schedule.json`: спутник, период, относительный путь и тип исходного dataset, SHA-256, алгоритм, версии алгоритма и конфигурации 1.0, порядок целей, guard и выбранные окна. Относительные пути позволяют переносить дерево данных; связь с исходным dataset и его raw snapshots проверяется при анализе расписания.
-- `selection-report.json`: количества, суммы длительностей, смены GS, **все** пересекающиеся пары кандидатов, проверка ограничений и ID выбранных/невыбранных окон. Невыбранные окна — неиспользованные альтернативы, а не failed communications. Проверка ограничений сама по себе не является независимым доказательством оптимальности; за оптимальность отвечают DP и проверки с независимыми эталонами.
-- `analysis/` и `candidate-analysis/`: по три файла `gap-analysis.json`, `gap-analysis.csv`, `same-gs-recurrence.csv`. JSON содержит метаданные, SHA-256 входа, агрегаты, все adjacent/recurrence пары и незанятые интервалы. CSV `metric,value` разворачивает тот же отчёт; отдельный recurrence CSV содержит одну строку на пару с GS, ID, временами, gap, диапазоном и четырьмя признаками временной eligibility.
-
-Определения нового анализа:
-
-- Adjacent gap: `next.start − previous.end` в порядке `(start,end,id)`. Для выбранного расписания неотрицателен; для полного набора может быть отрицательным. Среднее/медиана полного набора не описывают паузы реально выполненных сеансов.
-- Same-GS recurrence gap: `next.start − previous.end` между последовательными появлениями **конкретной GS**, даже если между ними выбраны другие станции. A 10:00–10:08 → B 10:20–10:27 → A 11:00 даёт recurrence A = 52 min.
-- Взаимоисключающие диапазоны recurrence: `[0,1800]`, `(1800,3600]`, `(3600,7200]`, `(7200,21600]`, `(21600,+∞)` секунд. Отрицательные gaps учитываются отдельно как overlaps и не входят ни в диапазоны, ни в eligibility.
-- Temporal reuse eligibility: `0 <= recurrence gap <= maxReuseGap`, пороги 1800/3600/7200/21600 s. Знаменатель всех долей — **все пары повторных появлений одной GS**; если есть отрицательные gaps, сумма долей пяти диапазонов меньше 1. При отсутствии пар доли `null`.
-- Длительность, adjacent gap и recurrence gap имеют min/max/mean/median. Медиана чётной выборки — среднее двух центральных значений. Пустые распределения имеют count 0 и `null` статистики. Короткий контакт: строго `duration < shortContactThresholdSeconds`.
-- `sumContactDurationSeconds` — сумма длительностей, которая у альтернатив может учитывать одно время несколько раз. `scheduledContactDurationSeconds` заполняется только для выбранного расписания. `unionAvailableSeconds` — длина объединения окон; `timeWithoutAnyContactSeconds` — дополнение объединения **внутри всего периода, включая оба края**. Для выбранного расписания это также `timeWithoutSelectedContactSeconds`. Соприкасающиеся окна не создают паузу.
-- Контакты подсчитываются для всех GS исходного cohort, включая нули у невыбранных станций. Указано также число активных GS. Смены GS и adjacent same-GS пары разделяются; в полном наборе это только характеристика хронологического списка.
-
-### Фактический результат: ISS, 10 октября 2026, guard 0 s
-
-Входной SHA-256: `881247220bc1ea6b43cd7559badabc9498dff4230ea1c7b410ef69633fc4aa2f`. Исходные SatNOGS/Orekit datasets сохранены без изменений. Из 146 кандидатов выбрано **46**, оставшиеся **100** — неиспользованные альтернативы. Найдено **565** пересекающихся пар кандидатов (не только соседних); выбранное расписание прошло все проверки ограничений.
-
-| Показатель | Полный Orekit набор | Выбранное расписание |
-|---|---:|---:|
-| Контакты / активные GS | 146 / 32 | 46 / 17 |
-| Сумма длительностей, s | 48164.295044 | 14856.829834 |
-| Объединение окон, s | 16341.990051 | 14856.829834 |
-| Время вне объединения за сутки, s | 70058.009949 | 71543.170166 |
-| Средняя / медианная длительность, s | 329.89 / 358.02 | 322.97 / 359.24 |
-| Adjacent gap: min / max, s | −409.50 / 7574.42 | 4.63 / 7574.42 |
-| Adjacent gap: mean / median, s | 252.92 / −294.63 | 1555.14 / 1005.56 |
-| Смены GS в списке / adjacent same-GS пары | 144 / 1 | 45 / 0 |
-| Короткие контакты < 300 s | 32 (21.92%) | 10 (21.74%) |
-| Same-GS recurrence пары | 114 | 29 |
-| Same-GS gap: min / max, s | 5400.32 / 53949.84 | 5453.86 / 53949.84 |
-| Same-GS gap: mean / median, s | 10133.31 / 5481.81 | 17062.31 / 5556.06 |
-
-Распределение same-GS recurrence; доли внутри соответствующего набора:
-
-| Диапазон gap | Полный Orekit, 114 пар | Выбранное, 29 пар |
-|---|---:|---:|
-| [0, 30 min] | 0 (0%) | 0 (0%) |
-| (30 min, 1 h] | 0 (0%) | 0 (0%) |
-| (1 h, 2 h] | 99 (86.84%) | 16 (55.17%) |
-| (2 h, 6 h] | 1 (0.88%) | 4 (13.79%) |
-| > 6 h | 14 (12.28%) | 9 (31.03%) |
-
-Накопленная temporal reuse eligibility:
-
-| maxReuseGap | Полный Orekit | Выбранное |
-|---|---:|---:|
-| 30 min | 0 / 114 (0%) | 0 / 29 (0%) |
-| 1 h | 0 / 114 (0%) | 0 / 29 (0%) |
-| 2 h | 99 / 114 (86.84%) | 16 / 29 (55.17%) |
-| 6 h | 100 / 114 (87.72%) | 20 / 29 (68.97%) |
-
-Выбранное расписание содержит возвраты к GS после других станций, но не содержит соседних контактов одной GS. В нём нет temporal reuse кандидатов при пороге до часа. Следовательно, этот конкретный день позволяет исследовать temporal reuse при более длинных порогах; он не доказывает полезность какой-либо security policy и не представляет все возможные профили миссий. Eligibility **не разрешает reuse ключа**: будущий эксперимент обязан дополнительно учитывать cryptoperiod, key age, авторизацию GS и состояние SA.
-
-### Проверка выбора и воспроизводимости
-
-Контактная подсистема содержит 38 тестов без обращения к внешнему API; HTTP-тесты поднимают только локальный сервер. Проверки покрывают вложения, частичные пересечения, касание границ, пустой/singleton набор, плохие даты/ID, точность до наносекунды, guard, tie-break, A→B→A и границы диапазонов. Полный перебор всех подмножеств в **250 наборах с фиксированным seed** проверяет все три цели DP и неизменность результата после перемешивания входа. Независимый weighted interval DP проверяет максимальную длительность на реальных 146 окнах при guard 0. CLI-тест воспроизводит файлы побайтово и проверяет SHA-256 исходного dataset.
-
-`scripts/reproduce.ps1` заново строит весь конвейер офлайн, сверяет 13 файлов с baseline и проверяет сходимость геометрии. Отчёт проверки сохраняется в `<OutputDirectory>/verification.json`; сохранённое свидетельство этого этапа — `data/runs/iss-20261010/schedule/verification.json`. Ранее созданный `data/runs/iss-20261010/verification.json` относится к предыдущему этапу импорта/геометрии и не перезаписывается.
-
-## Геометрическая модель
-
-Поддержаны одиночный 2LE/3LE TLE с проверкой checksum и CelesTrak GP JSON с OMM-названиями полей. XML/KVN OMM пока не поддержаны. JSON сохраняет каталоговые номера более 99999 без преобразования в ограниченный текстовый TLE. Проверяются NORAD, теория SGP4, TEME/UTC/EARTH и единицы mean motion. `TLEPropagator` выбирает SGP4/SDP4; применяется TEME → ITRF (IERS 2010, simple EOP), WGS84 и постоянная elevation mask.
-
-Все предоставленные станции исследуются на всём периоде независимо от присутствия SatNOGS observations. Сначала ищутся экстремумы elevation, затем пересечения маски уточняются бисекцией. Это позволяет обнаруживать короткие касательные пролёты, оба конца грубой ячейки которых находятся ниже маски. Границы периода учитываются, в том числе когда контакт уже начался до начала периода.
-
-По умолчанию `max-check-seconds=30`, `root-tolerance-seconds=0.001`, `max-epoch-distance-hours=72`. Допустимый шаг контроля `(0,60]` s. Расстояние до эпохи проверяется на **обоих** концах интервала, в любую сторону; 72 h — выбранное ограничение прототипа, не гарантия точности орбиты. Для долгой кампании потребуются несколько сохранённых наборов элементов и явная политика переключения эпох.
-
-UTC/TAI и EOP обязательны. Пустые датированные строки в конце `finals2000A.all` исключаются из покрытия: Orekit иначе может трактовать их пустые поля как нулевые EOP. Выход за доступный диапазон EOP запрещён. Оригинал IERS сохраняется побайтово, фильтрация делается в памяти. Геометрия не моделирует затенение местными объектами, погоду, бюджет радиолинии, рефракцию, доступность антенны, операции станции или наличие разрешения на связь. Высота SatNOGS трактуется как WGS84 geodetic altitude; её исходный datum может быть не документирован.
-
-## Метрики и научная интерпретация
-
-- Duration: `end − start`, в секундах; min, median, mean, p95, max.
-- Signed adjacent gap: `start[i+1] − end[i]` после сортировки по start/end/GS/id. Отрицательный gap означает пересечение. При вложенных интервалах это не время отсутствия связи.
-- Same-station gap: аналогичная разность между последовательными окнами одной GS.
-- Union blackout: положительные внутренние интервалы между объединёнными окнами всех станций; края исследуемого периода исключены.
-- Chronological station changes: число соседних записей с разными GS. Это характеристика упорядоченного набора, **не число реально выполненных handover**.
-- Short-window fraction: доля окон строго короче `short-seconds`. Порог сохраняется в отчёте.
-- Unmatched: отсутствие положительного пересечения по времени с окном той же GS во втором наборе. Не проверка точности AOS/LOS.
-
-Квантили вычисляются линейной интерполяцией; при пустой выборке статистика и доли `null`, а не искусственный ноль. Сравнение предназначено для изучения распределений и смещений выборки. Маска 10° в примере не считается равной индивидуальным маскам/настройкам станций SatNOGS. Для статьи нужны чувствительность к маске, другие периоды/спутники, независимая выборка станций и явные ограничения планировщика. Показанный запуск подтверждает работу конвейера, но не гипотезу о преимуществах управления ключами.
-
-Допустимое описание данных: *Contact opportunities were generated with Orekit from public CelesTrak general-perturbation orbital elements and publicly documented SatNOGS ground-station coordinates. Published SatNOGS observation intervals were retained as an external reference dataset.* Это не реальные измерения защищённых сеансов, не проверка на бортовом оборудовании и не заявление о соответствии CCSDS SDLS.
-
-## Код и проверки
-
-Чистая Java, без Spring-зависимости, базы данных и frontend:
-
-| Класс | Ответственность |
-|---|---|
-| `Model` | Неизменяемые окна, станции, временной диапазон и dataset |
-| `SatnogsImporter` | Пагинация, фильтрация, нормализация и сохранение observation records |
-| `PublicHttp`, `Snapshots`, `JsonFiles` | HTTP, архивирование, проверка SHA-256 и JSON |
-| `OrbitInputs` | TLE/GP JSON, UTC и корректное покрытие EOP |
-| `OrekitContactGenerator` | Геометрия и события elevation |
-| `DatasetComparison` | Распределения и сравнение одинаковых наборов станций |
-| `schedule.ContactScheduleSelector`, `ScheduleValidator` | DP выбора целых окон и независимая проверка ограничений |
-| `schedule.ScheduleFiles` | Сохранение расписания, конфигурации, SHA-256 и проверка источника |
-| `analysis.ContactGapAnalyzer`, `GroundStationRecurrenceAnalyzer` | Adjacent gaps, возвраты к GS, объединение окон и временная eligibility |
-| `analysis.ContactStatistics`, `GapAnalysisFiles` | Статистики и воспроизводимые JSON/CSV отчёты |
-| `Main` | CLI-оболочка над модулем |
-
-Тесты охватывают фильтры, пагинацию, конфликты, неполные загрузки, 429, границы периода, пересечения и формулы метрик; проверку целостности; TLE/GP JSON эквивалентность; совпадение AOS/LOS с elevation mask; плотную независимую проверку точек видимости; короткий касательный пролёт; сходимость и детерминизм; слишком далёкую эпоху и отсутствие EOP. См. `target/surefire-reports/` после `verify`.
-
-## Источники и атрибуция
-
-- SatNOGS Network / Libre Space Foundation: [API documentation](https://docs.satnogs.org/projects/satnogs-network/en/stable/api.html), [API filters](https://gitlab.com/librespacefoundation/satnogs/satnogs-network/-/blob/master/network/api/filters.py). Данные API распространяются под [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/); сохраняйте атрибуцию, лицензию и сведения о преобразованиях при распространении производных наборов. Каждый raw response имеет точный URL и хеш.
-- CelesTrak / T. S. Kelso: [GP formats and units](https://celestrak.org/NORAD/documentation/gp-data-formats.php), [usage policy](https://celestrak.org/usage-policy.php). Снимок CelesTrak получен один раз и повторно используется локально.
-- IERS: [finals2000A.all](https://datacenter.iers.org/data/9/finals2000A.all); Orekit data: [UTC/TAI table](https://gitlab.orekit.org/orekit/orekit-data/-/raw/main/tai-utc.dat).
-- [Orekit](https://www.orekit.org/) 13.1.9 и Hipparchus 4.0.3 — орбитальные вычисления; версии фиксированы сборкой. Maven Wrapper предоставлен Apache Maven.
-
-Первоначальные снимки CelesTrak и IERS загружены диагностическим HTTPS-запросом перед первым запуском Java; `retrievedAt` их sidecar-файлов — локальное время завершения загрузки. Записи, полученные Java HTTP-клиентом, дополнительно сохраняют серверный `Date`, который может отличаться от часов машины. На физические времена контактов это не влияет.
+| `src/main/java/` | Contact-data preparation, lifecycle model, executor, simulator and planners |
+| `src/test/java/` | Unit and integration checks |
+| `scripts/` | Experiment adapters, journal analysis, plotting, document generation and packaging |
+| `docs/aitu-revision-v2/` | Current article, supplement, protocol and compact evidence |
+| `docs/aitu-revision/` | Prior AITU inputs and evidence; also required by the current generators |
+| Other `docs/` folders | Historical specifications, audits and results, kept with their original scope |
+| `data/`, `target/`, `.tools/` | Local data, raw runs, build products and tools; excluded from Git |
+
+Core contracts: [security model](docs/security-model-stage-1.md),
+[cost model](docs/formal-cost-model-and-horizon/main.tex),
+[planner foundations](docs/planner-foundations.md), and
+[baseline policies](docs/baseline-policies.md).
+
+Historical checkpoints: [final registered campaign](docs/final-research/report.md),
+[PC2](docs/practical-controller/pc2/README.md),
+[R1](RESEARCH_VALIDATION_RESULTS.md), and
+[earlier security synthesis](docs/research-synthesis/report.md).
+
+Historical evidence is retained rather than pooled with the current denominators.
+Operation costs are synthetic model parameters. Native Word equations are OMML,
+not MathType; outstanding author and journal requirements remain explicit in the
+submission checklist.

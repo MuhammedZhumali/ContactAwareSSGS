@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "copiedPayloadRoot": "C:\\Users\\Muhalek\\ContactAwareSS\\target\\aitu-revision-v2-portable",
+  "regeneratedOutputsByteIdentical": {
+    "target/aitu-revision-v2/root-tables.json": true,
+    "target/aitu-revision-v2/root-tables.csv": true,
+    "target/aitu-revision-v2/controller-tables.json": true,
+    "target/aitu-revision-v2/controller-tables.csv": true,
+    "target/aitu-revision-v2/audit.json": true,
+    "target/aitu-revision-v2/input-descriptors.json": true
+  },
+  "expectedHashes": {
+    "target/aitu-revision-v2/root-tables.json": "d5584282627f1186a6baae4da57e8a8caf9a2599c6fca2a24df299cfa25d7e07",
+    "target/aitu-revision-v2/root-tables.csv": "8bb509c88812a7fefaa8391e8f4d99504fc7d3b3e037e25f2e05fe00533c69d2",
+    "target/aitu-revision-v2/controller-tables.json": "281a9565f934e0473f008d40153eccfdacc5f6a64e59717b4a67643d63e49a56",
+    "target/aitu-revision-v2/controller-tables.csv": "4028be199d401783a55373d7680eb160d06b2c4307b3b9ae580211c96915a920",
+    "target/aitu-revision-v2/audit.json": "8e162036684f8b0048535944a6e52c2385ad18e98057c62fa865a05bcfc83a51",
+    "target/aitu-revision-v2/input-descriptors.json": "d99b1a36983b4a887655385f6cac34fcc7e1bb806adc4f2419a9aa1be5aba4d1"
+  },
+  "rebuiltClassesByteIdentical": 27,
+  "commands": [
+    {
+      "args": [
+        "scripts/reproduce_aitu_v2.py",
+        "build",
+        "--out",
+        "target/portable-v2-build"
+      ],
+      "returnCode": 0,
+      "stdout": "Rebuilt 26 classes; byte-identical: True\nV2 adapter and 26 preserved adapter classes byte-identical"
+    },
+    {
+      "args": [
+        "scripts/reproduce_aitu_v2.py",
+        "replay",
+        "--kind",
+        "root",
+        "--id",
+        "root-CONTINUE_WAIT-N150000",
+        "--built",
+        "target/portable-v2-build",
+        "--out",
+        "target/unused-root",
+        "--dry-run"
+      ],
+      "returnCode": 0,
+      "stdout": "{\n  \"command\": [\n    \"C:\\\\Program Files\\\\Java\\\\jdk-21.0.10\\\\bin\\\\java.exe\",\n    \"-Xmx1024m\",\n    \"-cp\",\n    \"C:\\\\Users\\\\Muhalek\\\\ContactAwareSS\\\\target\\\\aitu-revision-v2-portable\\\\target\\\\portable-v2-build\\\\v1\\\\diagnostic-overlay;C:\\\\Users\\\\Muhalek\\\\ContactAwareSS\\\\target\\\\aitu-revision-v2-portable\\\\target\\\\portable-v2-build\\\\classes;C:\\\\Users\\\\Muhalek\\\\ContactAwareSS\\\\target\\\\aitu-revision-v2-portable\\\\target\\\\portable-v2-build\\\\v1\\\\classes;C:\\\\Users\\\\Muhalek\\\\ContactAwareSS\\\\target\\\\aitu-revision-v2-portable\\\\target\\\\final-research\\\\final-v2.jar\",\n    \"org.contactaware.security.simulation.AituBudgetRootMain\",\n    \"--observation\",\n    \"C:\\\\Users\\\\Muhalek\\\\ContactAwareSS\\\\target\\\\aitu-revision-v2-portable\\\\target\\\\aitu-revision\\\\stage1\\\\runs\\\\root-autonomous-t0-H2-CONTINUE_WAIT\\\\observation.json\",\n    \"--checkpoint\",\n    \"C:\\\\Users\\\\Muhalek\\\\ContactAwareSS\\\\target\\\\aitu-revision-v2-portable\\\\target\\\\aitu-revision\\\\stage1\\\\runs\\\\root-autonomous-t0-H2-CONTINUE_WAIT\\\\initial-checkpoint.json\",\n    \"--out\",\n    \"C:\\\\Users\\\\Muhalek\\\\ContactAwareSS\\\\target\\\\aitu-revision-v2-portable\\\\target\\\\unused-root\",\n    \"--rule\",\n    \"CONTINUE_WAIT\",\n    \"--nodes\",\n    \"150000\"\n  ],\n  \"watchdogSeconds\": 45\n}"
+    },
+    {
+      "args": [
+        "scripts/reproduce_aitu_v2.py",
+        "replay",
+        "--kind",
+        "controller",
+        "--id",
+        "controller-CONTINUE_WAIT-N150000-H2",
+        "--built",
+        "target/portable-v2-build",
+        "--out",
+        "target/unused-controller",
+        "--dry-run"
+      ],
+      "returnCode": 0,
+      "stdout": "{\n  \"command\": [\n    \"C:\\\\Program Files\\\\Java\\\\jdk-21.0.10\\\\bin\\\\java.exe\",\n    \"-Xmx1024m\",\n    \"-cp\",\n    \"C:\\\\Users\\\\Muhalek\\\\ContactAwareSS\\\\target\\\\aitu-revision-v2-portable\\\\target\\\\portable-v2-build\\\\v1\\\\classes;C:\\\\Users\\\\Muhalek\\\\ContactAwareSS\\\\target\\\\aitu-revision-v2-portable\\\\target\\\\final-research\\\\final-v2.jar\",\n    \"org.contactaware.security.simulation.AituRunMain\",\n    \"--model\",\n    \"C:\\\\Users\\\\Muhalek\\\\ContactAwareSS\\\\target\\\\aitu-revision-v2-portable\\\\target\\\\final-research\\\\models\\\\X5.json\",\n    \"--initialization\",\n    \"autonomous\",\n    \"--mode\",\n    \"practical\",\n    \"--horizon\",\n    \"2\",\n    \"--rule\",\n    \"CONTINUE_WAIT\",\n    \"--nodes\",\n    \"150000\",\n    \"--search-ms\",\n    \"30000\",\n    \"--decision-budget-ms\",\n    \"32000\",\n    \"--controller-s\",\n    \"180\",\n    \"--period-s\",\n    \"3600\",\n    \"--portfolio\",\n    \"SEED_AND_RETENTION\",\n    \"--latency-ms\",\n    \"0\",\n    \"--host-scale\",\n    \"0\",\n    \"--deadline-ms\",\n    \"32000\",\n    \"--out\",\n    \"C:\\\\Users\\\\Muhalek\\\\ContactAwareSS\\\\target\\\\aitu-revision-v2-portable\\\\target\\\\unused-controller\"\n  ],\n  \"watchdogSeconds\": 210\n}"
+    },
+    {
+      "args": [
+        "scripts/analyze_aitu_v2.py"
+      ],
+      "returnCode": 0,
+      "stdout": "{\n  \"rootStatuses\": {\n    \"INCOMPLETE\": 4,\n    \"COMPLETE\": 2\n  },\n  \"controllerDenominator\": {\n    \"planned\": 4,\n    \"executed\": 4,\n    \"statuses\": {\n      \"FINISHED\": 3,\n      \"CONTROLLER_TIME_LIMIT\": 1\n    }\n  }\n}"
+    },
+    {
+      "args": [
+        "scripts/describe_aitu_v2_inputs.py"
+      ],
+      "returnCode": 0,
+      "stdout": "Verified 11 frozen long/late configurations; identical nominal inputs; only disclosure timing differs"
+    }
+  ],
+  "newPolicySearches": 0,
+  "boundary": "Clean extracted payload;27 adapter classes rebuilt, both replay command paths checked in dry-run, tables/audit/11 input descriptors reproduced byte-for-byte. No policy experiments or Maven suite."
+}

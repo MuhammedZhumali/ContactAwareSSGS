@@ -1,0 +1,11 @@
+# Stage 3: quality and computational allowance
+
+Register before this block. Two fixed no-attack models: autonomous frozen X5 (short mechanism) and frozen demand-none (three original, longer ISS contact windows, high first-contact offered demand). This is a bounded long-window control, not a full-day mission campaign. CANONICAL is held fixed; conclusions of this block do not establish budget robustness under other tie rules.
+
+Levels: no DFS (seed plus retained continuation),1,000,5,000,20,000,100,000 nodes/search; H1/H2. Twenty offline logical cells. Two identical X5/5,000 cells are reused from Stage1 after verification of settings and state identity; eighteen new offline attempts. Measured-delay checks use levels1,000 and20,000, both cases and horizons: eight new attempts. Total28 logical cells,26 new executions.
+
+Seed generation, retention, validation, comparator, model and finite action space are common. The frozen SEED_WITHOUT_SEARCH variant also disables retention and is unsuitable for this isolation. A separate identified harness-only portfolio variant will disable only DFS, preserving the two retention branches and all phase caps. It needs an explicit harness check before execution. Ordinary positive-budget runs continue using the frozen portfolio/JAR. No-DFS is labelled as such, not a COMPLETE search.
+
+For every level retain search1s, decision2s, seed/retention350ms each, rollout10,000 transitions, cumulative controller120s, watchdog150s, heap1GiB. Nodes are an allowance, not assumed work: a timer-triggered search has not exhausted its node budget. Measured mode has hostScale1, fixed delay0, deadline2s. Search/controller CPU and host elapsed are not modeled lifecycle CPU. Export charged latency separately. One JVM at a time; no repeat or budget escalation.
+
+Report actual full-run five scores only for FINISHED; all attempts, search statuses, node counts, thread CPU availability, host elapsed, charged delays, deadline misses and stop causes. Compare horizons only on the common full schedule. Do not assume increasing a root budget monotonically improves a receding controller. No-found practical advantage is a valid outcome. Exact references are linked only where identical roots/endpoints are established.

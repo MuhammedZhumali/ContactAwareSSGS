@@ -1,0 +1,137 @@
+{
+  "status": "PASS",
+  "auditedRuns": 192,
+  "completedPairs": 55,
+  "allPairs": 84,
+  "series": {
+    "baseline": {
+      "planned": 12,
+      "attempted": 12,
+      "statuses": {
+        "FINISHED": 11,
+        "SEARCH_INCOMPLETE": 1
+      },
+      "notRun": 0,
+      "supersededBeforeAttempt": false
+    },
+    "exact": {
+      "planned": 40,
+      "attempted": 40,
+      "statuses": {
+        "FINISHED": 30,
+        "SEARCH_INCOMPLETE": 8,
+        "CONTROLLER_TIME_LIMIT": 2
+      },
+      "notRun": 0,
+      "supersededBeforeAttempt": false
+    },
+    "practical": {
+      "planned": 44,
+      "attempted": 0,
+      "statuses": {},
+      "notRun": 44,
+      "supersededBeforeAttempt": true
+    },
+    "security": {
+      "planned": 24,
+      "attempted": 0,
+      "statuses": {},
+      "notRun": 24,
+      "supersededBeforeAttempt": true
+    },
+    "disruptions": {
+      "planned": 16,
+      "attempted": 0,
+      "statuses": {},
+      "notRun": 16,
+      "supersededBeforeAttempt": true
+    },
+    "sensitivity": {
+      "planned": 38,
+      "attempted": 0,
+      "statuses": {},
+      "notRun": 38,
+      "supersededBeforeAttempt": true
+    },
+    "controls": {
+      "planned": 10,
+      "attempted": 0,
+      "statuses": {},
+      "notRun": 10,
+      "supersededBeforeAttempt": true
+    },
+    "deadlines": {
+      "planned": 8,
+      "attempted": 0,
+      "statuses": {},
+      "notRun": 8,
+      "supersededBeforeAttempt": true
+    },
+    "practical-v2": {
+      "planned": 44,
+      "attempted": 44,
+      "statuses": {
+        "FINISHED": 23,
+        "CONTROLLER_TIME_LIMIT": 21
+      },
+      "notRun": 0,
+      "supersededBeforeAttempt": false
+    },
+    "security-v2": {
+      "planned": 24,
+      "attempted": 24,
+      "statuses": {
+        "FINISHED": 24
+      },
+      "notRun": 0,
+      "supersededBeforeAttempt": false
+    },
+    "disruptions-v2": {
+      "planned": 16,
+      "attempted": 16,
+      "statuses": {
+        "FINISHED": 16
+      },
+      "notRun": 0,
+      "supersededBeforeAttempt": false
+    },
+    "sensitivity-v2": {
+      "planned": 38,
+      "attempted": 38,
+      "statuses": {
+        "FINISHED": 26,
+        "CONTROLLER_TIME_LIMIT": 12
+      },
+      "notRun": 0,
+      "supersededBeforeAttempt": false
+    },
+    "controls-v2": {
+      "planned": 10,
+      "attempted": 10,
+      "statuses": {
+        "FINISHED": 10
+      },
+      "notRun": 0,
+      "supersededBeforeAttempt": false
+    },
+    "deadlines-v2": {
+      "planned": 8,
+      "attempted": 1,
+      "statuses": {
+        "PROCESS_ERROR": 1
+      },
+      "notRun": 7,
+      "supersededBeforeAttempt": false
+    },
+    "deadlines-v3": {
+      "planned": 8,
+      "attempted": 8,
+      "statuses": {
+        "FINISHED": 6,
+        "SEARCH_INCOMPLETE": 2
+      },
+      "notRun": 0,
+      "supersededBeforeAttempt": false
+    }
+  }
+}

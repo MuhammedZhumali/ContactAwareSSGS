@@ -9,11 +9,20 @@ import java.util.*;
 public record SimulationScenario(String name, Instant start, Instant end, SecurityState initialState,
                                  SecurityConstraints constraints, SecurityCostProfile costs,
                                  List<SimulationContact> contacts, List<PlannedOperation> plan,
-                                 List<TrafficKeyDisclosure> disclosures) {
+                                 List<TrafficKeyDisclosure> disclosures,
+                                 @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
+                                 List<ChannelInterruption> channelInterruptions) {
     public SimulationScenario(String name, Instant start, Instant end, SecurityState initialState,
                               SecurityConstraints constraints, SecurityCostProfile costs,
                               List<SimulationContact> contacts, List<PlannedOperation> plan) {
         this(name, start, end, initialState, constraints, costs, contacts, plan, List.of());
+    }
+
+    public SimulationScenario(String name, Instant start, Instant end, SecurityState initialState,
+                              SecurityConstraints constraints, SecurityCostProfile costs,
+                              List<SimulationContact> contacts, List<PlannedOperation> plan,
+                              List<TrafficKeyDisclosure> disclosures) {
+        this(name, start, end, initialState, constraints, costs, contacts, plan, disclosures, List.of());
     }
 
     public SimulationScenario {
@@ -36,6 +45,20 @@ public record SimulationScenario(String name, Instant start, Instant end, Securi
         var windows = contacts.stream().map(SimulationContact::window).toList();
         ScheduleValidator.validate(windows, windows, initialState.satelliteId(), period,
                 ScheduleSelectionConfig.DEFAULT).requireValid();
+        // Missing JSON property preserves the historical scenario and serialization contract.
+        channelInterruptions = channelInterruptions == null ? List.of() : channelInterruptions.stream()
+                .sorted(Comparator.comparing(ChannelInterruption::contactId).thenComparing(ChannelInterruption::from)
+                        .thenComparing(ChannelInterruption::until)).toList();
+        var previousEnd = new HashMap<String, Instant>();
+        for (var interruption : channelInterruptions) {
+            var window = windows.stream().filter(w -> w.id().equals(interruption.contactId())).findFirst()
+                    .orElseThrow(() -> new IllegalArgumentException("Unknown channel interruption contact"));
+            if (interruption.from().isBefore(window.start()) || interruption.until().isAfter(window.end()))
+                throw new IllegalArgumentException("Channel interruption must stay inside its forecast contact");
+            var previous = previousEnd.put(interruption.contactId(), interruption.until());
+            if (previous != null && interruption.from().isBefore(previous))
+                throw new IllegalArgumentException("Channel interruptions must not overlap for the same contact");
+        }
         plan = plan.stream().sorted(Comparator.comparing((PlannedOperation p) -> p.intent().scheduledAt())
                 .thenComparing(PlannedOperation::id)).toList();
         var ids = new HashSet<String>();

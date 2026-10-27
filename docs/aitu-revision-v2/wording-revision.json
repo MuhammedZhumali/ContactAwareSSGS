@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "requestedSubstantiveChanges": 3,
+  "changedTextBlocks": {
+    "article": [
+      65,
+      82
+    ],
+    "supplement": [
+      39,
+      60
+    ]
+  },
+  "additionalFormatting": "All11 SHA256 values joined on single DOCX lines at12pt; the accompanying reading instruction is layout-neutral. Hashes unchanged.",
+  "rawHostSeconds": {
+    "Next": 2.5365499,
+    "Multi": 32.4259253
+  },
+  "displaySeconds": {
+    "Next": "2.537",
+    "Multi": "32.426"
+  },
+  "newExperiments": 0,
+  "mavenRun": false,
+  "pages": {
+    "article": 13,
+    "supplement": 14
+  },
+  "latexCompilation": "success for both current sources",
+  "visualReview": "Changed pages viewed and remaining page hashes equal prior reviewed renders",
+  "previousReproductionArchiveSha256": "9fadaa5f2fd1ef37fc468bfab0dba58d7630cf395f213ac8970a881a768ce821",
+  "priorRegisteredFilesChecked": 243,
+  "priorRegisteredFilesUnchanged": 231,
+  "changedPriorFiles": [
+    "scripts/write_aitu_v2_content.py",
+    "docs/aitu-revision-v2/article-content.json",
+    "docs/aitu-revision-v2/article.docx",
+    "docs/aitu-revision-v2/supplement-content.json",
+    "docs/aitu-revision-v2/supplement-visual-review.md",
+    "docs/aitu-revision-v2/supplement.docx",
+    "docs/aitu-revision-v2/validation.json",
+    "docs/aitu-revision-v2/visual-review.json",
+    "docs/aitu-revision-v2/article-tex/main.tex",
+    "docs/aitu-revision-v2/article-tex/supplement.tex",
+    "target/aitu-revision-v2/document-build.json",
+    "target/aitu-revision-v2/final-validation.json"
+  ],
+  "scientificOutputsAndPreviousArchivesUnchanged": true,
+  "metadataFix": "TeX SHA256 now hashes actual file bytes, preserving Windows line endings instead of normalized text."
+}

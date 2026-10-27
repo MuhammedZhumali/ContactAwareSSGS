@@ -1,0 +1,285 @@
+\documentclass[conference]{IEEEtran}
+% Separate final-campaign manuscript foundation, derived from docs/paper-r1/main.tex.
+% The supplied PDF and SE25 source remain different historical versions.
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{cite,amsmath,amssymb,graphicx,booktabs,array,url}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\op}[1]{\texttt{#1}}
+\newcommand{\finalfigure}[3]{%
+  \begin{figure*}[t]\centering\includegraphics[width=.98\textwidth]{figures/#1}%
+  \caption{#2}\label{#3}\end{figure*}}
+\hypersetup{pdftitle={Predictive Multi-Contact Security Lifecycle Management},pdfauthor={Mukhammed Zhumali}}
+\begin{document}
+\title{Predictive Multi-Contact Security Lifecycle Management for LEO Spacecraft--Ground Communications}
+\author{\IEEEauthorblockN{Mukhammed Zhumali}\IEEEauthorblockA{262937@astanait.edu.kz}}
+\maketitle
+
+\begin{abstract}
+Time-limited spacecraft--ground contacts constrain both payload delivery and traffic-key and security-association management. We study when additional contact visibility changes lifecycle decisions and whether its benefit justifies computation. Matched Next and Multi policies share actions, constraints, costs, a five-component objective and a full-plan tie rule; only their visible horizon differs. A finite-model exact reference is separated from practical execution using feasible seeds, retained continuations and bounded search. One registered campaign covers geometric ISS, NOAA-19 and HST schedules, three demand levels, selected sensitivities, disclosure and channel interruptions. Of 108 attempts, 93 finish and 15 reach a process watchdog. All four completed primary horizon pairs tie; five primary pairs remain incomplete. No-DFS controls finish every primary cell. A prepared exact short-return example retains its additional served contact, but the bounded autonomous controller does not recover that benefit. One late-detection case yields an extra confidential frame for Multi, while measured computation reduces its useful time in another case. Thus practical horizon gains are conditional, and the tested geometric core supplies no completed quality advantage. Synthetic costs, a logical ground coordinator and protected management credentials limit the result; no onboard validation or general cryptographic-security guarantee is claimed.
+\end{abstract}
+\begin{IEEEkeywords}
+LEO communications, key lifecycle, security association, contact-aware planning, bounded search, disruption, receding horizon
+\end{IEEEkeywords}
+
+\section{Introduction}
+A return contact can be long enough to transmit its required payload but too short to install, activate, and use a replacement key. If that requirement is visible during an earlier contact with the same station, some work can be moved forward. The scheduling opportunity depends on key validity, resource contention, payload requirements, and the selected plan. A longer forecast alone guarantees neither better service nor lower cost.
+
+The research question is therefore conditional: \emph{when does additional contact visibility change joint traffic-key and Security Association (SA) decisions, and what service benefit, management cost, and computational burden follow?} Multi-contact denotes observation depth for one spacecraft and several ground stations. It does not denote a multi-spacecraft optimization problem.
+
+The contribution is a finite lifecycle-planning formulation and an executable comparison that separates forecast depth from other policy choices. The primary objective is admissible service, not compromise probability. Disclosure experiments examine consequences of chosen schedules; they do not introduce advance knowledge of an attack or optimize recovery latency. Receding-horizon optimization, contact prediction, advance authentication, and established cryptographic mechanisms are not claimed inventions.
+
+The framework separates an exact finite-model reference from a practical policy that may use a feasible but uncertified incumbent or a common fallback. It also represents decision delay and actual channel unavailability explicitly. These mechanisms expose applicability assumptions without turning synthetic timing into measurements of a flight implementation. The final comparison must be interpreted within its registered workload, demand, incident and budget settings; earlier revisions retain separate evidence identities.
+
+\section{Related Work and Novelty Boundary}
+CCSDS SDLS specifies data-link protection, and its Extended Procedures define key and SA management services~\cite{sdls,ep}. The Symmetric Key Management Recommended Practice supplies an explicit key lifecycle and abstract management procedures~\cite{skm}. Lifecycle states, key distribution, activation, and retirement therefore pre-exist this study. We schedule abstract counterparts under a chosen resource and service model; sharing state names does not establish SDLS conformance.
+
+Connectivity already informs security-state management. The IOTA Identity architecture updates an onboard authorization allowlist during ground contacts and considers revocation delay and short-lived capability tokens~\cite{iota}. Its object is IoT-device identity and access authorization. Our object is directional traffic-key and SA timing. Contact-dependent authorization updates therefore already exist; they are not a novelty claimed here.
+
+Delay-Tolerant Networking supplies a second relevant line of work. BPv7 provides bundle delivery in challenged networks~\cite{bp}; BPSec provides bundle integrity/confidentiality while leaving key management to separate network management~\cite{bpsec}. Schedule-Aware Bundle Routing explicitly uses scheduled contacts for route computation~\cite{sabr}. Hence prediction and contact-based optimization alone are insufficient novelty claims.
+
+Most directly, Detke et al. couple time-feasible Contact Graph Routing routes with BPSec key provisioning~\cite{detke}. Their offline mixed-integer program selects routes, active key scopes, and covered pairs to minimize scopes at a target connectivity ratio. Its displayed variables have route, scope and pair indices; they do not schedule lifecycle operation start times. The paper explicitly identifies key scheduling over contact plans as future work. Our comparison concerns sequential per-station traffic-key and SA actions and a controlled visible-horizon change for a fixed workload.
+
+This is a scoped comparison with the primary sources listed here, not an exhaustive review or a claim of priority over all temporal key-management formulations. Unavailable full texts are not used to infer missing features. No external protocol has been reimplemented or empirically outperformed in this study.
+
+\begin{table*}[t]
+\centering\small
+\caption{Closest established mechanisms and the bounded comparison made here. No external protocol was reimplemented or experimentally outperformed.}
+\label{tab:related}
+\begin{tabular}{p{.18\textwidth}p{.32\textwidth}p{.43\textwidth}}
+\toprule
+Source & Established object/mechanism & Relationship to this study \\
+\midrule
+SDLS/EP and symmetric key management~\cite{sdls,ep,skm} & Space-link protection; key lifecycle; concrete and abstract management procedures & Supply mechanism/state provenance. This study schedules abstract operations under explicit costs and constraints; it does not implement standards compliance. \\
+IOTA Identity~\cite{iota} & Device credentials, contact-dependent allowlists, revocation handling & Establishes connectivity-aware authorization. This study concerns channel traffic keys and paired SAs. \\
+BPv7, BPSec, SABR~\cite{bp,bpsec,sabr} & Bundles, bundle security, and scheduled-contact routing & Establish intermittent-connectivity processing and routing over scheduled contacts. This study fixes the selected link workload. \\
+Detke et al.~\cite{detke} & Time-feasible route catalog coupled to offline BPSec scope provisioning & Closest reviewed optimization precedent. This study varies observation depth for sequential lifecycle execution. \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{System and Lifecycle Model}
+\subsection{Security State and Validity}
+One spacecraft maintains an authorized context for each configured ground station. Uplink and downlink have separate traffic keys and SAs; the two SAs are managed as a pair. At most one ground-link context is operational. Station visibility is not authorization, and keys are not silently reused across station contexts.
+
+The implementation stores immutable metadata and state, not secret key bytes or cipher execution. Preparation, confirmed installation, activation/binding, and opening a session are distinct. A prepared key does not authenticate a peer. Closing a session preserves valid keyed state and persistent counter progress. Retired identities are not recycled. Logical retirement is not evidence of physical erasure.
+
+For creation time $t_k^c$, first activation $t_k^a$, material-age bound $A_{\max}$, activation cryptoperiod $C_{\max}$, and committed not-after bound $\bar d_k$, the active key deadline is
+\begin{equation}
+d_k=\min\{\bar d_k,t_k^c+A_{\max},t_k^a+C_{\max}\}.
+\end{equation}
+The activation term does not apply before activation. Reopening or reusing an SA does not extend an existing deadline. Between-contact reuse also requires that the gap from the last successful directional session does not exceed $G_{\max}$, together with authorization, installation, peer synchronization, and counter headroom.
+
+Online confirmations must finish strictly before contact closure and required-key expiry. A complete payload frame may end exactly at either boundary. Expiry is an actual execution event. If one directional key expires, the common response stops the paired context and retires its companion according to the model. Independent staged material is retained when admissible.
+
+\subsection{Execution and Costs}
+The executor supports \op{PREPARE}, \op{INSTALL}, \op{SWITCH}, \op{OPEN}, \op{REUSE}, one-frame \op{CONTINUE}, and \op{WAIT}. STOP and expiry are local transitions; incident response is common to all policies. Operations reserve ground CPU, spacecraft CPU, radio direction, and waiting phases. Only executed work is charged, including partial or wasted work. Useful time and delivered service count complete frames.
+
+\begin{table}[t]
+\centering\small
+\caption{Base synthetic operation profile; not hardware calibration.}
+\label{tab:costs}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrr}
+\toprule
+ & Elapsed & GS CPU & SC CPU & UL & DL \\
+ & s & s & s & B & B \\
+\midrule
+PREPARE & 2.0 & .20 & .00 & 0 & 0 \\
+INSTALL & 4.0 & .10 & .20 & 600 & 200 \\
+SWITCH & 1.0 & .05 & .10 & 100 & 100 \\
+OPEN/REUSE & 1.0 & .02 & .04 & 40 & 40 \\
+Revocation notice & .4 & .02 & .02 & 64 & 32 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The profile in Table~\ref{tab:costs} models a 400~B/s management channel. Elapsed duration includes waiting and is not a sum of CPU measurements. PREPARE uses ground resources only and may overlap payload if reservations permit; online management competes for the link. STOP and expiry have zero modeled cost in this profile. These values are controlled assumptions, not values prescribed by CCSDS or measured on a spacecraft.
+
+The state includes pending operations, committed frames, per-contact delivery, and accrued costs. Replanning does not cancel committed work or charge it again. Confirmed state changes occur only at operation checkpoints. An uncertain SWITCH, OPEN, or REUSE is blocked pending explicit reconciliation; restoration of connectivity alone is not reconciliation.
+
+\subsection{Deployment Interpretation}
+The model assumes a \emph{ground logical coordinator} with access to the permitted forecast and a consistent abstract execution state. Ground-only preparation can occur while disconnected. Installation, switching, opening, reuse, and spacecraft notice require the matching available link. Local stop and expiry do not require successful delivery of a new command.
+
+This specifies placement and the timing boundary but closes deployment only partially. It assumes trusted management credentials and abstract confirmations. It does not implement distributed telemetry/state reconciliation, an onboard command protocol, failover between controllers, or measured command/telemetry bytes. The single logical state is an explicit abstraction, especially when a downlink continues after ground revocation notice. A flight realization must map each abstract operation to a concrete protocol and validate its costs and information flow.
+
+\subsection{Conditional Installation Opportunity}
+For two specified return-entry states, a scheduling opportunity can be expressed as
+\begin{align}
+\tau_{\mathrm{installed}}&=t_S+t_O+t_P,\\
+\tau_{\mathrm{prepared}}&=t_I+\tau_{\mathrm{installed}}.
+\end{align}
+Here $t_I,t_S,t_O$ are installation, switching, and opening durations, $t_P$ is the time for the required complete-frame payload, and $W$ is remaining contact time. When $\tau_{\mathrm{installed}}\leq W<\tau_{\mathrm{prepared}}$, only the installed-entry chain fits. This is a feasibility statement for those chains, requiring all validity/resource checks. It is not a lower bound over all policies or initial states, and it does not assert that the final campaign realizes a service gain.
+
+\section{Horizon, Objective, and Policy Modes}
+\subsection{Observation and Objective}
+For a decision in contact $C_i$, $H$ counts \emph{additional future contacts}:
+\begin{equation}
+\mathcal W_i^H=(C_i,C_{i+1},\ldots,C_{\min(n,i+H)}).
+\end{equation}
+Thus Next uses $H=1$ and sees current plus next; the basic Multi comparison uses $H=2$ and sees current plus two. In a gap there is no current contact, so the nearest $H$ future windows are visible. A search freezes this observation and its endpoint; advancing a hypothetical branch does not reveal an additional contact.
+
+Future prescribed actions, channel outages, restoration times, attack occurrences, and unobserved failures are excluded. Nominal branches model future confirmations as successful until actual execution supplies contrary evidence. Only the next selected action is admitted before the controller observes and replans.
+
+Under the common admission constraints, the objective is
+\begin{equation}
+\max_{\mathrm{lex}} J=(N_{\mathrm{served}},T_{\mathrm{useful}},-C_{\mathrm{CPU}},-B_{\mathrm{mgmt}},-N_{\mathrm{new}}).
+\label{eq:objective}
+\end{equation}
+Service requires the configured complete-frame minimum separately in each direction. CPU and management bytes sum both endpoints/directions; new keys count directional identities, including wasted preparation. Previously accrued work is retained and already served contacts are not counted twice. There is no terminal bonus for unused fresh material. Recovery latency, readiness, and compromise probability are not additional objectives.
+
+Only equality of all five components invokes a full-plan tie rule. CANONICAL orders preparation, installation, switching, opening, reuse, continuation, and wait, then start time and the full identity/end-time tuple. Plans are compared at their first difference, with a proper prefix preceding its extension. CONTINUE\_WAIT places continuation, then wait, then management first; within a group it compares earlier end time before the original tuple. It is more specific than an action-order permutation. Search traversal order is distinct from this preference. Within each rule and execution mode, Next and Multi share all mechanisms except horizon.
+
+\subsection{Exact Reference and Practical Execution}
+The exact reference enumerates a finite event-based action model. Candidate start opportunities are discrete; at most one spare pair or preparation is admitted per context; frame direction follows the common executor; actions must satisfy completion-within-horizon restrictions. Fully solved roots are exact only within this model. Neither these root solutions nor cached equivalent suffixes prove global optimality of the executed receding-horizon policy.
+
+A root status COMPLETE certifies its finite continuation; INCOMPLETE does not. The reference controller stops on an incomplete search and preserves a checkpoint instead of executing an unproved fallback. FINISHED denotes a completed full scenario and is a different status. The practical policy is deliberately separate: for a local node/time limit it may execute a feasible terminal incumbent's first action, or a common admissible service/bootstrap fallback followed by WAIT when necessary. Its original incomplete search and disposition remain recorded. Cancellation or an outer controller stop does not become permission to continue.
+
+The fallback is a specified execution rule, not a sixth objective or a certificate of optimality. A practical FINISHED result may contain incomplete searches; report both completion and the fraction/type of incumbent/fallback decisions. A practical/exact difference is a policy-mode comparison, not an isolated forecast-depth effect.
+
+The final practical controller compares a deterministic feasible seed, a re-evaluated retained continuation, and completed candidates from bounded search. Each candidate uses the same actual observable root and current evaluation endpoint. Retention can cross completed preparation, installation, switching, opening and frame steps; executed costs are not charged again. When visible contacts extend, a retained suffix is completed by the same seed procedure. Stale, inconsistent or inadmissible continuations are rejected. The seed receives no hidden contacts or future incidents. All available full continuations compete under the unchanged five-objective and full-plan comparator; there is no special preference for retention. This guarantees selection at least as good as the available evaluated candidates on that root, not mission-wide dominance or global optimality. The source INCOMPLETE search remains incomplete. Strictly certified suffix reuse is a separate, narrower mechanism.
+
+The final campaign fixes 5000 nodes and 1~s per search, 2~s per complete decision, and a separate 600~s process watchdog. Seed and suffix stages each have a 350~ms sublimit and a 10000-transition cap. Their work, search and selection all consume the decision budget. There is no additional cumulative controller-time cutoff. One JVM with a 1~GiB heap runs at a time. These limits are not raised after observing incomplete runs. Host budgets are separate from modeled cryptographic-operation CPU costs. The seed control uses the same bounded construction and permitted horizon, with DFS disabled.
+
+\subsection{Operational Baselines}
+FixedPeriod is an author-defined operational baseline, not a mandated CCSDS scheduler. Its renewal timer is anchored to the last successful SWITCH; overdue requests coalesce, and a missed renewal does not extend key validity. A period is an experimental parameter and must be reported with its executable and workload version. One selected period cannot establish superiority over all periodic policies.
+
+PerContact requires newly activated material for the contact under its registered preparation rule. Both operational controls share admission checks and the event executor. They provide context; the primary horizon attribution remains the matched Next/Multi comparison.
+
+\section{Delay and Channel Availability}
+\subsection{Decision and Dispatch Delay}
+Offline reference search does not advance physical simulation time. The framework separately models a critical-path delay
+\begin{equation}
+\delta=\delta_{\mathrm{fixed}}+\alpha t_{\mathrm{host}},\qquad \delta_{\mathrm{fixed}},\alpha\geq0,
+\end{equation}
+where $t_{\mathrm{host}}$ includes observation and candidate construction, seed, replay, search and selection. Checkpoint persistence and physical execution are measured separately and are not included in this modeled delay. The final measured block uses $\delta_{\mathrm{fixed}}=0$ and $\alpha=1$. This is a host-dependent critical-path assumption, not a measured spacecraft deployment. The coordinator issues no new action while computing, while already committed work and physical events continue.
+
+After the delay, the controller constructs a fresh observation and revalidates the first selected intent. Reached or changed WAIT targets trigger another measured decision; an expired intent is not silently retargeted to contact closure. Other stale intents similarly replan when physical time advanced. Deadline misses use the common admissible wait fallback. An observed incident supersedes the scheduled choice through the common response. This shifted execution has no inherited optimality certificate. Aggregate host runtime cannot simply be subtracted from a service or recovery benefit; only relevant critical-path delay has that interpretation. No onboard CPU equivalence is inferred from $\alpha$.
+
+\subsection{Controlled Outages Without Future Leakage}
+An interruption names a contact and an actual unavailable interval wholly inside its original forecast window. Full-window loss represents a missed contact; initial loss represents delayed availability; trailing loss represents early closure. The original forecast remains unchanged.
+
+Actual DOWN aborts a committed frame, fails an online primitive with its consumed cost, and stops operational use locally. PREPARE is ground-only and remains possible. Actual UP records availability but does not automatically reopen an SA, confirm an interrupted step, or clear uncertainty. INSTALL can be retried if subsequently admissible; uncertain SWITCH/OPEN/REUSE remains fail-closed because reconciliation is not implemented.
+
+The observation first selects the original H-limited prefix, then removes a currently unavailable contact based only on past DOWN/UP events. It does not fetch another farther contact to replace it. The branch receives no future restoration event. Actual UP wakes execution and allows a new observation. This is conservative handling of known loss, not estimation of its duration or a complete model of forecast error.
+
+Frame completion precedes loss at the same timestamp; expiry and original contact closure precede online confirmation. Loss precedes an ACK at the same instant. UP precedes DOWN for adjacent outage intervals, avoiding a fictitious available instant. These conventions are explicit simulation choices.
+
+\subsection{Aborted-Frame Accounting}
+Each aborted committed frame increments its key counter once and updates any still-bound SA mirror, while contributing zero delivered frames, bytes, and useful time. Even a zero-byte prefix conservatively consumes that nonce. This prevents a temporarily interrupted context from reopening with a counter that omits its admitted transmission.
+
+The operation is accounting for an already admitted transmission, not new permission to transmit. A ground-rejected committed downlink can consume its retired key's counter without resurrecting that key or refreshing successful-use history. Counter audits therefore count delivered \emph{and aborted committed} frames. Historical files retain their executable identity; this behavior is not retroactively claimed for earlier implementations.
+
+\section{Experimental Design and Metrics}
+\subsection{Workloads and Registered Comparisons}
+Geometric workloads use public orbital elements and station locations with a common selector independent of security policy. The final campaign is organized by ISS, NOAA-19 and HST workloads and registered low, medium and high demand. Geometry generation is not a completed policy run or evidence of authorized communications. Actual radio-link conditions, station availability, and authorization are not inferred from geometry.
+
+The immutable final registration contains 108 attempts: 54 complete-schedule offline configurations, 15 measured ISS configurations, 18 historical-mechanism regressions, nine sensitivity cases, ten disclosure/channel cases and two management-interruption cases. The base schedules contain 46 ISS, 38 NOAA-19 and 48 HST contacts. ISS uses the saved October 10, 2026 day; NOAA/HST use October 25. Saved GP epochs are October 10 for ISS and October 24 for NOAA/HST. Common geometry uses 32 station coordinates, a $10^{\circ}$ elevation threshold and zero switching guard. These dates and sources are preserved; geometry is not refreshed after outcomes.
+
+For every mission, low demand offers 1000~B in each direction per contact and medium demand offers 3000~B. High demand offers $1000\max(3,\lfloor L_i/10\rfloor)$~B per direction for window length $L_i$ in seconds. All three use 100~B/s, 1000~B complete frames and the same 1000~B directional service minimum. Thus demand changes without redefining a served contact. The 54-case core compares FixedPeriod ($T=3600$~s), just-in-time PerContact, Next ($H=1$), Multi ($H=2$), and no-DFS seed at both horizons. All use the original initial states and a 5400~s cryptoperiod. The 15 measured cases repeat the three ISS loads for the first five configurations, omitting seed $H=2$.
+
+Sensitivity is one factor at a time on medium ISS: INSTALL phase durations multiplied by 0.5 or 2 with unchanged bytes, cryptoperiods 2700 or 10800~s, and one Multi $H=3$ run. Duration-only scaling changes modeled processing/radio timing; it is not a hardware calibration. The base five-second-return X, Y null control and previous three-contact high-demand witness are run under both tie rules offline and CANONICAL in measured mode. Disclosure cases preserve the original undetected, two-second detection, gap detection and late high-demand incidents. Channel cases preserve the original temporary X interruption and add a preregistered two-second loss starting one second after first ISS contact opening. Its actual interrupted operation is reported, without moving the loss to fit observed decisions.
+
+Input-only analysis finds minimum selected-window lengths of 58.98, 122.69 and 74.82~s for ISS, NOAA-19 and HST. There are respectively one, five and three adjacent A--B--A triples. All windows exceed the 26~s prepared-entry INSTALL--SWITCH--OPEN--minimum-payload chain, and none lies in the 22--26~s band distinguishing that chain from an already installed entry. These are conditional duration tests, not achievable-service guarantees: they omit other validity/resource constraints and measured delay. The core therefore does not reproduce the narrow short-return timing condition merely by increasing offered traffic. The separate X witness retains that mechanism test.
+
+All 29 ISS, 22 NOAA-19 and 35 HST same-station recurrence gaps exceed the base 5400~s cryptoperiod. For a key activated at $a$ no later than the previous contact end $e$, and next contact start $s$, its deadline satisfies $d_k\leq a+5400\leq e+5400<s$. That already activated material cannot survive to the next visit. This does not prohibit an unactivated installed candidate, whose activation clock has not begun, and does not cover the 10800~s sensitivity. It limits what the base core can establish about saving operations by active-key reuse.
+
+This also yields a directional-key-count bound for the base core. Each served contact requires actual delivery in both directions. A key cannot cross station or direction bindings, and the expiry inequality prevents its use in another same-station contact. With empty initial key stores, the two selected delivered keys per served contact are distinct generated material, so
+\begin{equation}
+N_{\mathrm{new}}\geq 2N_{\mathrm{served}}.
+\label{eq:key-bound}
+\end{equation}
+Earlier staged preparation still counts its generated keys; reopening an SA cannot restart activation age. The bound concerns key count only. It does not establish CPU/byte lower bounds, useful-time optimality, or the optimality of a complete policy, and does not extend to the longer-cryptoperiod sensitivity.
+
+Each cell receives one attempt with no budget increase or automatic retry. Independent cases continue after recorded technical failures. All attempted, unfinished and failed cases remain visible; final quality comparisons require both executions to finish. The H3 factor is compared with the registered H2 baseline, not included as another H1/H2 pair. Source/JAR hashes, exact nanosecond timestamps and case order are included in the reproduction package.
+
+Within a paired comparison, initial state, workload, traffic, operation costs, validity/reuse constraints, observed incidents, execution mode, tie rule, and budgets are shared; only the registered factor changes. Exact/practical, latency, and outage interventions are identified separately. Search budgets and failed/incomplete attempts are retained. A duration, cost, load, or horizon sweep must report its evaluated grid and missing cells rather than select only favorable cases.
+
+\subsection{Service, Security, and Computation}
+Alongside the five objective components, report full execution status, search status, wall time, explored nodes, and practical incumbent/fallback use. Computational effort is not the modeled security-operation CPU cost. A process failure, search limit, and service failure are distinct.
+
+Process wall time includes startup and final export. Controller wall time spans the controller call, including checkpoint callbacks but excluding final serialization. The harness samples aggregate thread CPU and GC after exports; these counters therefore have a longer interval than controller wall time and are not used as matched-interval utilization. Search-ledger telemetry is reported separately. GC counters are JVM-wide, and missing counters or an unexported ledger remain unavailable.
+
+Disclosure experiments reveal a selected active traffic-key pair to a recording attacker. Replacement material is assumed independent; management credentials remain uncompromised. A notice is exogenous. Recovery is separated into spacecraft notice, independent-pair activation, independent-SA opening, and first independent delivered frame. For detected incidents, milestones not reached by experiment end are right-censored, not zero; undetected incidents and no-attack cases remain explicitly not applicable. Incomplete executions have no final quality result.
+
+Confidential service is retrospective: each direction's delivered minimum must be met by complete frames whose keys remain undisclosed at experiment end. This excludes earlier traffic under a subsequently disclosed key and never feeds future knowledge into planning. It does not mean every byte in the contact is confidential. Emitted exposure includes aborted prefixes, so exposure and confidential delivery are not a partition of a common delivered-byte total.
+
+\section{Results}
+Earlier synthesis and R1 artifacts remain a separate historical record. Their attempts, focused tests and selected witnesses are not new final-campaign observations.
+\input{final-results.tex}
+
+\subsection{Prepared Mechanism versus Bounded Autonomous Execution}
+The prepared exact X witness remains a validated conditional mechanism: Next serves two contacts with 38~s of useful transmission, whereas Multi serves three with 37~s by installing A material before the short return. After a prescribed common PREPARE, the reference uses the automatic exact planner and receding controller, with every search asserted COMPLETE. Its preliminary preparation contributes 0.20~s operation CPU and two directional keys exactly once. The full-suite reference permits 2000000 nodes per decision with no search wall-time deadline; it is not a result of the final 5000-node autonomous practical configuration. Complete visible-horizon searches do not establish global whole-mission optimality.
+
+In the final autonomous X5 regressions, both practical horizons under both tie rules serve two contacts with 38~s, 0.12~s modeled operation CPU, 160 management bytes and no newly generated keys. At the decisive $t=0$ Multi root, all three contacts are visible, but search stops at 5000 nodes. The available seed and retained candidates serve two contacts and prepare only near the later return; the search candidate serves the same two contacts more cheaply. No available three-contact candidate is rejected by the portfolio comparator. This is an observed bounded-search limitation, not proof that the three-contact continuation is infeasible.
+
+Both horizons serve all three Y contacts with 42~s offline. On the retained high-demand witness, all offline tie-rule variants and both measured variants serve three contacts with 410~s, 2.13~s operation CPU, 3240 management bytes and six new directional keys. In measured X5, Next and Multi still serve two contacts, but useful time becomes 33.75 and 27.5~s respectively. Their accumulated measured decision delays are approximately 4.617 and 11.392~s, with no deadline misses. Equal nominal costs therefore do not imply equal executed payload when computation occupies the critical path. These are individual registered executions, not a statistical latency estimate.
+
+\subsection{Implementation Verification}
+A fresh isolated Maven clean build passes all 478 tests in 64 classes, with no failures, errors or skips. The first attempt's five local HTTP errors and the successful rebuild have identical 181-file source manifests; local loopback permission, rather than source or test selection, changed. Both build records are preserved. The same shaded JAR supplies every final offline and measured invocation. The supplement records its SHA-256 and source identity; a base Git commit alone is insufficient because the working source contained explicit changes.
+
+The full suite includes checkpoint restoration, lifecycle and counter constraints, the prepared exact witness, and PC2 portfolio tests. Both small PC2 oracle searches are COMPLETE at 1364 nodes. These checks cover their specified fixtures; they do not establish universal bounded-search optimality, cryptographic security or statistical generalization. Historical focused test counts overlap and are not added to 478. Final execution and candidate-selection audit coverage is reported separately with the outcome tables.
+
+\subsection{Primary Geometric Workloads}
+All 36 FixedPeriod, PerContact and no-DFS seed executions finish; so do six of nine Next and four of nine Multi executions. Every finished core execution serves all selected contacts. The four completed horizon pairs are low ISS, low/medium NOAA and low HST, and tie on all five components. The five other pairs have unavailable final comparisons. All 27 PerContact/seed executions attain the key-count bound in Eq.~\eqref{eq:key-bound}; this does not prove optimality of their other components. Figures~\ref{fig:service} and \ref{fig:cost} show both equality and missing final outcomes.
+
+For each mission, finished PerContact/Next/Multi/seed configurations use respectively 32.66/26.98/34.08~s of modeled operation CPU, 49680/41040/51840 management bytes and 92/76/96 directional keys. Raising offered traffic does not change these lifecycle totals in the completed core runs. FixedPeriod produces 15/14/11 additional never-activated pairs on ISS/NOAA/HST, adding 3.00/2.80/2.20~s PREPARE CPU and 30/28/22 keys. It delivers the same service/useful time as the other finished policies. This is a cost disadvantage of the declared periodic rule, not a loss of contact service or a claim about every possible period.
+
+The extra search does not improve any completed core horizon pair. Low ISS Next/Multi take 213.28/521.23~s of controller wall time, versus 16.29/23.17~s for seed H1/H2. Low NOAA takes 139.61/389.14~s versus 11.53/15.84~s; medium NOAA 337.17/569.84~s versus 17.86/24.92~s; low HST 97.57/453.39~s versus 15.46/21.58~s. These are individual host observations. Next/Multi low ISS contain 209/593 incomplete searches out of 570/614 attempts, yet both physical executions finish: the practical portfolio admits feasible uncertified plans.
+
+Eight core executions reach the 600~s process watchdog: Multi at medium ISS/HST and both horizons at every high workload. Figure~\ref{fig:runtime} reports process time, which includes startup and export and differs from controller time. Last saved prefixes remain available, but neither their contact counts nor absent final search ledgers are interpreted as completed quality. All 93 finished campaign executions have zero decision deadline misses; that does not prevent cumulative work from exceeding the separate process budget. Transient checkpoint replacement refusals are recorded and retried; the outside source of Windows access denial is unknown. Final exported snapshots agree with their journals and checkpoints.
+
+\finalfigure{service_matrix.pdf}{Primary offline service and useful time. Crosses mark unavailable final results after a process timeout, not zero service. Complete-case equality does not rank the unfinished pairs.}{fig:service}
+\finalfigure{cost_matrix.pdf}{Primary lifecycle costs, excluding search and payload encryption CPU. Missing values retain crosses. The chosen FixedPeriod rule creates additional unused material; the other completed configurations share these totals.}{fig:cost}
+\finalfigure{runtime_completion.pdf}{Elapsed process time for each core attempt on a logarithmic scale. Cross markers denote incomplete executions; the dotted line is the registered 600-second watchdog. These single host observations are not statistical or onboard timing estimates.}{fig:runtime}
+
+\subsection{Measured Computation and Sensitivity}
+Twelve of fifteen measured ISS executions finish; medium Multi and both high-load search policies reach the process limit. Low-load service and all five scores equal their offline counterparts despite 238.54/537.02~s of accumulated measured decision delay for Next/Multi. The medium Next execution retains 46 served contacts but useful time decreases from 2740 to 2720~s. High seed H1 similarly decreases from 14390 to 14290~s while retaining 46 contacts. FixedPeriod and PerContact retain their offline useful times at all loads. Figure~\ref{fig:measured} distinguishes these delivered outcomes from incomplete cells. Decision delay can consume payload opportunity even without violating a local deadline.
+
+Of nine sensitivity attempts, five finish. Halving INSTALL phase durations gives Next 46 contacts, 2740~s useful time and 25.76~s operation CPU; doubling them gives 46, 2730~s and 46.46~s. Bytes and key counts remain 49680/92. The CPU change follows the explicitly scaled CPU-phase durations as well as elapsed/radio phases; bytes were not scaled. The paired Multi runs time out, so these are not horizon advantages. CP2700 leaves the completed Next five-score unchanged; Multi again times out. The H3 execution also reaches its watchdog and cannot be ranked against unfinished base H2.
+
+At CP10800 both horizons finish and tie at $(46,2740,22.91,34680,62)$. Their journals use 31 key pairs: 15 in two contacts and 16 in one. Compared with completed base Next, each saves 15 PREPARE/INSTALL/SWITCH cycles, 9.75~s operation CPU, 15000 bytes and 30 keys; 46 OPEN operations remain. This is observed material reuse enabled by a longer cryptoperiod, not a unique Multi advantage. The two plans first differ in when the same material is prepared, but reach the same installation time and final metrics. Neither key-count bound nor safety conclusion from the base CP is extended to this sensitivity.
+
+\finalfigure{measured_iss.pdf}{ISS delivered service and useful time with offline and charged host-decision execution. Hatching distinguishes measured delay, color distinguishes policy, and crosses denote unfinished cases.}{fig:measured}
+
+\subsection{Disclosure, Recovery and Channel Loss}
+All ten security/channel and two management-interruption executions finish. Figure~\ref{fig:exposure} separates retrospectively decryptable emissions before disclosure from emissions afterward. In undetected X, both horizons expose 7600~B and deliver 7600 confidential bytes. With the original two-second detection, both expose 3600~B and deliver 9800 confidential bytes. These values include recorded past traffic under the later disclosed key; they are not exposure only after detection.
+
+For detected X, both horizons deliver SC notice at 0.4~s, activate independent keys at 7.4~s, open an independent SA at 8.4~s, and deliver the first independent frame at 8.65~s after ground notice. Gap detection delivers notice only after 18.4~s; independent activation, SA and frame remain censored at experiment end. It therefore demonstrates no completed recovery despite delivering notification. First readiness is not continuous readiness: the audit retains subsequent expiry and closure intervals. Figure~\ref{fig:recovery} keeps these stages and missing events separate.
+
+The late high-demand disclosure produces the sole completed final pair with a Multi objective gain. Both serve three contacts and use 2.88~s operation CPU, 4416 management bytes and eight keys, but Multi delivers 410 rather than 400 useful seconds. Its confidential delivery is 7000 instead of 6000~B, with one additional 1000-byte uplink frame. Next/Multi emitted exposure is 34042/34000~B. Next's extra 42~B belong to an aborted frame prefix; emitted exposure must not be subtracted from complete delivery as if the populations coincided.
+
+The timing mechanism is visible in the journal. Multi completes independent preparation before disclosure and begins INSTALL before ground notice. It completes that operation before notification: SC notice is later, at 3.9753 rather than 0.4~s after GS notice, but independent activation occurs at 4.9753 rather than 7.4~s, SA opening at 5.9753 rather than 8.4~s, and first independent delivery at 15.9753 rather than 18.4~s. This is a consequence of nominal planning interacting with this incident and available traffic; the planner did not know the future attack or optimize recovery. Controller times are 18.71 versus 3.35~s for Multi/Next, in offline mode. The gain is not a measured-latency security result or a proof of general recovery superiority.
+
+The original temporary X channel loss intersects no in-flight frame or online operation in either final execution. Both finish at $(3,32,0.89,1320,2)$; this case does not validate mid-operation interruption. The separate preregistered ISS3 outage does interrupt INSTALL in both horizons. Each records 0.10~s CPU and 360 uplink bytes of failed work, then retries through normal admission and serves all three contacts. Final scores are $(3,60,2.23,3600,6)$ with no aborted frame. This directly checks consumed partial work and INSTALL retry. It does not exercise reconciliation after uncertain SWITCH/OPEN, which remains unimplemented.
+
+\finalfigure{detected_exposure.pdf}{Decryptable emitted traffic under the recording-attacker model. Independent legends identify policy and the pre-/post-disclosure portions. The channel-only case has zero exposure because it has no disclosure. Exposure includes aborted prefixes and differs from delivered traffic.}{fig:exposure}
+\finalfigure{recovery.pdf}{Four recovery milestones relative to GS notice. C indicates a censored milestone, not zero; first activation/SA readiness is not a continuous-readiness guarantee. The late-demand pair has later notice but earlier independent use under Multi.}{fig:recovery}
+
+\section{Discussion and Limitations}
+The answer to the research question has three parts. First, additional visibility has a concrete finite-model service mechanism when earlier installation changes the feasibility of a short return. The prepared exact witness verifies that mechanism. Second, it is not automatically found under the final bounded autonomous configuration: the X5 portfolio never receives the known three-contact candidate before the search limit. Third, the geometric core supplies no completed quality gain from the extra horizon, while every seed control finishes and search frequently consumes the process budget. This is evidence against a practical benefit in the tested core, not a proof that contact prediction is useless or that unfinished pairs would tie.
+
+The input structure explains part of this limited opportunity without inferring an optimizer's motives. All core contact windows exceed the specified prepared-entry minimum, and no already activated key can survive any same-station return at the base cryptoperiod. Increasing offered traffic alone does not create the short-return feasibility contrast. Extending the cryptoperiod does create actual reuse, but both horizons realize the same savings. A longer permitted lifetime is not itself a security improvement; it changes potential exposure as well as management work.
+
+The late-disclosure witness shows a separate conditional benefit: nominal preparation and installation timing can improve independent delivery during a later incident. Yet notification is slower, and most prior traffic remains retrospectively exposed. Recovery speed, total useful time, and security exposure are distinct. Across the complete registered horizon pairs there are 19 equal outcomes, one Next advantage (measured X5) and one Multi advantage (late disclosure); ten pairs remain incomplete, with H3 separately unpaired. These heterogeneous cases are not independent samples for a win-rate claim. The evidence supports reporting mechanisms, conditions and costs, not a universal policy ranking.
+
+The exact reference is an offline finite-model benchmark. The practical mode trades certification for bounded decision effort and therefore must be evaluated as an explicitly different controller. Its completed executions do not imply solved roots. Delay sensitivity exposes selected critical-path assumptions but does not measure a complete ground/onboard deployment. Controlled losses test specific interventions; they do not identify a general distribution of contact errors or detector behavior.
+
+Operation and traffic costs remain synthetic. The CPU objective counts lifecycle-management operations; it does not model per-byte payload encryption CPU, energy or a complete flight processor load. Public propagated visibility provides geometric realism but not operational access, link budgets, authorized ISS/NOAA/HST sessions, or independent mission samples. Repeated deterministic executions are not independent policy-effectiveness samples. Incomplete executions cannot support a claim that Multi is better, equal, or never worse.
+
+The threat model excludes persistent generator compromise, active forgery, a physical RF jammer model, compromised management credentials, and a real distributed endpoint protocol. The nonce correction closes one concrete accounting gap; it does not implement encryption or prove replay resistance. Explicit reconciliation after uncertain online operations remains absent. These are limitations of the current evidence and architecture, not completed features.
+
+\section{Conclusion}
+Joint traffic-key and SA lifecycle timing admits a useful multi-contact mechanism, but observing more contacts is insufficient to realize it efficiently. In one frozen 108-attempt campaign, the four completed geometric-core horizon pairs tie and five are incomplete, while no-DFS controls finish all core workloads. The exact prepared witness retains an additional served contact; the bounded autonomous witness does not. A late-disclosure case yields an extra confidential frame under Multi, whereas charged decision time harms its payload in measured X5. INSTALL interruption is handled with preserved partial costs and an admissible retry in the tested cases. These results establish conditional possibilities and explicit computational limits, not broad Multi superiority. The contribution is the controlled formulation, executor, available-candidate guarantee and reproducible evidence separating horizon, feasibility, computation and recovery. Operational validation, concrete distributed reconciliation and cryptographic-security proof remain outside this study.
+
+\begin{thebibliography}{8}
+\bibitem{sdls} CCSDS, \emph{Space Data Link Security Protocol}, CCSDS 355.0-B-2, July 2022. [Online]. Available: \url{https://ccsds.org/Pubs/355x0b2.pdf}.
+\bibitem{ep} CCSDS, \emph{Space Data Link Security Protocol---Extended Procedures}, CCSDS 355.1-B-1, Feb. 2020. [Online]. Available: \url{https://ccsds.org/Pubs/355x1b1.pdf}.
+\bibitem{skm} CCSDS, \emph{Symmetric Key Management}, CCSDS 354.0-M-1, Dec. 2023. [Online]. Available: \url{https://ccsds.org/Pubs/354x0m1.pdf}.
+\bibitem{iota} D. Bernal, O. Ledesma, P. Lamo, and J. Bermejo, ``IOTA-Based Authentication for IoT Devices in Satellite Networks,'' \emph{Computers, Materials \& Continua}, vol. 86, no. 1, pp. 1--39, 2026, doi: 10.32604/cmc.2025.069746.
+\bibitem{bp} S. Burleigh, K. Fall, and E. Birrane III, ``Bundle Protocol Version 7,'' RFC 9171, Jan. 2022. [Online]. Available: \url{https://www.rfc-editor.org/rfc/rfc9171.html}.
+\bibitem{bpsec} E. Birrane III and K. McKeever, ``Bundle Protocol Security (BPSec),'' RFC 9172, Jan. 2022. [Online]. Available: \url{https://www.rfc-editor.org/rfc/rfc9172.html}.
+\bibitem{sabr} CCSDS, \emph{Schedule-Aware Bundle Routing}, CCSDS 734.3-B-1, July 2019. [Online]. Available: \url{https://ccsds.org/Pubs/734x3b1.pdf}.
+\bibitem{detke} R. Detke, P. G. Madoery, R. Cherini, J. A. Fraire, and J. M. Finochietto, ``Security-Aware Route Selection in DTNs: Towards Optimal Key Provisioning,'' IEEE WiSEE, Space-Terrestrial Internetworking Workshop (STINT), 2026. Conference-hosted full paper, accessed Oct. 25, 2026. [Online]. Available: \url{https://stintworkshops.org/papers/stint2026-19-detke.pdf}.
+\end{thebibliography}
+\end{document}

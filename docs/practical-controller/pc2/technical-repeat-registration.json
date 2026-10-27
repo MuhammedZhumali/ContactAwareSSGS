@@ -1,0 +1,22 @@
+{
+  "stage": "PC2 one technical repeat after PROCESS_ERROR",
+  "registeredAtUtc": "2026-10-24T23:35:48.455075+00:00",
+  "sourceAttempt": "target/practical-controller-pc2/measured-v4/runs/07-measured-practical-H1-CANONICAL-SEED_AND_RETENTION",
+  "sourceProcess": {
+    "processStatus": "PROCESS_ERROR",
+    "exitCode": 1,
+    "processElapsedNanos": 36516000000,
+    "externalLimitSeconds": 600,
+    "pid": 18068
+  },
+  "failure": "Checkpoint atomic rename AccessDeniedException; ACCESS_DENIED_TIME_EXHAUSTED. Blocking actor not established. Existing bounded retry policy unchanged.",
+  "checkpoint": {
+    "at": "2026-10-10T08:18:40.148023540Z",
+    "sha256": "16f02c2dd0d0f1fe040fe08b3a6185fc5f2b519e253c1738e5701c2f8def68d6",
+    "parse": "PASS",
+    "events": 302
+  },
+  "scope": "One separately registered repeat of failed H1/CANONICAL and first attempts of five cases not reached after stop-on-PROCESS_ERROR. Same candidate-v4 JAR, inputs and all budgets.",
+  "procedure": "One JVM; do not read active checkpoint during experiment. Observe only runner completion output. No automatic retries or budget increases. Stop on another PROCESS_ERROR and report remaining cases NOT_RUN.",
+  "caveat": "Concurrent checkpoint reads in the prior run are a possible contributor, not an established causal attribution. No checkpoint production fix or claim of reliability improvement."
+}

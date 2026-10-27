@@ -1,0 +1,14 @@
+{
+  "cases": 8,
+  "statuses": {
+    "FINISHED": 4,
+    "SEARCH_INCOMPLETE": 4
+  },
+  "audited": 8,
+  "reuseLinks": 161,
+  "historicalCases": 8,
+  "historicalAudited": 8,
+  "historicalReuseLinks": 48,
+  "completedPairs": 0,
+  "interpretation": "No new LIGHT execution; independent accounting/recovery/reuse auditors applied to saved journals; final outcomes only FINISHED"
+}

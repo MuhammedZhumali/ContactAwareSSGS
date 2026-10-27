@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "fullScheduleContacts": 46,
+  "offlineFinished": 4,
+  "measuredFinished": 4,
+  "tested": {
+    "tests": 92,
+    "failures": 0,
+    "errors": 0,
+    "classes": 12
+  },
+  "diagnosticReplay": "Two feasible terminal continuations compared at same root",
+  "sources": {
+    "target/practical-controller/full-iss-v1/analysis.json": "81df3e50268785ca41405b4e2ef033af980cc447686c6acd494a609f936913c7",
+    "target/practical-controller/measured-iss-v1/analysis.json": "c0b3753294aac02f35dc1854abb66c17cfa6896940ede8489c10ddbc0bba8ee8",
+    "target/practical-controller/continuation-replay/result.json": "17fffe5bdf3261f2411247dcee6f9493e6ccb7d3f6cc90c4a2a87a37a374c535"
+  }
+}

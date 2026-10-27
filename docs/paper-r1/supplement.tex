@@ -1,0 +1,94 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=25mm]{geometry}
+\usepackage{booktabs,longtable,array,url,amsmath}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{2em}
+\title{Supplement: R1 Evidence Provenance and Execution Contract}
+\author{Mukhammed Zhumali}
+\date{25 October 2026}
+\begin{document}
+\maketitle
+
+\section{Source Identity and Revision Boundary}
+This is a separate supplement to the standalone R1 manuscript. The revision uses the audited 15-page supplied \texttt{Contact\_Aware\_Research.pdf} and the newer available \texttt{ContactAwareSS\_SE25.tex}. They differ in wording, related-work structure, and bibliography numbering; the TeX file is not represented as the PDF's exact compilation source. The older repository paper dated October 19 remains preserved and is not the current evidence baseline.
+
+\begin{longtable}{p{.31\textwidth}p{.62\textwidth}}
+\toprule Artifact & SHA-256 identity \\
+\midrule\endhead
+Supplied 15-page PDF & \texttt{31805ae1f5838108dedecd6638048132ea}\newline\texttt{c6c5db454f6be2d16c64cdd0693944} \\
+Supplied SE25 TeX & \texttt{59d5ea9e75ff17b7cefc26f6a513dbd4f}\newline\texttt{b10234b8815cae7e9446e75902b6b2c} \\
+October 19 repository TeX & \texttt{af62382ca95bb502c0cf7ea8852264ade4}\newline\texttt{2ad0b43f4f3b2912f281426a8c4e6a} \\
+\bottomrule
+\end{longtable}
+
+The exact PDF claim locations and issues are recorded in \href{../research-audit/article-sources.md}{the article/source audit}. Its bibliography additions and access limitations are in \href{../research-audit/related-work.md}{the related-work matrix}. Original source files, user review files, and historical evidence were not overwritten.
+
+\section{Historical Evidence Is Not a New R1 Batch}
+The October 24 synthesis selects 60 X rows from the 3/5/9~s return-window investigation, 16 additional-ISS LIGHT rows, and eight higher-demand ISS rows. Of 84 selected executions, 63 are FINISHED, 20 SEARCH\_INCOMPLETE, and one CONTROLLER\_TIME\_LIMIT. The 42 Next/Multi pairs contain 21 complete pairs. All 42 Next executions finish; 21 Multi executions finish. Twenty X/5 rows are historical executions rather than newly run trials. Three additional technical attempts remain separate, yielding 87 journal references for the synthesis.
+
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule Historical selection & Selected & Finished & Search limit & Controller limit \\
+\midrule
+X, represented in SE2.3 & 60 & 45 & 15 & 0 \\
+ISS LIGHT, SE2.4 & 16 & 14 & 1 & 1 \\
+ISS demand, SE2.5 & 8 & 4 & 4 & 0 \\
+\midrule Total & 84 & 63 & 20 & 1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The current audit recounted saved CSV statuses; it did not rerun those historical controllers or independently verify all journal contents. The primary files are \href{../research-synthesis/runs.csv}{runs.csv}, \href{../research-synthesis/comparisons.csv}{comparisons.csv}, \href{../research-synthesis/extra-attempts.csv}{extra-attempts.csv}, and \href{../research-synthesis/report.md}{the synthesis report}. Unfinished executions retain unavailable final quality, rather than zero service or an imputed win/loss.
+
+\section{Version and Technical-Attempt Provenance}
+Historical executable identities are retained per row. SE2.2.2 identifies \texttt{1900d3d8a3b1}; SE2.3 identifies \texttt{e3266427f339}; SE2.4 and SE2.5 share \texttt{67870e66f043}. Full commits, executable checksums, inputs, and postprocessor identities belong to their manifests. Mixed X/5 versions do not constitute one uniform runtime benchmark.
+
+\begin{itemize}
+\item \href{../security-evaluation-se222/artifact-manifest.json}{SE2.2.2 artifact manifest} and \href{../security-evaluation-se222/report.md}{report} retain bounded-search and replay evidence.
+\item \href{../security-evaluation-c3/artifact-manifest.json}{Return-window artifact manifest} and \href{../security-evaluation-c3/report.md}{report} retain the duration investigation and technical attempts.
+\item \href{../security-evaluation-new-days/artifact-manifest.json}{Additional-day artifact manifest} and \href{../security-evaluation-new-days/report.md}{report} retain propagated ISS workloads.
+\item \href{../security-evaluation-remaining-demand/artifact-manifest.json}{Higher-demand artifact manifest} and \href{../security-evaluation-remaining-demand/report.md}{report} retain the offered-volume intervention.
+\end{itemize}
+
+Earlier recorded checks include 397 distinct passing Java tests for SE2.2.2 after five HTTP tests were rerun separately following loopback restrictions. That is not represented as one uninterrupted all-passing build. SE2.3 and SE2.4 record 23 and 40 targeted Maven tests. SE2.5 did not introduce a new Maven build; the retrospective confidential-service synthesis added eight targeted Python checks. These historical counts are not summed into a new suite total.
+
+The R1 integration checkpoint separately records 423 passing candidate tests. A separate 12-case baseline check records 11 FINISHED executions and one incomplete X/CANONICAL/Multi execution. This is a bounded baseline check, not the R1 experimental matrix and not a revision of the historical 21/42 count. Its final executable/test provenance must be attached to \href{../research-audit/results/validation.json}{the R1 validation record}; later changes require corresponding checks.
+
+The subsequent practical-v2 build passes 74 overlapping focused tests; an export-only repair passes 10 focused tests. The final Python suite passes 67 tests. The new registered attempts total 181, of which 135 finish; 55/84 selected horizon pairs complete. One retained PROCESS\_ERROR occurred during serialization of an internal search certificate, after which seven unattempted cells were stopped by protocol. A separately registered eight-case export-repair series keeps the same physical model and budgets. These attempts are not silently substituted into historical series.
+
+The final artifact manifest maps baseline, candidate exact, practical-v2 and delay-export source archives to separate JAR hashes. Full-DFS quality agreement holds on twelve comparisons from two existing warmed states; the failed fresh-root oracle attempt remains recorded. Forty-nine checkpoint retries were observed and recovered within bounded retry policies; no responsible Windows process is identified. The latency adapter's legacy computation-summary zeros are not measurements: analysis marks that summary unavailable and uses the enclosing measurement and search ledgers. Two latency attempts have raw SEARCH\_INCOMPLETE status with CONTROLLER\_TIME\_LIMIT in the diagnostic ledger.
+
+Search elapsed limits are cooperative experimental controls. Historical anomalous watchdog/elapsed observations and technical repeats remain in the source reports. A diagnostic root solved under a different allowance does not replace a registered incomplete full-controller execution. Neither a successful checkpoint replay nor an accounting audit is an independent simulator or a cryptographic security proof.
+
+\section{Aborted Frames and Counter Conservation}
+R1 introduces controlled actual channel intervals while preserving original forecast windows. The full implementation contract is in \href{../research-audit/channel-model.md}{channel-model.md}. Missing/null interruption lists deserialize as empty, and existing scenario constructors remain supported. Availability is reconstructed from factual DOWN/UP journal events; restoration times remain private queue data.
+
+The nonce correction is a distinct semantic change: an admitted committed frame consumes one directional nonce when aborted, even with a zero-byte emitted prefix. Delivered bytes, useful time, and successful-session counts remain zero for that frame. A still-bound SA mirror advances with its key; a retired key remains retired. For new executions,
+\[
+ c_k^{\rm final}=c_k^{\rm initial}+n_k^{\rm delivered}+n_k^{\rm aborted}.
+\]
+Audits using delivered frames alone must therefore be version-aware. Earlier evidence is not silently reinterpreted as if it contained this correction. Loading an old checkpoint does not retroactively repair its historical counter records. New checkpoint/resume equivalence concerns the same updated execution semantics.
+
+The full equal-time priority order is complete frame, disclosure, key deadline, ground notice, original contact end, channel up, channel down, explicit interruption, original contact start, step confirmation, action start. All events at a timestamp settle before a new frame starts. Thus expiry and loss prevent an online ACK at the same timestamp, while a frame ending exactly there is complete. Adjacent outage intervals remain unavailable after their common timestamp.
+
+Interrupted INSTALL can be retried without claiming prior confirmation. Interrupted SWITCH, OPEN, or REUSE retains uncertainty and stays blocked even after UP. There is no implemented peer-reconciliation protocol. Ground PREPARE remains possible. Actual event-driven interruption of a WAIT is not advance disclosure of its event time to the planner.
+
+\section{Deployment and Delay Assumptions}
+The logical planner is ground-side. Its abstract state is consistent by assumption; PREPARE is ground-only, online operations require the matching current link, and STOP/expiry are local. The delay model combines a fixed decision/dispatch allowance with a chosen scale of measured host selection time. It lets committed work and physical events proceed before revalidating the selected action.
+
+No measured command format, telemetry schedule, reconciliation exchange, flight-computer timing, or operation energy is supplied. A fixed delay is therefore an intervention, not a calibrated end-to-end protocol claim. Separate exact and practical controls retain the same objective. Practical incumbent/fallback decisions are labeled uncertified; a completed practical execution may contain incomplete searches.
+
+\section{Literature Access Limits}
+Primary CCSDS and RFC texts support the SDLS/EP, symmetric-key, BPv7/BPSec, and SABR scope distinctions. Publisher full text supports the IOTA identity/allowlist comparison. LK-AKA publisher metadata/highlights support the S2S/location-key description, but detailed full-text analysis was not completed. FHAP's full text was inaccessible during the audit; its inherited metadata and prehandover description require primary-copy confirmation before more detailed use.
+
+Detke et al.'s \href{https://stintworkshops.org/papers/stint2026-19-detke.pdf}{six-page full paper} and \href{https://stintworkshops.org/slides/stint2026-slides-detke.pdf}{eight-slide presentation} were retrieved successfully on October 25 after the initial browser-tool failures, using a permitted public-network fetch. Both returned HTTP 200; local copies, hashes, access metadata, and page-delimited extractions are retained under \texttt{target/research-validation/literature/}. The source audit records the precise identities. No unverified DOI or proceedings pagination is supplied.
+
+Physical PDF pages 4--5 define route/scope/pair selection variables with no time index, key-lifetime constraints, or per-contact provisioning-operation capacity. Temporal feasibility is represented in the route catalog, not omitted from the approach. Page 2 discusses long-span SAs, so absence of endpoint lifecycle transitions must not be described as absence of SAs altogether. Page 5 evaluates a 2700~s fixed contact plan and connectivity sweep; its exposure metric concerns intermediate-node processing, rather than a key-disclosure/recovery experiment. Page 6 and slide 7 explicitly place contact-plan key scheduling in future work. These findings support the bounded formulation-level distinction in the main text; the repository was not reproduced and the paper's referenced DTKA/BERMUDA work was not independently reviewed here.
+
+\section{Regeneration and Release Boundary}
+The manuscript loads \texttt{r1-results.tex} only if present and includes each registered PDF chart only if available. This permits source inspection before the matrix is complete while preventing placeholder numbers from being interpreted as results. The generated fragment must state execution status, factor/budget definitions, version provenance, and incomplete outcomes. Figures must distinguish censoring from incompleteness and describe any conditioning on completed runs.
+
+Before a release, compile both TeX documents, inspect the rendered pages, reconcile all counts with the final manifest, and ensure that the main text and abstract do not imply outcomes absent from the generated result block. The target length is an editorial choice, not an asserted venue page limit.
+\end{document}

@@ -1,0 +1,393 @@
+{
+  "tables": {
+    "file": "target/research-validation/tables.json",
+    "sha256": "ad6f36e968b471782e161a2237b17d1cec088c52893f9914d5f4b0ffef65ce37"
+  },
+  "figures": {
+    "runtime_completion": [
+      {
+        "series": "exact",
+        "case": "005-X5-exact-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/exact/runs/005-X5-exact-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "exact",
+        "case": "006-X5-exact-H2-CANONICAL",
+        "status": "SEARCH_INCOMPLETE",
+        "journal": "target/research-validation/exact/runs/006-X5-exact-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "exact",
+        "case": "017-demand-none-exact-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/exact/runs/017-demand-none-exact-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "exact",
+        "case": "018-demand-none-exact-H2-CANONICAL",
+        "status": "SEARCH_INCOMPLETE",
+        "journal": "target/research-validation/exact/runs/018-demand-none-exact-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "exact",
+        "case": "033-ISS5400-none-exact-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/exact/runs/033-ISS5400-none-exact-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "exact",
+        "case": "034-ISS5400-none-exact-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/exact/runs/034-ISS5400-none-exact-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "practical-v2",
+        "case": "005-X5-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/practical-v2/runs/005-X5-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "practical-v2",
+        "case": "006-X5-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/practical-v2/runs/006-X5-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "practical-v2",
+        "case": "017-demand-none-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/practical-v2/runs/017-demand-none-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "practical-v2",
+        "case": "018-demand-none-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/practical-v2/runs/018-demand-none-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "practical-v2",
+        "case": "025-ISS46-practical-H1-CANONICAL",
+        "status": "CONTROLLER_TIME_LIMIT",
+        "journal": "target/research-validation/practical-v2/runs/025-ISS46-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "practical-v2",
+        "case": "026-ISS46-practical-H2-CANONICAL",
+        "status": "CONTROLLER_TIME_LIMIT",
+        "journal": "target/research-validation/practical-v2/runs/026-ISS46-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "practical-v2",
+        "case": "037-33591-base-practical-H1-CANONICAL",
+        "status": "CONTROLLER_TIME_LIMIT",
+        "journal": "target/research-validation/practical-v2/runs/037-33591-base-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "practical-v2",
+        "case": "038-33591-base-practical-H2-CANONICAL",
+        "status": "CONTROLLER_TIME_LIMIT",
+        "journal": "target/research-validation/practical-v2/runs/038-33591-base-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "practical-v2",
+        "case": "041-20580-base-practical-H1-CANONICAL",
+        "status": "CONTROLLER_TIME_LIMIT",
+        "journal": "target/research-validation/practical-v2/runs/041-20580-base-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "practical-v2",
+        "case": "042-20580-base-practical-H2-CANONICAL",
+        "status": "CONTROLLER_TIME_LIMIT",
+        "journal": "target/research-validation/practical-v2/runs/042-20580-base-practical-H2-CANONICAL/actual.events.json"
+      }
+    ],
+    "service_cost_horizon": [
+      {
+        "series": "practical-v2",
+        "case": "005-X5-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/practical-v2/runs/005-X5-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "practical-v2",
+        "case": "006-X5-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/practical-v2/runs/006-X5-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "025-X5-practical-H3-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/025-X5-practical-H3-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "practical-v2",
+        "case": "007-X5-practical-H1-CONTINUE_WAIT",
+        "status": "FINISHED",
+        "journal": "target/research-validation/practical-v2/runs/007-X5-practical-H1-CONTINUE_WAIT/actual.events.json"
+      },
+      {
+        "series": "practical-v2",
+        "case": "008-X5-practical-H2-CONTINUE_WAIT",
+        "status": "FINISHED",
+        "journal": "target/research-validation/practical-v2/runs/008-X5-practical-H2-CONTINUE_WAIT/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "026-X5-practical-H3-CONTINUE_WAIT",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/026-X5-practical-H3-CONTINUE_WAIT/actual.events.json"
+      },
+      {
+        "series": "exact",
+        "case": "007-X5-exact-H1-CONTINUE_WAIT",
+        "status": "FINISHED",
+        "journal": "target/research-validation/exact/runs/007-X5-exact-H1-CONTINUE_WAIT/actual.events.json"
+      },
+      {
+        "series": "exact",
+        "case": "008-X5-exact-H2-CONTINUE_WAIT",
+        "status": "FINISHED",
+        "journal": "target/research-validation/exact/runs/008-X5-exact-H2-CONTINUE_WAIT/actual.events.json"
+      }
+    ],
+    "sensitivity": [
+      {
+        "series": "sensitivity-v2",
+        "case": "001-X-cost-INSTALL-0.5-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/001-X-cost-INSTALL-0.5-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "002-X-cost-INSTALL-0.5-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/002-X-cost-INSTALL-0.5-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "003-X-cost-INSTALL-2-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/003-X-cost-INSTALL-2-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "004-X-cost-INSTALL-2-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/004-X-cost-INSTALL-2-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "005-X-cost-REUSE-2-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/005-X-cost-REUSE-2-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "006-X-cost-REUSE-2-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/006-X-cost-REUSE-2-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "007-X-cost-SWITCH-2-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/007-X-cost-SWITCH-2-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "008-X-cost-SWITCH-2-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/008-X-cost-SWITCH-2-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "009-X-cryptoperiod-90-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/009-X-cryptoperiod-90-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "010-X-cryptoperiod-90-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/010-X-cryptoperiod-90-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "011-X-cryptoperiod-240-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/011-X-cryptoperiod-240-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "012-X-cryptoperiod-240-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/012-X-cryptoperiod-240-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "013-X-maxMaterialAge-200-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/013-X-maxMaterialAge-200-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "014-X-maxMaterialAge-200-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/014-X-maxMaterialAge-200-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "015-X-maxReuseGap-50-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/015-X-maxReuseGap-50-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "016-X-maxReuseGap-50-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/016-X-maxReuseGap-50-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "017-X-light-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/017-X-light-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "018-X-light-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/018-X-light-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "019-X-medium-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/019-X-medium-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "020-X-medium-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/020-X-medium-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "021-X-minimum800-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/021-X-minimum800-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "022-X-minimum800-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/022-X-minimum800-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "023-X-frame200-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/023-X-frame200-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "sensitivity-v2",
+        "case": "024-X-frame200-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/sensitivity-v2/runs/024-X-frame200-practical-H2-CANONICAL/actual.events.json"
+      }
+    ],
+    "mechanism_timeline": [
+      {
+        "series": "exact",
+        "case": "007-X5-exact-H1-CONTINUE_WAIT",
+        "status": "FINISHED",
+        "journal": "target/research-validation/exact/runs/007-X5-exact-H1-CONTINUE_WAIT/actual.events.json"
+      },
+      {
+        "series": "exact",
+        "case": "008-X5-exact-H2-CONTINUE_WAIT",
+        "status": "FINISHED",
+        "journal": "target/research-validation/exact/runs/008-X5-exact-H2-CONTINUE_WAIT/actual.events.json"
+      }
+    ],
+    "recovery": [
+      {
+        "series": "security-v2",
+        "case": "009-X-detected2-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/security-v2/runs/009-X-detected2-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "security-v2",
+        "case": "010-X-detected2-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/security-v2/runs/010-X-detected2-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "exact",
+        "case": "037-ISS5400-p30-detected-exact-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/exact/runs/037-ISS5400-p30-detected-exact-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "exact",
+        "case": "038-ISS5400-p30-detected-exact-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/exact/runs/038-ISS5400-p30-detected-exact-H2-CANONICAL/actual.events.json"
+      }
+    ],
+    "detected_exposure": [
+      {
+        "series": "security-v2",
+        "case": "005-X-detected0-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/security-v2/runs/005-X-detected0-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "security-v2",
+        "case": "006-X-detected0-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/security-v2/runs/006-X-detected0-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "security-v2",
+        "case": "009-X-detected2-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/security-v2/runs/009-X-detected2-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "security-v2",
+        "case": "010-X-detected2-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/security-v2/runs/010-X-detected2-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "security-v2",
+        "case": "013-X-detected8-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/security-v2/runs/013-X-detected8-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "security-v2",
+        "case": "014-X-detected8-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/security-v2/runs/014-X-detected8-practical-H2-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "security-v2",
+        "case": "017-X-gap-practical-H1-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/security-v2/runs/017-X-gap-practical-H1-CANONICAL/actual.events.json"
+      },
+      {
+        "series": "security-v2",
+        "case": "018-X-gap-practical-H2-CANONICAL",
+        "status": "FINISHED",
+        "journal": "target/research-validation/security-v2/runs/018-X-gap-practical-H2-CANONICAL/actual.events.json"
+      }
+    ]
+  },
+  "interpretation": "Actual configured deterministic executions; I=incomplete, C=censored/not reached; no inferred zeros for unavailable quality"
+}

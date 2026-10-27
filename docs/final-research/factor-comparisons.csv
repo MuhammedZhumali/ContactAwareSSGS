@@ -1,0 +1,10 @@
+case,baseline,factor,horizon,baselineHorizon,status,deltaVersusBaseline_servedContacts,deltaVersusBaseline_usefulSecureTime,deltaVersusBaseline_controlCpu,deltaVersusBaseline_managementBytes,deltaVersusBaseline_newKeys,deltaVersusBaseline_controllerSeconds
+088-sensitivity-ISS46-medium-install0.5-offline-next-H1-canonical,027-core-ISS46-medium-offline-next-H1-canonical,ISS46-medium-install0.5,1,1,COMPARABLE,0,0E-9,-6.900000000,0,0,-13.4478850
+089-sensitivity-ISS46-medium-install0.5-offline-multi-H2-canonical,028-core-ISS46-medium-offline-multi-H2-canonical,ISS46-medium-install0.5,2,2,INCOMPLETE_PAIR,,,,,,
+090-sensitivity-ISS46-medium-install2-offline-next-H1-canonical,027-core-ISS46-medium-offline-next-H1-canonical,ISS46-medium-install2,1,1,COMPARABLE,0,-10.000000000,13.800000000,0,0,-18.5549141
+091-sensitivity-ISS46-medium-install2-offline-multi-H2-canonical,028-core-ISS46-medium-offline-multi-H2-canonical,ISS46-medium-install2,2,2,INCOMPLETE_PAIR,,,,,,
+092-sensitivity-ISS46-medium-cp2700-offline-next-H1-canonical,027-core-ISS46-medium-offline-next-H1-canonical,ISS46-medium-cp2700,1,1,COMPARABLE,0,0E-9,0E-9,0,0,-21.5536871
+093-sensitivity-ISS46-medium-cp2700-offline-multi-H2-canonical,028-core-ISS46-medium-offline-multi-H2-canonical,ISS46-medium-cp2700,2,2,INCOMPLETE_PAIR,,,,,,
+094-sensitivity-ISS46-medium-cp10800-offline-next-H1-canonical,027-core-ISS46-medium-offline-next-H1-canonical,ISS46-medium-cp10800,1,1,COMPARABLE,0,0E-9,-9.750000000,-15000,-30,-261.2649289
+095-sensitivity-ISS46-medium-cp10800-offline-multi-H2-canonical,028-core-ISS46-medium-offline-multi-H2-canonical,ISS46-medium-cp10800,2,2,INCOMPLETE_PAIR,,,,,,
+096-sensitivity-ISS46-medium-offline-multi-H3-canonical,028-core-ISS46-medium-offline-multi-H2-canonical,ISS46-medium,3,2,INCOMPLETE_PAIR,,,,,,

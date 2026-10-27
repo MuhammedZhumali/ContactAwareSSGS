@@ -1,0 +1,2019 @@
+{
+  "tableSha256": "799b9b816bb8778fc6f67b081bde99dcd09be4e4d38ff6b00b14ef47f1806f94",
+  "protocolSha256": "2c406eb1c13dd88cea8fc7731736678e8fd3f5fae2b343a48395b5666a878cb8",
+  "figures": {
+    "service_matrix": [
+      {
+        "id": "019-core-ISS46-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/019-core-ISS46-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "025-core-ISS46-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/025-core-ISS46-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "031-core-ISS46-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/031-core-ISS46-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "020-core-ISS46-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/020-core-ISS46-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "026-core-ISS46-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/026-core-ISS46-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "032-core-ISS46-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/032-core-ISS46-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "021-core-ISS46-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/021-core-ISS46-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "027-core-ISS46-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/027-core-ISS46-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "033-core-ISS46-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "022-core-ISS46-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/022-core-ISS46-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "028-core-ISS46-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "034-core-ISS46-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "023-core-ISS46-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/023-core-ISS46-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "029-core-ISS46-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/029-core-ISS46-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "035-core-ISS46-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/035-core-ISS46-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "024-core-ISS46-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/024-core-ISS46-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "030-core-ISS46-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/030-core-ISS46-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "036-core-ISS46-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/036-core-ISS46-high-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "019-core-ISS46-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/019-core-ISS46-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "025-core-ISS46-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/025-core-ISS46-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "031-core-ISS46-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/031-core-ISS46-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "020-core-ISS46-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/020-core-ISS46-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "026-core-ISS46-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/026-core-ISS46-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "032-core-ISS46-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/032-core-ISS46-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "021-core-ISS46-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/021-core-ISS46-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "027-core-ISS46-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/027-core-ISS46-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "033-core-ISS46-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "022-core-ISS46-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/022-core-ISS46-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "028-core-ISS46-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "034-core-ISS46-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "023-core-ISS46-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/023-core-ISS46-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "029-core-ISS46-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/029-core-ISS46-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "035-core-ISS46-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/035-core-ISS46-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "024-core-ISS46-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/024-core-ISS46-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "030-core-ISS46-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/030-core-ISS46-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "036-core-ISS46-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/036-core-ISS46-high-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "037-core-NOAA38-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/037-core-NOAA38-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "043-core-NOAA38-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/043-core-NOAA38-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "049-core-NOAA38-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/049-core-NOAA38-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "038-core-NOAA38-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/038-core-NOAA38-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "044-core-NOAA38-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/044-core-NOAA38-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "050-core-NOAA38-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/050-core-NOAA38-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "039-core-NOAA38-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/039-core-NOAA38-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "045-core-NOAA38-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/045-core-NOAA38-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "051-core-NOAA38-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "040-core-NOAA38-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/040-core-NOAA38-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "046-core-NOAA38-medium-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/046-core-NOAA38-medium-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "052-core-NOAA38-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "041-core-NOAA38-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/041-core-NOAA38-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "047-core-NOAA38-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/047-core-NOAA38-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "053-core-NOAA38-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/053-core-NOAA38-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "042-core-NOAA38-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/042-core-NOAA38-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "048-core-NOAA38-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/048-core-NOAA38-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "054-core-NOAA38-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/054-core-NOAA38-high-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "037-core-NOAA38-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/037-core-NOAA38-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "043-core-NOAA38-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/043-core-NOAA38-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "049-core-NOAA38-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/049-core-NOAA38-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "038-core-NOAA38-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/038-core-NOAA38-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "044-core-NOAA38-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/044-core-NOAA38-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "050-core-NOAA38-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/050-core-NOAA38-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "039-core-NOAA38-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/039-core-NOAA38-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "045-core-NOAA38-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/045-core-NOAA38-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "051-core-NOAA38-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "040-core-NOAA38-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/040-core-NOAA38-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "046-core-NOAA38-medium-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/046-core-NOAA38-medium-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "052-core-NOAA38-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "041-core-NOAA38-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/041-core-NOAA38-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "047-core-NOAA38-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/047-core-NOAA38-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "053-core-NOAA38-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/053-core-NOAA38-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "042-core-NOAA38-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/042-core-NOAA38-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "048-core-NOAA38-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/048-core-NOAA38-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "054-core-NOAA38-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/054-core-NOAA38-high-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "055-core-HST48-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/055-core-HST48-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "061-core-HST48-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/061-core-HST48-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "067-core-HST48-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/067-core-HST48-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "056-core-HST48-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/056-core-HST48-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "062-core-HST48-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/062-core-HST48-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "068-core-HST48-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/068-core-HST48-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "057-core-HST48-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/057-core-HST48-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "063-core-HST48-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/063-core-HST48-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "069-core-HST48-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "058-core-HST48-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/058-core-HST48-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "064-core-HST48-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "070-core-HST48-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "059-core-HST48-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/059-core-HST48-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "065-core-HST48-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/065-core-HST48-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "071-core-HST48-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/071-core-HST48-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "060-core-HST48-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/060-core-HST48-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "066-core-HST48-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/066-core-HST48-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "072-core-HST48-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/072-core-HST48-high-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "055-core-HST48-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/055-core-HST48-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "061-core-HST48-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/061-core-HST48-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "067-core-HST48-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/067-core-HST48-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "056-core-HST48-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/056-core-HST48-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "062-core-HST48-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/062-core-HST48-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "068-core-HST48-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/068-core-HST48-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "057-core-HST48-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/057-core-HST48-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "063-core-HST48-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/063-core-HST48-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "069-core-HST48-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "058-core-HST48-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/058-core-HST48-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "064-core-HST48-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "070-core-HST48-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "059-core-HST48-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/059-core-HST48-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "065-core-HST48-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/065-core-HST48-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "071-core-HST48-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/071-core-HST48-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "060-core-HST48-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/060-core-HST48-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "066-core-HST48-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/066-core-HST48-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "072-core-HST48-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/072-core-HST48-high-offline-seed-h2-H2-canonical/actual.events.json"
+      }
+    ],
+    "cost_matrix": [
+      {
+        "id": "019-core-ISS46-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/019-core-ISS46-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "025-core-ISS46-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/025-core-ISS46-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "031-core-ISS46-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/031-core-ISS46-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "020-core-ISS46-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/020-core-ISS46-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "026-core-ISS46-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/026-core-ISS46-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "032-core-ISS46-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/032-core-ISS46-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "021-core-ISS46-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/021-core-ISS46-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "027-core-ISS46-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/027-core-ISS46-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "033-core-ISS46-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "022-core-ISS46-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/022-core-ISS46-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "028-core-ISS46-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "034-core-ISS46-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "023-core-ISS46-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/023-core-ISS46-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "029-core-ISS46-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/029-core-ISS46-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "035-core-ISS46-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/035-core-ISS46-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "024-core-ISS46-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/024-core-ISS46-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "030-core-ISS46-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/030-core-ISS46-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "036-core-ISS46-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/036-core-ISS46-high-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "019-core-ISS46-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/019-core-ISS46-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "025-core-ISS46-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/025-core-ISS46-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "031-core-ISS46-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/031-core-ISS46-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "020-core-ISS46-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/020-core-ISS46-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "026-core-ISS46-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/026-core-ISS46-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "032-core-ISS46-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/032-core-ISS46-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "021-core-ISS46-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/021-core-ISS46-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "027-core-ISS46-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/027-core-ISS46-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "033-core-ISS46-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "022-core-ISS46-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/022-core-ISS46-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "028-core-ISS46-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "034-core-ISS46-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "023-core-ISS46-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/023-core-ISS46-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "029-core-ISS46-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/029-core-ISS46-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "035-core-ISS46-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/035-core-ISS46-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "024-core-ISS46-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/024-core-ISS46-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "030-core-ISS46-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/030-core-ISS46-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "036-core-ISS46-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/036-core-ISS46-high-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "019-core-ISS46-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/019-core-ISS46-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "025-core-ISS46-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/025-core-ISS46-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "031-core-ISS46-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/031-core-ISS46-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "020-core-ISS46-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/020-core-ISS46-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "026-core-ISS46-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/026-core-ISS46-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "032-core-ISS46-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/032-core-ISS46-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "021-core-ISS46-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/021-core-ISS46-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "027-core-ISS46-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/027-core-ISS46-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "033-core-ISS46-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "022-core-ISS46-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/022-core-ISS46-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "028-core-ISS46-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "034-core-ISS46-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "023-core-ISS46-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/023-core-ISS46-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "029-core-ISS46-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/029-core-ISS46-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "035-core-ISS46-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/035-core-ISS46-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "024-core-ISS46-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/024-core-ISS46-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "030-core-ISS46-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/030-core-ISS46-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "036-core-ISS46-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/036-core-ISS46-high-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "037-core-NOAA38-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/037-core-NOAA38-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "043-core-NOAA38-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/043-core-NOAA38-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "049-core-NOAA38-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/049-core-NOAA38-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "038-core-NOAA38-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/038-core-NOAA38-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "044-core-NOAA38-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/044-core-NOAA38-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "050-core-NOAA38-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/050-core-NOAA38-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "039-core-NOAA38-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/039-core-NOAA38-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "045-core-NOAA38-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/045-core-NOAA38-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "051-core-NOAA38-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "040-core-NOAA38-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/040-core-NOAA38-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "046-core-NOAA38-medium-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/046-core-NOAA38-medium-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "052-core-NOAA38-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "041-core-NOAA38-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/041-core-NOAA38-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "047-core-NOAA38-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/047-core-NOAA38-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "053-core-NOAA38-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/053-core-NOAA38-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "042-core-NOAA38-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/042-core-NOAA38-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "048-core-NOAA38-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/048-core-NOAA38-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "054-core-NOAA38-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/054-core-NOAA38-high-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "037-core-NOAA38-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/037-core-NOAA38-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "043-core-NOAA38-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/043-core-NOAA38-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "049-core-NOAA38-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/049-core-NOAA38-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "038-core-NOAA38-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/038-core-NOAA38-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "044-core-NOAA38-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/044-core-NOAA38-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "050-core-NOAA38-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/050-core-NOAA38-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "039-core-NOAA38-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/039-core-NOAA38-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "045-core-NOAA38-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/045-core-NOAA38-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "051-core-NOAA38-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "040-core-NOAA38-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/040-core-NOAA38-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "046-core-NOAA38-medium-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/046-core-NOAA38-medium-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "052-core-NOAA38-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "041-core-NOAA38-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/041-core-NOAA38-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "047-core-NOAA38-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/047-core-NOAA38-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "053-core-NOAA38-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/053-core-NOAA38-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "042-core-NOAA38-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/042-core-NOAA38-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "048-core-NOAA38-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/048-core-NOAA38-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "054-core-NOAA38-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/054-core-NOAA38-high-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "037-core-NOAA38-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/037-core-NOAA38-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "043-core-NOAA38-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/043-core-NOAA38-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "049-core-NOAA38-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/049-core-NOAA38-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "038-core-NOAA38-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/038-core-NOAA38-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "044-core-NOAA38-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/044-core-NOAA38-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "050-core-NOAA38-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/050-core-NOAA38-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "039-core-NOAA38-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/039-core-NOAA38-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "045-core-NOAA38-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/045-core-NOAA38-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "051-core-NOAA38-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "040-core-NOAA38-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/040-core-NOAA38-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "046-core-NOAA38-medium-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/046-core-NOAA38-medium-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "052-core-NOAA38-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "041-core-NOAA38-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/041-core-NOAA38-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "047-core-NOAA38-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/047-core-NOAA38-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "053-core-NOAA38-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/053-core-NOAA38-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "042-core-NOAA38-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/042-core-NOAA38-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "048-core-NOAA38-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/048-core-NOAA38-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "054-core-NOAA38-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/054-core-NOAA38-high-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "055-core-HST48-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/055-core-HST48-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "061-core-HST48-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/061-core-HST48-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "067-core-HST48-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/067-core-HST48-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "056-core-HST48-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/056-core-HST48-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "062-core-HST48-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/062-core-HST48-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "068-core-HST48-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/068-core-HST48-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "057-core-HST48-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/057-core-HST48-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "063-core-HST48-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/063-core-HST48-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "069-core-HST48-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "058-core-HST48-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/058-core-HST48-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "064-core-HST48-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "070-core-HST48-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "059-core-HST48-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/059-core-HST48-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "065-core-HST48-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/065-core-HST48-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "071-core-HST48-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/071-core-HST48-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "060-core-HST48-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/060-core-HST48-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "066-core-HST48-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/066-core-HST48-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "072-core-HST48-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/072-core-HST48-high-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "055-core-HST48-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/055-core-HST48-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "061-core-HST48-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/061-core-HST48-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "067-core-HST48-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/067-core-HST48-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "056-core-HST48-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/056-core-HST48-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "062-core-HST48-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/062-core-HST48-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "068-core-HST48-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/068-core-HST48-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "057-core-HST48-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/057-core-HST48-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "063-core-HST48-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/063-core-HST48-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "069-core-HST48-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "058-core-HST48-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/058-core-HST48-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "064-core-HST48-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "070-core-HST48-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "059-core-HST48-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/059-core-HST48-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "065-core-HST48-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/065-core-HST48-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "071-core-HST48-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/071-core-HST48-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "060-core-HST48-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/060-core-HST48-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "066-core-HST48-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/066-core-HST48-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "072-core-HST48-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/072-core-HST48-high-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "055-core-HST48-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/055-core-HST48-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "061-core-HST48-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/061-core-HST48-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "067-core-HST48-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/067-core-HST48-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "056-core-HST48-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/056-core-HST48-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "062-core-HST48-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/062-core-HST48-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "068-core-HST48-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/068-core-HST48-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "057-core-HST48-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/057-core-HST48-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "063-core-HST48-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/063-core-HST48-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "069-core-HST48-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "058-core-HST48-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/058-core-HST48-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "064-core-HST48-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "070-core-HST48-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "059-core-HST48-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/059-core-HST48-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "065-core-HST48-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/065-core-HST48-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "071-core-HST48-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/071-core-HST48-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "060-core-HST48-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/060-core-HST48-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "066-core-HST48-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/066-core-HST48-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "072-core-HST48-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/072-core-HST48-high-offline-seed-h2-H2-canonical/actual.events.json"
+      }
+    ],
+    "runtime_completion": [
+      {
+        "id": "019-core-ISS46-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/019-core-ISS46-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "025-core-ISS46-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/025-core-ISS46-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "031-core-ISS46-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/031-core-ISS46-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "020-core-ISS46-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/020-core-ISS46-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "026-core-ISS46-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/026-core-ISS46-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "032-core-ISS46-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/032-core-ISS46-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "021-core-ISS46-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/021-core-ISS46-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "027-core-ISS46-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/027-core-ISS46-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "033-core-ISS46-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "022-core-ISS46-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/022-core-ISS46-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "028-core-ISS46-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "034-core-ISS46-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "023-core-ISS46-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/023-core-ISS46-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "029-core-ISS46-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/029-core-ISS46-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "035-core-ISS46-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/035-core-ISS46-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "024-core-ISS46-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/024-core-ISS46-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "030-core-ISS46-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/030-core-ISS46-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "036-core-ISS46-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/036-core-ISS46-high-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "037-core-NOAA38-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/037-core-NOAA38-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "043-core-NOAA38-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/043-core-NOAA38-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "049-core-NOAA38-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/049-core-NOAA38-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "038-core-NOAA38-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/038-core-NOAA38-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "044-core-NOAA38-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/044-core-NOAA38-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "050-core-NOAA38-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/050-core-NOAA38-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "039-core-NOAA38-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/039-core-NOAA38-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "045-core-NOAA38-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/045-core-NOAA38-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "051-core-NOAA38-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "040-core-NOAA38-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/040-core-NOAA38-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "046-core-NOAA38-medium-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/046-core-NOAA38-medium-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "052-core-NOAA38-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "041-core-NOAA38-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/041-core-NOAA38-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "047-core-NOAA38-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/047-core-NOAA38-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "053-core-NOAA38-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/053-core-NOAA38-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "042-core-NOAA38-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/042-core-NOAA38-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "048-core-NOAA38-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/048-core-NOAA38-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "054-core-NOAA38-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/054-core-NOAA38-high-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "055-core-HST48-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/055-core-HST48-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "061-core-HST48-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/061-core-HST48-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "067-core-HST48-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/067-core-HST48-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "056-core-HST48-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/056-core-HST48-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "062-core-HST48-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/062-core-HST48-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "068-core-HST48-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/068-core-HST48-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "057-core-HST48-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/057-core-HST48-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "063-core-HST48-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/063-core-HST48-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "069-core-HST48-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "058-core-HST48-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/058-core-HST48-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "064-core-HST48-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "070-core-HST48-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "059-core-HST48-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/059-core-HST48-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "065-core-HST48-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/065-core-HST48-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "071-core-HST48-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/071-core-HST48-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "060-core-HST48-low-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/060-core-HST48-low-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "066-core-HST48-medium-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/066-core-HST48-medium-offline-seed-h2-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "072-core-HST48-high-offline-seed-h2-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/072-core-HST48-high-offline-seed-h2-H2-canonical/actual.events.json"
+      }
+    ],
+    "measured_iss": [
+      {
+        "id": "019-core-ISS46-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/019-core-ISS46-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "073-measured-ISS46-low-measured-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/073-measured-ISS46-low-measured-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "020-core-ISS46-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/020-core-ISS46-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "074-measured-ISS46-low-measured-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/074-measured-ISS46-low-measured-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "021-core-ISS46-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/021-core-ISS46-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "075-measured-ISS46-low-measured-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/075-measured-ISS46-low-measured-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "022-core-ISS46-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/022-core-ISS46-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "076-measured-ISS46-low-measured-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/076-measured-ISS46-low-measured-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "023-core-ISS46-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/023-core-ISS46-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "077-measured-ISS46-low-measured-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/077-measured-ISS46-low-measured-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "025-core-ISS46-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/025-core-ISS46-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "078-measured-ISS46-medium-measured-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/078-measured-ISS46-medium-measured-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "026-core-ISS46-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/026-core-ISS46-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "079-measured-ISS46-medium-measured-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/079-measured-ISS46-medium-measured-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "027-core-ISS46-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/027-core-ISS46-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "080-measured-ISS46-medium-measured-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/080-measured-ISS46-medium-measured-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "028-core-ISS46-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "081-measured-ISS46-medium-measured-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "029-core-ISS46-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/029-core-ISS46-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "082-measured-ISS46-medium-measured-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/082-measured-ISS46-medium-measured-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "031-core-ISS46-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/031-core-ISS46-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "083-measured-ISS46-high-measured-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/083-measured-ISS46-high-measured-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "032-core-ISS46-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/032-core-ISS46-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "084-measured-ISS46-high-measured-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/084-measured-ISS46-high-measured-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "033-core-ISS46-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "085-measured-ISS46-high-measured-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "034-core-ISS46-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "086-measured-ISS46-high-measured-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "035-core-ISS46-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/035-core-ISS46-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "087-measured-ISS46-high-measured-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/087-measured-ISS46-high-measured-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "019-core-ISS46-low-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/019-core-ISS46-low-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "073-measured-ISS46-low-measured-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/073-measured-ISS46-low-measured-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "020-core-ISS46-low-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/020-core-ISS46-low-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "074-measured-ISS46-low-measured-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/074-measured-ISS46-low-measured-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "021-core-ISS46-low-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/021-core-ISS46-low-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "075-measured-ISS46-low-measured-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/075-measured-ISS46-low-measured-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "022-core-ISS46-low-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/022-core-ISS46-low-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "076-measured-ISS46-low-measured-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/076-measured-ISS46-low-measured-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "023-core-ISS46-low-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/023-core-ISS46-low-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "077-measured-ISS46-low-measured-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/077-measured-ISS46-low-measured-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "025-core-ISS46-medium-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/025-core-ISS46-medium-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "078-measured-ISS46-medium-measured-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/078-measured-ISS46-medium-measured-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "026-core-ISS46-medium-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/026-core-ISS46-medium-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "079-measured-ISS46-medium-measured-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/079-measured-ISS46-medium-measured-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "027-core-ISS46-medium-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/027-core-ISS46-medium-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "080-measured-ISS46-medium-measured-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/080-measured-ISS46-medium-measured-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "028-core-ISS46-medium-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "081-measured-ISS46-medium-measured-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "029-core-ISS46-medium-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/029-core-ISS46-medium-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "082-measured-ISS46-medium-measured-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/082-measured-ISS46-medium-measured-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "031-core-ISS46-high-offline-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/031-core-ISS46-high-offline-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "083-measured-ISS46-high-measured-fixedperiod-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/083-measured-ISS46-high-measured-fixedperiod-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "032-core-ISS46-high-offline-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/032-core-ISS46-high-offline-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "084-measured-ISS46-high-measured-percontact-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/084-measured-ISS46-high-measured-percontact-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "033-core-ISS46-high-offline-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "085-measured-ISS46-high-measured-next-H1-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "034-core-ISS46-high-offline-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "086-measured-ISS46-high-measured-multi-H2-canonical",
+        "status": "PROCESS_TIMEOUT",
+        "journal": null
+      },
+      {
+        "id": "035-core-ISS46-high-offline-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/035-core-ISS46-high-offline-seed-h1-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "087-measured-ISS46-high-measured-seed-h1-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/087-measured-ISS46-high-measured-seed-h1-H1-canonical/actual.events.json"
+      }
+    ],
+    "detected_exposure": [
+      {
+        "id": "097-security-X-undetected-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/097-security-X-undetected-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "098-security-X-undetected-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/098-security-X-undetected-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "099-security-X-detected2-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/099-security-X-detected2-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "100-security-X-detected2-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/100-security-X-detected2-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "101-security-X-gap-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/101-security-X-gap-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "102-security-X-gap-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/102-security-X-gap-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "103-security-X-channel-temporary-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/103-security-X-channel-temporary-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "104-security-X-channel-temporary-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/104-security-X-channel-temporary-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "105-security-demand-late-detected-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/105-security-demand-late-detected-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "106-security-demand-late-detected-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/106-security-demand-late-detected-offline-multi-H2-canonical/actual.events.json"
+      }
+    ],
+    "recovery": [
+      {
+        "id": "099-security-X-detected2-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/099-security-X-detected2-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "100-security-X-detected2-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/100-security-X-detected2-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "101-security-X-gap-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/101-security-X-gap-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "102-security-X-gap-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/102-security-X-gap-offline-multi-H2-canonical/actual.events.json"
+      },
+      {
+        "id": "105-security-demand-late-detected-offline-next-H1-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/105-security-demand-late-detected-offline-next-H1-canonical/actual.events.json"
+      },
+      {
+        "id": "106-security-demand-late-detected-offline-multi-H2-canonical",
+        "status": "FINISHED",
+        "journal": "target/final-research/runs/106-security-demand-late-detected-offline-multi-H2-canonical/actual.events.json"
+      }
+    ]
+  },
+  "interpretation": "Cross symbols in service/cost/measured panels mean unavailable final quality; recovery C/U/I not zero. All chart values derive from audited final rows."
+}

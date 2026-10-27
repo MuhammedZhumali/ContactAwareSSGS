@@ -1,0 +1,39 @@
+\subsubsection{Coverage and execution mode}
+
+R1 attempted 181 registered post-change executions; 135 reached FINISHED. Of 84 matched horizon pairs, 55 finished both policies. The 12 pre-change baseline attempts produced 11 FINISHED and one search-incomplete execution and are excluded from these R1 counts.
+
+\begin{table}[t]\centering\caption{R1 execution completion. Search completeness is separate.}\label{tab:r1coverage}\begin{tabular}{lrrr}\toprule Series & Planned & Attempted & Finished\\\midrule
+
+exact & 40 & 40 & 30\\
+
+practical & 44 & 44 & 23\\
+
+security & 24 & 24 & 24\\
+
+disruptions & 16 & 16 & 16\\
+
+sensitivity & 38 & 38 & 26\\
+
+controls & 10 & 10 & 10\\
+
+deadlines & 8 & 1 & 0\\
+
+deadlines-v3 & 8 & 8 & 6\\
+
+\bottomrule\end{tabular}\end{table}
+
+\subsubsection{Finite-budget horizon effects}
+
+The exact series finishes 30 of 40 executions and 10 of 20 pairs. Eight searches stop incomplete and two controllers reach their total budget. The finished exact X/5 CONTINUE\_WAIT pair retains three versus two served contacts for Multi versus Next, at 37 versus 38 s useful time, 0.83 versus 0.12 s operation CPU, 1240 versus 160 management bytes, and two versus zero new keys. This is the autonomous preparation model, not the older shared-preparation accounting.
+
+At the practical 5000-node/1-s decision budget, both rules produce only two served contacts for both policies on X/5: the earlier exact benefit is lost. On the high-demand no-attack ISS fragment, CANONICAL serves three contacts for both policies, but Multi spends 0.65 s more operation CPU, 1000 additional management bytes and creates two additional keys. CONTINUE\_WAIT serves two contacts with Multi versus three with Next (40 versus 410 s useful time). These are feasible bounded-controller outcomes, not a reversal of an exact optimum; additional horizon competes for the same search budget.
+
+Finite offered demand changes this outcome: at 400 and 1600 bytes per direction/contact, CANONICAL practical Multi gains one served contact, with respectively 2 and 4 s extra useful time. Each gain costs 0.71 s more operation CPU, 1080 additional management bytes and two new keys. Those factor cells do not test the other tie rule. FixedPeriod T=90 s also serves all three X/5 contacts; all tested full-ISS operational controls serve 46 contacts. Full search-policy execution remains incomplete, so no missing final service score is ranked against those controls.
+
+Tightening cryptoperiod to 90 s forces the old A pair to expire within C1 at t=10; Next activates its replacement at t=15 and both horizons then serve three contacts. This is a case where current-contact renewal makes extra visibility unnecessary. Increasing cryptoperiod to 240 s does not extend a stored earlier notAfter. These specific outcomes do not imply monotonic benefit or arbitrary-cryptoperiod robustness.
+
+\subsubsection{Diagnostics, controls and model boundaries}
+
+A fixed-root 20000-node diagnostic preserves the entire incumbent plan and all five metrics under both rules, but the aggregate change is 1.89\% and 2.47\% slower in these individual profiled runs. No acceleration is claimed. Twelve practical-versus-full-DFS comparisons from two previously established warmed states have zero difference in all objective components; the initial fresh-root oracle exceeded its unchanged node cap. This local agreement supplies no general approximation guarantee.
+
+The matrix separately retains undetected and delayed disclosures, gap disclosure, four channel interventions, fixed-period controls, and synthetic 50/500 ms decision delays against a 250 ms deadline. Journal-derived recovery distinguishes spacecraft notice, independent activation, SA opening and first delivery. Successful activation does not imply continuous readiness. Full-sequence ISS, NOAA-19 and HST attempts retain incomplete outcomes; they are not replaced with selected triples. Numeric sensitivity and per-case source links are available in the reproduction tables.
