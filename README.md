@@ -62,12 +62,15 @@ separate release asset. Extract the matching reproduction ZIP into its own direc
 and follow its `docs/aitu-revision-v2/REPRODUCE.md`; it includes the necessary
 `target/` inputs for table reconstruction and adapter rebuilds.
 
-The existing [research release](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/research)
-contains the historical final-v2 package. It does **not** contain the latest AITU
-experiments. The current AITU reproduction ZIP is prepared locally but has not yet
-been publicly deposited. Its public URL/DOI remains unset.
+The current [AITU revision 2 reproduction release](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/aitu-v2-20261028)
+contains the full reproduction ZIP and its SHA-256 checksum. Use this versioned
+release URL in the article's data-availability statement; no DOI has been assigned.
 
-[Publication steps and exact archive identity](docs/github-publication.md) distinguish
+The earlier [research release](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/research)
+contains the historical final-v2 package and remains unchanged. It does **not**
+contain the latest AITU experiments.
+
+[Publication record and exact archive identity](docs/github-publication.md) distinguish
 committing sources from uploading the full reproduction artifact.
 
 ## Project layout

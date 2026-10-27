@@ -1,10 +1,9 @@
-# Publishing the current ContactAwareSS revision
+# ContactAwareSS publication record
 
 Repository: https://github.com/MuhammedZhumali/ContactAwareSSGS
 
-This page describes the AITU revision 2 wording correction dated 28 October 2026.
-The repository URL is already public. The updated sources become public only after
-commit and push. The full AITU reproduction asset is a separate publication step.
+The AITU revision 2 wording correction dated 28 October 2026 is published.
+The source tree and the complete reproduction asset have separate identities.
 
 ## Source commit
 
@@ -14,30 +13,20 @@ local datasets, build output, raw runs, duplicate exports and release ZIP/RAR fi
 Historical specifications and source documents remain because code and reports
 refer to them; old denominators must not be presented as new attempts.
 
-The working branch was `main`, 15 local commits ahead of the locally recorded
-`origin/main` when cleanup began. No commit, push, reset or history rewrite was
-performed. Review the existing changes before publishing:
-
-```powershell
-git status --short
-git diff --stat
-git diff --check
-git add .
-git diff --cached --stat
-git commit -m "Prepare AITU revision 2 sources and publication materials"
-git push origin main
-git status --short
-```
-
-The final command should have no output once all intended changes are committed.
-These commands publish the existing local commits too. If a separate publication
-branch is desired, create it first with `git switch -c codex/aitu-v2-publication`
-and push that branch with `git push -u origin codex/aitu-v2-publication`.
+Source publication commit:
+[`a3f01085544c771b5d01b75ff5c1574e6416ece2`](https://github.com/MuhammedZhumali/ContactAwareSSGS/commit/a3f01085544c771b5d01b75ff5c1574e6416ece2).
+It was pushed to `main` with the preceding local research commits using a normal
+fast-forward push. The release tag points to this exact commit. A subsequent
+documentation commit records the public links without changing the frozen archive.
 
 ## Full reproduction release
 
-Upload this prepared archive and its matching `.sha256` file as assets of a **new**
-GitHub release after the source commit:
+Published release: [aitu-v2-20261028](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/aitu-v2-20261028).
+
+- [Full reproduction ZIP](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/download/aitu-v2-20261028/ContactAwareSS-AITU-v2-wording-reproduction-20261028.zip)
+- [SHA-256 checksum](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/download/aitu-v2-20261028/ContactAwareSS-AITU-v2-wording-reproduction-20261028.sha256)
+
+Retained local originals:
 
 ```text
 target/aitu-revision-v2-wording-delivery/ContactAwareSS-AITU-v2-wording-reproduction-20261028.zip
@@ -50,14 +39,20 @@ This asset retains the registered 6 root searches and 4 controller attempts; the
 wording correction did not add experiments. Its frozen-code identity is in its
 manifest; a later repository-documentation commit does not change that executable.
 
-Suggested release tag: `aitu-v2-20261028`. This is a suggested future tag, not an
-existing release URL. Copy the actual published release URL after uploading, then
-replace the new-package placeholder in the article's data-availability statement.
-Do not invent a DOI and do not use the old release as the URL for the new evidence.
+The release and both assets are publicly accessible without authorization. GitHub's
+asset digests match the local SHA-256 values. All 2,821 payload files were checked
+against the archive manifest before upload. Publication diagnostics are retained
+locally under `target/github-publication-20261028/`.
 
-The existing release
-https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/research
-contains the historical final-v2 artifact. It remains unchanged.
+Use the versioned release URL above in the article's data-availability statement.
+No DOI has been assigned. Download the named reproduction asset: GitHub's automatic
+"Source code" archives do not contain the ignored raw evidence and frozen JARs.
+The frozen manuscript inside the asset retains its pre-publication wording;
+this publication record supplies the subsequently assigned URL.
+
+The existing [research release](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/research)
+contains the historical final-v2 artifact. Its release identity, update timestamp
+and asset identities, sizes and digests were verified unchanged after publication.
 
 ## Local evidence and cleanup boundary
 
