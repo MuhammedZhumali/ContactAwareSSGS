@@ -1,0 +1,35 @@
+[
+  {
+    "pair_id": "main-CANONICAL-13",
+    "rule": "CANONICAL",
+    "outcomeByServedContacts": "loss",
+    "deltaUSeconds": -14.75,
+    "selection": "Nearest to median DeltaU among completed pairs with same rule and S outcome; ties by pair_id",
+    "run_ids": [
+      "main-CANONICAL-13-H1",
+      "main-CANONICAL-13-H2"
+    ]
+  },
+  {
+    "pair_id": "main-CANONICAL-01",
+    "rule": "CANONICAL",
+    "outcomeByServedContacts": "tie",
+    "deltaUSeconds": -12.75,
+    "selection": "Nearest to median DeltaU among completed pairs with same rule and S outcome; ties by pair_id",
+    "run_ids": [
+      "main-CANONICAL-01-H1",
+      "main-CANONICAL-01-H2"
+    ]
+  },
+  {
+    "pair_id": "main-CONTINUE_WAIT-01",
+    "rule": "CONTINUE_WAIT",
+    "outcomeByServedContacts": "loss",
+    "deltaUSeconds": -15.0,
+    "selection": "Nearest to median DeltaU among completed pairs with same rule and S outcome; ties by pair_id",
+    "run_ids": [
+      "main-CONTINUE_WAIT-01-H1",
+      "main-CONTINUE_WAIT-01-H2"
+    ]
+  }
+]

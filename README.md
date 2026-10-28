@@ -62,9 +62,18 @@ separate release asset. Extract the matching reproduction ZIP into its own direc
 and follow its `docs/aitu-revision-v2/REPRODUCE.md`; it includes the necessary
 `target/` inputs for table reconstruction and adapter rebuilds.
 
-The current [AITU revision 2 reproduction release](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/aitu-v2-20261028)
-contains the full reproduction ZIP and its SHA-256 checksum. Use this versioned
-release URL in the article's data-availability statement; no DOI has been assigned.
+The [X01 measured-delay reproduction release](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/x01-measured-delay-20261028)
+adds the registered 88-attempt campaign, raw journals, frozen runtime, analysis,
+figures and SHA-256 manifests. Start with [the X01 report](docs/measured-delay-x01/report.md)
+and [reproduction instructions](docs/measured-delay-x01/README.md). Its 80 main
+executions finished; Multi lost all 40 paired comparisons under the five-coordinate
+ordering when the measured decision pipeline was charged. This is specific to
+the tested X01 model, desktop/JVM and timing boundary.
+
+The author-provided article is preserved as supplied; it has not yet incorporated
+the X01 addendum. The [AITU revision 2 release](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/aitu-v2-20261028)
+retains the preceding article and evidence unchanged. Cite the versioned release
+matching the results discussed; no DOI has been assigned.
 
 The earlier [research release](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/research)
 contains the historical final-v2 package and remains unchanged. It does **not**

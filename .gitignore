@@ -174,3 +174,7 @@ Desktop.ini
 /docs/paper-corrected/main.pdf
 /docs/paper-final/figures-improved/*.png
 /docs/paper-final/figures-improved/*.svg
+
+# X01 per-decision evidence and alternate figure export live in the release ZIP.
+/docs/measured-delay-x01/tables/decisions.csv
+/docs/measured-delay-x01/figures/*.svg

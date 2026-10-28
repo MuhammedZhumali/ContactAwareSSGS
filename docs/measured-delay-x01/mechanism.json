@@ -1,0 +1,32 @@
+[
+  {
+    "run_id": "main-CONTINUE_WAIT-01-H2",
+    "decision_id": 1,
+    "at_s": 0.0,
+    "available_s": 14.0855122,
+    "host_seconds": 14.0855122,
+    "selected": "OPEN",
+    "disposition": "REVALIDATED_FIRST_ACTION",
+    "bound": "No prepared material/pending key preparation or installation: even with free resources PREPARE2+INSTALL4 requires availability <=14 for C1 end20; necessary condition only"
+  },
+  {
+    "run_id": "main-CANONICAL-01-H2",
+    "decision_id": 1,
+    "at_s": 0.0,
+    "available_s": 15.2737277,
+    "host_seconds": 15.2737277,
+    "selected": "OPEN",
+    "disposition": "REVALIDATED_FIRST_ACTION",
+    "bound": "No prepared material/pending key preparation or installation: even with free resources PREPARE2+INSTALL4 requires availability <=14 for C1 end20; necessary condition only"
+  },
+  {
+    "run_id": "main-CANONICAL-13-H2",
+    "decision_id": 2,
+    "at_s": 13.8706577,
+    "available_s": 18.9458863,
+    "host_seconds": 5.0752286,
+    "selected": "WAIT",
+    "disposition": "WAIT_EVENT_REACHED_REPLAN",
+    "bound": "No prepared material/pending key preparation or installation: even with free resources PREPARE2+INSTALL4 requires availability <=14 for C1 end20; necessary condition only"
+  }
+]

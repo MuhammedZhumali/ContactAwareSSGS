@@ -1,0 +1,140 @@
+{
+  "planned_runs": 88,
+  "run_statuses": {
+    "FINISHED": 87,
+    "CONTROLLER_TIME_LIMIT": 1
+  },
+  "attempted_runs": 88,
+  "rules": {
+    "CONTINUE_WAIT": {
+      "planned_pairs": 20,
+      "completed_pairs": 20,
+      "incomplete_pairs": 0,
+      "not_run_pairs": 0,
+      "S_wins": 0,
+      "S_ties": 0,
+      "S_losses": 20,
+      "ranking_denominator": 20,
+      "delta_U": {
+        "n": 20,
+        "median": -15,
+        "min": -15.75,
+        "max": -13
+      },
+      "decision_host_nanos": {
+        "n": 4571,
+        "median": 21651500,
+        "min": 1083200,
+        "max": 15035710300
+      },
+      "disposition_counts": {
+        "REVALIDATED_FIRST_ACTION": 4544,
+        "WAIT_EVENT_REACHED_REPLAN": 24,
+        "STALE_INTENT_REPLAN": 3
+      },
+      "deadline_misses": 0,
+      "representative_pairs": {
+        "LOSS": "main-CONTINUE_WAIT-01"
+      },
+      "by_horizon": {
+        "1": {
+          "decision_host_nanos": {
+            "n": 2889,
+            "median": 28779200,
+            "min": 1083200,
+            "max": 728280400
+          },
+          "process_elapsed_seconds": {
+            "n": 20,
+            "median": 8.422,
+            "min": 7.454,
+            "max": 15.625
+          }
+        },
+        "2": {
+          "decision_host_nanos": {
+            "n": 1682,
+            "median": 14182150.0,
+            "min": 1541300,
+            "max": 15035710300
+          },
+          "process_elapsed_seconds": {
+            "n": 20,
+            "median": 24.1565,
+            "min": 22.563,
+            "max": 35.296
+          }
+        }
+      }
+    },
+    "CANONICAL": {
+      "planned_pairs": 20,
+      "completed_pairs": 20,
+      "incomplete_pairs": 0,
+      "not_run_pairs": 0,
+      "S_wins": 0,
+      "S_ties": 5,
+      "S_losses": 15,
+      "ranking_denominator": 20,
+      "delta_U": {
+        "n": 20,
+        "median": -14.25,
+        "min": -15.5,
+        "max": -11
+      },
+      "decision_host_nanos": {
+        "n": 4584,
+        "median": 21711850.0,
+        "min": 1151300,
+        "max": 18540615500
+      },
+      "disposition_counts": {
+        "REVALIDATED_FIRST_ACTION": 4562,
+        "WAIT_EVENT_REACHED_REPLAN": 19,
+        "STALE_INTENT_REPLAN": 3
+      },
+      "deadline_misses": 0,
+      "representative_pairs": {
+        "TIE": "main-CANONICAL-01",
+        "LOSS": "main-CANONICAL-13"
+      },
+      "by_horizon": {
+        "1": {
+          "decision_host_nanos": {
+            "n": 2850,
+            "median": 28460550.0,
+            "min": 1151300,
+            "max": 779656500
+          },
+          "process_elapsed_seconds": {
+            "n": 20,
+            "median": 8.4685,
+            "min": 7.422,
+            "max": 16.156
+          }
+        },
+        "2": {
+          "decision_host_nanos": {
+            "n": 1734,
+            "median": 15180000.0,
+            "min": 1268700,
+            "max": 18540615500
+          },
+          "process_elapsed_seconds": {
+            "n": 20,
+            "median": 22.937,
+            "min": 21.453,
+            "max": 26.734
+          }
+        }
+      }
+    }
+  },
+  "manifest_sha256": "e8f6e86076c10af64a1adeaa0ef750b5b5dbac2ebb7b119d1cdccbe0e864d4be",
+  "analysis_sha256": "d42ad9fd255328793d67eb40cc25c1e2f83551a40c43dcfd2400dda9a26a934e",
+  "input_model_sha256": "a380a8fdea19603cdc98bc743bab97dd45dd83011d09218286721363c65a3cd9",
+  "generated_utc": "2026-10-28T05:10:20.985380+00:00",
+  "final_scores": "Only FINISHED; reconstructed from journal and checked against simulation and summary",
+  "time_precision": "Integer nanoseconds; UTC fractions parsed without datetime microsecond truncation",
+  "ranking": "Main-series S outcomes; only pairs with two FINISHED executions; positive deltas mean Multi minus Next"
+}
