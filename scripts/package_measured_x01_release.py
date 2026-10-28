@@ -13,6 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / 'target/measured-delay-x01-delivery'
+OUT = ROOT / 'target/measured-delay-x01-release'
 INPUT = BASE / 'ContactAwareSS-X01-measured-delay-20261028.zip'
 INPUT_SHA = '56b8ceb2dda530a8064d056ffe4cb9f17e4cd6a08c628eee0b6403054c8840d3'
 NAME = 'ContactAwareSS-X01-measured-delay-reproduction-20261028'
@@ -38,10 +39,14 @@ def main():
     assert subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip() == commit
     assert not subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT).strip(), 'Commit all publication changes first'
     assert file_sha(INPUT) == INPUT_SHA
-    output_path = BASE / (NAME + '.zip')
+    OUT.mkdir(exist_ok=True)
+    output_path = OUT / (NAME + '.zip')
     if output_path.exists():
         raise ValueError('Refusing to overwrite ' + str(output_path))
-    source_bytes = subprocess.check_output(['git', 'archive', '--format=zip', commit], cwd=ROOT)
+    # Git for Windows otherwise converts registered LF inputs to CRLF during
+    # archive export. Freeze blob bytes, preserving the experiment's hashes.
+    source_bytes = subprocess.check_output(
+        ['git', '-c', 'core.autocrlf=false', 'archive', '--format=zip', commit], cwd=ROOT)
     payload = {}
     with zipfile.ZipFile(INPUT) as evidence, zipfile.ZipFile(io.BytesIO(source_bytes)) as source:
         old_manifest = json.loads(evidence.read('manifest.json'))
@@ -50,6 +55,10 @@ def main():
             content = evidence.read(name)
             assert len(content) == meta['bytes'] and digest(content) == meta['sha256'], name
         source_files = {i.filename for i in source.infolist() if not i.is_dir()}
+        campaign = json.loads(evidence.read('target/measured-delay-x01-20261028/manifest.json'))
+        for name, expected in campaign['inputs'].items():
+            content = source.read(name) if name in source_files else evidence.read(name)
+            assert digest(content) == expected, 'Registered input changed: ' + name
         article = source.read(ARTICLE)
         assert article == (ROOT / 'target/measured-delay-x01-20261028/inputs/article-before.docx').read_bytes()
         with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED, compresslevel=6) as output:
@@ -99,8 +108,9 @@ def main():
         'inputArchiveUnchanged': file_sha(INPUT) == INPUT_SHA,
         'articleUnchanged': digest((ROOT / ARTICLE).read_bytes()) == manifest['articleSha256'],
         'noNewScientificAttempts': True,
+        'registeredInputsVerified': len(campaign['inputs']),
     }
-    (BASE / 'release-validation.json').write_text(json.dumps(result, indent=2) + '\n')
+    (OUT / 'release-validation.json').write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result, indent=2))
 
 
