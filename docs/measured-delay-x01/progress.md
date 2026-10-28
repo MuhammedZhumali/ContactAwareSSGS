@@ -1,7 +1,7 @@
 # X01 measured latency progress
 
-The registered experiment and its verification are complete. Article editing
-remains gated on user approval of the results.
+The registered experiment and its verification are complete. After discussing the
+results, the user explicitly approved the article update on 28 October 2026.
 
 - Instruction read: `instruktsiya_magistrantu_eksperiment.docx`; preserved under
   `target/measured-delay-x01-20261028/inputs/instruction.docx`.
@@ -31,8 +31,10 @@ verified. Three representative pairs were selected by the registered median rule
 the timeline was rendered and visually inspected. The measured result is limited
 to X01, the recorded desktop and the stated timing boundary.
 
-Results and proposed wording are ready for review. Publication of the sources and
-an additive reproduction release was subsequently authorized. The author's current
-article is preserved byte-for-byte; integrating these results into its text remains
-pending approval. The release distinguishes this supplied article from the older
-published manuscript and the new experimental addendum.
+The sources and an additive reproduction release were published before article
+approval; that release preserves the supplied article byte-for-byte. Following
+approval, the working article now includes the design, results, discussion and
+conclusion; its abstract was revised last. The original formatting and all 20
+references are preserved. All 15 rendered pages were inspected. A separate local
+materials archive retains the supplied predecessor, updated article and evidence;
+the existing public release is unchanged. See `../article-x01-update/README.md`.

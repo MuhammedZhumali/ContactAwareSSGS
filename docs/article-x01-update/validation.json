@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "sourceSha256": "de3eaaf53bf4a786eb36539f9ab9c9d58911180491bb353786bdfed5286ed09f",
+  "docxSha256": "9df9f58edfd696eb4a010a3dbda4ab2a31c18c06c597191a9ca4d2481719748f",
+  "changedParts": [
+    "word/document.xml"
+  ],
+  "unchangedPackageParts": 18,
+  "unchangedOriginalBodyElements": 116,
+  "originalParagraphFormattingPreserved": true,
+  "sectionPropertiesPreserved": true,
+  "originalTablesAndImagesPreserved": true,
+  "nativeEquations": 3,
+  "referencesUnchanged": 20,
+  "abstractWords": 261,
+  "abstractCharacters": 1668,
+  "abstractEditedLast": true,
+  "newScientificAttempts": 0,
+  "userApproval": "Explicit article-edit request after result discussion, 2026-10-28",
+  "pagesBefore": 13,
+  "pagesAfter": 15,
+  "pdfSha256": "e46953caf25fa545f49ec1cc5f59f3da32fe399c38ccf3caa0478a75c0a3a398",
+  "renderReview": {
+    "status": "PASS",
+    "pagesInspected": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "method": "Microsoft Word read-only PDF export, Poppler 110 dpi; every PNG inspected",
+    "observations": "No clipping or overlap; repeated table headers, captions, figures, equations and page numbers readable.",
+    "latexCompile": "SUCCESS via built-in Codex compiler after final text synchronization"
+  },
+  "synchronizedJsonAndTex": true,
+  "pythonSyntax": "PASS",
+  "mavenRerun": false,
+  "publishedArchivesModified": false,
+  "historicalAudit": "../aitu-revision-v2/validation.json"
+}

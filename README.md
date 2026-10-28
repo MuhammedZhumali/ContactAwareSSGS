@@ -12,9 +12,10 @@ horizons differ. FixedPeriod and PerContact use the same executor.
 
 ## Current article and evidence
 
-The current manuscript is **AITU revision 2, wording corrected on 28 October 2026**.
+The current manuscript is **AITU revision 2, updated with the approved X01 measured-delay results on 28 October 2026**.
 
 - [Article DOCX](docs/aitu-revision-v2/article.docx) and [LaTeX](docs/aitu-revision-v2/article-tex/main.tex)
+- [Article update and document validation](docs/article-x01-update/README.md)
 - [Supplement DOCX](docs/aitu-revision-v2/supplement.docx) and [LaTeX](docs/aitu-revision-v2/article-tex/supplement.tex)
 - [Results and limitations](docs/aitu-revision-v2/report.md)
 - [Reproduction instructions](docs/aitu-revision-v2/REPRODUCE.md)
@@ -70,8 +71,10 @@ executions finished; Multi lost all 40 paired comparisons under the five-coordin
 ordering when the measured decision pipeline was charged. This is specific to
 the tested X01 model, desktop/JVM and timing boundary.
 
-The author-provided article is preserved as supplied; it has not yet incorporated
-the X01 addendum. The [AITU revision 2 release](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/aitu-v2-20261028)
+The current article incorporates the approved X01 addendum while preserving the
+author's formatting; its supplied predecessor is retained in the new local materials
+package. The published X01 asset remains unchanged and contains the article as it
+stood before this approval. The [AITU revision 2 release](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/aitu-v2-20261028)
 retains the preceding article and evidence unchanged. Cite the versioned release
 matching the results discussed; no DOI has been assigned.
 

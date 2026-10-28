@@ -36,9 +36,10 @@ control remains incomplete. Consult the [report](measured-delay-x01/report.md)
 and [reproduction instructions](measured-delay-x01/README.md) for timing boundaries
 and denominators. No new scientific attempt was run for this publication.
 
-The current article is the author's supplied version, preserved byte-for-byte.
-It does not yet incorporate the measured-delay addendum; article updates remain
-pending separate approval. The older published manuscript is retained in the ZIP
+The article in this published asset is the author's supplied version, preserved
+byte-for-byte before approval of manuscript changes. The working article was
+subsequently updated with approval; see [the article update](article-x01-update/README.md).
+The public asset was not replaced. The older published manuscript is retained in the ZIP
 under `provenance/aitu-v2-published-article.docx`.
 
 Use the versioned X01 release URL for the combined reproduction materials. No DOI

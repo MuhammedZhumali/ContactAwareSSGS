@@ -1,0 +1,367 @@
+{
+  "selection": "Within each rule and S-outcome group, nearest to median DeltaU; ties by pair ID.",
+  "representatives": [
+    {
+      "pairId": "main-CONTINUE_WAIT-01",
+      "group": [
+        "CONTINUE_WAIT",
+        "loss"
+      ],
+      "groupMedianDeltaU": -15.0,
+      "deltaU": -15.0,
+      "runs": [
+        {
+          "runId": "main-CONTINUE_WAIT-01-H1",
+          "S": 2,
+          "U": 32.5,
+          "operations": [
+            {
+              "action": "OPEN",
+              "start": 0.2600898,
+              "end": 1.2600898
+            },
+            {
+              "action": "STOP",
+              "start": 20.0,
+              "end": 20.0
+            },
+            {
+              "action": "OPEN",
+              "start": 30.0937353,
+              "end": 31.0937353
+            },
+            {
+              "action": "STOP",
+              "start": 50.0,
+              "end": 50.0
+            },
+            {
+              "action": "EXPIRE_CONTEXT",
+              "start": 70.0,
+              "end": 70.0
+            }
+          ],
+          "chargedIntervals": 143,
+          "framesDelivered": 130,
+          "firstChargedStart": -2.0
+        },
+        {
+          "runId": "main-CONTINUE_WAIT-01-H2",
+          "S": 1,
+          "U": 17.5,
+          "operations": [
+            {
+              "action": "OPEN",
+              "start": 14.0855122,
+              "end": 15.0855122
+            },
+            {
+              "action": "STOP",
+              "start": 20.0,
+              "end": 20.0
+            },
+            {
+              "action": "OPEN",
+              "start": 30.0366521,
+              "end": 31.0366521
+            },
+            {
+              "action": "STOP",
+              "start": 50.0,
+              "end": 50.0
+            },
+            {
+              "action": "EXPIRE_CONTEXT",
+              "start": 70.0,
+              "end": 70.0
+            }
+          ],
+          "chargedIntervals": 82,
+          "framesDelivered": 70,
+          "firstChargedStart": -2.0
+        }
+      ]
+    },
+    {
+      "pairId": "main-CANONICAL-13",
+      "group": [
+        "CANONICAL",
+        "loss"
+      ],
+      "groupMedianDeltaU": -14.75,
+      "deltaU": -14.75,
+      "runs": [
+        {
+          "runId": "main-CANONICAL-13-H1",
+          "S": 2,
+          "U": 33.5,
+          "operations": [
+            {
+              "action": "OPEN",
+              "start": 0.3327501,
+              "end": 1.3327501
+            },
+            {
+              "action": "STOP",
+              "start": 20.0,
+              "end": 20.0
+            },
+            {
+              "action": "OPEN",
+              "start": 30.0839453,
+              "end": 31.0839453
+            },
+            {
+              "action": "STOP",
+              "start": 50.0,
+              "end": 50.0
+            },
+            {
+              "action": "EXPIRE_CONTEXT",
+              "start": 70.0,
+              "end": 70.0
+            }
+          ],
+          "chargedIntervals": 147,
+          "framesDelivered": 134,
+          "firstChargedStart": -2.0
+        },
+        {
+          "runId": "main-CANONICAL-13-H2",
+          "S": 1,
+          "U": 18.75,
+          "operations": [
+            {
+              "action": "OPEN",
+              "start": 13.8706577,
+              "end": 14.8706577
+            },
+            {
+              "action": "STOP",
+              "start": 20.0,
+              "end": 20.0
+            },
+            {
+              "action": "OPEN",
+              "start": 30.0232973,
+              "end": 31.0232973
+            },
+            {
+              "action": "STOP",
+              "start": 50.0,
+              "end": 50.0
+            },
+            {
+              "action": "EXPIRE_CONTEXT",
+              "start": 70.0,
+              "end": 70.0
+            }
+          ],
+          "chargedIntervals": 88,
+          "framesDelivered": 75,
+          "firstChargedStart": -2.0
+        }
+      ]
+    },
+    {
+      "pairId": "main-CANONICAL-01",
+      "group": [
+        "CANONICAL",
+        "tie"
+      ],
+      "groupMedianDeltaU": -12.75,
+      "deltaU": -12.75,
+      "runs": [
+        {
+          "runId": "main-CANONICAL-01-H1",
+          "S": 2,
+          "U": 32.75,
+          "operations": [
+            {
+              "action": "OPEN",
+              "start": 0.2906741,
+              "end": 1.2906741
+            },
+            {
+              "action": "STOP",
+              "start": 20.0,
+              "end": 20.0
+            },
+            {
+              "action": "OPEN",
+              "start": 30.074992,
+              "end": 31.074992
+            },
+            {
+              "action": "STOP",
+              "start": 50.0,
+              "end": 50.0
+            },
+            {
+              "action": "EXPIRE_CONTEXT",
+              "start": 70.0,
+              "end": 70.0
+            }
+          ],
+          "chargedIntervals": 144,
+          "framesDelivered": 131,
+          "firstChargedStart": -2.0
+        },
+        {
+          "runId": "main-CANONICAL-01-H2",
+          "S": 2,
+          "U": 20.0,
+          "operations": [
+            {
+              "action": "OPEN",
+              "start": 15.2737277,
+              "end": 16.2737277
+            },
+            {
+              "action": "STOP",
+              "start": 20.0,
+              "end": 20.0
+            },
+            {
+              "action": "OPEN",
+              "start": 30.02342,
+              "end": 31.02342
+            },
+            {
+              "action": "STOP",
+              "start": 50.0,
+              "end": 50.0
+            },
+            {
+              "action": "EXPIRE_CONTEXT",
+              "start": 70.0,
+              "end": 70.0
+            }
+          ],
+          "chargedIntervals": 93,
+          "framesDelivered": 80,
+          "firstChargedStart": -2.0
+        }
+      ]
+    }
+  ],
+  "inputs": {
+    "target/measured-delay-x01-20261028/manifest.json": "e8f6e86076c10af64a1adeaa0ef750b5b5dbac2ebb7b119d1cdccbe0e864d4be",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-01-H1/result.json": "41c9392444cf3d0f793fbb381feebe5bb806715e12e38022f7d35605143c75a5",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-01-H2/result.json": "8da14ec4ef0877c96c53eefa5dc20f6c1985b138115077b793930d5cf9ac0606",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-02-H2/result.json": "8e04c44d5f2be52094c54591da896332c4bfadf26711b899352095f39276f4da",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-02-H1/result.json": "4c623de08602db604aa5a96ac792990fece7dab3ee03b2dfe26a008452646d48",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-03-H1/result.json": "57306869101a9c16f0c06b94f1649c1b774666f991bb7a292bb1eb6a551a7ddb",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-03-H2/result.json": "abd275d8331a04c0d5f7a137588bf5ddf94098c92dd3cfec1ed1928a368bb84a",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-04-H2/result.json": "29ec772aec524673201b54401f40a340358eb5e2966957fea6079f33511e829e",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-04-H1/result.json": "b9269b60aae2036dec780ed2de2d90cb0abde1ea4ff506a29b08e5ba30c301ab",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-05-H1/result.json": "0b73991a2a6696c3aacc37500c1828d4c3e4f57c537e4dbb60ee02ba33649757",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-05-H2/result.json": "c020b72b9e76d0bab0b5b16726159c16d19e5ddab3233ce46d2f982285fe94ef",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-06-H2/result.json": "ddb5a96b4e4e354232b915a6fb16bf4f1336aef6abf0b0e28ea981383e1fef3d",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-06-H1/result.json": "8dd70e96b69875f0c96375bddca0b06dc4db661841a571ee9b8e8630541eca84",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-07-H1/result.json": "7edae0a9b8d192ef6a68155318ae5f4b32e0cbe083130c24cceb67ceb495eeff",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-07-H2/result.json": "eab58c09877d2e14add74af3f6076ad22f3650de28dac2e974a66076936f14af",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-08-H2/result.json": "07db18e04d42b996eede056b02247769eebd0f20aa9f72cb23449ffc76c25c90",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-08-H1/result.json": "68b205eeadb4ba0b1d8ed39112a21cde7dd1441df1c82a22d8cdfcad86221d9d",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-09-H1/result.json": "51e9936eda546997749af99c3b607a652b64bb74c1c5865203fe8dbb2b40b97d",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-09-H2/result.json": "1bde40704979d504c444fa24fa9d792e0000850b00d892a43d906d84dc37edaa",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-10-H2/result.json": "1513d7ba5415dc82d836cb05f0012059adf106b0ca965fed2da9e7d3f12c325f",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-10-H1/result.json": "018621a2874da6618b4e1244dc7e6cc7df41d0b3062f19cc8043e192c8a2c327",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-11-H1/result.json": "d9a16719f838d070a5842f40aa3470a3f62c88bf65a368b64ecf1ab2ee70db31",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-11-H2/result.json": "bd34c54e56aadef1c7bdab06efb3e241206cb84a3e1749e4e2f5cdae7bdfa972",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-12-H2/result.json": "d952478892eb3b657eb377b0ee50aa64ea6b94ee4ad22a84487dbc0be8eb1a1e",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-12-H1/result.json": "e10b695e412a283c6aa9e4c646b9e26174cc5724231444366cc0d14edb6136e9",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-13-H1/result.json": "1590be373a958ce7f4ae7f7808e01ef974689b088eeb7a614ed648626d2f944f",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-13-H2/result.json": "c0ee658ae0ae96115d44a30641cc2a91dc4c9a6938eaddc39e0d12b4304e7f01",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-14-H2/result.json": "8982bf8d5566f5f974acfa418b307fbfff50deb3c22c5ff5ee63d2eaf571d0cc",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-14-H1/result.json": "40f56f3579931ff761378ea49907921c2bae9df87b0d5e071cc5263b63f471f0",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-15-H1/result.json": "274a6438265bf176d79725335a8272c026d93c4a03e2ba704e6ef36e23f758dc",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-15-H2/result.json": "46447dbc3cf1cac2478cc08d42e606108b12d8a60b4be658004bc9941ee097d8",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-16-H2/result.json": "55012b63e7656f22dda1351569b4631a5d116bb794d1382a90d27e50f57ae7db",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-16-H1/result.json": "c10e1636129c3c57440e6097667392d2874e582bbee39c8a33e935b9b8c52186",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-17-H1/result.json": "155ed1ebc69d96b8a26592c0ba5e11f69e5b1786c3c74dadf665d87ba094b15e",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-17-H2/result.json": "b36a41148f19e8c428d8493fff78d6dde08ed079fd9b624b9b2d18b24292b233",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-18-H2/result.json": "a7f0abb101e60042a174d4f6703812d2e967223f140870ceb3dcded416cfdbf6",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-18-H1/result.json": "cfcb4b6209724a436f97fa38c742f0f9f436aff7271ed21faf512f9fa4f1cfaf",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-19-H1/result.json": "bedb8538815b1c7b49b2ea8bdd158389ee2cefce1ee79a1aff669bffd13d325e",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-19-H2/result.json": "1b4e1abb9219f66e9d9ad1c211d991e6308ff5530c8c781a8ef96fd1c8c25249",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-20-H2/result.json": "55122877e7f74315c0d740782f6740742605d6c73af6db46d96f2cf49a43844c",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-20-H1/result.json": "102ecacd3479e1cee38032279d10fa5bc6df41ba9f12a6ddfce730edbcbb3ca6",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-01-H1/result.json": "5cf65db826ac5a0b414e21259949111d6081401ea74db9fd392e320db3d9b675",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-01-H2/result.json": "7dce81bd298410501eb72b78e768e6c31614b2131e1a2c312d00ebb8c8f0085b",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-02-H2/result.json": "b56ba7768d64d8f2660540268b87319b5d945e788fa700344b511d3ca47a1d4f",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-02-H1/result.json": "7620ab9f0adb7305f263a981ef34783167a6d73995dab1ee380d433c5cb0e3a4",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-03-H1/result.json": "6a3dacdd19adc9edfa7ef4c44b34a77ef013b99feaaa0c7553abb86ff822cdcd",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-03-H2/result.json": "accefce5233bd4ea8350d718ff039c944019ff08440d2e482af9fc80b37a18f9",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-04-H2/result.json": "b322c1d9c1eafaa0cb8c1f6dc0a29d0ba5040b8340e79bf64452f2ddf5199830",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-04-H1/result.json": "8775ae6fd42f5d8cfcd02a671b8d5847a4ba498e34129b904ae5e69122128ed4",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-05-H1/result.json": "183e12bed889fe776bcd51e0bc0bb5364fa3083051891afac18208285c9fb397",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-05-H2/result.json": "07003b3f0e792882d9e3d4228c57200892ee5945bade4bacdad654ee0d710be6",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-06-H2/result.json": "80d1e8492b00a912a96c90aa1162a467b7f48995fc63a452864a11252f5edb7b",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-06-H1/result.json": "ba2549bea16fc387a8ffc3e23d9bdb0b873bfa1dd3437df6bbcf9738f79dc1fb",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-07-H1/result.json": "e3393e016cac61219407408cc7ee67cfb3b4b815f073e7ac1f5b84202ade1ad3",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-07-H2/result.json": "15db991d3451d7f5da7319f75d1700f5a50bed6ab4cd59365ca9b0a9a1ec0950",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-08-H2/result.json": "37a29fbd8330014084c80cb06b5874e30a642b1bac9d0a5b252187e28e479858",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-08-H1/result.json": "7802fca6ea6cd61075d28d46ef674b4ca012f296ced928dc7609b18d95ec8f12",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-09-H1/result.json": "78e170953d82bcdced89b9e6d2ede5a5a8c1dbec55ed1491f8f6e5fed9b42d37",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-09-H2/result.json": "11bb7747c247de3e275f32cc458c7771153aaa21376d49e5a15be7326e0ba1df",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-10-H2/result.json": "7b4d3f0e9f7f8ebf1374af998a6ca55da555d572327b88ca6ff7464c9edec3dd",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-10-H1/result.json": "d640a143e8c13190121dd873676dead2581c8ba46ea75245f606ff401bec03ee",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-11-H1/result.json": "9aff3a9789ebdead8f5142b015f47e181cf39592982f6425618e56da08eaceb3",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-11-H2/result.json": "1efea13fcdab19c6b095925ab90269e7b58a91f5b70c27f0cf23dfe1a2744c18",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-12-H2/result.json": "1f6ae64df0bcb055545c2727817b422f60fd57ffb1530401a27dd773397e5626",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-12-H1/result.json": "561e420fd418c675c0b47d37db6bb0ed83657f7f4f400c46fa883ddced91a669",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-13-H1/result.json": "9edf0db9905cc8f4198f88e83424dfcf03311c0ca44f56baa6a126833ce4ed59",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-13-H2/result.json": "72dedd41d262f1bfcd7897ebb14f6d0bccb19a9b64d6866fadc0a0be25c5029e",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-14-H2/result.json": "37b8c5af81ad02c266efb17c04a8ffb3567f9ff5f6117bf1f877c05a38e28a99",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-14-H1/result.json": "b95b625c0eb989027fe6bc0f8a618daa3f2d85f8ed0a0bc5bd6d2d666481ef13",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-15-H1/result.json": "f6c5746cba5734d2afbb241ee4396d90d4ec737082fa3a0cc8d0f2f6e226ada7",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-15-H2/result.json": "a13f801767e1cb1c4ceec52158da0ccd8074233710599624297dc54aa68f7439",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-16-H2/result.json": "1b0627fcf41735c2f6d35fb327d3344b2f390dced7a0838d2b439aee27b1e079",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-16-H1/result.json": "8024ba1ba4c716c358b3235d286cbdf6038e5605a54c1234db352f15a738cd03",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-17-H1/result.json": "b39db3c45f76f89d4eb90027fd223d00ddefeede0534d74b1cb68b98fdde09d6",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-17-H2/result.json": "10d8b374dfb7e85097ceaa707d97f2e716f8c8ed2ef0f78e84847cca66bb9ea9",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-18-H2/result.json": "7145dc65d7bfd28d24078a039f46ab49c5a5fcd316f42eb7d862c190e71437d3",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-18-H1/result.json": "ccbb22d22a74081d5bf0e347d5557ec79fa4f36edcf862dd9525f430c48858b8",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-19-H1/result.json": "1db389d0f30a8e0dca0c24902c4f489d3d19166be094a8f232ccb12bf3e36075",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-19-H2/result.json": "b915825c31d4208ec198bb45049df7ee0a3ae71ecc83a147247092dc6b245c92",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-20-H2/result.json": "2d5962ed76dfaea95eaf1964962257b29c2150e63a58f08d964e108de7e15a0f",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-20-H1/result.json": "606dd57d78ef3ed8b3ded43f7fbf5996762c723a902526a6d20997dfa248ad43",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-01-H1/latency-decisions.json": "fdb12de55aebe6683223310715b5c580b8952fd425275d338f9580a9084e7571",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-01-H1/actual.events.json": "d4b6bc6f04c35e14ea212f25295498054b6562bf79d08cc9db6de6a01243efbc",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-01-H2/latency-decisions.json": "f3474fea544dc6122bfe34c93d0f874e7da958081022cf314078a10abfb915b6",
+    "target/measured-delay-x01-20261028/runs/main-CONTINUE_WAIT-01-H2/actual.events.json": "be974182921e1710afd89468e9ec8a9e584c14f56e7e68cb6cd15975a424e2b5",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-13-H1/latency-decisions.json": "01d156b5dc1676d445710ee7e35c93b70570ce0cd7fc19975607d31e64692dbc",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-13-H1/actual.events.json": "ea417a5bed5eaaaf7c781b7860eb8410ddab30ac5e93c94b9f8bf4fcf43bb955",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-13-H2/latency-decisions.json": "15bd728922d175f0d82c8e9631aaac840920f8d51eb46b523d85e8519c084190",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-13-H2/actual.events.json": "5160fa59456c4f325df47f4f9151468e04bb9384cb8f28faa2c51fca7ee46a85",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-01-H1/latency-decisions.json": "40327c4b55443630e302adfd9ad7e6b418df9ca480b7d322d1aa254d4576c830",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-01-H1/actual.events.json": "5e60ee220b72ea0201d14364abda887b672578a3a9ecc84751660fa12934ef05",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-01-H2/latency-decisions.json": "f6628dbef6eb4d5fa844bbf0d712aed76c7835a9a08b95a3ce2d5f86de0e2269",
+    "target/measured-delay-x01-20261028/runs/main-CANONICAL-01-H2/actual.events.json": "16ffb6c529b02adbf93242f0cdb98eaaca3ee93e79f10f5a799894d5228e0fc0",
+    "target/aitu-revision/stage3/tables.json": "cbac641ab746e9a3af76a9372238f5f59d08b2cd5cb7d0a8092889d258111a2a"
+  },
+  "scriptSha256": "05b34444565a459e8d5e93707e8f641a99a4d0ba87beb9044fc057166c283f7a",
+  "pngDpi": 600,
+  "newExperiments": 0,
+  "frameBytes": 100,
+  "serviceThresholdBytesEachDirection": 400,
+  "geometry": [
+    [
+      0,
+      20,
+      "A"
+    ],
+    [
+      30,
+      50,
+      "B"
+    ],
+    [
+      80,
+      85,
+      "A"
+    ]
+  ],
+  "plotBoundary": "Only charged delays, completed STEP operations and delivered frames from actual journals; separate lanes; no interval width inflation."
+}

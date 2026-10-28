@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "sourceDocxSha256": "9df9f58edfd696eb4a010a3dbda4ab2a31c18c06c597191a9ca4d2481719748f",
+  "docxSha256": "843ae2bfd60181aad1b15e547a2fbe1e9b1de8057226a5a803c4a82737525ebd",
+  "suppliedImageSha256": "cff59d06d3a688a681306c416f757de64ffcd7beb1771159202c5446a6e3c765",
+  "imageEmbeddedWithoutModification": true,
+  "caption": "Fig. 1. X01 horizon mechanism: earlier installation can reduce the time needed to serve C3 from 8 s to 4 s, provided all lifecycle constraints hold.",
+  "originalFigureCount": 3,
+  "figureCount": 4,
+  "referenceChanges": [
+    {
+      "index": 47,
+      "before": "The remaining family settings are shown in Fig. 1. At 100 bytes per frame and 400 bytes per second, each frame lasts 0.25 seconds; the two directional thresholds of 400 bytes require eight frames, or two seconds. A pre-active installed pair therefore needs SWITCH+OPEN+payload, four seconds, while a prepared pair needs INSTALL+SWITCH+OPEN+payload, eight seconds. An already active pair needs REUSE+payload, three seconds. These are necessary timing totals for those chains, not universal sufficient conditions: resource use, whole frames, deadlines, and strict completion of management before contact loss are checked by execution.",
+      "after": "The remaining family settings are shown in Fig. 2. At 100 bytes per frame and 400 bytes per second, each frame lasts 0.25 seconds; the two directional thresholds of 400 bytes require eight frames, or two seconds. A pre-active installed pair therefore needs SWITCH+OPEN+payload, four seconds, while a prepared pair needs INSTALL+SWITCH+OPEN+payload, eight seconds. An already active pair needs REUSE+payload, three seconds. These are necessary timing totals for those chains, not universal sufficient conditions: resource use, whole frames, deadlines, and strict completion of management before contact loss are checked by execution."
+    },
+    {
+      "index": 71,
+      "before": "Fig. 1 reports nine exact-controller configurations with a common prescribed PREPARE, not nine autonomous practical comparisons. Seven have completed Next/Multi pairs under both tie rules: Multi serves one extra contact in X01 and X08, and five configurations tie. The two remaining settings have unfinished Multi searches and are unknown, not losses or estimated gains.",
+      "after": "Fig. 2 reports nine exact-controller configurations with a common prescribed PREPARE, not nine autonomous practical comparisons. Seven have completed Next/Multi pairs under both tie rules: Multi serves one extra contact in X01 and X08, and five configurations tie. The two remaining settings have unfinished Multi searches and are unknown, not losses or estimated gains."
+    },
+    {
+      "index": 73,
+      "before": "Fig. 1. Synthetic conditions after common preparation. T is return-contact start, L its length, and P cryptoperiod, all in seconds. Both tie rules agree in completed pairs. Hatched cells are incomplete exact executions, not zero service.",
+      "after": "Fig. 2. Synthetic conditions after common preparation. T is return-contact start, L its length, and P cryptoperiod, all in seconds. Both tie rules agree in completed pairs. Hatched cells are incomplete exact executions, not zero service."
+    },
+    {
+      "index": 76,
+      "before": "All 26 first-revision budget attempts finish. Under the fixed one-second search cap, Fig. 2 shows no offline horizon advantage at the tested node allowances in either workload. For X, no DFS yields (2, 38, 0.32, 160, 2); every positive allowance yields (2, 38, 0.12, 160, 0) for both horizons. The long control ties at (3, 410, 2.13, 3240, 6). This result does not characterize larger search-time budgets.",
+      "after": "All 26 first-revision budget attempts finish. Under the fixed one-second search cap, Fig. 3 shows no offline horizon advantage at the tested node allowances in either workload. For X, no DFS yields (2, 38, 0.32, 160, 2); every positive allowance yields (2, 38, 0.12, 160, 0) for both horizons. The long control ties at (3, 410, 2.13, 3240, 6). This result does not characterize larger search-time budgets."
+    },
+    {
+      "index": 78,
+      "before": "Fig. 2. First-revision CANONICAL full-run payload and host cost under the one-second search cap. No DFS retains seeds and feasible suffixes. Crosses denote measured-delay cases. Node values are allowances, not guaranteed work completed.",
+      "after": "Fig. 3. First-revision CANONICAL full-run payload and host cost under the one-second search cap. No DFS retains seeds and feasible suffixes. Crosses denote measured-delay cases. Node values are allowances, not guaranteed work completed."
+    },
+    {
+      "index": 95,
+      "before": "All 36 disclosure attempts finish, have a valid disclosed target, and eventually deliver an independent frame. There are no censored observations in this new grid. Fig. 3 compares matched horizons. CANONICAL gives earlier independent delivery for Multi in seven of nine timing pairs and 1,000 additional confidential bytes in five. CONTINUE_WAIT gives equal independent-delivery times and confidential bytes in all nine pairs. Neither pattern establishes robustness to untested tie orders.",
+      "after": "All 36 disclosure attempts finish, have a valid disclosed target, and eventually deliver an independent frame. There are no censored observations in this new grid. Fig. 4 compares matched horizons. CANONICAL gives earlier independent delivery for Multi in seven of nine timing pairs and 1,000 additional confidential bytes in five. CONTINUE_WAIT gives equal independent-delivery times and confidential bytes in all nine pairs. Neither pattern establishes robustness to untested tie orders."
+    },
+    {
+      "index": 98,
+      "before": "Fig. 3. Multi minus Next for first independent delivery delay and confidential delivered bytes, separated by tie rule. E is contact end; rows are common compromise times and columns detection delays. All 36 runs finished and recovered. Signed values are per-pair differences, not means over selected successes.",
+      "after": "Fig. 4. Multi minus Next for first independent delivery delay and confidential delivered bytes, separated by tie rule. E is contact end; rows are common compromise times and columns detection delays. All 36 runs finished and recovered. Signed values are per-pair differences, not means over selected successes."
+    }
+  ],
+  "referenceAdded": "Figure 1 illustrates the X01 timing mechanism.",
+  "unchangedOriginalBodyElements": 130,
+  "unchangedOriginalPackageParts": 17,
+  "newScientificAttempts": 0,
+  "renderReview": "All 16 Word pages visually inspected; no clipping or overlap; figure and caption together on page 5",
+  "pages": 16,
+  "figurePage": 5,
+  "latexCompile": "SUCCESS",
+  "priorArticleArchiveUnchanged": true,
+  "scientificFilesContentCompared": 188,
+  "newlineOnlyDifferencesAgainstRelease": [
+    "docs/measured-delay-x01/figures/provenance.json",
+    "docs/measured-delay-x01/tables/contacts.csv",
+    "docs/measured-delay-x01/tables/pairs.csv",
+    "docs/measured-delay-x01/tables/runs.csv",
+    "docs/measured-delay-x01/tables/summary.json",
+    "src/main/java/org/contactaware/security/simulation/BranchEngine.java",
+    "src/main/java/org/contactaware/security/simulation/ExactHorizonPlanner.java",
+    "src/main/java/org/contactaware/security/simulation/PlanningOptimisticBound.java",
+    "src/main/java/org/contactaware/security/simulation/PlanningStateKey.java",
+    "src/main/java/org/contactaware/security/simulation/RecedingHorizonController.java",
+    "src/main/java/org/contactaware/security/simulation/SearchControl.java",
+    "src/main/java/org/contactaware/security/simulation/SecurityActionGenerator.java",
+    "src/main/java/org/contactaware/security/simulation/SecurityEvaluationNewDaysMain.java",
+    "src/main/java/org/contactaware/security/simulation/SecurityPolicyController.java",
+    "src/main/java/org/contactaware/security/simulation/SimulationEngine.java"
+  ],
+  "mavenRerun": false
+}

@@ -1,6 +1,8 @@
-# Proposed article updates pending approval
+# Article update proposal retained as review history
 
-These are proposed statements only. No manuscript file has been edited.
+The following proposal was prepared before approval. The user subsequently
+approved editing, and the actual changes are documented in
+`../article-x01-update/README.md`. The proposal below is retained as review history.
 
 **Experimental design.** We repeated the autonomous X01 scenario using the archived physical model and150000nodes per search. Four offline controls and four measured-delay pilots preceded80registered main attempts:20Next/Multi pairs for each of two tie-breaking rules. Fresh Java21 processes ran serially without explicit warmup, alternating which horizon ran first. The measured decision pipeline was charged before fresh intent admission; other host overhead was reported separately.
 

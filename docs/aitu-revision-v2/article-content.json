@@ -2,8 +2,8 @@
   "title": "When Future Contacts Improve Satellite Key and Security Association Management",
   "author": "Mukhammed Zhumali",
   "email": "262937@astanait.edu.kz",
-  "authorFields": "[AUTHOR TO COMPLETE: degree, position, department, organization, country, ORCID]",
-  "abstract": "Short satellite contacts must carry payload and the work needed to use valid traffic keys. A longer view of future contacts can help only if it changes a feasible plan and the controller can find and use that plan in time. We ask when extra contact visibility helps joint key and security association management. The compared horizons share actions, safety rules, costs, and five ordered service and resource criteria. Exact search is limited to a finite event model. A practical controller compares seeds, retained plans, and bounded search. The first revision adds 110 full controller attempts and twelve paired root checks to a preserved baseline; 105 controller attempts finish. In nine exact cases with common prescribed preparation, the longer horizon serves one extra contact in two cases, ties in five, and leaves two unresolved. A first budget series shows no offline gain under its one second search cap. Six new checks then keep the same autonomous root and allow up to thirty seconds. At 150,000 and 200,000 allowed nodes, practical search finds a useful plan under both tie rules, without an oracle. Only one rule completes the root proof within these limits. In four full runs, one rule confirms an extra contact; the other remains unresolved at the controller time limit. Earlier charged time tests give three longer horizon losses and one tie. In 36 disclosure runs, recovery and extra confidential delivery depend on the tie rule. Early key activation can expire before later delivery. The evidence supports a conditional scheduling benefit, bounded by key validity, contact windows, plan choice, and search cost, rather than a general security advantage.",
+  "authorFields": "BSc, Master’s student, School of Cybersecurity, Astana IT University, Astana, Kazakhstan. ORCID: 0009-0008-4052-0672",
+  "abstract": "Short satellite contacts must carry payload and the work needed to use valid traffic keys. We ask when seeing more future contacts improves joint key and security association scheduling, and whether a bounded controller can realize that gain in time. Next and Multi share actions, safety rules, costs and five ordered service and resource criteria. Exact search applies to a finite event model; the practical controller compares seeds, retained plans and bounded search. In nine exact cases with prescribed preparation, Multi serves one extra contact in two cases, ties in five and leaves two unresolved. Larger budget checks find an autonomous service-improving plan under both tie rules, but only one rule completes the root proof. An offline full run under CONTINUE_WAIT serves three contacts with Multi and two with Next. We then register 88 additional attempts: four offline controls, four measured delay pilots and 80 main runs, with 20 Next/Multi pairs per tie rule. All main runs finish. When the measured decision pipeline consumes contact time, Multi has zero wins and 20 losses in served contacts under CONTINUE_WAIT; CANONICAL has zero wins, five ties and 15 losses. Useful time is lower for Multi in every pair. Selected traces show decision delays consuming time needed for early key work. This tests one controller and host, without isolating the cost of each search component. In 36 earlier disclosure runs, recovery and confidential delivery depend on tie order. The contribution is a joint lifecycle model and controlled evidence separating feasible horizon gains from their timely execution, rather than a universal scheduling or security advantage.",
   "keywords": "satellite security, key lifecycle, contact planning, computation, recovery",
   "blocks": [
     {
@@ -56,7 +56,7 @@
     },
     {
       "type": "p",
-      "text": "The research question is: under identical lifecycle actions, security constraints, costs, and plan tie-breaking, when does additional predicted contact visibility improve achievable spacecraft–ground service, and when can a bounded receding-horizon controller realize that improvement?"
+      "text": "The research question is: under identical lifecycle actions, security constraints, costs and plan tie-breaking, when does additional predicted contact visibility improve achievable spacecraft-ground service, and when can a bounded receding-horizon controller realize that improvement after its measured decision time is charged to contact opportunities?"
     },
     {
       "type": "p",
@@ -64,7 +64,7 @@
     },
     {
       "type": "p",
-      "text": "The objectives are to isolate initialization from search, test source-derived timing and validity conditions, measure full-run quality under fixed computational budgets, and separate stages of recovery after key disclosure. The contribution is a joint lifecycle scheduling formulation and evidence locating its useful and ineffective regimes. Conditional model properties support interpretation; implementation checks support reproducibility rather than constituting a separate claim of scientific novelty."
+      "text": "The objectives are to isolate initialization from search, test timing and validity conditions, measure full-run quality under fixed computational budgets, and distinguish recovery milestones after key disclosure. We formulate joint directional-key and security-association lifecycle scheduling and provide matched evidence identifying useful and ineffective regimes. The experiments separate the existence and discovery of a service-improving plan from its timely execution, and separate efficiency from disclosure consequences. Implementation checks support reproducibility; neither a new cryptographic protocol nor universal superiority of the longer horizon is claimed."
     },
     {
       "type": "heading",
@@ -184,7 +184,7 @@
     },
     {
       "type": "p",
-      "text": "The first AITU revision used a separate harness against the unchanged Java 21 final-v2 JAR: 110 new full-controller attempts, twelve paired-root diagnostics, and six explicitly reused cells. These populations remain separate from the preserved baseline of 108 attempts (93 FINISHED, 15 PROCESS_TIMEOUT). The present revision adds six ordinary practical root searches and four conditionally registered full executions; no attack series is repeated. Table 2 describes the first revision only."
+      "text": "The first AITU revision used a separate harness against the unchanged Java 21 final-v2 JAR: 110 new full-controller attempts, twelve paired-root diagnostics and six explicitly reused cells. These populations remain separate from the preserved baseline of 108 attempts (93 FINISHED, 15 PROCESS_TIMEOUT). The subsequent budget study added six ordinary practical root searches and four conditional full executions. The measured-delay campaign reported below adds 88 separately registered attempts: four offline controls, four measured pilots and 80 main executions. No attack series is repeated. Table 2 describes the first revision only."
     },
     {
       "type": "table",
@@ -254,19 +254,24 @@
     },
     {
       "type": "p",
-      "text": "The synthetic family uses C1 at A from 0 to 20 seconds, C2 at B from 30 to 50, and C3 at A from T to T+L. X01 has T=80, L=5, and P=150 seconds. Common preparation runs from −2 to 0 and its costs remain in the journal; autonomous runs start without a spare pair. Initial A material was created at −90 and activated at −80, and B at −40 and −30. Material age is 400 seconds and maximum reuse gap 200 seconds. Changing P rebuilds history through lifecycle transitions; expiry is never edited independently."
+      "text": "The synthetic family uses C1 at A from 0 to 20 seconds, C2 at B from 30 to 50, and C3 at A from T to T+L. X01 has T=80, L=5, and P=150 seconds. Common preparation runs from −2 to 0 and its costs remain in the journal; autonomous runs start without a spare pair. Initial A material was created at −90 and activated at −80, and B at −40 and −30. Material age is 400 seconds and maximum reuse gap 200 seconds. Changing P rebuilds history through lifecycle transitions; expiry is never edited independently. Figure 1 illustrates the X01 timing mechanism."
+    },
+    {
+      "type": "figure",
+      "name": "contact_horizon_mechanism",
+      "caption": "Fig. 1. X01 horizon mechanism: earlier installation can reduce the time needed to serve C3 from 8 s to 4 s, provided all lifecycle constraints hold."
     },
     {
       "type": "p",
-      "text": "The remaining family settings are shown in Fig. 1. At 100 bytes per frame and 400 bytes per second, each frame lasts 0.25 seconds; the two directional thresholds of 400 bytes require eight frames, or two seconds. A pre-active installed pair therefore needs SWITCH+OPEN+payload, four seconds, while a prepared pair needs INSTALL+SWITCH+OPEN+payload, eight seconds. An already active pair needs REUSE+payload, three seconds. These are necessary timing totals for those chains, not universal sufficient conditions: resource use, whole frames, deadlines, and strict completion of management before contact loss are checked by execution."
+      "text": "The remaining family settings are shown in Fig. 2. At 100 bytes per frame and 400 bytes per second, each frame lasts 0.25 seconds; the two directional thresholds of 400 bytes require eight frames, or two seconds. A pre-active installed pair therefore needs SWITCH+OPEN+payload, four seconds, while a prepared pair needs INSTALL+SWITCH+OPEN+payload, eight seconds. An already active pair needs REUSE+payload, three seconds. These are necessary timing totals for those chains, not universal sufficient conditions: resource use, whole frames, deadlines, and strict completion of management before contact loss are checked by execution."
     },
     {
       "type": "p",
-      "text": "The earlier budget series uses autonomous X and the three original ISS windows in Table 3. It compares no DFS and allowances of 1,000, 5,000, 20,000 and 100,000 nodes, always with the one-second search cap. Seed, retention and comparison stay common. Selected 1,000/20,000-node cases charge measured decision time. Search elapsed/CPU, controller elapsed/CPU, and modeled lifecycle CPU are separate. The host was an AMD Ryzen 7 5800HS (8 cores, 16 logical processors), 16 GiB physical RAM, Java 21.0.10; hardware was observed after the campaign."
+      "text": "The earlier budget series uses autonomous X and the three original ISS windows in Table 3. It compares no DFS and allowances of 1,000, 5,000, 20,000 and 100,000 nodes, always with the one-second search cap. Seed, retention and comparison stay common. Selected 1,000/20,000-node cases charge measured decision time. Search elapsed/CPU, controller elapsed/CPU and modeled lifecycle CPU are separate. Earlier reports describe the host as an AMD Ryzen 7 5800HS (8 cores, 16 logical processors), nominally 16 GiB RAM, using Java 21.0.10; those hardware observations followed that campaign."
     },
     {
       "type": "p",
-      "text": "Geometric contact inputs in the baseline were derived from archived CelesTrak general-perturbations data [18], SatNOGS station metadata [19], and Orekit propagation [20]. They represent visibility, not reserved ground-station service. The archived models identify dates, stations, payload assumptions, and hashes. The present ISS controls reuse those model windows, while X is entirely synthetic; no new full-day propagation campaign is performed. New calculations ran on an AMD Ryzen 7 5800HS host with 16 GiB physical RAM using Java 21.0.10. Machine and tool observations accompany the reproduction manifest; host times are not onboard latency predictions."
+      "text": "Geometric contact inputs in the baseline were derived from archived CelesTrak general-perturbations data [18], SatNOGS station metadata [19] and Orekit propagation [20]. They represent visibility, not reserved ground-station service. The archived models identify dates, stations, payload assumptions and hashes. ISS controls reuse those windows, while X01 is synthetic; no new full-day propagation campaign is performed. Before the measured-delay campaign, the host was recorded as an AMD Ryzen 7 5800HS, 8 physical cores/16 logical processors, 16,541,487,104 bytes of OS-reported physical memory, Windows 11 build 26200 and Java 21.0.10. These desktop measurements are not onboard latency predictions."
     },
     {
       "type": "table",
@@ -314,7 +319,23 @@
     },
     {
       "type": "p",
-      "text": "The new budget diagnostic restores one saved autonomous t=0, H=2 observation for both tie rules, then independently allows 100,000, 150,000 or 200,000 nodes: six searches. Search time is 30 seconds, whole selection 32 seconds, process watchdog 45 seconds. A fresh ordinary seed/retention/search portfolio receives no exact plan, offered continuation or external incumbent; retained input is absent. The observational overlay records discoveries. For each rule, the smallest tested allowance whose replay-valid selected score strictly beats the old practical (2, 38, 0.12, 160, 0) triggers one offline Next/Multi pair. These four full runs use the original autonomous start, frozen ordinary planner, 180-second controller and 210-second watchdog. All limits were registered before outcomes."
+      "text": "The preceding budget diagnostic restores one saved autonomous t=0, H=2 observation for both tie rules, then independently allows 100,000, 150,000 or 200,000 nodes: six searches. Search time is 30 seconds, whole selection 32 seconds, process watchdog 45 seconds. A fresh ordinary seed/retention/search portfolio receives no exact plan, offered continuation or external incumbent; retained input is absent. The observational overlay records discoveries. For each rule, the smallest tested allowance whose replay-valid selected score strictly beats the old practical (2, 38, 0.12, 160, 0) triggers one offline Next/Multi pair. Those four full runs use the original autonomous start, frozen ordinary planner, 180-second controller and 210-second watchdog. All limits were registered before outcomes."
+    },
+    {
+      "type": "subheading",
+      "text": "Measured decision-time protocol"
+    },
+    {
+      "type": "p",
+      "text": "The X01 measured-delay campaign uses the archived autonomous initial state at t=-2 seconds, without a prepared spare pair. The t=0 state belongs to the preceding root diagnostics; these are different starting observations. All physical costs, payload, key deadlines, actions, tie rules, traversal and objective are retained. Before registration, a compatibility correction included the existing certified-continuation guard and preparation in the measured controller cycle (commit b2d04b8). Thirteen focused tests passed. The new JAR changes only measured-controller classes; 6,703 other JAR entries, including the planner, portfolio and offline controller, remain byte-identical to final-v2."
+    },
+    {
+      "type": "p",
+      "text": "The registered sequence is four offline controls, four measured pilots and 80 main attempts: 20 Next/Multi pairs under each tie rule. Pilots are excluded from main statistics. Fresh Java 21 processes run serially with default JIT/GC, a 1,024 MiB heap and no explicit warmup; Next runs first in odd pairs and Multi in even pairs. Every search allows 150,000 nodes and 30 seconds; whole selection, controller and external watchdog limits are 32, 180 and 210 seconds. The 30/32-second limits were checked in archived full-execution commands rather than inferred from root diagnostics. No scientific attempt is retried and no budget is increased."
+    },
+    {
+      "type": "p",
+      "text": "Monotonic elapsed time covers observation/candidate construction, certified-continuation verification and preparation, seed/retained-plan work, bounded search and final comparison. The executor advances already committed work and physical events by this interval before revalidating the chosen intent. A shifted action cannot inherit an old optimality certificate. Checkpoint I/O, fresh admission, actual execution, JVM startup and final export are excluded from the charged selection interval and reported through their respective host/process measurements. This is not a full model of every onboard computing overhead. Final service scores come from delivered frames; unfinished executions retain labeled prefix metrics and no final score."
     },
     {
       "type": "subheading",
@@ -362,12 +383,12 @@
     },
     {
       "type": "p",
-      "text": "Fig. 1 reports nine exact-controller configurations with a common prescribed PREPARE, not nine autonomous practical comparisons. Seven have completed Next/Multi pairs under both tie rules: Multi serves one extra contact in X01 and X08, and five configurations tie. The two remaining settings have unfinished Multi searches and are unknown, not losses or estimated gains."
+      "text": "Fig. 2 reports nine exact-controller configurations with a common prescribed PREPARE, not nine autonomous practical comparisons. Seven have completed Next/Multi pairs under both tie rules: Multi serves one extra contact in X01 and X08, and five configurations tie. The two remaining settings have unfinished Multi searches and are unknown, not losses or estimated gains."
     },
     {
       "type": "figure",
       "name": "horizon_conditions",
-      "caption": "Fig. 1. Synthetic conditions after common preparation. T is return-contact start, L its length, and P cryptoperiod, all in seconds. Both tie rules agree in completed pairs. Hatched cells are incomplete exact executions, not zero service."
+      "caption": "Fig. 2. Synthetic conditions after common preparation. T is return-contact start, L its length, and P cryptoperiod, all in seconds. Both tie rules agree in completed pairs. Hatched cells are incomplete exact executions, not zero service."
     },
     {
       "type": "p",
@@ -379,12 +400,12 @@
     },
     {
       "type": "p",
-      "text": "All 26 first-revision budget attempts finish. Under the fixed one-second search cap, Fig. 2 shows no offline horizon advantage at the tested node allowances in either workload. For X, no DFS yields (2, 38, 0.32, 160, 2); every positive allowance yields (2, 38, 0.12, 160, 0) for both horizons. The long control ties at (3, 410, 2.13, 3240, 6). This result does not characterize larger search-time budgets."
+      "text": "All 26 first-revision budget attempts finish. Under the fixed one-second search cap, Fig. 3 shows no offline horizon advantage at the tested node allowances in either workload. For X, no DFS yields (2, 38, 0.32, 160, 2); every positive allowance yields (2, 38, 0.12, 160, 0) for both horizons. The long control ties at (3, 410, 2.13, 3240, 6). This result does not characterize larger search-time budgets."
     },
     {
       "type": "figure",
       "name": "quality_budget",
-      "caption": "Fig. 2. First-revision CANONICAL full-run payload and host cost under the one-second search cap. No DFS retains seeds and feasible suffixes. Crosses denote measured-delay cases. Node values are allowances, not guaranteed work completed."
+      "caption": "Fig. 3. First-revision CANONICAL full-run payload and host cost under the one-second search cap. No DFS retains seeds and feasible suffixes. Crosses denote measured-delay cases. Node values are allowances, not guaranteed work completed."
     },
     {
       "type": "p",
@@ -462,11 +483,61 @@
     },
     {
       "type": "subheading",
+      "text": "Measured decision latency in X01"
+    },
+    {
+      "type": "p",
+      "text": "The four new offline controls reproduce the CONTINUE_WAIT scores (2, 38, 0.12, 160, 0) for Next and (3, 37, 0.83, 1240, 2) for Multi. CANONICAL Next finishes with the same Next score; CANONICAL Multi reaches the 180-second controller limit and has no final comparison score. All four pilots and all 80 main measured executions finish. Thus 87 of the 88 registered attempts are FINISHED, with the one incomplete offline control preserved separately."
+    },
+    {
+      "type": "table",
+      "caption": "Table 5. Main measured-delay series. CW=CONTINUE_WAIT; CAN=CANONICAL. Delta U is Multi minus Next; no main pair is incomplete.",
+      "headers": [
+        "Rule",
+        "Complete pairs",
+        "Multi S wins / ties / losses",
+        "Delta U (s), median [min; max]"
+      ],
+      "rows": [
+        [
+          "CW",
+          "20 / 20",
+          "0 / 0 / 20",
+          "-15 [-15.75; -13]"
+        ],
+        [
+          "CAN",
+          "20 / 20",
+          "0 / 5 / 15",
+          "-14.25 [-15.5; -11]"
+        ]
+      ],
+      "widths": [
+        1300,
+        1400,
+        2900,
+        3754
+      ]
+    },
+    {
+      "type": "p",
+      "text": "Table 5 reports every planned main pair. Next serves two contacts in all 40 main executions. CONTINUE_WAIT Multi serves one in all 20; CANONICAL Multi serves one in 15 and two in five. Useful time is lower for Multi in every pair. The five service ties therefore become losses at the second criterion, and Next wins all 40 full five-coordinate comparisons. Modeled GS+SC operation CPU, management bytes and new directional keys are respectively 0.12 seconds, 160 bytes and zero in every main execution; the differences arise in service and useful time, not these three resource coordinates."
+    },
+    {
+      "type": "p",
+      "text": "Median useful times for Next/Multi are 32.75/17.75 seconds under CONTINUE_WAIT and 32.75/18.125 under CANONICAL. Median host controller elapsed times are 6.857/22.860 and 6.905/21.598 seconds, respectively. These host times differ from modeled operation CPU. Across individual decisions, median [minimum, maximum] elapsed milliseconds are 28.779 [1.083, 728.280] for CW Next, 14.182 [1.541, 15035.710] for CW Multi, 28.461 [1.151, 779.657] for CAN Next and 15.180 [1.269, 18540.615] for CAN Multi. A lower pooled decision median does not imply a cheaper controller: trajectories and decision counts differ, while expensive early decisions consume critical windows."
+    },
+    {
+      "type": "p",
+      "text": "The reconstructed timelines identify missed preparation opportunities in selected witnesses. In main-CONTINUE_WAIT-01, Multi first returns OPEN at t=14.0855122 seconds; its next selection ends at t=21.636010, after C1 closes at t=20. After the first selection there is no new material or pending PREPARE/INSTALL. Even with free resources, PREPARE plus INSTALL needs six seconds and can no longer fit. This necessary timing bound is crossed at the first selection in main-CANONICAL-01 (t=15.2737277) and the second in main-CANONICAL-13 (t=18.9458863). Witnesses are chosen within each rule/service-outcome group by proximity to median Delta U, then pair ID. They support the timing mechanism without isolating the causal cost of DFS or proving it for every run."
+    },
+    {
+      "type": "subheading",
       "text": "Sensitivity to disclosure timing and tie order"
     },
     {
       "type": "p",
-      "text": "All 36 disclosure attempts finish, have a valid disclosed target, and eventually deliver an independent frame. There are no censored observations in this new grid. Fig. 3 compares matched horizons. CANONICAL gives earlier independent delivery for Multi in seven of nine timing pairs and 1,000 additional confidential bytes in five. CONTINUE_WAIT gives equal independent-delivery times and confidential bytes in all nine pairs. Neither pattern establishes robustness to untested tie orders."
+      "text": "All 36 disclosure attempts finish, have a valid disclosed target, and eventually deliver an independent frame. There are no censored observations in this new grid. Fig. 4 compares matched horizons. CANONICAL gives earlier independent delivery for Multi in seven of nine timing pairs and 1,000 additional confidential bytes in five. CONTINUE_WAIT gives equal independent-delivery times and confidential bytes in all nine pairs. Neither pattern establishes robustness to untested tie orders."
     },
     {
       "type": "p",
@@ -475,7 +546,7 @@
     {
       "type": "figure",
       "name": "disclosure_sensitivity",
-      "caption": "Fig. 3. Multi minus Next for first independent delivery delay and confidential delivered bytes, separated by tie rule. E is contact end; rows are common compromise times and columns detection delays. All 36 runs finished and recovered. Signed values are per-pair differences, not means over selected successes."
+      "caption": "Fig. 4. Multi minus Next for first independent delivery delay and confidential delivered bytes, separated by tie rule. E is contact end; rows are common compromise times and columns detection delays. All 36 runs finished and recovered. Signed values are per-pair differences, not means over selected successes."
     },
     {
       "type": "p",
@@ -492,6 +563,10 @@
     {
       "type": "p",
       "text": "The experiments support the proposed timing mechanism in a restricted, explicit setting. Extra forecast information is useful when it exposes a later requirement early enough to change current lifecycle work, the resulting material survives until use, and the controller discovers and executes the necessary continuation. Holding only the action set constant is insufficient: initial preparation, complete plan tie order, and computational budget also change what the realized controller can achieve."
+    },
+    {
+      "type": "p",
+      "text": "The new results distinguish a scheduling opportunity from its realization by a particular bounded controller. The unchanged offline control retains a three-versus-two-contact gain, while measured execution realizes no service gain in either tested tie order. Delays in the whole decision pipeline consume time needed for lifecycle work and can invalidate an intended continuation. This is evidence about this implementation and timing regime, not an impossibility result for multi-contact planning. Nor does it prove that replacing DFS alone would restore the gain: no component ablation, alternative solver or faster-platform comparison was performed. The contribution is controlled evidence linking horizon, validity, tie choice and computational timing to realized service, with recovery and confidentiality assessed separately."
     },
     {
       "type": "p",
@@ -517,7 +592,7 @@
     },
     {
       "type": "p",
-      "text": "The study remains bounded by synthetic costs, discrete start opportunities, limited forecast horizons, nominal future operations, and host-specific timing. Exact results are finite-model root optima, whereas practical results are feasible outcomes under registered limits. The nine configurations and 36 disclosure runs were selected before outcomes but are not a statistical population sample. The unresolved exact cells, timer-constrained budget levels, and tie-dependent recovery benefits are substantive limits on the research conclusion, not missing values to be filled with optimistic estimates."
+      "text": "The study remains bounded by synthetic costs, discrete start opportunities, limited forecast horizons, nominal future operations and host-specific timing. Only completed certified searches establish finite-model root optima; practical results are feasible outcomes under registered limits. The nine configurations and 36 disclosure runs are not a statistical population sample. The new measured series adds repeated observations of one synthetic scenario on one desktop/JVM, with ordinary background activity neither disabled nor causally attributed. It does not compare alternative solvers or separate the costs of individual decision-pipeline components. Unresolved exact cells, timer-constrained searches and tie-dependent recovery benefits remain substantive limits."
     },
     {
       "type": "heading",
@@ -529,7 +604,7 @@
     },
     {
       "type": "p",
-      "text": "The previous one-second budget series has no offline practical gain; that finding must not be generalized to all budgets. Under CANONICAL, Next is FINISHED and Multi is CONTROLLER_TIME_LIMIT; their full-run comparison remains unresolved. Under CONTINUE_WAIT, the full Next and Multi runs finish with (2, 38, 0.12, 160, 0) and (3, 37, 0.83, 1240, 2), respectively. Root quality and full receding-horizon execution are distinct results. Charged decision time reduced service in the tested lower-budget runs. Whether the newly observed offline gain survives charging computation time remains untested. Disclosure outcomes depend on tie order, and early activation can expire before delivery. Neither lower compromise probability nor global mission optimality is established."
+      "text": "The completed offline CONTINUE_WAIT execution serves three contacts with Multi and two with Next; the corresponding CANONICAL Multi offline comparison remains unresolved at the controller limit. The new measured-delay campaign tests whether that offline gain survives charging the decision pipeline. All 80 main executions finish. Across 20 pairs per rule, Multi has zero service wins: CONTINUE_WAIT gives 20 losses, while CANONICAL gives five ties and 15 losses. Useful time is lower for Multi in every pair, so all 40 full five-criterion comparisons favor Next. This bounds the tested implementation, host and X01 timing regime, without refuting the scheduling potential of additional visibility or establishing that a faster search would necessarily realize it. Disclosure outcomes also depend on tie order; early activation can expire before delivery. Neither lower compromise probability nor global mission optimality is established."
     },
     {
       "type": "heading",
@@ -541,7 +616,7 @@
     },
     {
       "type": "p",
-      "text": "Data and code availability: the historical final-v2 package is at https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/research. That release does not contain the new AITU experiments. The separate AITU revision 2 reproduction archive includes registered inputs, all completed and incomplete attempts, analysis and SHA256 manifests. New package public URL: [TO BE ADDED AFTER PUBLIC DEPOSITION]. No new DOI is claimed."
+      "text": "Data and code availability: the combined reproduction materials are publicly available at https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/x01-measured-delay-20261028. Download the named reproduction ZIP and its SHA-256 file; GitHub source-only archives omit raw journals and frozen executables. The package contains the earlier AITU evidence and all 88 X01 attempts, registered inputs, hardware/runtime information, analysis and executable hashes. Earlier research and aitu-v2-20261028 releases remain unchanged. The source publication commit is 439bb2e; the measured-controller compatibility commit is b2d04b8. No DOI has been assigned."
     }
   ],
   "references": [

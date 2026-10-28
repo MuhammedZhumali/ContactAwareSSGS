@@ -1,0 +1,125 @@
+{
+  "status": "PASS",
+  "sourceArticleSha256": "843ae2bfd60181aad1b15e547a2fbe1e9b1de8057226a5a803c4a82737525ebd",
+  "articleSha256": "b3205a8b541e6af5e95b1cd5a5db64e588e0425e2d59f47eeaf2735bb3ec2b2a",
+  "sourceSupplementSha256": "789c7a4f48f55339efce57b5dd5f536d6023e1a4ac9f38d6fdd32908feffbc1d",
+  "supplementSha256": "17088da808d8827bb3aabd46c459a789b88d2675e5a88c83c15d34b2153d0193",
+  "articleEditedBodyIndices": [
+    0,
+    5,
+    17,
+    21,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    45,
+    48,
+    49,
+    50,
+    57,
+    59,
+    60,
+    61,
+    63,
+    70,
+    71,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    94,
+    95,
+    97,
+    100,
+    101,
+    102,
+    106,
+    109,
+    116,
+    117
+  ],
+  "articleUneditedBodyElements": 102,
+  "supplementEditedIndices": [
+    0,
+    5,
+    22,
+    33,
+    72,
+    98,
+    112
+  ],
+  "referencesPreserved": 20,
+  "nativeEditableEquations": 3,
+  "abstractWords": 274,
+  "abstractCharacters": 1765,
+  "abstractEditedLast": true,
+  "sourceDocsPreserved": true,
+  "newExperiments": 0,
+  "mathType": "No verified converter available; editable OMML retained",
+  "renderReview": "PASS",
+  "documents": {
+    "article_aitu_revised_final.docx": {
+      "sha256": "b3205a8b541e6af5e95b1cd5a5db64e588e0425e2d59f47eeaf2735bb3ec2b2a",
+      "previousSha256": "5c337ad9710eb62f9a3d3f5c1902949fdde787f99597ae35eed4ff5c8ead5cdc",
+      "pages": 14,
+      "changedPackageParts": [
+        "word/document.xml"
+      ],
+      "changedBodyIndices": [
+        5,
+        17,
+        21,
+        57,
+        70,
+        99,
+        102
+      ],
+      "tablesFiguresEquationsAndGeometryUnchanged": true,
+      "otherPackagePartsUnchanged": true,
+      "firstPersonAbsent": true
+    },
+    "supplement_aitu_revised_final.docx": {
+      "sha256": "17088da808d8827bb3aabd46c459a789b88d2675e5a88c83c15d34b2153d0193",
+      "previousSha256": "22595f18be42486c65de719816ea36c1ab455a57909f4e3576dd5df1363ce0b4",
+      "pages": 16,
+      "changedPackageParts": [
+        "word/document.xml"
+      ],
+      "changedBodyIndices": [
+        33,
+        98,
+        118
+      ],
+      "tablesFiguresEquationsAndGeometryUnchanged": true,
+      "otherPackagePartsUnchanged": true
+    }
+  },
+  "preservedFilesVerified": 2114,
+  "originalArticleUnchanged": true,
+  "originalSupplementUnchanged": true,
+  "javaOrBudgetChanges": false,
+  "mavenRun": false,
+  "articleVisualReview": "PASS: all 14 pages inspected; offered demand on p5, offline disclosure methods on p7, results and caption on p11; figures preserved",
+  "supplementVisualReview": "PASS: independent reviewer inspected all 16 pages; offline disclosure p5, offered demand p15, FigS1 intact p16",
+  "clarificationEvidence": {
+    "publishedProtocolUrl": "https://github.com/MuhammedZhumali/ContactAwareSSGS/blob/439bb2e3d216434405bfb445b862e9bb0941ef87/docs/aitu-revision/stage4-protocol.md",
+    "publishedProtocolGitBlob": "ad897bf263786abbaea15209b436a1e55c523d84",
+    "protocolSha256": "47da71661a22eed97ea1f3326b77f7907105136e6b8165f6c73babbb06b5478b",
+    "x01Input": "target/measured-delay-x01-20261028/inputs/X01.json",
+    "x01InputSha256": "a380a8fdea19603cdc98bc743bab97dd45dd83011d09218286721363c65a3cd9",
+    "contactPayloadsChecked": 3,
+    "offeredBytesPerDirection": 9223372036854775807,
+    "minimumServiceBytesPerDirection": 400
+  },
+  "remainingFormalQuestions": [
+    "Native editable OMML retained; no verified MathType conversion path",
+    "Mattingley 2010 age exception needs editorial agreement",
+    "Scopus/Web of Science share/category interpretation not certified"
+  ]
+}
