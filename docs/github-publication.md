@@ -2,6 +2,51 @@
 
 Repository: https://github.com/MuhammedZhumali/ContactAwareSSGS
 
+
+## X01 measured-delay release
+
+Published release: [x01-measured-delay-20261028](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/tag/x01-measured-delay-20261028).
+
+- [Full reproduction ZIP](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/download/x01-measured-delay-20261028/ContactAwareSS-X01-measured-delay-reproduction-20261028.zip)
+- [SHA-256 checksum](https://github.com/MuhammedZhumali/ContactAwareSSGS/releases/download/x01-measured-delay-20261028/ContactAwareSS-X01-measured-delay-reproduction-20261028.sha256)
+
+The release tag points to source commit `439bb2e3d216434405bfb445b862e9bb0941ef87`. A later
+documentation commit records these verified publication links. The archive contains
+5,114 manifest-verified payload files, including 735 source files, all 88 registered
+X01 attempts and the earlier AITU evidence. The 17 registered replay input hashes
+and all 88 configuration hashes match.
+
+Archive size: 123,922,970 bytes.
+SHA-256: `903175976ba3e563e1eae757f411ed5b2f6d54bff3166ba49aa852f6c48ae3ee`.
+
+GitHub reports the expected full size and SHA-256 for both assets. The checksum
+was downloaded anonymously in full; an anonymous 65,536-byte ZIP range matched
+the local archive. A complete control download was slow; a subsequent ranged
+attempt received 92,274,688 bytes but hit its 180-second local verification limit
+with four of 15 chunks unfinished. No full redownload digest is claimed. This
+publication network check is separate from the successful local archive/manifest
+validation and the scientific attempts. The prior `research` and `aitu-v2-20261028` releases, notes and assets
+were verified unchanged. Publication checks are under
+`target/github-publication-x01-20261028/` in the local workspace.
+
+The 80 main measured executions finished; Multi loses all 40 full five-coordinate
+paired comparisons in this bounded X01 experiment. The offline control still
+reproduces the CONTINUE_WAIT service advantage; the CANONICAL Multi offline
+control remains incomplete. Consult the [report](measured-delay-x01/report.md)
+and [reproduction instructions](measured-delay-x01/README.md) for timing boundaries
+and denominators. No new scientific attempt was run for this publication.
+
+The current article is the author's supplied version, preserved byte-for-byte.
+It does not yet incorporate the measured-delay addendum; article updates remain
+pending separate approval. The older published manuscript is retained in the ZIP
+under `provenance/aitu-v2-published-article.docx`.
+
+Use the versioned X01 release URL for the combined reproduction materials. No DOI
+has been assigned. Download the uploaded reproduction ZIP, not GitHub's automatic
+source-only archives.
+
+## Earlier AITU revision 2 publication
+
 The AITU revision 2 wording correction dated 28 October 2026 is published.
 The source tree and the complete reproduction asset have separate identities.
 
